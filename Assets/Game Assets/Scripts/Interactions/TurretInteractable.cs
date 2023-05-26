@@ -7,7 +7,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     [SerializeField] string _interactText;
     public string GetInteractText()
     {
-        throw new System.NotImplementedException();
+        return _interactText;
     }
 
     public Transform GetTransform()

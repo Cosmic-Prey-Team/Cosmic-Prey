@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInteract : MonoBehaviour
 {
     InputHandler _input;
 
     [SerializeField] float _interactionRange = 2f;
+
+    public IInteractable currentInteractable { get; private set; }
 
     private void Awake()
     {
@@ -17,7 +21,7 @@ public class PlayerInteract : MonoBehaviour
         if (_input.interact) //player is interacting
         {
             IInteractable interactable = GetInteractableObject();
-
+            currentInteractable = interactable;
             if (interactable != null)
             {
                 interactable.Interact(transform);
