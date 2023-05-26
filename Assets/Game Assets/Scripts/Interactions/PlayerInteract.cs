@@ -18,24 +18,26 @@ public class PlayerInteract : MonoBehaviour
     private void Awake()
     {
         _input = GetComponent<InputHandler>();
+
+        OnGetInteractable?.Invoke(false);
     }
     private void Update()
     {
         #region Interaction Physics Check
         IInteractable interactable = GetInteractableObject();
-        if(interactable != null)
+        if (interactable != null && currentInteractable != interactable)
         {
             currentInteractable = interactable;
             OnGetInteractable?.Invoke(true);
         }
-        else
+        else if (interactable == null && currentInteractable != null)
         {
             currentInteractable = null;
             OnGetInteractable?.Invoke(false);
         }
         #endregion
 
-        //player is interacting
+        //player presses interact button
         if (_input.interact) 
         {
             if (currentInteractable != null)
