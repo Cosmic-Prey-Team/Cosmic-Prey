@@ -11,21 +11,20 @@ public class PlayerInteractionUI : MonoBehaviour
 
     private void Awake()
     {
+        //getting components
         playerInteract = FindObjectOfType<PlayerInteract>();
         _interactionText = GetComponentInChildren<TextMeshProUGUI>();
     }
-    private void Update()
+    private void OnEnable()
     {
-        IInteractable interactable = playerInteract.GetInteractableObject();
-        if(interactable != null)
-        {
-            Show(interactable);
-        }
-        else
-        {
-            Hide();
-        }
+        playerInteract.OnGetInteractable += RefreshUI;
     }
+    private void OnDisable()
+    {
+        playerInteract.OnGetInteractable -= RefreshUI;
+    }
+
+    //shows and hides UI
     private void Show(IInteractable interactable)
     {
         _interactionText.gameObject.SetActive(true);
@@ -34,5 +33,14 @@ public class PlayerInteractionUI : MonoBehaviour
     private void Hide()
     {
         _interactionText.gameObject.SetActive(false);
+    }
+
+    //updates UI based on interaction action
+    private void RefreshUI(bool hasInteractable)
+    {
+        if (hasInteractable)
+            Show(playerInteract.currentInteractable);
+        else
+            Hide();
     }
 }

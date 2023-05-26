@@ -17,6 +17,6 @@ public class TurretInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Transform transform)
     {
-        Debug.Log(_interactText);
+        Debug.Log("Interacting with: " + gameObject.name);
     }
 }

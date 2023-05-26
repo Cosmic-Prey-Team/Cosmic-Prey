@@ -6,10 +6,13 @@ using UnityEngine.Events;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public event Action<bool> OnGetInteractable;
+
     InputHandler _input;
 
     [SerializeField] float _interactionRange = 2f;
 
+    //object player is currently interacting with
     public IInteractable currentInteractable { get; private set; }
 
     private void Awake()
@@ -18,13 +21,26 @@ public class PlayerInteract : MonoBehaviour
     }
     private void Update()
     {
-        if (_input.interact) //player is interacting
+        #region Interaction Physics Check
+        IInteractable interactable = GetInteractableObject();
+        if(interactable != null)
         {
-            IInteractable interactable = GetInteractableObject();
             currentInteractable = interactable;
-            if (interactable != null)
+            OnGetInteractable?.Invoke(true);
+        }
+        else
+        {
+            currentInteractable = null;
+            OnGetInteractable?.Invoke(false);
+        }
+        #endregion
+
+        //player is interacting
+        if (_input.interact) 
+        {
+            if (currentInteractable != null)
             {
-                interactable.Interact(transform);
+                currentInteractable.Interact(transform);
             }
         }
     }
