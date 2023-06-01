@@ -795,7 +795,7 @@ Camera:
   m_GameObject: {fileID: 840896340}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2370,6 +2370,7 @@ GameObject:
   - component: {fileID: 8997996947332509058}
   - component: {fileID: 8616685848642844471}
   - component: {fileID: 8997996947332509059}
+  - component: {fileID: 8997996947332509060}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -2483,3 +2484,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionRange: 1.5
+--- !u!114 &8997996947332509060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848642844475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 096b59fb1e5d32142984b6988623d7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
