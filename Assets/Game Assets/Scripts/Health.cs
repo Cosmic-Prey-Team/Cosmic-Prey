@@ -34,8 +34,6 @@ public class Health : MonoBehaviour
         _health -= damage;
         if (_health < 0) _health = 0;
         OnHealthChanged?.Invoke();
-
-        if (_health == 0) Die();
     }
 
     public void Heal(int amount)
