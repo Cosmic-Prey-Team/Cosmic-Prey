@@ -9,7 +9,7 @@ public class AIWhaleIdleState : AIState
     
     public void Enter(AIAgent agent)
     {
-        
+        Debug.Log("Done.");
     }
 
     public void Exit(AIAgent agent)

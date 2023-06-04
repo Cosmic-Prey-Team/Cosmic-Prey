@@ -15,3 +15,6 @@ MonoBehaviour:
   Speed: 4
   Waypoint: {fileID: 4160088872108794334, guid: ad89d0a68e02d6b439c8e47356bc8f33,
     type: 3}
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 449

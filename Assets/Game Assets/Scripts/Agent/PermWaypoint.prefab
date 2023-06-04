@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2505254303046274374}
   - component: {fileID: 187055855471891049}
   - component: {fileID: 6195344447089500943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PermWaypoint
   m_TagString: Waypoint
   m_Icon: {fileID: 0}

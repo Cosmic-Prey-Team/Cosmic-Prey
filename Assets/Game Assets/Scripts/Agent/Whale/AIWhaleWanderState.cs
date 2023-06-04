@@ -1,25 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityMovementAI;
 
 public class AIWhaleWanderState : AIState
 {
     private GameObject[] destinations;
     private Transform destination;
-    private GameObject moveTarget;
-    private Rigidbody whaleRB;
-    
+    private int castFails = 0;
+    private float scanTimer = 0f;
+
     [SerializeField]
     float rotationLimit = 30f;
     [SerializeField]
-    float distanceLimit = 5f;
+    float distanceLimit = 6f;
+
+   
 
     public void Enter(AIAgent agent)
-    {
-        whaleRB = agent.gameObject.GetComponent<Rigidbody>();
-        //Probably a cleaner way to do this than use tags
+    {      
         destinations = GameObject.FindGameObjectsWithTag("PermWaypoint");
     }
 
@@ -35,39 +37,78 @@ public class AIWhaleWanderState : AIState
 
     public void Update(AIAgent agent)
     {
+        
         if (!agent.enabled)
         {
             return;
-        }               
+        }
 
-        if (moveTarget == null)
+        scanTimer -= Time.deltaTime;
+
+        if (agent.path.nodes.Length == 0 || agent.followPath.IsAtEndOfPath(agent.path))
         {
             if (destination == null)
             {
-                destination = destinations[Random.Range(0, destinations.Length)].transform;
+                destination = destinations[Random.Range(0, destinations.Length - 1)].transform;
             }
 
-            if ((destination.transform.position - agent.gameObject.transform.position).magnitude < distanceLimit)
-            {
-                moveTarget = GameObject.Instantiate(agent.config.Waypoint, destination.transform.position, Quaternion.Euler(0, 0, 0));
-            }
-            else
-            {
-                // randomize position of target
-                Vector3 direction = (destination.transform.position - agent.gameObject.transform.position).normalized;
-                Vector2 range = new Vector2(1, 0);
-                float angleY = Random.Range(-rotationLimit, rotationLimit);
-                float angleZ = Random.Range(-rotationLimit, rotationLimit);
-                float distance = range.x * Random.Range(1, distanceLimit);
-                direction = Quaternion.Euler(0, angleY, angleZ/1.5f) * direction * distance;
+            Vector3[] nodes = new Vector3[1];
 
-                moveTarget = GameObject.Instantiate(agent.config.Waypoint, direction + agent.gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            Vector3 direction = (destination.transform.position - agent.gameObject.transform.position).normalized;
+            float angleY = Random.Range(-rotationLimit, rotationLimit);
+            float angleZ = Random.Range(-rotationLimit, rotationLimit);
+            float distance = Random.Range(2, distanceLimit);
+            direction = Quaternion.Euler(0, angleY, angleZ / 1.5f) * direction * distance;
+
+            Debug.DrawRay(agent.gameObject.transform.position, direction, Color.yellow, 5.0f);
+            if (!Physics.Raycast(agent.gameObject.transform.position, direction, distanceLimit, agent.config.occlusionLayers))
+            {
+                if ((destination.transform.position - agent.gameObject.transform.position).magnitude < distanceLimit / 2)
+                {
+                    nodes[0] = destination.transform.position;
+                }
+                else
+                {
+                    nodes[0] = (direction + agent.gameObject.transform.position) * .95f;
+                }
+
+                agent.path = new LinePath(nodes);
+                agent.path.CalcDistances();
+
+                castFails = 0;
+                rotationLimit = 30f;
+            }
+            else if (castFails++ > 7)
+            {
+                scanTimer = 0.5f;
+                nodes[0] = destination.transform.position;
+                agent.path = new LinePath(nodes);
+                agent.path.CalcDistances();
             }
         }
+        else if (scanTimer < 0 && castFails > 7)
+        {
+            if (agent.path.Length > 0)
+            {
+                agent.path.RemoveNodes();
+            }       
+        }
+        else
+        {
+            Vector3 accel = agent.wallAvoidance.GetSteering();
 
-        
-        Vector3 move = agent.gameObject.transform.position + (moveTarget.transform.position - agent.gameObject.transform.position).normalized * (agent.config.Speed * Time.deltaTime);
-        
-        whaleRB.MovePosition(move);
+            if (accel.magnitude < 0.005f)
+            {
+                accel = agent.followPath.GetSteering(agent.path);
+            }
+
+            agent.steeringBasics.Steer(accel);
+            agent.steeringBasics.LookWhereYoureGoing();
+
+            agent.path.Draw();
+        }
+
     }
+
+    
 }
