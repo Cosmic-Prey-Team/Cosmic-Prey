@@ -6,34 +6,33 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityMovementAI;
 
-public class AIWhaleWanderState : AIState
+public class AIWhaleFleeState : AIState
 {
-    private GameObject[] destinations;
-    private Transform destination;
+    private GameObject _target;
     private int castFails = 0;
     private float scanTimer = 0f;
-    private AISensor sensor;
+
     [SerializeField]
-    float rotationLimit = 30f;
+    float rotationLimit = 40f;
     [SerializeField]
-    float distanceLimit = 6f;
+    float distanceLimit = 16f;
 
    
 
     public void Enter(AIAgent agent)
-    {      
-        destinations = GameObject.FindGameObjectsWithTag("PermWaypoint");
-        sensor = agent.GetComponent<AISensor>();
+    {
+        _target = GameObject.FindGameObjectWithTag("Player");
+        agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity * 1.25f;
     }
 
     public void Exit(AIAgent agent)
     {
-        
+        agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity / 1.25f;
     }
 
     public AIStateID GetID()
     {
-        return AIStateID.WhaleWander;
+        return AIStateID.WhaleFlee;
     }
 
     public void Update(AIAgent agent)
@@ -48,30 +47,22 @@ public class AIWhaleWanderState : AIState
 
         if (agent.path.nodes.Length == 0 || agent.followPath.IsAtEndOfPath(agent.path))
         {
-            if (destination == null)
-            {
-                destination = destinations[Random.Range(0, destinations.Length - 1)].transform;
-            }
-
+            
             Vector3[] nodes = new Vector3[1];
 
-            Vector3 direction = (destination.transform.position - agent.gameObject.transform.position).normalized;
+            Vector3 direction = (agent.gameObject.transform.position - _target.transform.position).normalized;
             float angleY = Random.Range(-rotationLimit, rotationLimit);
             float angleZ = Random.Range(-rotationLimit, rotationLimit);
-            float distance = Random.Range(2, distanceLimit);
-            direction = Quaternion.Euler(0, angleY, angleZ / 1.5f) * direction * distance;
+            float distance = Random.Range(8, distanceLimit);
+            direction = Quaternion.Euler(0, angleY / 0.5f, angleZ / 1.5f) * direction * distance;
 
+            RaycastHit hit;
             Debug.DrawRay(agent.gameObject.transform.position, direction, Color.yellow, 5.0f);
-            if (!Physics.Raycast(agent.gameObject.transform.position, direction, distanceLimit, agent.config.occlusionLayers))
+            if (!Physics.Raycast(agent.gameObject.transform.position, direction, out hit, distanceLimit, agent.config.occlusionLayers))
             {
-                if ((destination.transform.position - agent.gameObject.transform.position).magnitude < distanceLimit / 2)
-                {
-                    nodes[0] = destination.transform.position;
-                }
-                else
-                {
-                    nodes[0] = (direction + agent.gameObject.transform.position) * .95f;
-                }
+                
+                nodes[0] = (direction + agent.gameObject.transform.position) * .95f;
+                
 
                 agent.path = new LinePath(nodes);
                 agent.path.CalcDistances();
@@ -80,8 +71,9 @@ public class AIWhaleWanderState : AIState
                 rotationLimit = 30f;
             }
             else if (castFails++ > 7)
-            {                
-                nodes[0] = destination.transform.position;
+            {
+                scanTimer = 0.5f;
+                nodes[0] = hit.collider.transform.position + (agent.gameObject.transform.position - hit.collider.transform.position).normalized + hit.collider.bounds.size * .75f;
                 agent.path = new LinePath(nodes);
                 agent.path.CalcDistances();
             }
@@ -106,23 +98,6 @@ public class AIWhaleWanderState : AIState
             agent.steeringBasics.LookWhereYoureGoing();
 
             agent.path.Draw();
-        }
-
-        if (scanTimer < 0)
-        {
-            
-            scanTimer = 0.5f;
-            sensor.Scan();
-            GameObject[] food = sensor.Filter(new GameObject[1], "Food");
-
-            if (food[0] != null)
-            {
-                Vector3[] nodes = new Vector3[1];
-                nodes[0] = food[0].transform.position;
-                agent.path = new LinePath(nodes);
-                agent.path.CalcDistances();
-               
-            }
         }
 
     }

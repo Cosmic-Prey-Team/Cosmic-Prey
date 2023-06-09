@@ -5,7 +5,9 @@ using UnityEngine;
 
 public enum AIStateID { 
     WhaleWander,
-    WhaleIdle
+    WhaleIdle,
+    WhaleAttack,
+    WhaleFlee
 }
 
 public interface AIState

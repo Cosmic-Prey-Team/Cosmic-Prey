@@ -17,4 +17,7 @@ MonoBehaviour:
     type: 3}
   occlusionLayers:
     serializedVersion: 2
-    m_Bits: 449
+    m_Bits: 512
+  teleportEffect: {fileID: 4160088872108794334, guid: dfdd8e0cf6a4e6b4b9d37fdb1d427c7a,
+    type: 3}
+  enemyPrefab: {fileID: 0}

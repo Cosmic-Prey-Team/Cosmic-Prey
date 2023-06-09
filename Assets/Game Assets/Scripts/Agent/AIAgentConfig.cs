@@ -8,4 +8,6 @@ public class AIAgentConfig : ScriptableObject
     public float Speed;
     public GameObject Waypoint;
     public LayerMask occlusionLayers;
+    public GameObject teleportEffect;
+    public GameObject enemyPrefab;
 }

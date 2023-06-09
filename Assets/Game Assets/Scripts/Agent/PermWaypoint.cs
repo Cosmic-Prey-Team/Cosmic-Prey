@@ -10,7 +10,7 @@ public class PermWaypoint : MonoBehaviour
         {
             AIAgent agent = other.GetComponent<AIAgent>();
             //AIWhaleIdleState idleState = agent.stateMachine.GetState(AIStateID.WhaleIdle) as AIWhaleIdleState;
-            agent.stateMachine.ChangeState(AIStateID.WhaleIdle);
+            agent.stateMachine.ChangeState(AIStateID.WhaleAttack);
         }
     }
 }
