@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -12,9 +11,6 @@ public class PlayerInteract : MonoBehaviour
     InputHandler _input;
 
     [SerializeField] float _interactionRange = 2f;
-    private bool ActionESC = false;
-
-    public event Action<Transform> OnInteract;
 
     //object player is currently interacting with
     public IInteractable currentInteractable { get; private set; }
@@ -44,15 +40,12 @@ public class PlayerInteract : MonoBehaviour
         //player presses interact button
         if (_input.interact) 
         {
-             if (currentInteractable != null)
-             {
+            if (currentInteractable != null)
+            {
                 currentInteractable.Interact(transform);
-                _input.interact = false;
-             }
-            
+            }
         }
     }
-
 
     public IInteractable GetInteractableObject()
     {
