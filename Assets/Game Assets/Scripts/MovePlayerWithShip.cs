@@ -7,12 +7,12 @@ public class MovePlayerWithShip : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
-            other.transform.SetParent(transform);
+            other.gameObject.transform.SetParent(transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
-            other.transform.SetParent(null);
+            other.gameObject.transform.SetParent(null);
     }
 }
