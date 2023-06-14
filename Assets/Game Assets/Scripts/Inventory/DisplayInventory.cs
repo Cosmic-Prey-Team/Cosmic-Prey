@@ -30,7 +30,7 @@ public class DisplayInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //change to only update when inventory changes
+        //change to only update when inventory changes/button to open inventory is pressed
         UpdateSlots();
     }
 
@@ -97,6 +97,7 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDragStart(GameObject obj)
     {
+        //Display sprite of item to show being dragged
         var mouseObject = new GameObject();       
         mouseObject.transform.SetParent(canvas.transform);
         var rt = mouseObject.gameObject.AddComponent<RectTransform>();
@@ -114,7 +115,6 @@ public class DisplayInventory : MonoBehaviour
     {
         if(mouseItem.obj != null)
         {
-            //Debug.Log(Input.mousePosition);
             mouseItem.obj.GetComponent<RectTransform>().position = new Vector3(Pointer.current.position.x.ReadValue(), Pointer.current.position.y.ReadValue(), 0);
         }
     }
@@ -122,6 +122,7 @@ public class DisplayInventory : MonoBehaviour
     {
         if (mouseItem.hoverObj)
         {
+            //Since a crafter should be able to use the same inventory script, might be able to just remove from one array and add to the other if it detects a different inventory
             inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
         }
         else
@@ -135,6 +136,7 @@ public class DisplayInventory : MonoBehaviour
 
     public Vector3 GetPosition(int i)
     {
+        //May be displaying incorrectly when resolution is different
         return new Vector3(_xStart + _xSpacing * i, _yStart + -_ySpacing * i,0f);
     }
 }
@@ -143,7 +145,8 @@ public class MouseItem
 {
     public GameObject obj;
     public InventoryItemInstance item;
+
+    //Item in slot being moved to
     public GameObject hoverObj;
     public InventoryItemInstance hoverItem;
-    //public 
 }

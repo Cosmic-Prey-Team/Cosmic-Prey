@@ -16,13 +16,13 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < inventory.Length; i++)
         {
             inventory[i] = new InventoryItemInstance(empty);
-            Debug.Log(inventory[i]);
         }
 
         }
     
     public void AddItem(InventoryItem item)
     {
+        //Increase count of item if already in inventory, else replace an empty slot with it
         Debug.Log(item);
         foreach (InventoryItemInstance lookFor in inventory) {
             if (lookFor.ItemName == item.ItemName)
@@ -47,7 +47,6 @@ public class Inventory : MonoBehaviour
                 return inventory[i];
             }
         }
-        //If inventory full
         return null;
     }
 
@@ -57,6 +56,8 @@ public class Inventory : MonoBehaviour
         item2.UpdateSlot(item1);
         item1.UpdateSlot(temp);
     }
+
+    //Old code for removing items, now probably handled by drag events
     /**
     public void RemoveItem(InventoryItem item)
     {
