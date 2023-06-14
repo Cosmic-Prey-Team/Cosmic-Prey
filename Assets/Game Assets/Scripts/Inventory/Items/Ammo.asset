@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71b0affc07ac9054c8219f9d55213908, type: 3}
-  m_Name: Ore
+  m_Name: Ammo
   m_EditorClassIdentifier: 
   ItemName: Ore
   Description: Can be refined into several different resources

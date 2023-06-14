@@ -8,6 +8,6 @@ public class InventoryItem : ScriptableObject
     public string ItemName;
     [TextArea]
     public string Description;
-    public Sprite Sprite;
+    public GameObject Sprite;
     
 }

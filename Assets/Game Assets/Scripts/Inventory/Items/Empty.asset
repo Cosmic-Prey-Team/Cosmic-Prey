@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71b0affc07ac9054c8219f9d55213908, type: 3}
-  m_Name: Ore
+  m_Name: Empty
   m_EditorClassIdentifier: 
-  ItemName: Ore
-  Description: Can be refined into several different resources
-  Sprite: {fileID: 196464129100974414, guid: 99064ee16748a3449940bc9c1e35a012, type: 3}
+  ItemName: Empty
+  Description: 
+  Sprite: {fileID: 196464129100974414, guid: 9045fa57ade15074eb8b718ce1d6cc44, type: 3}
