@@ -369,6 +369,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &511059541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 511059542}
+  m_Layer: 0
+  m_Name: Vertical Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &511059542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511059541}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1159636987}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541228081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1049,7 @@ Transform:
   - {fileID: 702925625}
   - {fileID: 1542634062}
   - {fileID: 1446161257}
+  - {fileID: 511059542}
   m_Father: {fileID: 1489340666}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1047,10 +1079,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waypoint: {fileID: 1446161256}
+  _verticalWaypoint: {fileID: 511059541}
   _ps: {fileID: 8997996947332509061}
   velocity: {x: 0, y: 0, z: 0}
   _maxSpeed: 1
-  _accelerationDelay: 1
+  _accelerationDelay: 0.1
   _input: {fileID: 8997996947332509058}
 --- !u!114 &1159636993
 MonoBehaviour:
@@ -2703,10 +2736,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
+  vMove: 0
   jump: 0
   sprint: 0
   interact: 0
-  vMove: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
