@@ -9,6 +9,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
 	[RequireComponent(typeof(PlayerInput))]
 #endif
+
 	public class FirstPersonController : MonoBehaviour
 	{
 		[Header("Player")]
@@ -50,6 +51,9 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
+
+		[SerializeField] ShipController shipController;
+		[SerializeField] MovePlayerWithShip movePlayerWithShip;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -158,6 +162,9 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			if (movePlayerWithShip.onShip)
+				targetSpeed += shipController.velocity.z;
+
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -199,7 +206,22 @@ namespace StarterAssets
 				}
 			}
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			//_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+			if (movePlayerWithShip.onShip)
+            {
+				if (inputDirection.normalized == new Vector3(0f, 0f, 0f))
+					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime, shipController.velocity.z));
+                else
+                {
+					_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));
+				}
+				
+			}else
+            {
+				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity / 5, 0.0f) * Time.deltaTime));
+				//Slower, low gravity movement. Could just change gravity in #JumpAndGravity().
+			}
 		}
 
 		private void JumpAndGravity()
