@@ -69,6 +69,7 @@ namespace StarterAssets
 		private float _fallTimeoutDelta;
 
 		private bool _canMove = true;
+		private bool _atHelm = false;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -153,7 +154,14 @@ namespace StarterAssets
 				CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
 
 				// rotate the player left and right
-				transform.Rotate(Vector3.up * _rotationVelocity);
+				if (_atHelm)
+                {
+					//transform.Rotate(shipController.rotateVelocity.normalized * _rotationVelocity);
+				} else
+                {
+					transform.Rotate(Vector3.up * _rotationVelocity);
+				}
+				
 			}
 		}
 
@@ -211,7 +219,11 @@ namespace StarterAssets
 			if (movePlayerWithShip.onShip)
             {
 				if (inputDirection.normalized == new Vector3(0f, 0f, 0f))
-					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime, shipController.velocity.z));
+                {
+					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime + shipController.velocity.y, 0.0f));
+					_controller.Move(shipController.transform.forward * shipController.velocity.z);
+				}
+					
                 else
                 {
 					_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));
@@ -291,14 +303,16 @@ namespace StarterAssets
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
 
-		public void StopPlayerMovement()
+		public void EnterControlShip()
 		{
 			_canMove = false;
+			_atHelm = true;
 		}
 
-		public void StartPlayerMovement()
+		public void EnterControlPlayer()
 		{
 			_canMove = true;
+			_atHelm = false;
 		}
 	}
 }

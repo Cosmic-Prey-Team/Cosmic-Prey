@@ -56,7 +56,7 @@ public class PlayerState : MonoBehaviour
     {
         //change camera view
         Debug.Log("Switched to First Person");
-        this.gameObject.GetComponent<StarterAssets.FirstPersonController>().StartPlayerMovement();
+        this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlPlayer();
     }
     void OnThirdPersonState()
     {
@@ -66,7 +66,7 @@ public class PlayerState : MonoBehaviour
     {
         //change controls
         Debug.Log("Switched to Ship");
-        this.gameObject.GetComponent<StarterAssets.FirstPersonController>().StopPlayerMovement();
+        this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlShip();
     }
     private bool TrySetState(ControlState newState)
     {

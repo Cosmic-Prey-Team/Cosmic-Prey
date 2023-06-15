@@ -8,6 +8,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] private GameObject _verticalWaypoint;
     [SerializeField] private PlayerState _ps;
     [SerializeField] public Vector3 velocity;
+    [SerializeField] public Vector3 rotateVelocity;
 
     [SerializeField] private float _maxSpeed = 1f;
     [SerializeField] private float _accelerationDelay;
@@ -39,10 +40,17 @@ public class ShipController : MonoBehaviour
        if(_ps.currentState.ToString().Equals("Ship"))
        {
             // if the player is trying to rotate the ship
-            if(_input.move.x > 0)
-                transform.Rotate(0f, .5f, 0f);
+            if (_input.move.x > 0)
+            {
+                rotateVelocity = new Vector3(0f, .5f, 0f);
+                transform.Rotate(rotateVelocity);
+            }    
             else if(_input.move.x < 0)
-                transform.Rotate(0f, -.5f, 0f);
+            {
+                rotateVelocity = new Vector3(0f, -.5f, 0f);
+                transform.Rotate(rotateVelocity);
+            }
+               
 
             // if the player is trying to move the ship forward
             if(_input.move.y > 0)
@@ -55,6 +63,7 @@ public class ShipController : MonoBehaviour
                         _speed = _maxSpeed;
 
                     _accelerate = Time.time + _accelerationDelay;
+                    velocity = -transform.forward * _speed * Time.deltaTime;
                 }
             }
             //if the player is trying to stop moving
@@ -67,7 +76,7 @@ public class ShipController : MonoBehaviour
                     if (_speed < 0)
                         _speed = 0;
 
-                    _accelerate = Time.time + _accelerationDelay;
+                    velocity = -transform.forward *_speed * Time.deltaTime;
                 }
             }
             
@@ -85,6 +94,7 @@ public class ShipController : MonoBehaviour
                         _vSpeed = _maxSpeed;
 
                     _vAccelerate = Time.time + _accelerationDelay;
+                    velocity.y = _vSpeed * Time.deltaTime;
                 }
             }
             //if the player is trying to move down
@@ -101,6 +111,7 @@ public class ShipController : MonoBehaviour
                         _vSpeed = -_maxSpeed;
 
                     _vAccelerate = Time.time + _accelerationDelay;
+                    velocity.y = _vSpeed * Time.deltaTime;
                 }
             }
         }
@@ -116,6 +127,7 @@ public class ShipController : MonoBehaviour
                     _vSpeed = 0;
 
                 _vAccelerate = Time.time + _accelerationDelay;
+                velocity.y = _vSpeed * Time.deltaTime;
             }
             else if(_vSpeed < 0 && Time.time > _vAccelerate)
             {
@@ -125,6 +137,7 @@ public class ShipController : MonoBehaviour
                     _vSpeed = 0;
 
                 _vAccelerate = Time.time + _accelerationDelay;
+                velocity.y = _vSpeed * Time.deltaTime;
             }
         }
     }
