@@ -1046,6 +1046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waypoint: {fileID: 1446161256}
+  velocity: {x: 0, y: 0, z: 0}
   _speed: 1
 --- !u!114 &1159636993
 MonoBehaviour:
@@ -1059,6 +1060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6c324050f410b4d9f5c66eaa40d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 8616685848642844465}
+  onShip: 0
 --- !u!1 &1446161256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,6 +2640,8 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 4135013735775866464}
   TopClamp: 89
   BottomClamp: -89
+  shipController: {fileID: 1159636992}
+  movePlayerWithShip: {fileID: 1159636993}
 --- !u!1 &8908240905045979425
 GameObject:
   m_ObjectHideFlags: 0
