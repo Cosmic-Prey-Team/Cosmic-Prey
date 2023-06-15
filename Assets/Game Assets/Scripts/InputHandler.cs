@@ -8,6 +8,7 @@ public class InputHandler : MonoBehaviour
 	[Header("Character Input Values")]
 	public Vector2 move;
 	public Vector2 look;
+	public float vMove;
 	public bool jump;
 	public bool sprint;
 	public bool interact;
@@ -32,6 +33,10 @@ public class InputHandler : MonoBehaviour
 			LookInput(value.Get<Vector2>());
 		}
 	}
+	public void OnVerticalMove(InputValue value)
+	{
+		VerticalMoveInput(value.Get<float>());
+	}
 	public void OnJump(InputValue value)
 	{
 		JumpInput(value.isPressed);
@@ -45,6 +50,7 @@ public class InputHandler : MonoBehaviour
 	{
 		InteractInput(value.isPressed);
 	}
+	
 
 	public void MoveInput(Vector2 newMoveDirection)
 	{
@@ -55,7 +61,10 @@ public class InputHandler : MonoBehaviour
 	{
 		look = newLookDirection;
 	}
-
+	public void VerticalMoveInput(float newVMoveState)
+	{
+		vMove = newVMoveState;
+	}
 	public void JumpInput(bool newJumpState)
 	{
 		jump = newJumpState;
@@ -69,6 +78,7 @@ public class InputHandler : MonoBehaviour
 	{
 		interact = newInteractState;
 	}
+	
 
 	private void OnApplicationFocus(bool hasFocus)
 	{

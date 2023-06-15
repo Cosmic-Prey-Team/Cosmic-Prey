@@ -722,7 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7992864342436f4886f3c73bb35e78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "E" to interact with Ship Helm
+  _interactText: Press "F" to interact with Ship Helm
   _playerState: {fileID: 8997996947332509061}
 --- !u!65 &702925627
 BoxCollider:
@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309025764a074994c97bc4cb17a96e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "E" to use the turret
+  _interactText: Press "F" to use the turret
 --- !u!23 &4422386835270559558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308e428038c615040b555a909b4bae95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "E" to interact with navigation
+  _interactText: Press "F" to interact with navigation
 --- !u!23 &4422386835675796149
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2080,7 +2080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9e9d4e6c4f8e747922297b273abc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "E" to interact with the Engine
+  _interactText: Press "F" to interact with the Engine
 --- !u!23 &4422386835801649227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b4003c9b30f004d9c0a5054203efb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "E" to use the processor
+  _interactText: Press "F" to use the processor
 --- !u!1 &4680285340898916696
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,6 +2706,7 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   interact: 0
+  vMove: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
