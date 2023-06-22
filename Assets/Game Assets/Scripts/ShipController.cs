@@ -8,12 +8,14 @@ public class ShipController : MonoBehaviour
     [SerializeField] private GameObject _verticalWaypoint;
     [SerializeField] private PlayerState _ps;
     [SerializeField] public Vector3 velocity;
-    [SerializeField] public Vector3 rotateVelocity;
+    [SerializeField] private Vector3 rotate;
+    [SerializeField] public float rotateSpeed = .5f;
 
     [SerializeField] private float _maxSpeed = 1f;
     [SerializeField] private float _accelerationDelay;
     private float _speed, _vSpeed = 0f;
     private float _accelerate, _vAccelerate;
+    public bool rotating;
 
     [SerializeField] private InputHandler _input;
     
@@ -42,13 +44,23 @@ public class ShipController : MonoBehaviour
             // if the player is trying to rotate the ship
             if (_input.move.x > 0)
             {
-                rotateVelocity = new Vector3(0f, .5f, 0f);
-                transform.Rotate(rotateVelocity);
+                rotating = true;
+                if (rotateSpeed < 0)
+                    rotateSpeed = -rotateSpeed;
+                rotate = new Vector3(0f, rotateSpeed, 0f);
+                transform.Rotate(rotate);
             }    
             else if(_input.move.x < 0)
             {
-                rotateVelocity = new Vector3(0f, -.5f, 0f);
-                transform.Rotate(rotateVelocity);
+                rotating = true;
+                if (rotateSpeed > 0)
+                    rotateSpeed = -rotateSpeed;
+                rotate = new Vector3(0f, rotateSpeed, 0f);
+                transform.Rotate(rotate);
+            }
+            else
+            {
+                rotating = false;
             }
                
 

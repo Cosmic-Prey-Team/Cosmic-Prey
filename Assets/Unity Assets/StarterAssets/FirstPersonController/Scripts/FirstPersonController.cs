@@ -70,6 +70,7 @@ namespace StarterAssets
 
 		private bool _canMove = true;
 		private bool _atHelm = false;
+		[SerializeField] private GameObject _ship;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -156,7 +157,7 @@ namespace StarterAssets
 				// rotate the player left and right
 				if (_atHelm)
                 {
-					//transform.Rotate(shipController.rotateVelocity.normalized * _rotationVelocity);
+					//transform.Rotate(shipController.rotateSpeed.normalized * _rotationVelocity);
 				} else
                 {
 					transform.Rotate(Vector3.up * _rotationVelocity);
@@ -222,6 +223,9 @@ namespace StarterAssets
                 {
 					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime + shipController.velocity.y, 0.0f));
 					_controller.Move(shipController.transform.forward * shipController.velocity.z);
+					
+					if(shipController.rotating)
+						transform.RotateAround(_ship.transform.position, new Vector3(0, 1, 0), shipController.rotateSpeed);
 				}
 					
                 else

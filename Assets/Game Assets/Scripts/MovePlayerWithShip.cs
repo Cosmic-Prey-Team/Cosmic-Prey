@@ -18,7 +18,7 @@ public class MovePlayerWithShip : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            other.gameObject.transform.SetParent(transform);
+            //other.gameObject.transform.SetParent(transform);
             onShip = true;
         }
             
@@ -28,7 +28,7 @@ public class MovePlayerWithShip : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.gameObject.transform.SetParent(null);
+           // other.gameObject.transform.SetParent(null);
             onShip = false;
         }
     }
