@@ -8,17 +8,18 @@ public class LoadingScene : MonoBehaviour
     public GameObject LoaderUI;
     public Slider progressSlider;
 
-    public void LoadScene(int index)
+    // public method that loads the scene by inputing the scene name
+    public void LoadScene(string sceneName)
     {
-        StartCoroutine(LoadScene_Coroutine(index));
+        StartCoroutine(LoadScene_Coroutine(sceneName));
     }
 
-    public IEnumerator LoadScene_Coroutine(int index)
+    public IEnumerator LoadScene_Coroutine(string sceneName)
     {
         progressSlider.value = 0;
         LoaderUI.SetActive(true);
 
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(1);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
         float progress = 0;
 
