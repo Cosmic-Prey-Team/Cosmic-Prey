@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerInteractionUI : MonoBehaviour
 {
     PlayerInteract playerInteract;
-
+    [SerializeField]
     TextMeshProUGUI _interactionText;
 
     bool _hasInteractable;
@@ -16,7 +16,7 @@ public class PlayerInteractionUI : MonoBehaviour
     {
         //getting components
         playerInteract = FindObjectOfType<PlayerInteract>();
-        _interactionText = GetComponentInChildren<TextMeshProUGUI>();
+        //_interactionText = GetComponentInChildren<TextMeshProUGUI>();
 
         RefreshUI(false);
     }
