@@ -17,9 +17,9 @@ public class InputHandler : MonoBehaviour
 	[Header("Movement Settings")]
 	public bool analogMovement;
 
-	[Header("Mouse Cursor Settings")]
-	public bool cursorLocked = true;
-	public bool cursorInputForLook = true;
+	//[Header("Mouse Cursor Settings")]
+	private static bool cursorLocked = true;
+	private static bool cursorInputForLook = true;
 
 
 	public void OnMove(InputValue value)
@@ -94,14 +94,14 @@ public class InputHandler : MonoBehaviour
 		SetCursorState(cursorLocked);
 	}
 
-	public void ModifyCursorState(bool lockmode, bool inputForLook)
+	public static void ModifyCursorState(bool lockmode, bool inputForLook)
     {
 		cursorLocked = lockmode;
 		cursorInputForLook = inputForLook;
 
-		SetCursorState(cursorLocked);
+        SetCursorState(cursorLocked);
 	}
-	public void SetCursorState(bool newState)
+	private static void SetCursorState(bool newState)
 	{
 		Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 	}

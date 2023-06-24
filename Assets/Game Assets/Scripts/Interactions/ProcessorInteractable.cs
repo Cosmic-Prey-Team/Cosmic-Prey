@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ProcessorInteractable : MonoBehaviour, IInteractable
 {
-    InputHandler _input;
-
     [Header("IInteractable variables")]
     [SerializeField] string _interactText;
     [SerializeField] bool _isInteracting = false;
@@ -46,7 +44,7 @@ public class ProcessorInteractable : MonoBehaviour, IInteractable
     #region Monobehavior
     private void Awake()
     {
-        _input = FindObjectOfType<InputHandler>();
+
     }
     private void Start()
     {
@@ -63,12 +61,12 @@ public class ProcessorInteractable : MonoBehaviour, IInteractable
             if (menuActive)
             {
                 _processorMenuUI.SetActive(true);
-                _input.ModifyCursorState(false, false);
+                InputHandler.ModifyCursorState(false, false);
             }
             else
             {
                 _processorMenuUI.SetActive(false);
-                _input.ModifyCursorState(true, true);
+                InputHandler.ModifyCursorState(true, true);
             }
         }
     }
