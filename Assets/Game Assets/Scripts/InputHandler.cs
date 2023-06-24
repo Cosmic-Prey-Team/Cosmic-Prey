@@ -8,9 +8,11 @@ public class InputHandler : MonoBehaviour
 	[Header("Character Input Values")]
 	public Vector2 move;
 	public Vector2 look;
+	public float vMove;
 	public bool jump;
 	public bool sprint;
 	public bool interact;
+	public bool inventory;
 
 	[Header("Movement Settings")]
 	public bool analogMovement;
@@ -24,6 +26,10 @@ public class InputHandler : MonoBehaviour
 	{
 		MoveInput(value.Get<Vector2>());
 	}
+	public void OnVerticalMove(InputValue value)
+    {
+		VerticalMoveInput(value.Get<float>());
+    }
 
 	public void OnLook(InputValue value)
 	{
@@ -45,11 +51,20 @@ public class InputHandler : MonoBehaviour
 	{
 		InteractInput(value.isPressed);
 	}
+	public void OnInventory(InputValue value)
+    {
+		InventoryInput(value.isPressed);
+    }
 
 	public void MoveInput(Vector2 newMoveDirection)
 	{
 		move = newMoveDirection;
 	}
+
+	public void VerticalMoveInput(float newVerticalMoveDirection)
+    {
+		vMove = newVerticalMoveDirection;
+    }
 
 	public void LookInput(Vector2 newLookDirection)
 	{
@@ -69,13 +84,24 @@ public class InputHandler : MonoBehaviour
 	{
 		interact = newInteractState;
 	}
+	public void InventoryInput(bool newInventoryState)
+    {
+		inventory = newInventoryState;
+    }
 
 	private void OnApplicationFocus(bool hasFocus)
 	{
 		SetCursorState(cursorLocked);
 	}
 
-    public void SetCursorState(bool newState)
+	public void ModifyCursorState(bool lockmode, bool inputForLook)
+    {
+		cursorLocked = lockmode;
+		cursorInputForLook = inputForLook;
+
+		SetCursorState(cursorLocked);
+	}
+	public void SetCursorState(bool newState)
 	{
 		Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 	}
