@@ -6,24 +6,29 @@ using UnityEngine.Events;
 
 public class PlayerInteract : MonoBehaviour
 {
+    #region Variables & References
+    //events
     public event Action<bool> OnGetInteractable;
     public event Action<bool> OnPressInteractionKey;
 
+    //references
     InputHandler _input;
 
     [SerializeField] float _interactionRange = 2f;
 
     //object player is currently interacting with
     public IInteractable currentInteractable { get; private set; }
-    //toggle interaction state
-    public bool _isButtonDown { get; private set; }
-    public bool _isInteracting; /*{ get; private set; }*/
+    
+    //player interaction state
+    public bool IsInteracting { get; private set; }
+    
+    //private variables
+    private bool _isButtonDown;
+    #endregion
 
     private void Awake()
     {
         _input = GetComponent<InputHandler>();
-
-        //OnGetInteractable?.Invoke(false);
     }
 
     private void Update()
@@ -34,16 +39,19 @@ public class PlayerInteract : MonoBehaviour
         {
             currentInteractable = interactable;
             OnGetInteractable?.Invoke(true);
-            Debug.Log("OnGetInteractable True");
+            //Debug.Log("OnGetInteractable True");
 
         }
         else if (interactable == null && currentInteractable != null)
         {
+            currentInteractable.LeaveInteraction();
             currentInteractable = null;
+
             OnGetInteractable?.Invoke(false);
-            Debug.Log("OnGetInteractable False");
+            //Debug.Log("OnGetInteractable False");
+
             //update _isInteracting if player leaves interaction distance
-            if (_isInteracting == true) _isInteracting = false;
+            if (IsInteracting == true) IsInteracting = false;
         }
         #endregion
 
@@ -52,13 +60,13 @@ public class PlayerInteract : MonoBehaviour
         {
             if (_input.interact == true && currentInteractable != null)
             {
-                OnPressInteractionKey?.Invoke(true);
-                currentInteractable.PressInteractionKeyDown(transform);
-                _isButtonDown = true;
-                Debug.Log("PressInteractionKeyDown()");
-
                 //toggle _isInteracting on button down
-                _isInteracting = !_isInteracting;
+                IsInteracting = !IsInteracting;
+
+                OnPressInteractionKey?.Invoke(true);
+                currentInteractable.TriggerInteraction(transform, IsInteracting);
+                _isButtonDown = true;
+                //Debug.Log("PressInteractionKeyDown()");
             }
         }
 
@@ -67,9 +75,9 @@ public class PlayerInteract : MonoBehaviour
             if (_input.interact == false && currentInteractable != null)
             {
                 OnPressInteractionKey?.Invoke(false);
-                currentInteractable.PressInteractionKeyUp(transform);
+                currentInteractable.TriggerInteraction(transform, IsInteracting);
                 _isButtonDown = false;
-                Debug.Log("PressInteractionKeyUp()");
+                //Debug.Log("PressInteractionKeyUp()");
             }
         }
         #endregion

@@ -45,29 +45,13 @@ public class PlayerInteractionUI : MonoBehaviour
     #endregion
 
     //updates UI based on interaction action
-    private void PlayerFoundInteractable(bool inInteractingDistance)
-    {
-        _hasInteractable = inInteractingDistance;
-        if (_hasInteractable == false && _isInteracting == true)
-            _isInteracting = false;
-        Debug.LogError("_inInteractionDistance = " + _hasInteractable);
-        //RefreshUI();
-    }
-    private void PlayerToggledInteraction(bool isInteracting)
-    {
-        //_isInteracting = isInteracting;
-        if(isInteracting == true)
-            _isInteracting = !_isInteracting;
-
-        //RefreshUI();
-    }
     private void RefreshUI(bool actionValue)
     {
         //Debug.Log("RefreshUI()");
 
         //update interaction values
         _hasInteractable = playerInteract.currentInteractable != null ? true : false;
-        _isInteracting = playerInteract._isInteracting;
+        _isInteracting = playerInteract.IsInteracting;
 
         //switch
         if(_hasInteractable == true && _isInteracting == false)
@@ -82,6 +66,5 @@ public class PlayerInteractionUI : MonoBehaviour
         {
             Hide();
         }
-
     }
 }

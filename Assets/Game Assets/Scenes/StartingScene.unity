@@ -1477,7 +1477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 73
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2765075022971040608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 73
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2765075023097349779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 73
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2765075023169919828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactText: Press "F" to interact with navigation
+  _isInteracting: 0
 --- !u!23 &4422386835675796149
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1847,6 +1848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactText: Press "F" to interact with the Engine
+  _isInteracting: 0
 --- !u!23 &4422386835801649227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1902,6 +1904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactText: Press "F" to use the processor
+  _isInteracting: 0
 --- !u!1 &4680285340898916696
 GameObject:
   m_ObjectHideFlags: 0

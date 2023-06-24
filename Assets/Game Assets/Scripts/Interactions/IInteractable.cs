@@ -4,9 +4,8 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void PressInteractionKeyDown(Transform transform);
-    void PressInteractionKeyUp(Transform transform);
-
+    void TriggerInteraction(Transform transform, bool value);
+    void LeaveInteraction();
     string GetInteractText();
     Transform GetTransform();
 }

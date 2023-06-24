@@ -5,8 +5,8 @@ using UnityEngine;
 public class ProcessorInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] string _interactText;
+    [SerializeField] bool _isInteracting = false;
 
-    bool _isInteracting = false;
     public string GetInteractText()
     {
         return _interactText;
@@ -17,17 +17,12 @@ public class ProcessorInteractable : MonoBehaviour, IInteractable
         return transform;
     }
 
-    public void Interact(Transform transform)
+    public void TriggerInteraction(Transform transform, bool isInteracting)
     {
-        Debug.Log("Interacting with: " + gameObject.name);
+        if (_isInteracting != isInteracting) _isInteracting = isInteracting;
     }
-
-    public void PressInteractionKeyDown(Transform transform)
+    public void LeaveInteraction()
     {
-        _isInteracting = true;
-    }
-    public void PressInteractionKeyUp(Transform transform)
-    {
-        _isInteracting = false;
+        if (_isInteracting == true) _isInteracting = false;
     }
 }

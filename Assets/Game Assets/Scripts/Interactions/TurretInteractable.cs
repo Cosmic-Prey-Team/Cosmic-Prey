@@ -5,11 +5,8 @@ using UnityEngine;
 public class TurretInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] string _interactText;
+    [SerializeField] bool _isInteracting = false;
 
-    [SerializeField]
-    bool _isInteracting = false;
-    bool _toggleInteraction;
-    bool _savedInteraction;
     public string GetInteractText()
     {
         return _interactText;
@@ -20,22 +17,28 @@ public class TurretInteractable : MonoBehaviour, IInteractable
         return transform;
     }
 
-    public void Interact(Transform transform)
+    public void TriggerInteraction(Transform transform, bool isInteracting)
     {
-        Debug.Log("Interacting with: " + gameObject.name);
-    }
+        if(_isInteracting != isInteracting) _isInteracting = isInteracting;
 
-    public void PressInteractionKeyDown(Transform transform)
-    {
-        //_isInteracting = true;
-        if (_toggleInteraction != _savedInteraction)
+        #region Debug (off)
+        /*if (_isInteracting != isInteracting)
         {
-            _isInteracting = !_isInteracting;
-            _toggleInteraction = _savedInteraction;
-        }
+            _isInteracting = isInteracting;
+            Debug.LogWarning("[Turret] _isInteracting = " + _isInteracting);
+        }*/
+        #endregion
     }
-    public void PressInteractionKeyUp(Transform transform)
+    public void LeaveInteraction()
     {
-        //_isInteracting = false;
+        if (_isInteracting == true) _isInteracting = false;
+
+        #region Debug (off)
+        /*if (_isInteracting == true)
+        {
+            _isInteracting = false;
+            Debug.LogWarning("[Turret] _isInteracting = " + _isInteracting);
+        }*/
+        #endregion
     }
 }
