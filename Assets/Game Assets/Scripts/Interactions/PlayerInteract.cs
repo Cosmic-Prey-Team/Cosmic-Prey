@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class PlayerInteract : MonoBehaviour
 {
     public event Action<bool> OnGetInteractable;
+    public event Action<bool> OnPressInteractionKey;
 
     InputHandler _input;
 
@@ -14,13 +15,17 @@ public class PlayerInteract : MonoBehaviour
 
     //object player is currently interacting with
     public IInteractable currentInteractable { get; private set; }
+    //toggle interaction state
+    public bool _isButtonDown { get; private set; }
+    public bool _isInteracting; /*{ get; private set; }*/
 
     private void Awake()
     {
         _input = GetComponent<InputHandler>();
 
-        OnGetInteractable?.Invoke(false);
+        //OnGetInteractable?.Invoke(false);
     }
+
     private void Update()
     {
         #region Interaction Physics Check
@@ -29,22 +34,45 @@ public class PlayerInteract : MonoBehaviour
         {
             currentInteractable = interactable;
             OnGetInteractable?.Invoke(true);
+            Debug.Log("OnGetInteractable True");
+
         }
         else if (interactable == null && currentInteractable != null)
         {
             currentInteractable = null;
             OnGetInteractable?.Invoke(false);
+            Debug.Log("OnGetInteractable False");
+            //update _isInteracting if player leaves interaction distance
+            if (_isInteracting == true) _isInteracting = false;
         }
         #endregion
 
-        //player presses interact button
-        if (_input.interact) 
+        #region Button Press Events
+        if (_isButtonDown == false)
         {
-            if (currentInteractable != null)
+            if (_input.interact == true && currentInteractable != null)
             {
-                currentInteractable.Interact(transform);
+                OnPressInteractionKey?.Invoke(true);
+                currentInteractable.PressInteractionKeyDown(transform);
+                _isButtonDown = true;
+                Debug.Log("PressInteractionKeyDown()");
+
+                //toggle _isInteracting on button down
+                _isInteracting = !_isInteracting;
             }
         }
+
+        if (_isButtonDown == true)
+        {
+            if (_input.interact == false && currentInteractable != null)
+            {
+                OnPressInteractionKey?.Invoke(false);
+                currentInteractable.PressInteractionKeyUp(transform);
+                _isButtonDown = false;
+                Debug.Log("PressInteractionKeyUp()");
+            }
+        }
+        #endregion
     }
 
     public IInteractable GetInteractableObject()

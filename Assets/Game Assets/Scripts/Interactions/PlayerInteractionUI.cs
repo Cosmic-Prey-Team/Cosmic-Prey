@@ -9,21 +9,29 @@ public class PlayerInteractionUI : MonoBehaviour
 
     TextMeshProUGUI _interactionText;
 
+    bool _hasInteractable;
+    bool _isInteracting;
+
     private void Awake()
     {
         //getting components
         playerInteract = FindObjectOfType<PlayerInteract>();
         _interactionText = GetComponentInChildren<TextMeshProUGUI>();
+
+        RefreshUI(false);
     }
     private void OnEnable()
     {
         playerInteract.OnGetInteractable += RefreshUI;
+        playerInteract.OnPressInteractionKey += RefreshUI;
     }
     private void OnDisable()
     {
         playerInteract.OnGetInteractable -= RefreshUI;
+        playerInteract.OnPressInteractionKey -= RefreshUI;
     }
 
+    #region Show and Hide the UI
     //shows and hides UI
     private void Show(IInteractable interactable)
     {
@@ -34,13 +42,46 @@ public class PlayerInteractionUI : MonoBehaviour
     {
         _interactionText.gameObject.SetActive(false);
     }
+    #endregion
 
     //updates UI based on interaction action
-    private void RefreshUI(bool hasInteractable)
+    private void PlayerFoundInteractable(bool inInteractingDistance)
     {
-        if (hasInteractable)
+        _hasInteractable = inInteractingDistance;
+        if (_hasInteractable == false && _isInteracting == true)
+            _isInteracting = false;
+        Debug.LogError("_inInteractionDistance = " + _hasInteractable);
+        //RefreshUI();
+    }
+    private void PlayerToggledInteraction(bool isInteracting)
+    {
+        //_isInteracting = isInteracting;
+        if(isInteracting == true)
+            _isInteracting = !_isInteracting;
+
+        //RefreshUI();
+    }
+    private void RefreshUI(bool actionValue)
+    {
+        //Debug.Log("RefreshUI()");
+
+        //update interaction values
+        _hasInteractable = playerInteract.currentInteractable != null ? true : false;
+        _isInteracting = playerInteract._isInteracting;
+
+        //switch
+        if(_hasInteractable == true && _isInteracting == false)
+        {
             Show(playerInteract.currentInteractable);
-        else
+        }
+        else if(_hasInteractable == true && _isInteracting == true)
+        {
             Hide();
+        }
+        else if(_hasInteractable == false)
+        {
+            Hide();
+        }
+
     }
 }
