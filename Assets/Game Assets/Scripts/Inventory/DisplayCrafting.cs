@@ -9,49 +9,43 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class DisplayInventory : MonoBehaviour
+public class DisplayCrafting : MonoBehaviour
 {
+    InputHandler _input;
     
     public Inventory inventory;
     public GameObject canvas;
     public CanvasGroup UI;
-    private int _xStart = -160;
-    private int _yStart = 0;
+    public InventoryItemSO Ore;
+    private int _xStart = 140;
+    private int _yStart = 160;
     private int _xSpacing = 160;
-    private int _ySpacing = 0;
-    Dictionary<GameObject, InventoryItemInstance> itemsDisplayed = new Dictionary<GameObject, InventoryItemInstance>();
+    private int _ySpacing = 160;
+    Dictionary<GameObject, InventoryItemInstance> itemsDisplayed;
     // Start is called before the first frame update
     void Start()
     {
         inventory = GetComponent<Inventory>();
         itemsDisplayed = inventory.empty.itemsDisplayed;
-        canvas = GameObject.FindGameObjectWithTag("InventoryCanvas");
+        canvas = GameObject.FindGameObjectWithTag("ProcessorCanvas");
         UI = canvas.GetComponent<CanvasGroup>();
         CreateSlots();
+        inventory.AddItem(Ore);
+        inventory.inventory[0].ItemCount--;
+        inventory.inventory[0].Locked = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //change to only update when inventory changes/button to open inventory is pressed
-        UpdateSlots();
-    }
-
-   public void UpdateSlots()
-    {
-        foreach (KeyValuePair<GameObject, InventoryItemInstance> slot in itemsDisplayed)
+        if (_input.open)
         {
-            if (slot.Value.ItemName != "Empty")
-            {
-                slot.Key.GetComponent<Image>().sprite = slot.Value.Sprite.GetComponent<Image>().sprite;
-                slot.Key.GetComponent<Image>().color = new Color(1,1,1,1);
-                slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = (slot.Value.ItemCount == 0) ? "" : slot.Value.ItemCount.ToString("n0");
-            }
-            else{
-                slot.Key.GetComponent<Image>().sprite = null;
-                slot.Key.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            }
+            //Open
+        }
+
+        if (_input.close)
+        {
+            //Close
         }
     }
 
@@ -68,7 +62,7 @@ public class DisplayInventory : MonoBehaviour
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
-            
+
 
             itemsDisplayed.Add(obj, inventory.inventory[i]);
         }
@@ -85,7 +79,6 @@ public class DisplayInventory : MonoBehaviour
 
     public void OnEnter(GameObject obj)
     {
-        
         inventory.empty.mouseItem.hoverObj = obj;
         if (itemsDisplayed.ContainsKey(obj))
         {
@@ -94,9 +87,9 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnExit(GameObject obj)
     {
-        inventory.empty.mouseItem.hoverObj = null;       
+        inventory.empty.mouseItem.hoverObj = null;
         inventory.empty.mouseItem.hoverItem = null;
-        
+
     }
     public void OnDragStart(GameObject obj)
     {
@@ -119,7 +112,7 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDrag(GameObject obj)
     {
-        if(inventory.empty.mouseItem.obj != null)
+        if (inventory.empty.mouseItem.obj != null)
         {
             inventory.empty.mouseItem.obj.GetComponent<RectTransform>().position = new Vector3(Pointer.current.position.x.ReadValue(), Pointer.current.position.y.ReadValue(), 0);
         }
@@ -135,11 +128,12 @@ public class DisplayInventory : MonoBehaviour
                 inventory.empty.mouseItem.hoverItem.Inventory.AddStack(inventory.empty.mouseItem.item);
                 inventory.empty.mouseItem.item.Inventory.RemoveStack(inventory.empty.mouseItem.hoverItem);
             }
-            else if (inventory.empty.mouseItem.hoverItem.Locked != true)
+            else if(inventory.empty.mouseItem.hoverItem.Locked != true)
             {
                 inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[inventory.empty.mouseItem.hoverObj]);
             }
             //Since a crafter should be able to use the same inventory script, might be able to just remove from one array and add to the other if it detects a different inventory
+            
         }
         else
         {
@@ -148,12 +142,24 @@ public class DisplayInventory : MonoBehaviour
         Destroy(inventory.empty.mouseItem.obj);
         inventory.empty.mouseItem.item = null;
     }
-    
+
 
     public Vector3 GetPosition(int i)
     {
+        if (i == 0)
+        {
+            return new Vector3(-240, 160, 0f);
+        }
         //May be displaying incorrectly when resolution is different
-        return new Vector3(_xStart + _xSpacing * i, _yStart + -_ySpacing * i,0f);
+        return new Vector3(_xStart + _xSpacing * ((i-1) % 2), _yStart + -_ySpacing * ((i-1) / 2), 0f);
     }
-}
 
+
+private void Awake()
+    {
+        _input = FindObjectOfType<InputHandler>();
+    }
+    
+
+    
+}

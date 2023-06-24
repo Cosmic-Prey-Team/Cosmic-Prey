@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4215d08367ac6674bae0f5d3b076f48c, type: 3}
-  m_Name: Ammo
+  m_Name: MachinePart
   m_EditorClassIdentifier: 
-  ItemName: Ammo
+  ItemName: MachinePart
   Description: 
-  Sprite: {fileID: 1889754638562291959, guid: 902459aca1a74334da3a95e88257702e, type: 3}
+  Sprite: {fileID: 1334837882632442413, guid: a58fa0cb3f218954d81a835530ffa353, type: 3}

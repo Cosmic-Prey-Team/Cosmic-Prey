@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1765475656580037049
+--- !u!1001 &1170848967628495715
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,27 +11,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac,
+      objectReference: {fileID: 21300000, guid: f82dfc5fc3c5a8f4080a3550427019c8,
         type: 3}
-    - target: {fileID: 196464129100974412, guid: 99064ee16748a3449940bc9c1e35a012,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 196464129100974412, guid: 99064ee16748a3449940bc9c1e35a012,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 196464129100974412, guid: 99064ee16748a3449940bc9c1e35a012,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 196464129100974414, guid: 99064ee16748a3449940bc9c1e35a012,
         type: 3}
       propertyPath: m_Name
-      value: Ammo
+      value: MachinePart
       objectReference: {fileID: 0}
     - target: {fileID: 196464129100974415, guid: 99064ee16748a3449940bc9c1e35a012,
         type: 3}
@@ -101,22 +86,22 @@ PrefabInstance:
     - target: {fileID: 196464129100974415, guid: 99064ee16748a3449940bc9c1e35a012,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 196464129100974415, guid: 99064ee16748a3449940bc9c1e35a012,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 196464129100974415, guid: 99064ee16748a3449940bc9c1e35a012,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 196464129100974415, guid: 99064ee16748a3449940bc9c1e35a012,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -170
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 196464129100974415, guid: 99064ee16748a3449940bc9c1e35a012,
         type: 3}

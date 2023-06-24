@@ -9,13 +9,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1889754638562291957, guid: 902459aca1a74334da3a95e88257702e,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945,
+        type: 3}
+    - target: {fileID: 1889754638562291957, guid: 902459aca1a74334da3a95e88257702e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889754638562291957, guid: 902459aca1a74334da3a95e88257702e,
+        type: 3}
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1889754638562291957, guid: 902459aca1a74334da3a95e88257702e,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.148332
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1889754638562291958, guid: 902459aca1a74334da3a95e88257702e,
         type: 3}
@@ -125,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 1889754638562291959, guid: 902459aca1a74334da3a95e88257702e,
         type: 3}
       propertyPath: m_Name
-      value: Image Variant 1
+      value: Panel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 902459aca1a74334da3a95e88257702e, type: 3}

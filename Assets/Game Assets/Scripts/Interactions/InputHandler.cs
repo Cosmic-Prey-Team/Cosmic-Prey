@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,16 +12,19 @@ public class InputHandler : MonoBehaviour
 	public bool jump;
 	public bool sprint;
 	public bool interact;
+    public bool open;
+	public bool close;
 
-	[Header("Movement Settings")]
+    [Header("Movement Settings")]
 	public bool analogMovement;
 
 	[Header("Mouse Cursor Settings")]
 	public bool cursorLocked = true;
 	public bool cursorInputForLook = true;
 
+    
 
-	public void OnMove(InputValue value)
+    public void OnMove(InputValue value)
 	{
 		MoveInput(value.Get<Vector2>());
 	}
@@ -46,7 +50,27 @@ public class InputHandler : MonoBehaviour
 		InteractInput(value.isPressed);
 	}
 
-	public void MoveInput(Vector2 newMoveDirection)
+    public void OnInventoryOpen(InputValue value)
+    {
+        OpenInput(value.isPressed);
+    }
+
+    public void OnInventoryClose(InputValue value)
+    {
+        CloseInput(value.isPressed);
+    }
+
+    public void CloseInput(bool newCloseState)
+    {
+        close = newCloseState;
+    }
+
+    public void OpenInput(bool newOpenState)
+    {
+        open = newOpenState;
+    }
+
+    public void MoveInput(Vector2 newMoveDirection)
 	{
 		move = newMoveDirection;
 	}
