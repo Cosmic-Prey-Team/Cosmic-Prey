@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Folder
+  - CinemachineTarget
+  - InventoryCanvas
+  - ProcessorCanvas
   layers:
   - Default
   - TransparentFX
