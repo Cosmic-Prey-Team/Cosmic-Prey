@@ -40,10 +40,15 @@ public class SpawnAsteroids : MonoBehaviour
 
     void Start()
     {
+        //create parent object for asteroids
+        GameObject parent = new GameObject("Asteroids");
+
+        //spawn asteroids
         for (int i = 0; i < _numAsteroidsToSpawn; i++)
         {
             Vector3 Position = FindNewPosition();
-            Instantiate(_asteroid, Position, transform.rotation);
+            GameObject asteroid = Instantiate(_asteroid, Position, transform.rotation);
+            asteroid.transform.SetParent(parent.transform);
         }
     }
 }

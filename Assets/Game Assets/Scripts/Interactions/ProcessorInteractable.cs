@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class ProcessorInteractable : MonoBehaviour, IInteractable
 {
+    [Header("IInteractable variables")]
     [SerializeField] string _interactText;
+    [SerializeField] bool _isInteracting = false;
+
+    [Header("Processor variables")]
+    [SerializeField] GameObject _processorMenuUI;
+
+    #region IInteractable Methods
     public string GetInteractText()
     {
         return _interactText;
@@ -15,8 +22,53 @@ public class ProcessorInteractable : MonoBehaviour, IInteractable
         return transform;
     }
 
-    public void Interact(Transform transform)
+    public void TriggerInteraction(Transform transform, bool isInteracting)
     {
-        Debug.Log("Interacting with: " + gameObject.name);
+        if (_isInteracting != isInteracting)
+        {
+            _isInteracting = isInteracting;
+            ToggleProcessorMenu(isInteracting);
+        }
+
     }
+    public void LeaveInteraction()
+    {
+        if (_isInteracting == true)
+        {
+            _isInteracting = false;
+            ToggleProcessorMenu(false);
+        }
+    }
+    #endregion
+
+    #region Monobehavior
+    private void Awake()
+    {
+
+    }
+    private void Start()
+    {
+        _processorMenuUI.SetActive(false);
+    }
+    #endregion
+
+    #region Custom Methods
+    private void ToggleProcessorMenu(bool menuActive)
+    {
+        Debug.Log("Processor menu: " + menuActive);
+        if(_processorMenuUI != null)
+        {
+            if (menuActive)
+            {
+                _processorMenuUI.SetActive(true);
+                InputHandler.ModifyCursorState(false, false);
+            }
+            else
+            {
+                _processorMenuUI.SetActive(false);
+                InputHandler.ModifyCursorState(true, true);
+            }
+        }
+    }
+    #endregion
 }
