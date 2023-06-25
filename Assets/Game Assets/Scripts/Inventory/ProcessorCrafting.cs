@@ -64,7 +64,7 @@ public class ProcessorCrafting : MonoBehaviour
     {
         if (Selected != null && inventory.inventory[0].ItemCount > 0)
         {
-            progressBar.value = (craftInterval - craftTimer) / 10;
+            progressBar.value = 1f - craftTimer / craftInterval;
             if (craftTimer <= 0)
             {
                 craftTimer = craftInterval;
