@@ -201,7 +201,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 675238135}
   m_FillRect: {fileID: 675238134}
   m_HandleRect: {fileID: 0}
@@ -746,7 +746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520404633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.54, y: 1.375, z: -2.49}
+  m_LocalPosition: {x: -1.22, y: 1.375, z: 3.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1526,6 +1526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d33378e143d7d247b7e2f9461060401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionText: {fileID: 577907380}
 --- !u!114 &1511179359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1884,7 +1885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745528033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.541, y: 1.375, z: -0.308}
+  m_LocalPosition: {x: 2.541, y: 1.375, z: 3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2095,7 +2096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978344276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.935, y: 1.375, z: -0.308}
+  m_LocalPosition: {x: 0.935, y: 1.375, z: 3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2607,6 +2608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactText: Press "E" to use the turret
+  _isInteracting: 0
 --- !u!23 &4422386835270559558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2662,6 +2664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactText: Press "E" to interact with navigation
+  _isInteracting: 0
 --- !u!23 &4422386835675796149
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2717,6 +2720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactText: Press "E" to interact with the Engine
+  _isInteracting: 0
 --- !u!23 &4422386835801649227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2771,10 +2775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b4003c9b30f004d9c0a5054203efb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionText: 
-  _tapPress: 1
-  _interactText: Press "E" to use the processor
-  _craftingDisplay: {fileID: 0}
+  _interactText: Press "F" to use the processor
+  _isInteracting: 0
+  _craftingDisplay: {fileID: 625785237}
 --- !u!114 &4422386835801649229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2788,8 +2791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
-  canvas: {fileID: 0}
-  UI: {fileID: 0}
+  canvas: {fileID: 625785237}
   Ore: {fileID: 11400000, guid: 732e1b03ab6c859428dc79c8f2575dd2, type: 2}
 --- !u!114 &4422386835801649230
 MonoBehaviour:
@@ -2822,7 +2824,7 @@ MonoBehaviour:
   materialToCraft: -1
   craftInterval: 10
   craftTimer: 10
-  canvas: {fileID: 0}
+  canvas: {fileID: 625785237}
   progressBar: {fileID: 24152916}
   Ammo: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}
   Panel: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
@@ -3395,14 +3397,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
+  vMove: 0
   jump: 0
   sprint: 0
   interact: 0
-  open: 0
-  close: 0
+  inventory: 0
   analogMovement: 0
-  cursorLocked: 0
-  cursorInputForLook: 0
 --- !u!114 &8997996947332509059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3441,7 +3441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36213922ccc3db242b084b7d878c19df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventorySize: 3
+  InventorySize: 4
   empty: {fileID: 11400000, guid: 1961b6b9e680b4d4ca456aa038882c67, type: 2}
   displayCrafting: {fileID: 0}
   displayInventory: {fileID: 0}

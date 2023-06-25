@@ -15,7 +15,7 @@ public class DisplayCrafting : MonoBehaviour
     
     public Inventory inventory;
     public GameObject canvas;
-    public CanvasGroup UI;
+    //public CanvasGroup UI;
     public InventoryItemSO Ore;
     private int _xStart = 140;
     private int _yStart = 160;
@@ -27,8 +27,8 @@ public class DisplayCrafting : MonoBehaviour
     {
         inventory = GetComponent<Inventory>();
         itemsDisplayed = inventory.empty.itemsDisplayed;
-        canvas = GameObject.FindGameObjectWithTag("ProcessorCanvas");
-        UI = canvas.GetComponent<CanvasGroup>();
+        //canvas = GameObject.FindGameObjectWithTag("ProcessorCanvas");
+        //UI = canvas.GetComponent<CanvasGroup>();
         CreateSlots();
         inventory.AddItem(Ore);
         inventory.inventory[0].ItemCount--;
@@ -38,7 +38,7 @@ public class DisplayCrafting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_input.open)
+        /*if (_input.open)
         {
             //Open
         }
@@ -46,7 +46,7 @@ public class DisplayCrafting : MonoBehaviour
         if (_input.close)
         {
             //Close
-        }
+        }*/
     }
 
     public void CreateSlots()

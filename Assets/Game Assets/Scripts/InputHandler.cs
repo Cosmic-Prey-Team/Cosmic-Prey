@@ -37,6 +37,10 @@ public class InputHandler : MonoBehaviour
 		{
 			LookInput(value.Get<Vector2>());
 		}
+        else
+        {
+			LookInput(Vector2.zero);
+        }
 	}
 	public void OnJump(InputValue value)
 	{
@@ -94,6 +98,10 @@ public class InputHandler : MonoBehaviour
 		SetCursorState(cursorLocked);
 	}
 
+	public static bool GetLockState()
+    {
+		return cursorLocked;
+    }
 	public static void ModifyCursorState(bool lockmode, bool inputForLook)
     {
 		cursorLocked = lockmode;

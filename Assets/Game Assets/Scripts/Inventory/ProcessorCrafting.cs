@@ -24,7 +24,7 @@ public class ProcessorCrafting : MonoBehaviour
     {
         craftableItems = new Dictionary<GameObject, InventoryItemSO>();
         inventory = GetComponent<Inventory>();
-        canvas = GameObject.FindGameObjectWithTag("ProcessorCanvas");
+        //canvas = GameObject.FindGameObjectWithTag("ProcessorCanvas");
         var ammo = Instantiate(Ammo.Sprite, Vector3.zero, Quaternion.identity, canvas.transform);
         Destroy(ammo.transform.GetChild(0).gameObject);
         ammo.GetComponent<RectTransform>().localPosition = new Vector3(-390, -100, 0f);
