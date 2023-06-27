@@ -14,7 +14,10 @@ public class InputHandler : MonoBehaviour
 	public bool firePrimary;
 	public bool fireSecondary;
 	public bool interact;
+
+	[Header("UI Interaction")]
 	public bool inventory;
+	public bool pause;
 
 	[Header("Equipment Swapping")]
 	public float scroll;
@@ -77,6 +80,10 @@ public class InputHandler : MonoBehaviour
 		InventoryInput(value.isPressed);
 	}
 
+	public void OnPause(InputValue value)
+    {
+		PauseInput(value.isPressed);
+    }
 	public void OnMouseScroll(InputValue value)
     {
 		MouseScrollInput(value.Get<float>());
@@ -121,9 +128,15 @@ public class InputHandler : MonoBehaviour
 	{
 		interact = newInteractState;
 	}
+
 	public void InventoryInput(bool newInventoryState)
     {
 		inventory = newInventoryState;
+    }
+
+	public void PauseInput(bool newPauseState)
+    {
+		pause = newPauseState;
     }
 
 	public void MouseScrollInput(float newMouseScrollInput)
