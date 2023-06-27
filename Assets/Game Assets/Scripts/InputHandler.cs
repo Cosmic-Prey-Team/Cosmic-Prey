@@ -16,9 +16,8 @@ public class InputHandler : MonoBehaviour
 	public bool interact;
 	public bool inventory;
 
-	//private bool hasPressedJump = false;
-	//private bool hasPressedInteract = false;
-	//private bool hasPressedInventory = false;
+	[Header("Equipment Swapping")]
+	public float scroll;
 
 	[Header("Movement Settings")]
 	public bool analogMovement;
@@ -78,6 +77,11 @@ public class InputHandler : MonoBehaviour
 		InventoryInput(value.isPressed);
 	}
 
+	public void OnMouseScroll(InputValue value)
+    {
+		MouseScrollInput(value.Get<float>());
+    }
+
 	public void MoveInput(Vector2 newMoveDirection)
 	{
 		move = newMoveDirection;
@@ -120,6 +124,11 @@ public class InputHandler : MonoBehaviour
 	public void InventoryInput(bool newInventoryState)
     {
 		inventory = newInventoryState;
+    }
+
+	public void MouseScrollInput(float newMouseScrollInput)
+    {
+		scroll = newMouseScrollInput;
     }
 
 	private void OnApplicationFocus(bool hasFocus)
