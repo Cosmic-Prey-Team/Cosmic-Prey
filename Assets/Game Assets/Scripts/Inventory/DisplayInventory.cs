@@ -59,7 +59,7 @@ public class DisplayInventory : MonoBehaviour
     {
         for (int i = 0; i < inventory.inventory.Length; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             var obj = Instantiate(inventory.inventory[i].Sprite, Vector3.zero, Quaternion.identity, canvas.transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 

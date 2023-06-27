@@ -11,8 +11,16 @@ public class InputHandler : MonoBehaviour
 	public float vMove;
 	public bool jump;
 	public bool sprint;
+	public bool firePrimary;
+	public bool fireSecondary;
 	public bool interact;
+
+	[Header("UI Interaction")]
 	public bool inventory;
+	public bool pause;
+
+	[Header("Equipment Swapping")]
+	public float scroll;
 
 	[Header("Movement Settings")]
 	public bool analogMovement;
@@ -49,15 +57,36 @@ public class InputHandler : MonoBehaviour
 
 	public void OnSprint(InputValue value)
 	{
-		SprintInput(value.isPressed);
+        SprintInput(value.isPressed);
+    }
+
+	public void OnFirePrimary(InputValue value)
+    {
+        FirePrimaryInput(value.isPressed);
+    }
+
+	public void OnFireSecondary(InputValue value)
+	{
+		FireSecondaryInput(value.isPressed);
 	}
+
 	public void OnInteract(InputValue value)
 	{
 		InteractInput(value.isPressed);
 	}
+
 	public void OnInventory(InputValue value)
     {
 		InventoryInput(value.isPressed);
+	}
+
+	public void OnPause(InputValue value)
+    {
+		PauseInput(value.isPressed);
+    }
+	public void OnMouseScroll(InputValue value)
+    {
+		MouseScrollInput(value.Get<float>());
     }
 
 	public void MoveInput(Vector2 newMoveDirection)
@@ -84,13 +113,35 @@ public class InputHandler : MonoBehaviour
 	{
 		sprint = newSprintState;
 	}
+
+	public void FirePrimaryInput(bool newFirePrimaryState)
+    {
+		firePrimary = newFirePrimaryState;
+    }
+
+	public void FireSecondaryInput(bool newFireSecondaryState)
+    {
+		fireSecondary = newFireSecondaryState;
+    }
+
 	public void InteractInput(bool newInteractState)
 	{
 		interact = newInteractState;
 	}
+
 	public void InventoryInput(bool newInventoryState)
     {
 		inventory = newInventoryState;
+    }
+
+	public void PauseInput(bool newPauseState)
+    {
+		pause = newPauseState;
+    }
+
+	public void MouseScrollInput(float newMouseScrollInput)
+    {
+		scroll = newMouseScrollInput;
     }
 
 	private void OnApplicationFocus(bool hasFocus)
