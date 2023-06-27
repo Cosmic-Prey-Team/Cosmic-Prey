@@ -16,6 +16,10 @@ public class InputHandler : MonoBehaviour
 	public bool interact;
 	public bool inventory;
 
+	//private bool hasPressedJump = false;
+	//private bool hasPressedInteract = false;
+	//private bool hasPressedInventory = false;
+
 	[Header("Movement Settings")]
 	public bool analogMovement;
 
@@ -51,12 +55,12 @@ public class InputHandler : MonoBehaviour
 
 	public void OnSprint(InputValue value)
 	{
-		SprintInput(value.isPressed);
-	}
+        SprintInput(value.isPressed);
+    }
 
 	public void OnFirePrimary(InputValue value)
     {
-		FirePrimaryInput(value.isPressed);
+        FirePrimaryInput(value.isPressed);
     }
 
 	public void OnFireSecondary(InputValue value)
@@ -72,7 +76,7 @@ public class InputHandler : MonoBehaviour
 	public void OnInventory(InputValue value)
     {
 		InventoryInput(value.isPressed);
-    }
+	}
 
 	public void MoveInput(Vector2 newMoveDirection)
 	{
