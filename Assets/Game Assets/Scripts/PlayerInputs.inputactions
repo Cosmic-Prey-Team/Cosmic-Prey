@@ -449,8 +449,8 @@
                 },
                 {
                     "name": "",
-                    "id": "1d35b2bc-fb78-4782-9111-d82fcdbb9cfd",
-                    "path": "<Keyboard>/escape",
+                    "id": "faff26af-6de3-4125-be6a-fe46664e3459",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
