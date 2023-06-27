@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour
 	public float vMove;
 	public bool jump;
 	public bool sprint;
+	public bool firePrimary;
+	public bool fireSecondary;
 	public bool interact;
 	public bool inventory;
 
@@ -51,10 +53,22 @@ public class InputHandler : MonoBehaviour
 	{
 		SprintInput(value.isPressed);
 	}
+
+	public void OnFirePrimary(InputValue value)
+    {
+		FirePrimaryInput(value.isPressed);
+    }
+
+	public void OnFireSecondary(InputValue value)
+	{
+		FireSecondaryInput(value.isPressed);
+	}
+
 	public void OnInteract(InputValue value)
 	{
 		InteractInput(value.isPressed);
 	}
+
 	public void OnInventory(InputValue value)
     {
 		InventoryInput(value.isPressed);
@@ -84,6 +98,17 @@ public class InputHandler : MonoBehaviour
 	{
 		sprint = newSprintState;
 	}
+
+	public void FirePrimaryInput(bool newFirePrimaryState)
+    {
+		firePrimary = newFirePrimaryState;
+    }
+
+	public void FireSecondaryInput(bool newFireSecondaryState)
+    {
+		fireSecondary = newFireSecondaryState;
+    }
+
 	public void InteractInput(bool newInteractState)
 	{
 		interact = newInteractState;

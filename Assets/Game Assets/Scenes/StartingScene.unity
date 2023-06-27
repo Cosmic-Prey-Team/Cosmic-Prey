@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216756248}
   m_Layer: 0
-  m_Name: Item Pickups
+  m_Name: Item Pickups (Demo Only)
   m_TagString: Folder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4728,6 +4728,8 @@ MonoBehaviour:
   vMove: 0
   jump: 0
   sprint: 0
+  firePrimary: 0
+  fireSecondary: 0
   interact: 0
   inventory: 0
   analogMovement: 0
