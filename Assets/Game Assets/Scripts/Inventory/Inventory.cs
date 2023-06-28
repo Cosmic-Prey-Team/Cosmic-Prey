@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void RemoveItem(InventoryItemSO item)
+    public InventoryItemInstance RemoveItem(InventoryItemSO item)
     {
         foreach (InventoryItemInstance lookFor in inventory)
         {
@@ -70,10 +70,10 @@ public class Inventory : MonoBehaviour
                 {
                     lookFor.UpdateSlot(empty);
                 }
-                return;
+                return lookFor;
             }
         }
-
+        return null;
     }
 
     public void RemoveItem(InventoryItemInstance item)
