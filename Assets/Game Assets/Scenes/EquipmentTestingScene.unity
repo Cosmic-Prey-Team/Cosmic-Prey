@@ -3316,7 +3316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096b59fb1e5d32142984b6988623d7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 250
+  _maxHealth: 5
   _health: 0
 --- !u!114 &1442708191
 MonoBehaviour:
@@ -3330,6 +3330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493dc90c1d305e742a1d3c45506b5389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inventory: {fileID: 8997996947332509062}
+  _itemToReceive: {fileID: 11400000, guid: 732e1b03ab6c859428dc79c8f2575dd2, type: 2}
+  _amountGained: 15
 --- !u!1 &1489340665
 GameObject:
   m_ObjectHideFlags: 2
@@ -3778,10 +3781,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputHandler: {fileID: 8997996947332509058}
   _camera: {fileID: 840896344}
-  _itemToReceive: {fileID: 11400000, guid: 732e1b03ab6c859428dc79c8f2575dd2, type: 2}
   _inventory: {fileID: 8997996947332509062}
-  _amountGained: 1
-  _damage: 1
+  _damagePerSecond: 1
 --- !u!1 &1932599836
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,11 +7,11 @@ public class DrillTool : MonoBehaviour
 {
     [SerializeField] private InputHandler _inputHandler;
     [SerializeField] private Camera _camera;
-    [SerializeField] private InventoryItemSO _itemToReceive;
+    //[SerializeField] private InventoryItemSO _itemToReceive;
     [SerializeField] private Inventory _inventory;
-    [SerializeField] private int _amountGained;
-    [SerializeField] private int _damage;
+    [SerializeField] private int _damagePerSecond;
 
+    private float _timeRemaining = 1f;
     private int _currentHealth;
 
     // Update is called once per frame
@@ -32,16 +32,26 @@ public class DrillTool : MonoBehaviour
                 //if the game object is drillable and has health
                 if (hit.collider.GetComponent<Drillable>() != null && hit.collider.GetComponent<Health>() != null)
                 {
-                    //Drillable drillable = hit.collider.GetComponent<Drillable>();
+                    Drillable drillable = hit.collider.GetComponent<Drillable>();
                     Health health = hit.collider.GetComponent<Health>();
-                    //do damage to drillable game object
-                    health.Damage(_damage);
-                    _currentHealth = health.GetHealth();
-                    if(_currentHealth <= 0)
+                    //timer for rate of gain
+                    if(_timeRemaining <= 0)
                     {
-                        health.Die();
+                        //do damage to drillable game object
+                        health.Damage(_damagePerSecond);
+                        _currentHealth = health.GetHealth();
+                        if (_currentHealth <= 0)
+                        {
+                            health.Die();
+                            drillable.GainOre();
+                        }
+                        //_inventory.AddItem(_itemToReceive);
+                        _timeRemaining = 1f;
                     }
-                    _inventory.AddItem(_itemToReceive);
+                    else
+                    {
+                        _timeRemaining -= Time.deltaTime;
+                    }
                 }
             }
         }
