@@ -1958,6 +1958,7 @@ MonoBehaviour:
   _panel: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
   _inventory: {fileID: 8997996947332509062}
   _amountToRepair: 20
+  _timeToRepair: 1
 --- !u!1 &840896340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,7 +4854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56bff98de36c7044b604e64c5aa0eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToConsume: 1
+  ItemToConsume: {fileID: 11400000, guid: caa650da2e5623d4caeebce0a7beb267, type: 2}
 --- !u!23 &4422386835270559558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4978,7 +4979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56bff98de36c7044b604e64c5aa0eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToConsume: 0
+  ItemToConsume: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
 --- !u!114 &4422386835675796152
 MonoBehaviour:
   m_ObjectHideFlags: 0
