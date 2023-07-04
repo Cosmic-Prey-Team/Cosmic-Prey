@@ -8,11 +8,9 @@ public class RepairTool : MonoBehaviour
     [SerializeField] private InputHandler _inputHandler;
     [SerializeField] private Camera _camera;
     [SerializeField] private InventoryItemSO _machinePart, _panel;
-    [SerializeField] private Inventory _inventory;
-    [SerializeField] private int _amountToRepair;
-    [SerializeField] private float _timeToRepair;
+    [SerializeField] private float _timeToRepair, _repairRange;
 
-    private float _checkTime;
+    
 
     // Update is called once per frame
     void Update()
@@ -26,22 +24,14 @@ public class RepairTool : MonoBehaviour
             Ray ray = _camera.ScreenPointToRay(mousePos);
             RaycastHit hit;
 
-            //if the player clicked on a game object
-            if(Physics.Raycast(ray, out hit))
+            //if the player clicked on a game object within the range
+            if (Physics.Raycast(ray, out hit) && Vector3.Distance(this.gameObject.transform.position, hit.collider.transform.position) <= _repairRange)
             {
                 //if the game object can be repaired
-                if(hit.collider.GetComponent<Repairable>() != null && hit.collider.GetComponent<Health>() != null)
+                if(hit.collider.GetComponent<Repairable>() != null)
                 {
                     Repairable repairable = hit.collider.GetComponent<Repairable>();
-                    Health health = hit.collider.GetComponent<Health>();
-
-                        //if the game object is damaged and the player has waited long enough to repair it and has the item to repair it
-                        if(health.GetHealthPercent() != 1f && Time.time > _checkTime && _inventory.RemoveItem(repairable.ItemToConsume) != null)
-                        {
-                            health.Heal(_amountToRepair);
-                            Debug.Log(health.GetHealth());
-                            _checkTime = Time.time + _timeToRepair;
-                        }
+                    repairable.repair();
                 }
             }
         }
