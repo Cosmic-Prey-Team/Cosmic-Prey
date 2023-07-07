@@ -1,179 +1,144 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
-public enum FireMode { Semi, Burst, Auto };
+public enum FireMode { Semi, Auto };
 public class Gun : MonoBehaviour
 {
     InputHandler _input;
 
-    [Header("Weapon Settings")]
-    public FireMode mode = FireMode.Semi;
-    public int damage = 10;
-    //public float range = 100f;
-    //public float impactForce = 30f;
-    public float fireRate = 15f;
-    public int magSize = 10;
-    public bool infiniteAmmo = false;
+    [Header("Prefabs")]
+    [SerializeField] GameObject _bulletPrefab;
+    [SerializeField] ParticleSystem _muzzleFlash;
 
-    [Header("Weapon Sources")]
-    public GameObject bulletPrefab;
-    public Transform bulletSpawn;
-    //public GameObject impactMesh;
-    //public GameObject muzzleflash;
-    //public GameObject impactEffect;
-    //[SerializeField] private GameObject magazine;
-    //public Text ammoCounter;
+    [Header("Gun Settings")]
+    [SerializeField] FireMode FireMode = FireMode.Semi;
+    [SerializeField] int _damagePerBullet = 1;
+    [SerializeField] float _fireRate = 15f;
+    [SerializeField] bool _infiniteAmmo = false;
+    [SerializeField] int _maxAmmoCount = 10;
+    [SerializeField] int _currentAmmoCount;
 
-    bool isTriggerDown = false;
-    bool fullAuto = false;
-    bool burst = false;
-    bool outOfAmmo = false;
-    float nextTimeToFire = 0f;
-    int currentAmmoCount;
+    [Header("Transforms")]
+    [SerializeField] Transform _bulletSpawnPoint;
+
+
+    //button press events
+    bool _isLeftButtonDown = false;
+    bool _isLeftPressed = false;
+
+    bool _isRightButtonDown = false;
+    bool _isRightPressed = false;
+
+    //private
+    private bool _isFiring = false;
+    private float _nextTimeToFire = 0f;
+
+    [Space]
+    public UnityEvent<int> OnAmmoCountChanged;
+
 
     private void Awake()
     {
         _input = FindObjectOfType<InputHandler>();
-    }
-    private void Start()
-    {
-        RefillAmmo();
+        _currentAmmoCount = _maxAmmoCount;
     }
     private void Update()
     {
-        if (_input.firePrimary)
+        #region Button Press Events
+        //primary firing
+        if (_isLeftButtonDown == false)
         {
-            switch (mode)
+            if (_input.firePrimary == true)
             {
-                case FireMode.Auto:
-                    //fullAuto = true;
-                    FireAction();
-                    break;
+                _isLeftPressed = !_isLeftPressed;
 
-                case FireMode.Semi:
-                    fullAuto = false;
-                    FireAction();
-                    isTriggerDown = true;
-                    break;
-
-                default:
-                    fullAuto = false;
-                    FireAction();
-                    isTriggerDown = false;
-                    break;
+                if (FireMode == FireMode.Semi) FireAction();
+                _isLeftButtonDown = true;
+                _isFiring = _isLeftButtonDown;
             }
         }
-    }
-    private bool CanFire()
-    {
-        if (Time.time >= nextTimeToFire) return false;
-        if (burst == true) return false;
-        return true;
-    }
-    private void FireAction()
-    {
-        if (Time.time >= nextTimeToFire && burst == false) //Time.time >= nextTimeToFire && burst == false
+        if (_isLeftButtonDown == true)
         {
-            nextTimeToFire = Time.time + 1f / fireRate;
-            Fire();
-
-            //burst fire
-            if (mode == FireMode.Burst)
+            if (_input.firePrimary == false)
             {
-                burst = true;
-                StartCoroutine(BurstFire());
+                _isLeftButtonDown = false;
+                _isFiring = _isLeftButtonDown;
             }
         }
 
-    }
-    private void Fire()
-    {
-        if (outOfAmmo != true)
+        //secondary firing
+        if (_isRightButtonDown == false)
         {
+            if (_input.fireSecondary == true)
+            {
+                _isRightPressed = !_isRightPressed;
+
+                ReloadAmmo();
+                _isRightButtonDown = true;
+            }
+        }
+        if (_isRightButtonDown == true)
+        {
+            if (_input.fireSecondary == false)
+            {
+                _isRightButtonDown = false;
+            }
+        }
+        #endregion
+
+        if (FireMode == FireMode.Auto && _isFiring)
+        {
+            if (Time.time >= _nextTimeToFire) //Time.time >= nextTimeToFire && burst == false
+            {
+                _nextTimeToFire = Time.time + 1f / _fireRate;
+                FireAction();
+            }
+        }
+    }
+
+    public void DesiredAction(bool value)
+    {
+        Debug.Log("Pressed");
+    }
+    public void FireAction()
+    {
+        if(_currentAmmoCount > 0)
+        {
+            Debug.Log("Fire");
+
             //create muzzleflash
             Debug.LogError("add muzzle flash back in");
             /*var flash = Instantiate(muzzleflash, bulletSpawn);
             Destroy(flash, 0.2f);*/
 
             //decrease ammo counter
-            if (infiniteAmmo != true)
+            if (_infiniteAmmo != true)
             {
-                currentAmmoCount = currentAmmoCount - 1;
+                //_currentAmmoCount = _currentAmmoCount - 1;
+                _currentAmmoCount--;
+                OnAmmoCountChanged?.Invoke(_currentAmmoCount);
+                RefreshAmmoStatus();
             }
-            UpdateAmmoStatus();
 
             #region Rigidbody Method
             //spawn bullet prefab
-            GameObject bulletObject = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+            GameObject bulletObject = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
             Projectile bullet = bulletObject.GetComponent<Projectile>();
-            bullet.Configure(transform, damage);
-            #endregion
-
-            #region Raycast Method
-            /*RaycastHit hit;
-            if (Physics.Raycast(bulletSpawn.position, bulletSpawn.forward, out hit, range))
-            {
-                Debug.Log(hit.transform.name);
-                //spawn object at hit.point
-                GameObject spawnedBullet = Instantiate(impactMesh, hit.point, bulletSpawn.rotation);
-                spawnedBullet.transform.SetParent(hit.transform);
-
-                //addforce to rigidbody if hitobject has one
-                if (hit.rigidbody != null)
-                {
-                    hit.rigidbody.AddForce(bulletSpawn.forward * impactForce);
-                }
-
-                var spawn = Instantiate(impactEffect, hit.point, Quaternion.Euler(hit.point.normalized));
-                Destroy(spawn, 0.25f);
-
-                Destroy(spawnedBullet, 2);
-
-
-                
-            }*/
+            bullet.Configure(transform, _damagePerBullet);
             #endregion
         }
     }
-    private IEnumerator BurstFire()
+    public void ReloadAmmo()
     {
-        yield return new WaitForSeconds(1f / fireRate);
-        Fire();
-        yield return new WaitForSeconds(1f / fireRate);
-        Fire();
-        yield return new WaitForSeconds((1f / fireRate) + 0.1f);
-        burst = false;
+        Debug.LogError("Reload only for testing");
+        _currentAmmoCount = _maxAmmoCount;
+        OnAmmoCountChanged?.Invoke(_currentAmmoCount);
     }
-    public void RefillAmmo()
-    {
-        burst = false;
-        if (!infiniteAmmo)
-        {
-            currentAmmoCount = magSize;
-        }
-        else
-        {
-            magSize = 99;
-            currentAmmoCount = magSize;
-        }
-    }
-    private void UpdateAmmoStatus()
-    {
-        //should work for both refil and fire functions
-        if (currentAmmoCount <= 0)
-        {
-            outOfAmmo = true;
-            currentAmmoCount = 0;
-        }
-        else
-            outOfAmmo = false;
 
-        UpdateAmmoCounter();
-    }
-    private void UpdateAmmoCounter()
+    public void RefreshAmmoStatus()
     {
-        //ammoCounter.text = currentAmmoCount.ToString();
+
     }
 }
