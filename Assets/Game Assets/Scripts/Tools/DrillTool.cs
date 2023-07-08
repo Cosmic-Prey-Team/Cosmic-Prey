@@ -7,13 +7,14 @@ public class DrillTool : MonoBehaviour
 {
     [SerializeField] private InputHandler _inputHandler;
     [SerializeField] private Camera _camera;
-    //[SerializeField] private InventoryItemSO _itemToReceive;
-    [SerializeField] private Inventory _inventory;
-    [SerializeField] private int _damagePerSecond;
+    [SerializeField] private float _damageDelay;
+    [SerializeField] private int _damagePerDelay;
+    private float _currentDelayProgress;
 
-    private float _timeRemaining = 1f;
-    private int _currentHealth;
-
+    private void Awake()
+    {
+        _currentDelayProgress = _damageDelay;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +22,6 @@ public class DrillTool : MonoBehaviour
         if(_inputHandler.firePrimary)
         {
             Vector3 mousePos = Mouse.current.position.ReadValue();
-            //mousePos.z = 0f;
 
             Ray ray = _camera.ScreenPointToRay(mousePos);
             RaycastHit hit;
@@ -33,24 +33,16 @@ public class DrillTool : MonoBehaviour
                 if (hit.collider.GetComponent<Drillable>() != null && hit.collider.GetComponent<Health>() != null)
                 {
                     Drillable drillable = hit.collider.GetComponent<Drillable>();
-                    Health health = hit.collider.GetComponent<Health>();
                     //timer for rate of gain
-                    if(_timeRemaining <= 0)
+                    if(_currentDelayProgress <= 0)
                     {
                         //do damage to drillable game object
-                        health.Damage(_damagePerSecond);
-                        _currentHealth = health.GetHealth();
-                        if (_currentHealth <= 0)
-                        {
-                            health.Die();
-                            drillable.GainOre();
-                        }
-                        //_inventory.AddItem(_itemToReceive);
-                        _timeRemaining = 1f;
+                        drillable.DrillDamage(_damagePerDelay);
+                        _currentDelayProgress = _damageDelay;
                     }
                     else
                     {
-                        _timeRemaining -= Time.deltaTime;
+                        _currentDelayProgress -= Time.deltaTime;
                     }
                 }
             }

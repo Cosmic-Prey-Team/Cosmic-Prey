@@ -3317,7 +3317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 5
-  _health: 0
+  _health: 5
 --- !u!114 &1442708191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3332,7 +3332,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventory: {fileID: 8997996947332509062}
   _itemToReceive: {fileID: 11400000, guid: 732e1b03ab6c859428dc79c8f2575dd2, type: 2}
-  _amountGained: 15
+  _amountGained: 10
+  _recoveryTime: 5
+  _gainOverTime: 1
 --- !u!1 &1489340665
 GameObject:
   m_ObjectHideFlags: 2
@@ -3781,8 +3783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputHandler: {fileID: 8997996947332509058}
   _camera: {fileID: 840896344}
-  _inventory: {fileID: 8997996947332509062}
-  _damagePerSecond: 1
+  _damageDelay: 1
+  _damagePerDelay: 1
 --- !u!1 &1932599836
 GameObject:
   m_ObjectHideFlags: 0

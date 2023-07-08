@@ -17,7 +17,6 @@ public class Health : MonoBehaviour
         //sets the current health to max
         _health = _maxHealth;
     }
-
     //returns health value
     public int GetHealth()
     {
