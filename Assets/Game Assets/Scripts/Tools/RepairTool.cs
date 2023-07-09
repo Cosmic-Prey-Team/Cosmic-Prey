@@ -15,7 +15,7 @@ public class RepairTool : MonoBehaviour
     [Tooltip("Range of the repair tool.")]
     [SerializeField] private float _repairRange;
 
-    private float _currentTimeToRepair;
+    private float _currentTimeToRepair = 0f;
 
 
     private void Awake()
@@ -23,8 +23,6 @@ public class RepairTool : MonoBehaviour
         _inputHandler = FindObjectOfType<InputHandler>();
         _camera = Camera.main;
         _player = _inputHandler.transform;
-
-        _currentTimeToRepair = _timeToRepair;
     }
     // Update is called once per frame
     void Update()
@@ -50,7 +48,7 @@ public class RepairTool : MonoBehaviour
 
                     if(_currentTimeToRepair <= 0)
                     {
-                        //Debug.Log("repair()");
+                        Debug.Log("Repair()");
                         repairable.Repair(_player);
 
                         _currentTimeToRepair = _timeToRepair;

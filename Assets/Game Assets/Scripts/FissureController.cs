@@ -1,23 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class FissureController : MonoBehaviour
 {
     //subscribe to on health changed
-
+    //[Tooltip("")]
+    [SerializeField] bool _debug = false;
     [SerializeField] private GameObject[] _fissures;
+    [SerializeField] private int _healthRegenRate;
+    private float _healthRegenProgress = 0;
 
     private Health _health;
-    private int _activeFissures, _fissureRepairAmount;
-    
+    private bool _canRegenHealth;
+    private int _activeFissures = 0;
+    private int _fissureRepairAmount;
+
+    private void Awake()
+    {
+        _health = gameObject.GetComponent<Health>();
+        _health.OnHealthChanged += FissureChecker;
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        _health = this.gameObject.GetComponent<Health>();
-        _fissureRepairAmount = _fissures[0].GetComponent<Repairable>().GetAmountToRepair();
-        foreach(GameObject fissure in _fissures)
+        float repairAmount = (float)_health.GetHealth() / (float)_fissures.Length;
+        _fissureRepairAmount = (int)repairAmount;
+
+        foreach (GameObject fissure in _fissures)
         {
+            fissure.GetComponent<Repairable>().SetAmountToRepair(_fissureRepairAmount + 1);
             fissure.SetActive(false);
         }
     }
@@ -25,33 +40,46 @@ public class FissureController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //get how many fissures we should have, based on how much health is missing compared to how much a fissure heals
-        int fissureChecker = _health.GetMissingHealth() / _fissureRepairAmount;
-
-        //if we need more fissures active
-        if(fissureChecker > _activeFissures)
+        if (Keyboard.current.cKey.wasPressedThisFrame && _debug)
         {
-            do
-            {
-                //pick a random fissure and activate it if it isnt active already
-                int random = Random.Range(0, _fissures.Length);
-                if(_fissures[random].activeSelf == false)
-                {
-                    _fissures[random].SetActive(true);
-                    _activeFissures++;
-                }
-
-            //I swear this should be >, and not <, but for some reason this crashes Unity.
-            //It still works because it is in the update function, just not quite how I wanted to code it.
-            } while (fissureChecker < _activeFissures);
+            _health.Damage(20);
         }
 
-        //if we've too many fissures active
-        else if(fissureChecker < _activeFissures)
+        //might not be needed
+        if (_activeFissures == 0) _canRegenHealth = true;
+        else _canRegenHealth = false;
+
+        //health regen if no active fissures
+        if(_health.GetMissingHealth() != 0 && _canRegenHealth)
         {
-            //this only happens if the player recently healed a fissure
-            //the repairable script handles deactivating the fissure,
-            //so we just need to adjust the amount of fissures active
+            _healthRegenProgress -= Time.deltaTime;
+
+            if(_healthRegenProgress <= 0)
+            {
+                _health.Heal(_healthRegenRate);
+                _healthRegenProgress = 1; //1 because health regens every second
+            }
+        }
+    }
+
+    public void FissureChecker()
+    {
+        Debug.Log("Health Change");
+
+        int fissuresRequired = _health.GetMissingHealth() / _fissureRepairAmount;
+
+        while(_activeFissures < fissuresRequired)
+        {
+            int random = Random.Range(0, _fissures.Length);
+            if (_fissures[random].activeSelf == false)
+            {
+                _fissures[random].SetActive(true);
+                _activeFissures++;
+            }
+        }
+
+        if(fissuresRequired < _activeFissures)
+        {
             _activeFissures--;
         }
     }
