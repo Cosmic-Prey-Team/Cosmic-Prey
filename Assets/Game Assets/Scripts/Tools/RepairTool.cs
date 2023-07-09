@@ -5,13 +5,27 @@ using UnityEngine.InputSystem;
 
 public class RepairTool : MonoBehaviour
 {
-    [SerializeField] private InputHandler _inputHandler;
-    [SerializeField] private Camera _camera;
-    [SerializeField] private InventoryItemSO _machinePart, _panel;
-    [SerializeField] private float _timeToRepair, _repairRange;
+    private InputHandler _inputHandler;
+    private Camera _camera;
+    private Transform _player;
 
-    
+    [Header("Repair Tool Properties")]
+    [Tooltip("Interval between repairs.")]
+    [SerializeField] private float _timeToRepair;
+    [Tooltip("Range of the repair tool.")]
+    [SerializeField] private float _repairRange;
 
+    private float _currentTimeToRepair;
+
+
+    private void Awake()
+    {
+        _inputHandler = FindObjectOfType<InputHandler>();
+        _camera = Camera.main;
+        _player = _inputHandler.transform;
+
+        _currentTimeToRepair = _timeToRepair;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -25,13 +39,22 @@ public class RepairTool : MonoBehaviour
             RaycastHit hit;
 
             //if the player clicked on a game object within the range
-            if (Physics.Raycast(ray, out hit) && Vector3.Distance(this.gameObject.transform.position, hit.collider.transform.position) <= _repairRange)
+            if (Physics.Raycast(ray, out hit, _repairRange))
             {
                 //if the game object can be repaired
-                if(hit.collider.GetComponent<Repairable>() != null)
+                Repairable repairable = hit.collider.GetComponent<Repairable>();
+                if (repairable != null)
                 {
-                    Repairable repairable = hit.collider.GetComponent<Repairable>();
-                    repairable.repair();
+                    //timer
+                    _currentTimeToRepair -= Time.deltaTime;
+
+                    if(_currentTimeToRepair <= 0)
+                    {
+                        //Debug.Log("repair()");
+                        repairable.Repair(_player);
+
+                        _currentTimeToRepair = _timeToRepair;
+                    }
                 }
             }
         }

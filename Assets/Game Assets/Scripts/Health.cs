@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _health;
+
+    [SerializeField] bool _debug = false;
     
     // events for future use
     public event Action OnHealthChanged;
@@ -15,7 +17,8 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         //sets the current health to max
-        _health = _maxHealth;
+        if(!_debug)
+            _health = _maxHealth;
     }
 
     //returns health value

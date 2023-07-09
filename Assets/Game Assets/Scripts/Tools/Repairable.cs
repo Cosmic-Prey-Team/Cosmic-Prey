@@ -1,43 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Repairable : MonoBehaviour
 {
-    public InventoryItemSO ItemToConsume;
-    [SerializeField] private Health _health;
-    [SerializeField] private int _amountToRepair;
-    [SerializeField] private Inventory _inventory;
-    [SerializeField] private float _timeToRepair;
+    public UnityEvent OnFullyRepaired;
+
+    private Health _health;
+    private Inventory _inventory;
+
+    [SerializeField] private bool _hasHealthComponent;
+
+    [SerializeField] private InventoryItemSO ItemToConsume;
+    [SerializeField] private int _healthAmountRegen;
+    //[SerializeField] private float _timeToRepair;
+
+    //[SerializeField] private int 
 
     private float _checkTime;
 
-    private void Start()
+    private void Awake()
     {
-        //if the object has a health script, set _health to be it
-        //this should be true for everything except the fissures, which'll have the health script on the actual ship
-        if (this.gameObject.GetComponent<Health>() != null)
-        {
-            _health = this.gameObject.GetComponent<Health>();
-        }
+        if(_hasHealthComponent)
+            _health = GetComponent<Health>();
+        else
+            _health = GetComponentInParent<Health>();
     }
 
-    public int GetAmountToRepair() { return _amountToRepair; }
+    public int GetAmountToRepair() { return _healthAmountRegen; }
 
-    public void repair()
+    public void Repair(Transform player)
     {
+        _inventory = player.GetComponent<Inventory>();
+
+        if (_hasHealthComponent)
+        {
+
+
+            //if (_health.GetHealthPercent() == 1) OnFullyRepaired?.Invoke();
+        }
+        else
+        {
+
+            //OnFullyRepaired?.Invoke();
+        }
+
         //if the object needs repairing, the player has waited long enough to repair it, and the player has the item to repair it
         if (_health.GetHealthPercent() != 1f && Time.time > _checkTime && _inventory.RemoveItem(ItemToConsume) != null)
         {
-            _health.Heal(_amountToRepair);
+            _health.Heal(_healthAmountRegen);
             Debug.Log(_health.GetHealth());
-            _checkTime = Time.time + _timeToRepair;
+            //_checkTime = Time.time + _timeToRepair;
+
+
+
+
         }
 
-        //if you repaired a fissure
-        if(this.gameObject.GetComponent<Health>() == null)
-        {
-            this.gameObject.SetActive(false);
-        }
+
     }
+
+    
 }

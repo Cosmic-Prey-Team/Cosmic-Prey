@@ -110,6 +110,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56bff98de36c7044b604e64c5aa0eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnFullyRepaired:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3574229248738109959}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   ItemToConsume: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
   _health: {fileID: 0}
   _amountToRepair: 20

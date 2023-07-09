@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FissureController : MonoBehaviour
 {
-    
+    //subscribe to on health changed
 
     [SerializeField] private GameObject[] _fissures;
 
