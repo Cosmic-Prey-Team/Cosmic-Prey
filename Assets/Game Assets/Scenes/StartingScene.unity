@@ -494,7 +494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541228081
@@ -835,7 +835,7 @@ Transform:
   m_LocalScale: {x: 0.33064336, y: 0.79635453, z: 0.33064336}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &702925626
@@ -1117,6 +1117,8 @@ GameObject:
   - component: {fileID: 1159636988}
   - component: {fileID: 1159636992}
   - component: {fileID: 1159636993}
+  - component: {fileID: 1159636994}
+  - component: {fileID: 1159636995}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -1136,17 +1138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8136805282206378907}
-  - {fileID: 5456223188890362850}
-  - {fileID: 7300646764339872998}
-  - {fileID: 3248315488591757806}
-  - {fileID: 3248315488521264169}
-  - {fileID: 3248315487583349210}
-  - {fileID: 3248315487977589540}
-  - {fileID: 702925625}
-  - {fileID: 1542634062}
-  - {fileID: 1446161257}
-  - {fileID: 511059542}
+  - {fileID: 1465594439}
   m_Father: {fileID: 1489340666}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1199,6 +1191,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 8616685848642844465}
   onShip: 0
+--- !u!54 &1159636994
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159636986}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.1
+  m_AngularDrag: 0.5
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 2
+--- !u!114 &1159636995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159636986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1f994ce7c40984dadfceeed6c1b873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yawTorque: 100
+  pitchTorque: 100
+  rollTorque: 100
+  thrust: 100
+  upThrust: 50
+  strafeThrust: 50
+  thrustGlideReduction: 0.5
+  upDownGlideReduction: 0.111
+  leftRightGlideReduction: 0.111
+  maxBoostAmount: 2
+  boostDepecationRate: 0.25
+  boostRechargeRate: 0.5
+  boostMultiplier: 1.4
 --- !u!1 &1446161256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,8 +1260,50 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1465594438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465594439}
+  m_Layer: 0
+  m_Name: Art & Stuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1465594439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465594438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8136805282206378907}
+  - {fileID: 5456223188890362850}
+  - {fileID: 7300646764339872998}
+  - {fileID: 3248315488591757806}
+  - {fileID: 3248315488521264169}
+  - {fileID: 3248315487583349210}
+  - {fileID: 3248315487977589540}
+  - {fileID: 702925625}
+  - {fileID: 1542634062}
+  - {fileID: 1446161257}
+  - {fileID: 511059542}
+  m_Father: {fileID: 1159636987}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1489340665
 GameObject:
@@ -1428,7 +1503,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1159636987}
+    m_TransformParent: {fileID: 1465594439}
     m_Modifications:
     - target: {fileID: 894093325933845257, guid: 8a7437817844dce4894b049de73b75f2,
         type: 3}
@@ -1918,7 +1993,7 @@ Transform:
   m_LocalScale: {x: 0.33064336, y: 0.33064336, z: 0.33064336}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3248315487977589540
@@ -1933,7 +2008,7 @@ Transform:
   m_LocalScale: {x: 0.33064336, y: 0.33064336, z: 0.33064336}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3248315488521264169
@@ -1948,7 +2023,7 @@ Transform:
   m_LocalScale: {x: 0.33064336, y: 0.33064336, z: 0.33064336}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3248315488591757806
@@ -1963,7 +2038,7 @@ Transform:
   m_LocalScale: {x: 0.33064336, y: 0.33064336, z: 0.33064336}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3620356313777459490
@@ -2421,7 +2496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5980428566605220675
@@ -2528,7 +2603,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7933877038872862300
@@ -2562,7 +2637,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159636987}
+  m_Father: {fileID: 1465594439}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!23 &8438117675397988233
@@ -2639,7 +2714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: dd85c070a32f7f64ea6ee36a91def550,
     type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -2717,11 +2792,131 @@ MonoBehaviour:
     m_ActionName: Player/Sprint[/Keyboard/leftShift,/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e4ce1614-c754-48c1-9103-33130441661f
-    m_ActionName: UI/New action
+    m_ActionId: 9e09ec4f-99c8-461b-a18d-c85e678ab860
+    m_ActionName: Player/Interact[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38e978c7-a817-43fb-8aeb-869162aa1042
+    m_ActionName: Player/VerticalMove[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159636995}
+        m_TargetAssemblyTypeName: SpaceshipMovement, Assembly-CSharp
+        m_MethodName: OnThrust
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a47459e2-b3c2-4922-b97b-44c4436f5af6
+    m_ActionName: ShipControls/Thrust[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159636995}
+        m_TargetAssemblyTypeName: SpaceshipMovement, Assembly-CSharp
+        m_MethodName: OnStrafe
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 62ca0721-a119-40fc-8c9f-5fde4382285e
+    m_ActionName: ShipControls/Strafe[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159636995}
+        m_TargetAssemblyTypeName: SpaceshipMovement, Assembly-CSharp
+        m_MethodName: OnUpDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bc53f1a4-c97f-4c56-993b-8cbe9deef6e2
+    m_ActionName: ShipControls/UpDown[/Keyboard/ctrl,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159636995}
+        m_TargetAssemblyTypeName: SpaceshipMovement, Assembly-CSharp
+        m_MethodName: OnRoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 10c0ad19-d758-4e10-96f9-a3dd20375d2f
+    m_ActionName: ShipControls/Roll[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159636995}
+        m_TargetAssemblyTypeName: SpaceshipMovement, Assembly-CSharp
+        m_MethodName: OnPitchYaw
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 52ce2c29-e941-4e78-99c8-702e876cb53d
+    m_ActionName: ShipControls/PitchYaw[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f8a27a0e-9d1f-4346-a5bf-4745f8a773ea
+    m_ActionName: Space Movement/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8af7250b-55d3-4032-a7b4-d19e0373791f
+    m_ActionName: Space Movement/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ef94f954-bd0a-4ac6-ba86-577cf55b1d86
+    m_ActionName: Space Movement/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1675b7b4-abb8-4726-afca-ebe46a2140ba
+    m_ActionName: Space Movement/Sprint[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5dfb1da6-53cc-44ad-9758-77660e738dea
+    m_ActionName: Space Movement/Interact[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f83f1b84-c3eb-44ec-a916-af25994e4f71
+    m_ActionName: Space Movement/VerticalMove[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8191467-2937-4085-a2c5-144db09766fb
+    m_ActionName: Space Movement/Look Movement[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5fcab634-8912-40f6-93b5-65ef87c66708
+    m_ActionName: Space Movement/Boost[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4779e0d-6508-470c-8959-a949801f7605
+    m_ActionName: ShipControls/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: ShipControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &8616685848642844475
@@ -2766,8 +2961,11 @@ MonoBehaviour:
   SpeedChangeRate: 10
   JumpHeight: 1.2
   Gravity: -15
+  SpaceJumpHeight: 3
+  SpaceGravity: -0.3
   JumpTimeout: 0.1
   FallTimeout: 0.15
+  JetpackTimeout: 0.2
   Grounded: 1
   GroundedOffset: -0.14
   GroundedRadius: 0.5
@@ -2779,6 +2977,8 @@ MonoBehaviour:
   BottomClamp: -89
   shipController: {fileID: 1159636992}
   movePlayerWithShip: {fileID: 1159636993}
+  JetPackAcceleration: 1
+  MaxJetpackVelocity: 5
   _ship: {fileID: 1159636986}
 --- !u!1 &8908240905045979425
 GameObject:

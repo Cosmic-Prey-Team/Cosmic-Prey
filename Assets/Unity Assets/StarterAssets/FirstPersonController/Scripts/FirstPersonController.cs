@@ -31,7 +31,7 @@ namespace StarterAssets
 		[Tooltip("The height the player can jump in SPACE")]
 		public float SpaceJumpHeight = 3.0f;
 		[Tooltip("The gravity value in outer space. Should still fall down a bit, but very slowly")]
-		public float SpaceGravity = -0.01f;
+		public float SpaceGravity = -15f;
 		private float CurrentGravity;
 
 		[Space(10)]
@@ -39,6 +39,8 @@ namespace StarterAssets
 		public float JumpTimeout = 0.1f;
 		[Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
 		public float FallTimeout = 0.15f;
+		public float JetpackTimeout = 0.20f;
+		private bool hasJumpedJetpack = false;
 
 		[Header("Player Grounded")]
 		[Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -73,11 +75,14 @@ namespace StarterAssets
 		Vector3 inputDirection;
 
 		//jetpack (space movement)
-		[Header("Jetpack?Space Movement")]
+		[Header("Jetpack/Space Movement")]
 		private float _jetpackPushTimer = 5f;
-		public float JetPackAcceleration = 1f; //accelerates 1 unit per second, per second
-		public float MaxJetpackVelocity = 5.0f;
+		private Vector2 _jetpackVelocity;
+		public float JetPackAcceleration = 0.2f; //accelerates 1 unit per second, per second
+		public float MaxJetpackVelocity = 0.6f;
 		private Vector3 _lastVel;
+		private Vector3 mv; //movement velocity for jetpack
+		private float _jetpackTimeoutDelta;
 
 
 		// timeout deltatime
@@ -87,6 +92,7 @@ namespace StarterAssets
 		private bool _canMove = true;
 		private bool _atHelm = false;
 		[SerializeField] private GameObject _ship;
+		[SerializeField] PlayerState _playerState;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -132,6 +138,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			_jetpackTimeoutDelta = JetpackTimeout;
 		}
 
 		private void Update()
@@ -196,7 +203,7 @@ namespace StarterAssets
 			// if there is no input, set the target speed to 0
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-			// a reference to the players current horizontal velocity
+			// a reference to the players cur	rent horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
@@ -236,7 +243,8 @@ namespace StarterAssets
 
 			if (movePlayerWithShip.onShip)
             {
-				CurrentGravity = Gravity;
+				//CurrentGravity = Gravity;
+				_playerState.SwitchState(ControlState.FirstPerson);
 				if (inputDirection.normalized == new Vector3(0f, 0f, 0f))
                 {
 					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime + shipController.velocity.y, 0.0f));
@@ -254,12 +262,14 @@ namespace StarterAssets
 			}else
             {
 				CurrentGravity = SpaceGravity;
-				//if (_input.jump)
-                //{
-				//	Debug.Log("Started Coroutine");
-				
-				//}
-				
+
+				//Debug.Log("Started Coroutine");
+				//_controller.Move(new Vector3(_jetpackVelocity.x, _verticalVelocity, _jetpackVelocity.y) * Time.deltaTime);
+
+				_controller.Move(inputDirection.normalized + (new Vector3(_jetpackVelocity.x, _verticalVelocity, _jetpackVelocity.y) * Time.deltaTime));
+
+				//_controller.Move(new Vector3(_jetpackVelocity.x, _verticalVelocity * Time.deltaTime, _jetpackVelocity.y));
+
 				//Slower, low gravity movement. Could just change gravity in #JumpAndGravity().
 			}
 		}
@@ -270,6 +280,7 @@ namespace StarterAssets
 			{
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
+				_jetpackTimeoutDelta = JetpackTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
@@ -282,6 +293,7 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+					Debug.Log("Regular Jump");
 				}
 
 				// jump timeout
@@ -290,10 +302,11 @@ namespace StarterAssets
 					_jumpTimeoutDelta -= Time.deltaTime;
 				}
 			}
-			else if (!Grounded && !movePlayerWithShip.onShip) //if not on the ship, but maybe an asteroid or another "ground", jump with lower gravity
+			else if (Grounded && !movePlayerWithShip.onShip) //if not on the ship, but maybe an asteroid or another "ground", jump with lower gravity
             {
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout * 3f;
+				_jetpackTimeoutDelta = JetpackTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
@@ -313,9 +326,65 @@ namespace StarterAssets
 				{
 					_jumpTimeoutDelta -= Time.deltaTime;
 				}
-			} else{
+			}
+			else if (!Grounded && !movePlayerWithShip.onShip)
+			{
+				_playerState.SwitchState(ControlState.SpaceMovement);
+				//Debug.Log("In Space");
+				//if (_input.jump) StartCoroutine(JetpackPush())
+				//if (_jetpackTimeoutDelta <= 0)
+                //{
+				//	_jetpackTimeoutDelta = JetpackTimeout;
+				//}
+				//// reset the fall timeout timer
+				////
+				//
+				//// stop our velocity dropping infinitely when grounded
+				//if (_verticalVelocity < 0.0f)
+				//{
+				//	_verticalVelocity = -2f;
+				//}
+				//
+				//// Jump (in space)
+				//Debug.Log(_input.move);
+				//if (_input.jump)
+                //{
+				//	Debug.Log("Space Jump");
+				//
+				//	if (inputDirection == Vector3.zero)
+                //    {
+				//		// the square root of H * -2 * G = how much velocity needed to reach desired height
+				//		_verticalVelocity = Mathf.Sqrt(SpaceJumpHeight * -2f * SpaceGravity);
+				//	}
+				//	if (inputDirection.x != 0)
+				//	{
+				//		_jetpackVelocity.x = Mathf.Sqrt(SpaceJumpHeight * -2f * SpaceGravity * inputDirection.x);
+				//	}
+				//	if (inputDirection.z != 0)
+                //    {
+				//		_jetpackVelocity.y = Mathf.Sqrt(SpaceJumpHeight * -2f * SpaceGravity * inputDirection.z);
+				//	}
+				//	//if (_input.move.y != 0 && _input.move.x != 0)
+				//	//{
+				//	//	_jetpackVelocity.x = Mathf.Sqrt(SpaceJumpHeight * -2f * SpaceGravity * inputDirection.x);
+				//	//	_jetpackVelocity.y = Mathf.Sqrt(SpaceJumpHeight * -2f * SpaceGravity * inputDirection.z);
+				//	//}
+				//	
+				//}
+				//
+				////JetpackMovement();
+				//
+				//// jump timeout
+				//if (_jetpackTimeoutDelta >= 0.0f)
+				//{
+				//	_jetpackTimeoutDelta -= Time.deltaTime;
+				//}
+			}
+			else
+			{
 				// reset the jump timeout timer
 				_jumpTimeoutDelta = JumpTimeout;
+				_jetpackTimeoutDelta = JetpackTimeout;
 
 				// fall timeout
 				if (_fallTimeoutDelta >= 0.0f)
@@ -324,7 +393,8 @@ namespace StarterAssets
 				}
 
 				// if we are not grounded, do not jump
-				_input.jump = false;
+				if (movePlayerWithShip.onShip)
+					_input.jump = false;
 			}
 
 			if (movePlayerWithShip.onShip)
@@ -334,7 +404,6 @@ namespace StarterAssets
 					_verticalVelocity += Gravity * Time.deltaTime;
 				}
 			}
-	//		#region OLDTEST
              else if (!movePlayerWithShip.onShip)
             {
             	_verticalVelocity = SpaceGravity;
@@ -343,39 +412,6 @@ namespace StarterAssets
             		_verticalVelocity += SpaceGravity * Time.deltaTime;
             	}
             }
-
-
-
-            //if (!Grounded && !movePlayerWithShip.onShip)
-            //{
-            //	//Jetpack movement
-            //	if (_input.move == null)
-            //    {
-            //		if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-            //		{
-            //			// the square root of H * -2 * G = how much velocity needed to reach desired height
-            //			_verticalVelocity = Mathf.Sqrt(SpaceJumpHeight / 2 * -2f * SpaceGravity);
-            //		}
-            //	} else if (_input.move != null)
-            //    {
-            //		if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-            //        {
-            //			//if (_input.move.)
-            //        }
-            //
-            //	}
-            //	
-            //
-            //}
-		//	#endregion
-
-			if (!Grounded && !movePlayerWithShip.onShip)
-            {
-				//if (_input.jump) StartCoroutine(JetpackPush());
-				JetpackMovement();
-			}
-
-
 
         }
 
@@ -410,36 +446,50 @@ namespace StarterAssets
 			_atHelm = false;
 		}
 
-		private IEnumerator JetpackPush()
-        {
-			while (_jetpackPushTimer > 0)
-            {
-				_controller.Move(inputDirection.normalized * ((_speed * _jetpackPushTimer) * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity / 5, 0.0f) * Time.deltaTime));
-				//Jump();
-				Debug.Log("Tried to jump in space");
-				_jetpackPushTimer -= 1;
-				//if (_input.jump)
-				//	break;
-
-			}
-			yield return new WaitForSeconds(1f);
-
-			_jetpackPushTimer = 5f;
-		}
-
+		/*//private IEnumerator JetpackPush()
+        //{
+		//	while (_jetpackPushTimer > 0)
+        //    {
+		//		_controller.Move(inputDirection.normalized * ((_speed * _jetpackPushTimer) * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity / 5, 0.0f) * Time.deltaTime));
+		//		//Jump();
+		//		Debug.Log("Tried to jump in space");
+		//		_jetpackPushTimer -= 1;
+		//		//if (_input.jump)
+		//		//	break;
+		//
+		//	}
+		//	yield return new WaitForSeconds(1f);
+		//
+		//	_jetpackPushTimer = 5f;
+		//}
+*/
 		private void JetpackMovement()
         {
-			Vector3 mv = _lastVel;
+			mv = _lastVel;
 			if (_input.jump)
 			{
-				mv.y += JetPackAcceleration * Time.deltaTime;
-				if (mv.y > MaxJetpackVelocity) mv.y = MaxJetpackVelocity;
+				//mv.y += JetPackAcceleration * Time.deltaTime;
+				mv.x = inputDirection.normalized.x;
+				mv.z = inputDirection.normalized.z;
+				Debug.Log("Blasting off...");
+				//if (mv.y > MaxJetpackVelocity) mv.y = MaxJetpackVelocity;
+				if (mv.x > MaxJetpackVelocity) mv.x = MaxJetpackVelocity;
+				if (mv.z > MaxJetpackVelocity) mv.z = MaxJetpackVelocity;
+				hasJumpedJetpack = true;
 			}
 			else
+            {
 				mv.y += SpaceGravity * Time.deltaTime;
+				_verticalVelocity += SpaceGravity * Time.deltaTime;
 
 
-			_controller.Move(mv * Time.deltaTime);
+				Debug.Log("APPLYING GRAVITY");
+				hasJumpedJetpack = false;
+			}
+
+
+			//Debug.Log(mv);
+			_controller.Move(inputDirection.normalized + mv * Time.deltaTime);
 			_lastVel = _controller.velocity;
         }
 

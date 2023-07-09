@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class PlayerState : MonoBehaviour
 {
     public ControlState currentState;
     //[SerializeField] List<IInteractable> stateChangingInteractables;
     [SerializeField] public ShipHelm _shipHelm;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private Rigidbody _rb;
 
     private void Awake()
     {
@@ -36,16 +39,18 @@ public class PlayerState : MonoBehaviour
             case ControlState.FirstPerson:
                 OnFirstPersonState();
                 break;
-            case ControlState.ThirdPerson:
-                OnThirdPersonState();
-                break;
             case ControlState.Ship:
                 OnShipState();
+                break;
+            case ControlState.SpaceMovement:
+                OnSpaceMovementState();
                 break;
         }
 
         //TrySetState(_state);
     }
+
+    //TODO: Fix bug where state switches right back to FP after pressing helm, find way to switch Invoke Unity Events to Send Messages for other movement controls.
 
     public void SwitchState(ControlState newState)
     {
@@ -56,17 +61,24 @@ public class PlayerState : MonoBehaviour
     {
         //change camera view
         Debug.Log("Switched to First Person");
+        playerInput.SwitchCurrentActionMap("Player");
         this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlPlayer();
+        _rb.isKinematic = true;
+        _rb.GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
     }
-    void OnThirdPersonState()
+    void OnSpaceMovementState()
     {
-        //Change camera view?
+        playerInput.SwitchCurrentActionMap("PlayerSpaceControls");
+        _rb.isKinematic = false;
+        Debug.Log("Switched to FP Space Controls");
+
     }
     void OnShipState()
     {
         //change controls
-        Debug.Log("Switched to Ship");
+        Debug.Log("Switched to Ship Controls");
         this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlShip();
+        _rb.isKinematic = true;
     }
     private bool TrySetState(ControlState newState)
     {

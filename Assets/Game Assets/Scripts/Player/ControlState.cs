@@ -1,6 +1,6 @@
 public enum ControlState
 {
     FirstPerson,
-    ThirdPerson,
+    SpaceMovement,
     Ship
 }
