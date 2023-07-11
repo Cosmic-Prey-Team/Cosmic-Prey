@@ -1,37 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Health))]
 public class Drillable : MonoBehaviour
 {
-    [SerializeField] private Inventory _inventory;
+    private Inventory _inventory;
+    private Health _health;
+    [Tooltip("The item you will receive from drilling")]
     [SerializeField] private InventoryItemSO _itemToReceive;
+    [Tooltip("Amount of the item you get")]
     [SerializeField] private int _amountGained;
+    [Tooltip("Amount of time for object to recover health and be drillable again")]
     [SerializeField] private float _recoveryTime;
-    [Tooltip("If this is checked then ore will be gained when damage is done, otherwise ore is gained when health reaches zero")]
+    [Tooltip("If this is checked then the player will gain Amount Gained every damage tick," +
+        " if not then it's gained when health is 0")]
     [SerializeField] bool _gainOverTime = true;
+    [SerializeField] Slider _progressBar;
+    [SerializeField] float _progressBarMoveSpeed;
     private bool needsToRecover;
     private float _timeToRecover;
-    private Health health;
     private int _maxHealth;
     private int _currentHealth;
+    private float _target;
+    private bool _gainedLastOre = false;
 
     private void Awake()
     {
-        health = GetComponent<Health>();
-        _maxHealth = health.GetHealth();
+        _health = GetComponent<Health>();
+        _maxHealth = _health.GetHealth();
+        _currentHealth = _maxHealth;
         _timeToRecover = _recoveryTime;
     }
     private void Update()
     {
+        UpdateHealthBar(_currentHealth, _maxHealth);
         if (needsToRecover)
         {
             if (_recoveryTime <= 0)
             {
-                health.Heal(_maxHealth);
+                _health.Heal(_maxHealth);
+                _currentHealth = _maxHealth;
                 needsToRecover = false;
                 _recoveryTime = _timeToRecover;
+                _gainedLastOre = false;
             }
             else
             {
@@ -39,25 +52,31 @@ public class Drillable : MonoBehaviour
             }
         }
     }
-    private void GainOre()
+    private void GainItem(Transform player)
     {
+        _inventory = player.GetComponent<Inventory>();
         for (int i = 0; i < _amountGained; i++)
         {
             _inventory.AddItem(_itemToReceive);
         }
     }
-    public void DrillDamage(int _damagePerSecond)
+    public void DrillDamage(int _damagePerSecond, Transform player)
     {
-        health.Damage(_damagePerSecond);
+        _health.Damage(_damagePerSecond);
         if(_gainOverTime)
         {
             if(HasHealth())
             {
-                GainOre();
+                GainItem(player);
             }
             else
             {
                 needsToRecover = true;
+                if(!_gainedLastOre)
+                {
+                    GainItem(player);
+                    _gainedLastOre = true;
+                }
             }
         }
         else
@@ -66,7 +85,7 @@ public class Drillable : MonoBehaviour
             {
                 if (needsToRecover == false)
                 {
-                    GainOre();
+                    GainItem(player);
                 }
                 needsToRecover = true;
             }
@@ -74,7 +93,7 @@ public class Drillable : MonoBehaviour
     }
     private bool HasHealth()
     {
-        _currentHealth = health.GetHealth();
+        _currentHealth = _health.GetHealth();
         if (_currentHealth <= 0)
         {
             return false;
@@ -83,5 +102,10 @@ public class Drillable : MonoBehaviour
         {
             return true;
         }
+    }
+    private void UpdateHealthBar(int currentHealth, int maxHealth)
+    {
+        _target = (float)currentHealth/maxHealth;
+        _progressBar.value = Mathf.MoveTowards(_progressBar.value, _target, _progressBarMoveSpeed * Time.deltaTime);
     }
 }
