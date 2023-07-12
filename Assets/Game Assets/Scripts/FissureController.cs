@@ -6,10 +6,12 @@ using UnityEngine.InputSystem;
 
 public class FissureController : MonoBehaviour
 {
-    //subscribe to on health changed
     //[Tooltip("")]
+    [Tooltip("allows you to damage the ship by pressing c")]
     [SerializeField] bool _debug = false;
+    [Tooltip("list of all the fissure spots on the ship")]
     [SerializeField] private GameObject[] _fissures;
+    [Tooltip("how much health the ship heals each second when there are zero fissures active")]
     [SerializeField] private int _healthRegenRate;
     private float _healthRegenProgress = 0;
 

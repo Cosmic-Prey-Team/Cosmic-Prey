@@ -10,13 +10,17 @@ public class Repairable : MonoBehaviour
     private Health _health;
     private Inventory _inventory;
 
+    [Header("Repair Properties")]
+    [Tooltip("Is there a health script on this gameobject")]
     [SerializeField] private bool _hasHealthComponent;
 
+    [Tooltip("The item needed to repair the object")]
     [SerializeField] private InventoryItemSO ItemToConsume;
+
+    [Tooltip("How much health the object heals on repair")]
     [SerializeField] private int _healthAmountRegen = 50;
 
-    //make unserialized after testing
-    [SerializeField] private float _repairProgress = 0;
+    private float _repairProgress = 0;
 
     //[SerializeField] private int 
 

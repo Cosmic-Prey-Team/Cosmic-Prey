@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class SpawnAsteroids : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _asteroid;
+    [Tooltip("The asteroid prefab to spawn")]
+    [SerializeField] private GameObject _asteroid;
 
-    [SerializeField]
-    private float _minDistanceApart = 50;
+    [Header("Asteroid Spawning Properties")]
+    [Tooltip("The minimum distance between asteroids")]
+    [SerializeField] private float _minDistanceApart = 50;
 
-    [SerializeField]
-    private int _numAsteroidsToSpawn = 10;
+    [Tooltip("the amount of asteroids to spawn in the map")]
+    [SerializeField] private int _numAsteroidsToSpawn = 10;
 
-    [SerializeField]
-    private float _mapSize = 500;
+    [Tooltip("the size of the map")]
+    [SerializeField] private float _mapSize = 500;
 
 
     private Vector3 FindNewPosition()
