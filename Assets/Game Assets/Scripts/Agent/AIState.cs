@@ -7,7 +7,9 @@ public enum AIStateID {
     WhaleWander,
     WhaleIdle,
     WhaleAttack,
-    WhaleFlee
+    WhaleFlee,
+    KrillFollow,
+    KrillAttack
 }
 
 public interface AIState

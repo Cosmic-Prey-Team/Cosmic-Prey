@@ -18,10 +18,9 @@ public class AIWhaleWanderState : AIState
     [SerializeField]
     float distanceLimit = 6f;
 
-   
 
     public void Enter(AIAgent agent)
-    {      
+    {
         destinations = GameObject.FindGameObjectsWithTag("PermWaypoint");
         sensor = agent.GetComponent<AISensor>();
     }
@@ -51,6 +50,7 @@ public class AIWhaleWanderState : AIState
             if (destination == null)
             {
                 destination = destinations[Random.Range(0, destinations.Length - 1)].transform;
+                agent.config.destination = destination;
             }
 
             Vector3[] nodes = new Vector3[1];
@@ -104,7 +104,7 @@ public class AIWhaleWanderState : AIState
 
             agent.steeringBasics.Steer(accel);
             agent.steeringBasics.LookWhereYoureGoing();
-
+            
             agent.path.Draw();
         }
 
@@ -114,8 +114,12 @@ public class AIWhaleWanderState : AIState
             scanTimer = 0.5f;
             sensor.Scan();
             GameObject[] food = sensor.Filter(new GameObject[1], "Food");
-
-            if (food[0] != null)
+            GameObject[] player = sensor.Filter(new GameObject[1], "Player");
+            if (player[0] != null)
+            {
+                agent.stateMachine.ChangeState(AIStateID.WhaleAttack);
+            }
+            else if (food[0] != null)
             {
                 Vector3[] nodes = new Vector3[1];
                 nodes[0] = food[0].transform.position;

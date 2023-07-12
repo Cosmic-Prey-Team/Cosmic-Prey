@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5d18a7006e908b4e9228bc08d5832e1, type: 3}
-  m_Name: whale-config
+  m_Name: krill-config
   m_EditorClassIdentifier: 
-  Speed: 4
-  Waypoint: {fileID: 4160088872108794334, guid: ad89d0a68e02d6b439c8e47356bc8f33,
-    type: 3}
+  Speed: 5
+  Waypoint: {fileID: 0}
   occlusionLayers:
     serializedVersion: 2
     m_Bits: 512
-  teleportEffect: {fileID: 4160088872108794334, guid: dfdd8e0cf6a4e6b4b9d37fdb1d427c7a,
-    type: 3}
-  enemyPrefab: {fileID: 6210935028167733055, guid: cd232e6aee77205418bed17ed4913842,
-    type: 3}
-  krill: []
+  teleportEffect: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  krill:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   destination: {fileID: 0}

@@ -33,6 +33,8 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIWhaleIdleState());
         stateMachine.RegisterState(new AIWhaleAttackState());
         stateMachine.RegisterState(new AIWhaleFleeState());
+        stateMachine.RegisterState(new AIKrillFollowState());
+        stateMachine.RegisterState(new AIKrillAttackState());        
         stateMachine.ChangeState(initialState);
     }
 

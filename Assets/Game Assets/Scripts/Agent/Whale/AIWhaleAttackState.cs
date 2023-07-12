@@ -12,6 +12,7 @@ public class AIWhaleAttackState : AIState
        
     private GameObject _teleportMarker = null;
     private GameObject _target;
+    private AIAgentConfig _krillConfig;
     private float _chargeTimer = 0f;
     private float _teleportTimer = 0f;
     private float _spawnTimer = 0f;
@@ -48,17 +49,19 @@ public class AIWhaleAttackState : AIState
 
         if (!_attacking)
         {
-            _attack = Random.Range(0, 3);
+            _attack = 2;//Random.Range(0, 3);
             Debug.Log(_attack);
         }
 
-        if (_attack == 2 && _spawnTimer > _spawnCooldown)
+        if (_attack == 2 && _spawnTimer >= _spawnCooldown)
         {
-            
-            SpawnEnemies(agent);
+            if (_krillConfig.krill.Count < 10)
+            {
+                SpawnEnemies(agent);
+            }           
             _spawnTimer = 0f;
         }
-        else if (_attack == 1 && _teleportTimer > _teleportCooldown)
+        else if (_attack == 1 && _teleportTimer >= _teleportCooldown)
         {
             Teleport(agent);
         }
@@ -220,6 +223,11 @@ public class AIWhaleAttackState : AIState
 
     private void SpawnEnemies(AIAgent agent)
     {
+        for (int i = 0; i < Random.Range(4,6); i++)
+        {
+            Vector3 offset = new Vector3(Random.Range(-5, 6), Random.Range(-5, 6), Random.Range(-5, 6));
+            GameObject.Instantiate(agent.config.enemyPrefab, agent.gameObject.transform.position + offset, Quaternion.identity);
+        }
         return;
     }
 

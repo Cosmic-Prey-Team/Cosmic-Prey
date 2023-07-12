@@ -49,5 +49,7 @@ namespace UnityMovementAI
 
             return acceleration;
         }
+
+        
     }
 }

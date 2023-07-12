@@ -12,7 +12,18 @@ namespace UnityMovementAI
         /// <summary>
         /// Determines if the character should follow the ground or can fly any where in 3D space
         /// </summary>
+        /// //[System.NonSerialized]
+        public bool is3D;
+        
         public bool canFly;
+        [SerializeField]
+        Rigidbody rb3D;
+        [SerializeField]
+        Rigidbody2D rb2D;
+        [SerializeField]
+        SphereCollider col3D;
+        [SerializeField]
+        CircleCollider2D col2D;
 
         [Header("3D Grounded Settings")]
         /// <summary>
@@ -35,8 +46,7 @@ namespace UnityMovementAI
         /// </summary>
         public float slopeLimit = 80f;
 
-        SphereCollider col3D;
-        CircleCollider2D col2D;
+        
 
         /// <summary>
         /// The radius for the current game object (either the radius of a sphere or circle
@@ -62,8 +72,7 @@ namespace UnityMovementAI
             }
         }
 
-        [System.NonSerialized]
-        public bool is3D;
+        
 
         /// <summary>
         /// The current ground normal for this character. This value is only used by 3D 
@@ -79,8 +88,7 @@ namespace UnityMovementAI
         [System.NonSerialized]
         public Vector3 movementNormal = Vector3.up;
 
-        Rigidbody rb3D;
-        Rigidbody2D rb2D;
+        
 
         void Awake()
         {

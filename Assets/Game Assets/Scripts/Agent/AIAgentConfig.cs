@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityMovementAI;
 
 [CreateAssetMenu()]
 public class AIAgentConfig : ScriptableObject
@@ -10,4 +11,6 @@ public class AIAgentConfig : ScriptableObject
     public LayerMask occlusionLayers;
     public GameObject teleportEffect;
     public GameObject enemyPrefab;
+    public List<MovementAIRigidbody> krill;
+    public Transform destination;
 }
