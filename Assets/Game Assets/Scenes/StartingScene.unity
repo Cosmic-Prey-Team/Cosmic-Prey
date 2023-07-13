@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159636986}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c1f994ce7c40984dadfceeed6c1b873, type: 3}
   m_Name: 
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   boostDepecationRate: 0.25
   boostRechargeRate: 0.5
   boostMultiplier: 1.4
+  currentBoostAmount: 0
 --- !u!1 &1446161256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,7 +2715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: dd85c070a32f7f64ea6ee36a91def550,
     type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -2880,43 +2881,95 @@ MonoBehaviour:
     m_ActionName: ShipControls/PitchYaw[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: f8a27a0e-9d1f-4346-a5bf-4745f8a773ea
-    m_ActionName: Space Movement/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8af7250b-55d3-4032-a7b4-d19e0373791f
-    m_ActionName: Space Movement/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ef94f954-bd0a-4ac6-ba86-577cf55b1d86
-    m_ActionName: Space Movement/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1675b7b4-abb8-4726-afca-ebe46a2140ba
-    m_ActionName: Space Movement/Sprint[/Keyboard/leftShift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5dfb1da6-53cc-44ad-9758-77660e738dea
-    m_ActionName: Space Movement/Interact[/Keyboard/f]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f83f1b84-c3eb-44ec-a916-af25994e4f71
-    m_ActionName: Space Movement/VerticalMove[/Keyboard/q,/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e8191467-2937-4085-a2c5-144db09766fb
-    m_ActionName: Space Movement/Look Movement[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5fcab634-8912-40f6-93b5-65ef87c66708
-    m_ActionName: Space Movement/Boost[/Keyboard/shift]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: b4779e0d-6508-470c-8959-a949801f7605
     m_ActionName: ShipControls/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8997996947332509062}
+        m_TargetAssemblyTypeName: ZeroGMovement, Assembly-CSharp
+        m_MethodName: OnThrust
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6250e487-de75-4518-bcbd-3f59eb3fea7d
+    m_ActionName: ShipControls1/Thrust[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8997996947332509062}
+        m_TargetAssemblyTypeName: ZeroGMovement, Assembly-CSharp
+        m_MethodName: OnStrafe
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ead43297-dc4d-4bc6-96bf-73eca6666ad2
+    m_ActionName: ShipControls1/Strafe[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8997996947332509062}
+        m_TargetAssemblyTypeName: ZeroGMovement, Assembly-CSharp
+        m_MethodName: OnUpDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3ef87cd8-bd34-4e55-9691-624d2d9be2d5
+    m_ActionName: ShipControls1/UpDown[/Keyboard/ctrl,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8997996947332509062}
+        m_TargetAssemblyTypeName: ZeroGMovement, Assembly-CSharp
+        m_MethodName: OnRoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c8de72f0-9169-43bf-a10a-57b130334788
+    m_ActionName: ShipControls1/Roll[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 339ed3e8-6260-4fde-808e-b74d2994dd8e
+    m_ActionName: ShipControls1/PitchYaw[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8997996947332509062}
+        m_TargetAssemblyTypeName: ZeroGMovement, Assembly-CSharp
+        m_MethodName: OnBoost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c7609e70-db9b-4f63-8891-c04c6f01dbec
+    m_ActionName: ShipControls1/Boost[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: ShipControls
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &8616685848642844475
@@ -2933,9 +2986,11 @@ GameObject:
   - component: {fileID: 1978471637355732427}
   - component: {fileID: 8997996947332509058}
   - component: {fileID: 8616685848642844471}
+  - component: {fileID: 8997996947332509062}
   - component: {fileID: 8997996947332509059}
   - component: {fileID: 8997996947332509060}
   - component: {fileID: 8997996947332509061}
+  - component: {fileID: 8997996947332509063}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -2980,6 +3035,7 @@ MonoBehaviour:
   JetPackAcceleration: 1
   MaxJetpackVelocity: 5
   _ship: {fileID: 1159636986}
+  _playerState: {fileID: 8997996947332509061}
 --- !u!1 &8908240905045979425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3085,3 +3141,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   _shipHelm: {fileID: 702925626}
+  playerInput: {fileID: 8616685848642844471}
+  _rb: {fileID: 8997996947332509063}
+--- !u!114 &8997996947332509062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848642844475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8716d37f4abe91459140c5475c703d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollTorque: 500
+  thrust: 100
+  upThrust: 50
+  strafeThrust: 50
+  thrustGlideReduction: 0.999
+  upDownGlideReduction: 0.111
+  leftRightGlideReduction: 0.111
+  maxBoostAmount: 2
+  boostDepecationRate: 0.25
+  boostRechargeRate: 0.5
+  boostMultiplier: 1.4
+  currentBoostAmount: 0
+--- !u!54 &8997996947332509063
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848642844475}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0.5
+  m_AngularDrag: 2
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
