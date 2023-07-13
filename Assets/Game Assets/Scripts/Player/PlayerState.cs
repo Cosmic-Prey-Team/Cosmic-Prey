@@ -11,6 +11,7 @@ public class PlayerState : MonoBehaviour
     [SerializeField] public ShipHelm _shipHelm;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] GameObject _camera;
 
     private void Awake()
     {
@@ -64,12 +65,14 @@ public class PlayerState : MonoBehaviour
         playerInput.SwitchCurrentActionMap("Player");
         this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlPlayer();
         _rb.isKinematic = true;
+        _camera.SetActive(false);
         _rb.GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
     }
     void OnSpaceMovementState()
     {
         playerInput.SwitchCurrentActionMap("PlayerSpaceControls");
         _rb.isKinematic = false;
+        _camera.SetActive(true);
         Debug.Log("Switched to FP Space Controls");
 
     }

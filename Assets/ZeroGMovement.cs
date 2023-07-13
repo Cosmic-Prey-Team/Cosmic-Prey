@@ -39,6 +39,24 @@ public class ZeroGMovement : MonoBehaviour
     private bool boosting = false;
     public float currentBoostAmount;
 
+    [Header("====Mouse Movement Settings ====")]
+    private PlayerInput _playerInput;
+    private InputHandler _input;
+    private const float _threshold = 0.01f;
+    private float _rotationVelocity;
+    // cinemachine
+    private float _cinemachineTargetPitch;
+  
+    [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
+    public GameObject CinemachineCameraTarget;
+    [Tooltip("How far in degrees can you move the camera up")]
+    public float TopClamp = 90.0f;
+    [Tooltip("How far in degrees can you move the camera down")]
+    public float BottomClamp = -90.0f;
+
+    [Tooltip("Rotation speed of the character")]
+    public float RotationSpeed = 1.0f;
+
 
 
     Rigidbody rb;
@@ -61,16 +79,35 @@ public class ZeroGMovement : MonoBehaviour
     {
         HandleBoosting();
         HandleMovement();
+        CameraRotation();
     }
 
     void Setup()
     {
         _mainCam = Camera.main;
+        _input = GetComponent<InputHandler>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         currentBoostAmount = maxBoostAmount;
+
+#if ENABLE_INPUT_SYSTEM
+        _playerInput = GetComponent<PlayerInput>();
+#else
+			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+#endif
     }
 
+    private bool IsCurrentDeviceMouse
+    {
+        get
+        {
+#if ENABLE_INPUT_SYSTEM
+            return _playerInput.currentControlScheme == "KeyboardMouse";
+#else
+				return false;
+#endif
+        }
+    }
     void HandleBoosting()
     {
         if (boosting && currentBoostAmount > 0f)
@@ -102,6 +139,7 @@ public class ZeroGMovement : MonoBehaviour
         // thrust
         if (thrust1D > 0.1f || thrust1D < -0.1f)
         {
+            //Debug.Log("Thrust " + thrust1D);
             float currentThrust;
 
             if (boosting)
@@ -151,24 +189,31 @@ public class ZeroGMovement : MonoBehaviour
     }
 
     #region Input Methods
-    public void OnThrust(InputAction.CallbackContext context)
+    public void OnThrust(InputValue value)
     {
-        thrust1D = context.ReadValue<float>();
+        thrust1D = value.Get<float>();
+        
     }
 
-    public void OnStrafe(InputAction.CallbackContext context)
+    public void OnStrafe(InputValue value)
     {
-        strafe1D = context.ReadValue<float>();
+        strafe1D = value.Get<float>();
+        //Debug.Log("Strafe" + strafe1D);
+
     }
 
-    public void OnUpDown(InputAction.CallbackContext context)
+    public void OnUpDown(InputValue value)
     {
-        upDown1D = context.ReadValue<float>();
+        upDown1D = value.Get<float>();
+        //Debug.Log("UpDown");
+
     }
 
-    public void OnRoll(InputAction.CallbackContext context)
+    public void OnRoll(InputValue value)
     {
-        roll1D = context.ReadValue<float>();
+        roll1D = value.Get<float>();
+        //Debug.Log("Roll");
+
     }
 
     //public void OnPitchYaw(InputAction.CallbackContext context)
@@ -179,6 +224,35 @@ public class ZeroGMovement : MonoBehaviour
     public void OnBoost(InputAction.CallbackContext context)
     {
         boosting = context.performed;
+    }
+
+    private void CameraRotation()
+    {
+        // if there is an input
+        if (_input.look.sqrMagnitude >= _threshold)
+        {
+            //Don't multiply mouse input by Time.deltaTime
+            float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+
+            _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+            _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+
+            // clamp our pitch rotation
+            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+
+            // Update Cinemachine camera target pitch
+            CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
+            transform.Rotate(Vector3.up * _rotationVelocity);
+
+        }
+    }
+
+    private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+    {
+        if (lfAngle < -360f) lfAngle += 360f;
+        if (lfAngle > 360f) lfAngle -= 360f;
+        return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
     #endregion
 }
