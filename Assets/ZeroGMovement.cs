@@ -28,12 +28,16 @@ public class ZeroGMovement : MonoBehaviour
 
 
     [Header("==== Boost Settings ===")]
+    [Tooltip("The amount of time a boost will last before it depreciates and starts to reset.")]
     [SerializeField]
     private float maxBoostAmount = 2f; //how long to boost for
     [SerializeField]
+    [Tooltip("Rate at which boost depreciates.")]
     private float boostDepecationRate = 0.25f; //how long tank depletes
+    [Tooltip("Rate at which the boost recharges.")]
     [SerializeField]
     private float boostRechargeRate = 0.5f; //how quick cooldown refills
+    [Tooltip("How much faster the boost makes the player go.")]
     [SerializeField]
     private float boostMultiplier = 1.4f; //how much faster does this make the player go?
     private bool boosting = false;
@@ -221,9 +225,12 @@ public class ZeroGMovement : MonoBehaviour
     //    pitchYaw = context.ReadValue<Vector2>();
     //}
 
-    public void OnBoost(InputAction.CallbackContext context)
+    public void OnBoost(InputValue value)
     {
-        boosting = context.performed;
+        if (value.Get<float>() != 0)
+            boosting = true;
+        else
+            boosting = false;
     }
 
     private void CameraRotation()

@@ -67,11 +67,14 @@ public class PlayerState : MonoBehaviour
         _rb.isKinematic = true;
         _camera.SetActive(false);
         _rb.GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
+        _rb.inertiaTensor.Set(0, 0, 0);
     }
     void OnSpaceMovementState()
     {
         playerInput.SwitchCurrentActionMap("PlayerSpaceControls");
         _rb.isKinematic = false;
+        _rb.inertiaTensor.Set(0, 0, 0);
+        _rb.angularVelocity.Set(0, 0, 0);
         _camera.SetActive(true);
         Debug.Log("Switched to FP Space Controls");
 
