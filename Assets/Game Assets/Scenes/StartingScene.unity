@@ -515,8 +515,8 @@ MonoBehaviour:
   m_RecenterTarget: 0
   m_VerticalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.06
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -539,8 +539,8 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.06
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -557,8 +557,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_HorizontalRecentering:
     m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 5
+    m_RecenteringTime: 3
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_ApplyBeforeBody: 0
@@ -921,7 +921,7 @@ MonoBehaviour:
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 0
+    m_BlendHint: 1
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
@@ -3409,13 +3409,13 @@ MonoBehaviour:
   thrust: 200
   upThrust: 50
   strafeThrust: 50
-  thrustGlideReduction: 0.465
+  thrustGlideReduction: 0.388
   upDownGlideReduction: 0.111
   leftRightGlideReduction: 0.111
-  maxBoostAmount: 2
+  maxBoostAmount: 20
   boostDepecationRate: 0.25
   boostRechargeRate: 0.5
-  boostMultiplier: 1.4
+  boostMultiplier: 10
   currentBoostAmount: 0
   CinemachineCameraTarget: {fileID: 632185507}
   TopClamp: 90
