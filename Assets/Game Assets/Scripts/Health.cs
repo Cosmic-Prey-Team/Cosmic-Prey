@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class Health : MonoBehaviour
     
     // events for future use
     public event Action OnHealthChanged;
-    public event Action OnDeath;
+    //public event Action OnDeath;
+    [Space]
+    public UnityEvent OnDeath;
 
     private void Awake()
     {
@@ -40,6 +43,8 @@ public class Health : MonoBehaviour
         _health -= damage;
         if (_health < 0) _health = 0;
         OnHealthChanged?.Invoke();
+
+        if (_health == 0) Die();
     }
 
     public void Heal(int amount)

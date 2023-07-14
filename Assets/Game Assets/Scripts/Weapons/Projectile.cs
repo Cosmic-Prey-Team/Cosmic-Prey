@@ -34,6 +34,14 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Health otherHealth = other.GetComponent<Health>();
+        if(otherHealth != null)
+        {
+            Debug.Log("Hit Damagable");
+            otherHealth.Damage(_damage);
+        }
+
+        //destroy projectile
         Destroy(gameObject);
     }
 }
