@@ -47,6 +47,7 @@ public class Health : MonoBehaviour
     {
         OnDeath?.Invoke();
         Destroy(gameObject);
+        //
     }
 
 
