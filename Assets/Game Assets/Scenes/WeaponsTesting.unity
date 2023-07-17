@@ -2406,9 +2406,12 @@ MonoBehaviour:
   _interactText: Press "F" to use Turret
   _isInteracting: 0
   _playerTransform: {fileID: 0}
-  _originalPosition: {fileID: 0}
-  _usingPosition: {fileID: 0}
-  _swivelTransform: {fileID: 0}
+  _originalPosition: {fileID: 1094575204}
+  _usingPosition: {fileID: 43307979}
+  _swivelTransform: {fileID: 961379767}
+  RotationSpeed: 1
+  TopClamp: 60
+  BottomClamp: -60
 --- !u!1 &771903445
 GameObject:
   m_ObjectHideFlags: 0
