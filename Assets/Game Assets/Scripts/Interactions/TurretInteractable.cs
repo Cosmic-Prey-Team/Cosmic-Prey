@@ -1,30 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TurretInteractable : MonoBehaviour, IInteractable
 {
     [Header("IInteractable variables")]
     [SerializeField] string _interactText;
     [SerializeField] bool _isInteracting = false;
-    [SerializeField] Transform _playerTransform;
 
     [Header("Turrent Variables")]
     [SerializeField] Transform _originalPosition;
     [SerializeField] Transform _usingPosition;
+    [SerializeField] Transform _startPosition;
     [SerializeField] Transform _swivelTransform;
+    [SerializeField] Transform _swivelParentTransform;
 
     [Header("Look Settings")]
     [SerializeField] float RotationSpeed = 1f;
     [SerializeField] float TopClamp = 60f;
     [SerializeField] float BottomClamp = -60f;
 
+    [Space]
+    public UnityEvent OnInteracted;
+
     private float _targetPitch;
 
     private InputHandler _input;
+    private Transform _playerTransform;
     private Gun _gun;
     private EquipmentSwapping _equipmentSwapping;
     private StarterAssets.FirstPersonController _firstPersonController;
+    private CharacterController _characterController;
 
     #region IInteractable Methods
     public string GetInteractText()
@@ -62,10 +69,17 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     {
         _input = FindObjectOfType<InputHandler>();
         _gun = GetComponentInChildren<Gun>();
+        _gun.gameObject.SetActive(false);
+
+        _startPosition.position = _swivelTransform.position;
+        _startPosition.rotation = _swivelTransform.rotation;
     }
     private void Update()
     {
-        
+        if (_isInteracting)
+        {
+            MaintainPosition();
+        }
     }
     private void LateUpdate()
     {
@@ -88,18 +102,37 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             /// move player to using position
             /// disable player equipment
             /// disable player movement and look rotation
+            /// enable gun
 
+            /*//reorient swivel
+            _swivelTransform.position = _startPosition.position;
+            _swivelTransform.rotation = _startPosition.rotation;*/
+
+            //disable collider
+            CapsuleCollider collider = _playerTransform.GetComponentInChildren<CapsuleCollider>();
+            if (collider != null) collider.enabled = false;
+
+            //save position
             _originalPosition.position = _playerTransform.position;
             _originalPosition.rotation = _playerTransform.rotation;
 
-            _playerTransform.position = _usingPosition.position;
-            _playerTransform.rotation = _usingPosition.rotation;
+            //move player
+            MaintainPosition();
 
+            //disable equipment
             _equipmentSwapping = FindObjectOfType<EquipmentSwapping>();
             if (_equipmentSwapping != null) _equipmentSwapping.gameObject.SetActive(false);
 
+            //disable first person controller
             _firstPersonController = _playerTransform.GetComponent<StarterAssets.FirstPersonController>();
             _firstPersonController.enabled = false;
+
+            //disable character controller
+            _characterController = _playerTransform.GetComponent<CharacterController>();
+            _characterController.enabled = false;
+
+            //enable gun
+            EnableGun(true);
         }
         else
         {
@@ -107,6 +140,31 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             /// return player to original position
             /// enable player equipment
             /// enable player movement and look rotation
+            /// disable gun
+
+            //disable collider
+            CapsuleCollider collider = _playerTransform.GetComponentInChildren<CapsuleCollider>();
+            if (collider != null) collider.enabled = true;
+
+            //return player to position
+            _playerTransform.position = _originalPosition.position;
+            _playerTransform.rotation = _originalPosition.rotation;
+
+            //enable equipment
+            if (_equipmentSwapping != null) _equipmentSwapping.gameObject.SetActive(true);
+
+            //enable controller
+            if(_firstPersonController != null) _firstPersonController.enabled = true;
+
+            //disable character controller
+            if(_characterController != null) _characterController.enabled = true;
+
+            //disable gun
+            EnableGun(false);
+
+            /*//reorient swivel
+            _swivelTransform.position = _startPosition.position;
+            _swivelTransform.rotation = _startPosition.rotation;*/
         }
     }
 
@@ -128,13 +186,22 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             _swivelTransform.localRotation = Quaternion.Euler(_targetPitch, 0.0f, 0.0f);
 
             // rotate the player left and right
-            transform.Rotate(Vector3.up * rotationVelocity);
+            _swivelParentTransform.Rotate(Vector3.up * rotationVelocity);
+        }
+    }
+    private void MaintainPosition()
+    {
+        if(_playerTransform != null)
+        {
+            _playerTransform.position = _usingPosition.position;
+            _playerTransform.rotation = _usingPosition.rotation;
         }
     }
 
-    private void EnableShoot(bool enabled)
+    private void EnableGun(bool enabled)
     {
-        _gun.enabled = enabled;
+        //_gun.enabled = enabled;
+        _gun.gameObject.SetActive(enabled);
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

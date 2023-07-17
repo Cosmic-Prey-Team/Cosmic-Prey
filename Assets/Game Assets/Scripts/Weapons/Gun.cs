@@ -156,7 +156,10 @@ public class Gun : MonoBehaviour
         _currentAmmoCount = _maxAmmoCount;
         OnAmmoCountChanged?.Invoke(_currentAmmoCount);
     }
-
+    public void SetAmmoCount(int ammoCount)
+    {
+        _currentAmmoCount = ammoCount;
+    }
     public void RefreshAmmoStatus()
     {
 
