@@ -19,10 +19,12 @@ public class Gun : MonoBehaviour
     [SerializeField] bool _infiniteAmmo = false;
     [SerializeField] int _maxAmmoCount = 10;
     [SerializeField] int _currentAmmoCount;
+    [SerializeField] float _maxRange = 200f;
 
     [Header("Transforms")]
     [SerializeField] Transform _bulletSpawnPoint;
-
+    [SerializeField] Transform _raySpawnPoint;
+    [SerializeField] Transform _target;
 
     //button press events
     bool _isLeftButtonDown = false;
@@ -123,10 +125,28 @@ public class Gun : MonoBehaviour
             }
 
             #region Rigidbody Method
+            //using raycast to determine direction of projectile
+            Vector3 rayStartPos = _raySpawnPoint.position;
+            Vector3 rayDirection = _raySpawnPoint.forward;
+            Vector3 offsetPos = _raySpawnPoint.position + _raySpawnPoint.forward * _maxRange;
+
+            RaycastHit hitInfo;
+            if (Physics.Raycast(rayStartPos, rayDirection, out hitInfo, _maxRange))
+            {
+                _target.position = hitInfo.point;
+            }
+            else
+            {
+                _target.position = _raySpawnPoint.TransformPoint(_raySpawnPoint.InverseTransformPoint(offsetPos));
+            }
+
+            //rotate spawn point to face target
+            _bulletSpawnPoint.LookAt(_target);
+
             //spawn bullet prefab
             GameObject bulletObject = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
             Projectile bullet = bulletObject.GetComponent<Projectile>();
-            bullet.Configure(transform, _damagePerBullet);
+            bullet.Configure(_bulletSpawnPoint, _damagePerBullet);
             #endregion
         }
     }

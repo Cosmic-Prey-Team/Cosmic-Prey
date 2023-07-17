@@ -110,6 +110,37 @@ Transform:
   m_Father: {fileID: 6089253188134341331}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3093740966160213811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5031009217407472623}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5031009217407472623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093740966160213811}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.095, z: 0.618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6089253188134341331}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3317024358366745122
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +519,7 @@ Transform:
   - {fileID: 2533927470438088307}
   - {fileID: 239028872162562466}
   - {fileID: 6151954418615199804}
+  - {fileID: 5031009217407472623}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -512,7 +544,10 @@ MonoBehaviour:
   _infiniteAmmo: 0
   _maxAmmoCount: 10
   _currentAmmoCount: 0
+  _maxRange: 200
   _bulletSpawnPoint: {fileID: 239028872162562466}
+  _raySpawnPoint: {fileID: 0}
+  _target: {fileID: 5031009217407472623}
   OnAmmoCountChanged:
     m_PersistentCalls:
       m_Calls: []
