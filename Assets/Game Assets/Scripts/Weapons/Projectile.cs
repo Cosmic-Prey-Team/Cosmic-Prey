@@ -7,17 +7,13 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] float _speed;
     [SerializeField] float _lifetime = 5f;
+    [SerializeField] LayerMask _ignoreLayer;
 
     private int _damage;
     private Rigidbody _rbody;
     private Transform _origin;
 
-    private void Start()
-    {
-        
 
-
-    }
     public void Configure(Transform originTransform, int damage)
     {
         //configure
@@ -34,9 +30,12 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer != _ignoreLayer) return;
+
         Health otherHealth = other.GetComponent<Health>();
         if(otherHealth != null)
         {
+
             Debug.Log("Hit Damagable");
             otherHealth.Damage(_damage);
         }
