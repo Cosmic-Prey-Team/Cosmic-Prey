@@ -10,7 +10,7 @@ TagManager:
   - ProcessorCanvas
   - Waypoint
   - Whale
-  - PermaWaypoint
+  - PermWaypoint
   layers:
   - Default
   - TransparentFX
@@ -18,11 +18,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Waypoint
+  - Obstacle
+  - Food
   - 
   - 
   - 
