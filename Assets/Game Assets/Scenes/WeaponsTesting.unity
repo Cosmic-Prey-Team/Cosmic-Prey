@@ -1407,7 +1407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552982888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.41, y: 1.65, z: -3.42}
+  m_LocalPosition: {x: 4.123, y: 1.65, z: -3.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5214,7 +5214,27 @@ PrefabInstance:
     - target: {fileID: 3703205335087411309, guid: f16cae53092c6cc45823871f0248b082,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156984345608746687, guid: f16cae53092c6cc45823871f0248b082,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156984345608746687, guid: f16cae53092c6cc45823871f0248b082,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.734
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736900189755680566, guid: f16cae53092c6cc45823871f0248b082,
+        type: 3}
+      propertyPath: _hitRange
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736900189755680566, guid: f16cae53092c6cc45823871f0248b082,
+        type: 3}
+      propertyPath: _damageRate
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16cae53092c6cc45823871f0248b082, type: 3}

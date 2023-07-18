@@ -30,16 +30,13 @@ public class Gun : MonoBehaviour
     bool _isLeftButtonDown = false;
     bool _isLeftPressed = false;
 
-    bool _isRightButtonDown = false;
-    bool _isRightPressed = false;
-
     //private
     private bool _isFiring = false;
     private float _nextTimeToFire = 0f;
 
-    [Space]
+    [Header("Events")]
+    public UnityEvent OnShoot;
     public UnityEvent<int> OnAmmoCountChanged;
-
 
     private void Awake()
     {
@@ -67,25 +64,6 @@ public class Gun : MonoBehaviour
             {
                 _isLeftButtonDown = false;
                 _isFiring = _isLeftButtonDown;
-            }
-        }
-
-        //secondary firing
-        if (_isRightButtonDown == false)
-        {
-            if (_input.fireSecondary == true)
-            {
-                _isRightPressed = !_isRightPressed;
-
-                ReloadAmmo();
-                _isRightButtonDown = true;
-            }
-        }
-        if (_isRightButtonDown == true)
-        {
-            if (_input.fireSecondary == false)
-            {
-                _isRightButtonDown = false;
             }
         }
         #endregion
@@ -147,6 +125,8 @@ public class Gun : MonoBehaviour
             GameObject bulletObject = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
             Projectile bullet = bulletObject.GetComponent<Projectile>();
             bullet.Configure(_bulletSpawnPoint, _damagePerBullet);
+
+            OnShoot?.Invoke();
             #endregion
         }
     }
