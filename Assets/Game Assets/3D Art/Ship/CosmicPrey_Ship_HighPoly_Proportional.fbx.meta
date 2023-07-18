@@ -3,7 +3,52 @@ guid: f64429488e2641f4e9a5a1d1ed748556
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_Bandages
+    second: {fileID: 2100000, guid: b9b31b5b114b1354c944166a0fb827bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_Base
+    second: {fileID: 2100000, guid: 5e116930ea8c27f4394464fee20bc097, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_Front
+    second: {fileID: 2100000, guid: c074364079e792643b29801c95bc8768, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_Glasses
+    second: {fileID: 2100000, guid: 75c3a8ec5ae4769419c6ada3db27761e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_LanternAndChains
+    second: {fileID: 2100000, guid: 9c7e22fb101a53e44964aa870a7558b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_Rockets
+    second: {fileID: 2100000, guid: 318800551df552540bc369f7e5bbe7cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_Underside
+    second: {fileID: 2100000, guid: a037b8ce2a6ec9b4ca761fc4ee7fb3b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_Wings
+    second: {fileID: 2100000, guid: 22d611734235822459f7659e2fd19666, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SG_Ship_WoodenSpikes
+    second: {fileID: 2100000, guid: 56c0da180e5894643a8801e60e50a925, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
