@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Cinemachine;
 
 public class TurretInteractable : MonoBehaviour, IInteractable
 {
@@ -12,7 +13,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     [Header("Turrent Variables")]
     [SerializeField] Transform _originalPosition;
     [SerializeField] Transform _usingPosition;
-    [SerializeField] Transform _startPosition;
+    [SerializeField] Transform _lookTarget;
     [SerializeField] Transform _swivelTransform;
     [SerializeField] Transform _swivelParentTransform;
 
@@ -32,6 +33,8 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     private EquipmentSwapping _equipmentSwapping;
     private StarterAssets.FirstPersonController _firstPersonController;
     private CharacterController _characterController;
+    private CinemachineVirtualCamera _cinemachine;
+
 
     #region IInteractable Methods
     public string GetInteractText()
@@ -70,9 +73,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
         _input = FindObjectOfType<InputHandler>();
         _gun = GetComponentInChildren<Gun>();
         _gun.gameObject.SetActive(false);
-
-        _startPosition.position = _swivelTransform.position;
-        _startPosition.rotation = _swivelTransform.rotation;
+        _cinemachine = FindObjectOfType<CinemachineVirtualCamera>();
     }
     private void Update()
     {
@@ -104,24 +105,10 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             /// disable player movement and look rotation
             /// enable gun
 
-            /*//reorient swivel
-            _swivelTransform.position = _startPosition.position;
-            _swivelTransform.rotation = _startPosition.rotation;*/
 
             //disable collider
             CapsuleCollider collider = _playerTransform.GetComponentInChildren<CapsuleCollider>();
             if (collider != null) collider.enabled = false;
-
-            //save position
-            _originalPosition.position = _playerTransform.position;
-            _originalPosition.rotation = _playerTransform.rotation;
-
-            //move player
-            MaintainPosition();
-
-            //disable equipment
-            _equipmentSwapping = FindObjectOfType<EquipmentSwapping>();
-            if (_equipmentSwapping != null) _equipmentSwapping.gameObject.SetActive(false);
 
             //disable first person controller
             _firstPersonController = _playerTransform.GetComponent<StarterAssets.FirstPersonController>();
@@ -131,8 +118,23 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             _characterController = _playerTransform.GetComponent<CharacterController>();
             _characterController.enabled = false;
 
+            //disable equipment
+            _equipmentSwapping = FindObjectOfType<EquipmentSwapping>();
+            if (_equipmentSwapping != null) _equipmentSwapping.gameObject.SetActive(false);
+
             //enable gun
             EnableGun(true);
+
+            //save position
+            _originalPosition.position = _playerTransform.position;
+            _originalPosition.rotation = _playerTransform.rotation;
+
+            //move player
+            //_playerTransform.position = _playerTransform.TransformPoint(_usingPosition.localPosition);
+            _playerTransform.position = _usingPosition.position;
+            //_playerTransform.localRotation = _usingPosition.localRotation;
+            //_playerTransform.LookAt(_lookTarget);
+            _cinemachine.m_LookAt = _lookTarget;
         }
         else
         {
@@ -146,25 +148,23 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             CapsuleCollider collider = _playerTransform.GetComponentInChildren<CapsuleCollider>();
             if (collider != null) collider.enabled = true;
 
-            //return player to position
-            _playerTransform.position = _originalPosition.position;
-            _playerTransform.rotation = _originalPosition.rotation;
-
-            //enable equipment
-            if (_equipmentSwapping != null) _equipmentSwapping.gameObject.SetActive(true);
-
             //enable controller
             if(_firstPersonController != null) _firstPersonController.enabled = true;
 
             //disable character controller
             if(_characterController != null) _characterController.enabled = true;
 
+            //enable equipment
+            if (_equipmentSwapping != null) _equipmentSwapping.gameObject.SetActive(true);
+
             //disable gun
             EnableGun(false);
 
-            /*//reorient swivel
-            _swivelTransform.position = _startPosition.position;
-            _swivelTransform.rotation = _startPosition.rotation;*/
+            //return player to position
+            _playerTransform.position = _originalPosition.position;
+            _playerTransform.rotation = _originalPosition.rotation;
+
+            _cinemachine.m_LookAt = null;
         }
     }
 
