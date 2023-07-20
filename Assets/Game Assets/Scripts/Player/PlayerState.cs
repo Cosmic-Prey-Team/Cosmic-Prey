@@ -7,16 +7,16 @@ public class PlayerState : MonoBehaviour
 {
     public ControlState currentState;
     //[SerializeField] List<IInteractable> stateChangingInteractables;
-    [SerializeField] public ShipHelm _shipHelm;
+    //[SerializeField] public ShipHelm _shipHelm;
 
     private void Awake()
     {
         currentState = ControlState.FirstPerson;
         StateAction();
-        _shipHelm = FindObjectOfType<ShipHelm>();
+        //_shipHelm = FindObjectOfType<ShipHelm>();
     }
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         if (_shipHelm)
             _shipHelm.OnSwitchState += SwitchState;
@@ -26,7 +26,7 @@ public class PlayerState : MonoBehaviour
     {
         if (_shipHelm)
             _shipHelm.OnSwitchState -= SwitchState;
-    }
+    }*/
 
     public void StateAction()
     {

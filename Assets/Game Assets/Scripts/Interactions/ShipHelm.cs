@@ -9,11 +9,11 @@ public class ShipHelm : MonoBehaviour, IInteractable
     [Header("IInteractable variables")]
     [SerializeField] string _interactText;
     [SerializeField] bool _isInteracting = false;
-
     [SerializeField] private PlayerState _playerState = null;
 
     public event Action<ControlState> OnSwitchState = delegate { };
 
+    private Transform _playerTransform;
 
     private void Awake()
     {
@@ -21,7 +21,6 @@ public class ShipHelm : MonoBehaviour, IInteractable
         {
             _playerState = FindObjectOfType<PlayerState>();
         }
-
     }
 
 
@@ -40,6 +39,7 @@ public class ShipHelm : MonoBehaviour, IInteractable
         if (_isInteracting != isInteracting)
         {
             _isInteracting = isInteracting;
+            if (_playerTransform == null) _playerTransform = transform;
             DoInteractableAction(isInteracting);
         }
     }
@@ -54,17 +54,28 @@ public class ShipHelm : MonoBehaviour, IInteractable
 
     public void DoInteractableAction(bool value)
     {
-        if (!_playerState._shipHelm)
-            _playerState._shipHelm = this;
+        if (_playerState == null) _playerState = _playerTransform.GetComponent<PlayerState>();
 
-        if (_playerState.currentState != ControlState.Ship)
+        //if (!_playerState._shipHelm) _playerState._shipHelm = this;
+
+        if (value)
         {
-            OnSwitchState?.Invoke(ControlState.Ship);
+            if (_playerState.currentState != ControlState.Ship)
+            {
+                //OnSwitchState?.Invoke(ControlState.Ship);
+                _playerState.SwitchState(ControlState.Ship);
+            }
         }
-        else if (_playerState.currentState == ControlState.Ship)
+        else
         {
-            OnSwitchState?.Invoke(ControlState.FirstPerson);
+            if (_playerState.currentState == ControlState.Ship)
+            {
+                //OnSwitchState?.Invoke(ControlState.FirstPerson);
+                _playerState.SwitchState(ControlState.FirstPerson);
+            }
         }
+        
+        
     }
     /*public void Interact(Transform transform)
     {

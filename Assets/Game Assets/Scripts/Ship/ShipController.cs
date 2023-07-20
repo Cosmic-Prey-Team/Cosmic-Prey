@@ -6,18 +6,24 @@ public class ShipController : MonoBehaviour
 {
     [SerializeField] private GameObject _waypoint;
     [SerializeField] private GameObject _verticalWaypoint;
-    [SerializeField] private PlayerState _ps;
+    [Space]
+    [SerializeField] private Transform _playerTarget;
+    [Space]
+    [SerializeField] private PlayerState _playerState;
     [SerializeField] public Vector3 velocity;
     [SerializeField] private Vector3 rotate;
     [SerializeField] public float rotateSpeed = .5f;
 
     [SerializeField] private float _maxSpeed = 1f;
     [SerializeField] private float _accelerationDelay;
+
     private float _speed, _vSpeed = 0f;
     private float _accelerate, _vAccelerate;
     public bool rotating;
 
     [SerializeField] private InputHandler _input;
+
+    private Transform _playerTransform;
     
 
     // Update is called once per frame
@@ -34,12 +40,36 @@ public class ShipController : MonoBehaviour
         }
 
         ControlShip();
+
+
+        if (_playerTransform == null) _playerTransform = _playerState.transform;
+
+        /*if(_playerState.currentState == ControlState.Ship)
+        {
+            _playerTransform.position = _playerTarget.position;
+            _playerTransform.rotation = _playerTarget.rotation;
+        }
+        else
+        {
+            _playerTarget.position = _playerTransform.position;
+            _playerTarget.rotation = _playerTransform.rotation;
+        }*/
+        if (!rotating)
+        {
+            _playerTarget.position = _playerTransform.position;
+            _playerTarget.rotation = _playerTransform.rotation;
+        }
+        else
+        {
+            _playerTransform.position = _playerTarget.position;
+            _playerTransform.rotation = _playerTarget.rotation;
+        }
     }
 
     private void ControlShip()
     {
         //if the player is in ship state
-       if(_ps.currentState.ToString().Equals("Ship"))
+       if(_playerState.currentState.ToString().Equals("Ship"))
        {
             // if the player is trying to rotate the ship
             if (_input.move.x > 0)

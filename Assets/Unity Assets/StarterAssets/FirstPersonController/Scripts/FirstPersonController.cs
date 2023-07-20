@@ -51,6 +51,16 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		//ship controller settings
+		private ShipController shipController;
+		private MovePlayerWithShip movePlayerWithShip;
+
+		[Header("Ship controller behavior")]
+		[SerializeField]
+		private bool _canMove = true;
+		[SerializeField]
+		private bool _atHelm = false;
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -89,10 +99,11 @@ namespace StarterAssets
 		private void Awake()
 		{
 			// get a reference to our main camera
-			if (_mainCamera == null)
-			{
-				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-			}
+			if (_mainCamera == null) _mainCamera = Camera.main.gameObject;
+
+			//get controllers for onShip movement
+			shipController = FindObjectOfType<ShipController>();
+			movePlayerWithShip = FindObjectOfType<MovePlayerWithShip>();
 		}
 
 		private void Start()
@@ -122,19 +133,18 @@ namespace StarterAssets
 			CameraRotation();
 		}
 
-        #region Temporary Space Movement Methods
 		public void EnterControlPlayer()
-        {
-			//not used in this branch
-        }
+		{
+			_canMove = true;
+			_atHelm = false;
+		}
 		public void EnterControlShip()
-        {
-			//not used in this branch
-        }
-        #endregion
+		{
+			_canMove = false;
+			_atHelm = true;
+		}
 
-
-        private void GroundedCheck()
+		private void GroundedCheck()
 		{
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
@@ -168,6 +178,9 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			if (movePlayerWithShip.onShip)
+				targetSpeed += shipController.velocity.z;
+
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -198,16 +211,51 @@ namespace StarterAssets
 			// normalise input direction
 			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is a move input rotate player when the player is moving
-			if (_input.move != Vector2.zero)
+			if (_canMove)
 			{
-				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+				// if there is a move input rotate player when the player is moving
+				if (_input.move != Vector2.zero)
+				{
+					// move
+					inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				}
 			}
+            else
+            {
+				inputDirection = Vector3.zero;
+            }
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			//_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+			if (movePlayerWithShip.onShip)
+			{
+                if (inputDirection.normalized == Vector3.zero)
+                {
+                    if (!shipController.rotating)
+                    {
+                        _controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime + shipController.velocity.y, 0.0f));
+                        _controller.Move(shipController.transform.forward * shipController.velocity.z);
+                    }
+                    else
+                    {
+                        //transform.RotateAround(shipController.transform.position, new Vector3(0, 1, 0), shipController.rotateSpeed);
+
+                        //trying new method of rotation using local and world space
+
+                        //Quaternion adjustedRot = shipController.transform.localRotation * transform.localRotation;
+                        //transform.rotation = Quaternion.Euler(shipController.transform.TransformDirection(adjustedRot.eulerAngles));
+
+                        //transform.localRotation = Quaternion.Euler(shipController.transform.TransformDirection(shipController.transform.localRotation.eulerAngles));
+                    }
+                }
+                else
+                {
+                    _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));
+                }
+
+            }
 		}
 
 		private void JumpAndGravity()
