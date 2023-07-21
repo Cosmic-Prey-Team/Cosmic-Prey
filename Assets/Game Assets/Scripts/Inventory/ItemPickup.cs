@@ -8,10 +8,21 @@ public class ItemPickup : MonoBehaviour
     private InventoryItemSO _item;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Inventory inventory = other.GetComponent<Inventory>();
+        if(inventory != null)
         {
             other.gameObject.GetComponent<Inventory>().AddItem(_item);
+            
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else
+        {
+            Debug.Log("No inventory");
+        }
+
+        /*if (other.gameObject.CompareTag("Player"))
+        {
+
+        }*/
     }
 }

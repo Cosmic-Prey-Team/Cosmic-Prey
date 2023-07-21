@@ -4612,6 +4612,8 @@ GameObject:
   - component: {fileID: 1801442642}
   - component: {fileID: 1801442641}
   - component: {fileID: 1801442640}
+  - component: {fileID: 1801442651}
+  - component: {fileID: 1801442650}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -5098,6 +5100,37 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.93, z: 0}
+--- !u!114 &1801442650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801442638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec00a582880c8344ea07b04c7b977dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  canvas: {fileID: 0}
+  UI: {fileID: 0}
+--- !u!114 &1801442651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801442638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36213922ccc3db242b084b7d878c19df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventorySize: 4
+  empty: {fileID: 11400000, guid: 1961b6b9e680b4d4ca456aa038882c67, type: 2}
+  displayCrafting: {fileID: 0}
+  displayInventory: {fileID: 0}
 --- !u!1 &1837404731
 GameObject:
   m_ObjectHideFlags: 0
