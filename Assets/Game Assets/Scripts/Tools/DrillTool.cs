@@ -33,7 +33,7 @@ public class DrillTool : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            effect.Stop();
+            if(effect != null) effect.Stop();
         }
         //if the player clicked
         if (_inputHandler.firePrimary)
@@ -47,15 +47,17 @@ public class DrillTool : MonoBehaviour
             if (Physics.Raycast(ray, out hit, _drillRange))
             {
                 //if the game object is drillable and has health
-                if (hit.collider.GetComponent<Drillable>() != null && hit.collider.GetComponent<Health>() != null)
+                Drillable drillable = hit.collider.GetComponent<Drillable>();
+
+                if (drillable != null && hit.collider.GetComponent<Health>() != null)
                 {
-                    _drillProgressCanvas.gameObject.SetActive(true);
+                    //_drillProgressCanvas.gameObject.SetActive(true);
+                    drillable.EnableHealthBar(hit.point, _camera.transform);
                     if(Mouse.current.leftButton.wasPressedThisFrame)
                     {
                         effect = Instantiate(_drillEffect);
                         effect.transform.position = hit.point;
                     }
-                    Drillable drillable = hit.collider.GetComponent<Drillable>();
                     //timer for rate of gain
                     if(_currentDelayProgress <= 0)
                     {
