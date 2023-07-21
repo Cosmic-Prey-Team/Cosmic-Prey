@@ -26,7 +26,6 @@ public class Health : MonoBehaviour
             _health = _maxHealth;
         }
     }
-
     //returns health value
     public int GetHealth()
     {

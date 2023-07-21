@@ -42,7 +42,22 @@ public class Inventory : MonoBehaviour
         SetEmptySlot(item);
 
     }
+    public void AddItem(InventoryItemSO item, int amount)
+    {
+        //Increase count of item if already in inventory, else replace an empty slot with it
+        foreach (InventoryItemInstance lookFor in inventory)
+        {
+            if (lookFor.ItemName == item.ItemName)
+            {
+                lookFor.ItemCount = lookFor.ItemCount + amount;
 
+                return;
+            }
+        }
+
+        SetEmptySlot(item);
+
+    }
     public void AddStack(InventoryItemInstance item)
     {
         //Increase count of item if already in inventory, else replace an empty slot with it
@@ -59,7 +74,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void RemoveItem(InventoryItemSO item)
+    public InventoryItemInstance RemoveItem(InventoryItemSO item)
     {
         foreach (InventoryItemInstance lookFor in inventory)
         {
@@ -70,10 +85,10 @@ public class Inventory : MonoBehaviour
                 {
                     lookFor.UpdateSlot(empty);
                 }
-                return;
+                return lookFor;
             }
         }
-
+        return null;
     }
 
     public void RemoveItem(InventoryItemInstance item)

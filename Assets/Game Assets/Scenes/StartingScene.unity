@@ -2592,6 +2592,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &836461965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1146006845545415399, guid: 781d4965fbe6a9243a23230c41a3c40d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1146006845310190391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &836461966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836461965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb58d5707b26544fa0ea09125a56a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputHandler: {fileID: 8997996947332509058}
+  _camera: {fileID: 840896344}
+  _machinePart: {fileID: 11400000, guid: caa650da2e5623d4caeebce0a7beb267, type: 2}
+  _panel: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
+  _inventory: {fileID: 8997996947332509062}
+  _amountToRepair: 20
 --- !u!1 &840896340
 GameObject:
   m_ObjectHideFlags: 0
@@ -5786,6 +5810,8 @@ GameObject:
   - component: {fileID: 4422386835208452737}
   - component: {fileID: 3620356314391698408}
   - component: {fileID: 4422386835208452738}
+  - component: {fileID: 4422386835208452739}
+  - component: {fileID: 4422386835208452740}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -6112,6 +6138,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactText: Press "F" to use the turret
   _isInteracting: 0
+--- !u!114 &4422386835208452739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765075023169919828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 096b59fb1e5d32142984b6988623d7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _health: 50
+--- !u!114 &4422386835208452740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765075023169919828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56bff98de36c7044b604e64c5aa0eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToConsume: 1
 --- !u!23 &4422386835270559558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6956,6 +7009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _health: 0
 --- !u!114 &8997996947332509061
 MonoBehaviour:
   m_ObjectHideFlags: 0
