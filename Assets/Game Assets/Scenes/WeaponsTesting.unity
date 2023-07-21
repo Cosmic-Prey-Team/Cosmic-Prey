@@ -5397,8 +5397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308e428038c615040b555a909b4bae95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "F" to interact with navigation
-  _isInteracting: 0
 --- !u!23 &4422386835675796149
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5453,8 +5451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9e9d4e6c4f8e747922297b273abc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "F" to interact with the Engine
-  _isInteracting: 0
 --- !u!23 &4422386835801649227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6062,8 +6058,11 @@ MonoBehaviour:
   SpeedChangeRate: 10
   JumpHeight: 1.2
   Gravity: -15
+  SpaceJumpHeight: 3
+  SpaceGravity: -15
   JumpTimeout: 0.1
   FallTimeout: 0.15
+  JetpackTimeout: 0.2
   Grounded: 1
   GroundedOffset: -0.14
   GroundedRadius: 0.5
@@ -6073,6 +6072,13 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 4135013735775866464}
   TopClamp: 89
   BottomClamp: -89
+  shipController: {fileID: 0}
+  movePlayerWithShip: {fileID: 0}
+  playerState: {fileID: 0}
+  JetPackAcceleration: 0.2
+  MaxJetpackVelocity: 0.6
+  _ship: {fileID: 0}
+  _playerState: {fileID: 0}
 --- !u!1 &8908240905045979425
 GameObject:
   m_ObjectHideFlags: 0
