@@ -50,8 +50,6 @@ public class EquipmentSwapping : MonoBehaviour
 
     private void SelectWeapon()
     {
-        Debug.Log("SelectWeapon()");
-
         //enables only selected weapon and disables the rest
         int i = 0;
         foreach (Transform equipment in transform)
@@ -59,6 +57,8 @@ public class EquipmentSwapping : MonoBehaviour
             if(i == _selectedWeapon)
             {
                 equipment.gameObject.SetActive(true);
+                Debug.Log("SelectWeapon(): " + equipment.name);
+
             }
             else
             {
