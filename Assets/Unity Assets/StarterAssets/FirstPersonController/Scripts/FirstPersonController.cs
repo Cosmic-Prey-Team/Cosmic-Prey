@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -9,6 +10,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
 	[RequireComponent(typeof(PlayerInput))]
 #endif
+
 	public class FirstPersonController : MonoBehaviour
 	{
 		[Header("Player")]
@@ -26,12 +28,19 @@ namespace StarterAssets
 		public float JumpHeight = 1.2f;
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
+		[Tooltip("The height the player can jump in SPACE")]
+		public float SpaceJumpHeight = 3.0f;
+		[Tooltip("The gravity value in outer space. Should still fall down a bit, but very slowly")]
+		public float SpaceGravity = -15f;
+		private float CurrentGravity;
 
 		[Space(10)]
 		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
 		public float JumpTimeout = 0.1f;
 		[Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
 		public float FallTimeout = 0.15f;
+		public float JetpackTimeout = 0.20f;
+		private bool hasJumpedJetpack = false;
 
 		[Header("Player Grounded")]
 		[Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -51,6 +60,9 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		[SerializeField] ShipController shipController;
+		[SerializeField] MovePlayerWithShip movePlayerWithShip;
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -60,11 +72,31 @@ namespace StarterAssets
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 
+		[SerializeField]  private PlayerState playerState;
+
+		Vector3 inputDirection;
+
+		//jetpack (space movement)
+		[Header("Jetpack/Space Movement")]
+		private float _jetpackPushTimer = 5f;
+		private Vector2 _jetpackVelocity;
+		public float JetPackAcceleration = 0.2f; //accelerates 1 unit per second, per second
+		public float MaxJetpackVelocity = 0.6f;
+		private Vector3 _lastVel;
+		private Vector3 mv; //movement velocity for jetpack
+		private float _jetpackTimeoutDelta;
+
+
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		private bool _canMove = true;
+		private bool _atHelm = false;
+		[SerializeField] private GameObject _ship;
+		[SerializeField] PlayerState _playerState;
 
+	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
@@ -78,11 +110,11 @@ namespace StarterAssets
 		{
 			get
 			{
-#if ENABLE_INPUT_SYSTEM
+				#if ENABLE_INPUT_SYSTEM
 				return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
+				#else
 				return false;
-#endif
+				#endif
 			}
 		}
 
@@ -108,6 +140,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			_jetpackTimeoutDelta = JetpackTimeout;
 		}
 
 		private void Update()
@@ -122,19 +155,7 @@ namespace StarterAssets
 			CameraRotation();
 		}
 
-        #region Temporary Space Movement Methods
-		public void EnterControlPlayer()
-        {
-			//not used in this branch
-        }
-		public void EnterControlShip()
-        {
-			//not used in this branch
-        }
-        #endregion
-
-
-        private void GroundedCheck()
+		private void GroundedCheck()
 		{
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
@@ -148,7 +169,7 @@ namespace StarterAssets
 			{
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-
+				
 				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
 				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
 
@@ -159,7 +180,14 @@ namespace StarterAssets
 				CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
 
 				// rotate the player left and right
-				transform.Rotate(Vector3.up * _rotationVelocity);
+				if (_atHelm)
+                {
+					//transform.Rotate(shipController.rotateSpeed.normalized * _rotationVelocity);
+				} else
+                {
+					transform.Rotate(Vector3.up * _rotationVelocity);
+				}
+				
 			}
 		}
 
@@ -168,18 +196,21 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			if (movePlayerWithShip.onShip)
+				targetSpeed += shipController.velocity.z;
+
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-			// a reference to the players current horizontal velocity
+			// a reference to the players cur	rent horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
 			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
-
+			
 			// accelerate or decelerate to target speed
 			if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
 			{
@@ -194,28 +225,59 @@ namespace StarterAssets
 			{
 				_speed = targetSpeed;
 			}
-
-			// normalise input direction
-			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
-
-			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is a move input rotate player when the player is moving
-			if (_input.move != Vector2.zero)
+			
+			inputDirection = new Vector3(0f, 0f, 0f);
+			if (_canMove)
 			{
-				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
-			}
+				// normalise input direction
+				/*Vector3*/ inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
+				// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+				// if there is a move input rotate player when the player is moving
+				if (_input.move != Vector2.zero)
+				{
+					// move
+					inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				}
+			}
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			//_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+			if (movePlayerWithShip.onShip)
+            {
+				//CurrentGravity = Gravity;
+				//_playerState.SwitchState(ControlState.FirstPerson);
+				if (inputDirection.normalized == new Vector3(0f, 0f, 0f))
+                {
+					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime + shipController.velocity.y, 0.0f));
+					_controller.Move(shipController.transform.forward * shipController.velocity.z);
+					
+					if(shipController.rotating)
+						transform.RotateAround(_ship.transform.position, new Vector3(0, 1, 0), shipController.rotateSpeed);
+				}
+					
+                else
+                {
+					_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));
+				}
+				
+			}else
+            {
+				CurrentGravity = SpaceGravity;
+
+				_playerState.SwitchState(ControlState.SpaceMovement);
+			}
 		}
 
 		private void JumpAndGravity()
 		{
-			if (Grounded)
+			if (Grounded && _canMove)
 			{
+				if (!_atHelm)
+					playerState.SwitchState(ControlState.FirstPerson);
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
+				_jetpackTimeoutDelta = JetpackTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
@@ -228,6 +290,7 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+					Debug.Log("Regular Jump");
 				}
 
 				// jump timeout
@@ -236,10 +299,40 @@ namespace StarterAssets
 					_jumpTimeoutDelta -= Time.deltaTime;
 				}
 			}
+			else if (Grounded && !movePlayerWithShip.onShip) //if not on the ship, but maybe an asteroid or another "ground", jump with lower gravity
+            {
+				// reset the fall timeout timer
+				_fallTimeoutDelta = FallTimeout * 3f;
+				_jetpackTimeoutDelta = JetpackTimeout;
+
+				// stop our velocity dropping infinitely when grounded
+				if (_verticalVelocity < 0.0f)
+				{
+					_verticalVelocity = -2f;
+				}
+
+				// Jump (in space)
+				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+				{
+					// the square root of H * -2 * G = how much velocity needed to reach desired height
+					_verticalVelocity = Mathf.Sqrt(SpaceJumpHeight * -2f * SpaceGravity);
+				}
+
+				// jump timeout
+				if (_jumpTimeoutDelta >= 0.0f)
+				{
+					_jumpTimeoutDelta -= Time.deltaTime;
+				}
+			}
+			else if (!Grounded && !movePlayerWithShip.onShip)
+			{
+				_playerState.SwitchState(ControlState.SpaceMovement);
+			}
 			else
 			{
 				// reset the jump timeout timer
 				_jumpTimeoutDelta = JumpTimeout;
+				_jetpackTimeoutDelta = JetpackTimeout;
 
 				// fall timeout
 				if (_fallTimeoutDelta >= 0.0f)
@@ -248,17 +341,29 @@ namespace StarterAssets
 				}
 
 				// if we are not grounded, do not jump
-				_input.jump = false;
+				if (movePlayerWithShip.onShip)
+					_input.jump = false;
 			}
 
-			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-			if (_verticalVelocity < _terminalVelocity)
-			{
-				_verticalVelocity += Gravity * Time.deltaTime;
+			if (movePlayerWithShip.onShip)
+            {
+				if (_verticalVelocity < _terminalVelocity)// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+				{
+					_verticalVelocity += Gravity * Time.deltaTime;
+				}
 			}
-		}
+            // else if (!movePlayerWithShip.onShip)
+            //{
+            //	_verticalVelocity = SpaceGravity;
+            //	if (_verticalVelocity < _terminalVelocity)
+            //	{
+            //		_verticalVelocity += SpaceGravity * Time.deltaTime;
+            //	}
+            //}
 
-		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+        }
+
+        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
 			if (lfAngle < -360f) lfAngle += 360f;
 			if (lfAngle > 360f) lfAngle -= 360f;
@@ -276,5 +381,68 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
+
+		public void EnterControlShip()
+		{
+			_canMove = false;
+			_atHelm = true;
+			playerState.SwitchState(ControlState.Ship);
+		}
+
+		public void EnterControlPlayer()
+		{
+			_canMove = true;
+			_atHelm = false;
+			playerState.SwitchState(ControlState.FirstPerson);
+
+		}
+
+		/*//private IEnumerator JetpackPush()
+        //{
+		//	while (_jetpackPushTimer > 0)
+        //    {
+		//		_controller.Move(inputDirection.normalized * ((_speed * _jetpackPushTimer) * Time.deltaTime) + (new Vector3(0.0f, _verticalVelocity / 5, 0.0f) * Time.deltaTime));
+		//		//Jump();
+		//		Debug.Log("Tried to jump in space");
+		//		_jetpackPushTimer -= 1;
+		//		//if (_input.jump)
+		//		//	break;
+		//
+		//	}
+		//	yield return new WaitForSeconds(1f);
+		//
+		//	_jetpackPushTimer = 5f;
+		//}
+*/
+		/*private void JetpackMovement()
+        {
+			mv = _lastVel;
+			if (_input.jump)
+			{
+				//mv.y += JetPackAcceleration * Time.deltaTime;
+				mv.x = inputDirection.normalized.x;
+				mv.z = inputDirection.normalized.z;
+				Debug.Log("Blasting off...");
+				//if (mv.y > MaxJetpackVelocity) mv.y = MaxJetpackVelocity;
+				if (mv.x > MaxJetpackVelocity) mv.x = MaxJetpackVelocity;
+				if (mv.z > MaxJetpackVelocity) mv.z = MaxJetpackVelocity;
+				hasJumpedJetpack = true;
+			}
+			else
+            {
+				mv.y += SpaceGravity * Time.deltaTime;
+				_verticalVelocity += SpaceGravity * Time.deltaTime;
+
+
+				Debug.Log("APPLYING GRAVITY");
+				hasJumpedJetpack = false;
+			}
+
+
+			//Debug.Log(mv);
+			_controller.Move(inputDirection.normalized + mv * Time.deltaTime);
+			_lastVel = _controller.velocity;
+        }*/
+
 	}
 }
