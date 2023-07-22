@@ -2,15 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class RepairTool : MonoBehaviour
 {
-    [SerializeField] private InputHandler _inputHandler;
-    [SerializeField] private Camera _camera;
-    [SerializeField] private InventoryItemSO _machinePart, _panel;
-    [SerializeField] private Inventory _inventory;
-    [SerializeField] private int _amountToRepair;
+    private InputHandler _inputHandler;
+    private Camera _camera;
+    private Transform _player;
 
+    [Header("Repair Tool Properties")]
+    [Tooltip("Interval between repairs.")]
+    [SerializeField] private float _timeToRepair;
+    [Tooltip("Range of the repair tool.")]
+    [SerializeField] private float _repairRange;
+
+    private float _currentTimeToRepair = 0f;
+
+    [Space]
+    public UnityEvent OnTryRepair;
+
+    private void Awake()
+    {
+        _inputHandler = FindObjectOfType<InputHandler>();
+        _camera = Camera.main;
+        _player = _inputHandler.transform;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,34 +39,23 @@ public class RepairTool : MonoBehaviour
             Ray ray = _camera.ScreenPointToRay(mousePos);
             RaycastHit hit;
 
-            //if the player clicked on a game object
-            if(Physics.Raycast(ray, out hit))
+            //if the player clicked on a game object within the range
+            if (Physics.Raycast(ray, out hit, _repairRange))
             {
                 //if the game object can be repaired
-                if(hit.collider.GetComponent<Repairable>() != null && hit.collider.GetComponent<Health>() != null)
+                Repairable repairable = hit.collider.GetComponent<Repairable>();
+                if (repairable != null)
                 {
-                    Repairable repairable = hit.collider.GetComponent<Repairable>();
-                    Health health = hit.collider.GetComponent<Health>();
+                    //timer
+                    _currentTimeToRepair -= Time.deltaTime;
 
-                    //if the game object is repaired with machine parts
-                    if(repairable.itemToConsume == Repairable.ItemToConsume.MachinePart) {
-
-                        //if the game object is damaged and the player has machine parts to repair it
-                        if(health.GetHealthPercent() != 1f && _inventory.RemoveItem(_machinePart) != null)
-                        {
-                            health.Heal(_amountToRepair);
-                            Debug.Log(health.GetHealth());
-                        }
-                    }
-
-                    //same as the above if statement, but with panels instead of machine parts
-                    else if(repairable.itemToConsume == Repairable.ItemToConsume.Panel)
+                    if(_currentTimeToRepair <= 0)
                     {
-                        if (health.GetHealthPercent() != 1f && _inventory.RemoveItem(_panel) != null)
-                        {
-                            health.Heal(_amountToRepair);
-                            Debug.Log(health.GetHealth());
-                        }
+                        Debug.Log("Try Repair()");
+                        OnTryRepair?.Invoke();
+                        repairable.Repair(_player);
+
+                        _currentTimeToRepair = _timeToRepair;
                     }
                 }
             }
