@@ -11,14 +11,10 @@ using UnityEngine.InputSystem;
 
 public class DisplayInventory : MonoBehaviour
 {
-    
+    [HideInInspector]
     public Inventory inventory;
     public GameObject canvas;
-    public CanvasGroup UI;
-    private int _xStart = -160;
-    private int _yStart = 0;
-    private int _xSpacing = 160;
-    private int _ySpacing = 0;
+    private RectTransform[] slotPlaceholders;
     Dictionary<GameObject, InventoryItemInstance> itemsDisplayed = new Dictionary<GameObject, InventoryItemInstance>();
     // Start is called before the first frame update
     void Start()
@@ -26,7 +22,8 @@ public class DisplayInventory : MonoBehaviour
         inventory = GetComponent<Inventory>();
         itemsDisplayed = inventory.empty.itemsDisplayed;
         canvas = GameObject.FindGameObjectWithTag("InventoryCanvas");
-        UI = canvas.GetComponent<CanvasGroup>();
+        slotPlaceholders = canvas.GetComponentsInChildren<RectTransform>();
+
         CreateSlots();
     }
 
@@ -61,8 +58,8 @@ public class DisplayInventory : MonoBehaviour
         {
             //Debug.Log(i);
             var obj = Instantiate(inventory.inventory[i].Sprite, Vector3.zero, Quaternion.identity, canvas.transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-
+            obj.GetComponent<RectTransform>().localPosition = slotPlaceholders[i+1].localPosition; //GetComponentsInChildren includes parent in array so starts at index 1
+            slotPlaceholders[i + 1].gameObject.SetActive(false);
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
@@ -130,30 +127,21 @@ public class DisplayInventory : MonoBehaviour
         {
             if (inventory.empty.mouseItem.hoverItem.ItemName == inventory.empty.mouseItem.item.ItemName)
             {
-                //Adds to first slot then removes from first slot
-                Debug.Log(inventory.empty.mouseItem.hoverItem);
-                inventory.empty.mouseItem.hoverItem.Inventory.AddStack(inventory.empty.mouseItem.item);
-                inventory.empty.mouseItem.item.Inventory.RemoveStack(inventory.empty.mouseItem.hoverItem);
+                if (inventory.empty.mouseItem.hoverItem.Inventory != inventory.empty.mouseItem.item.Inventory)
+                {
+                    inventory.empty.mouseItem.hoverItem.Inventory.AddStack(inventory.empty.mouseItem.item);
+                    inventory.empty.mouseItem.item.Inventory.RemoveStack(inventory.empty.mouseItem.hoverItem);
+                }
             }
             else if (inventory.empty.mouseItem.hoverItem.Locked != true)
             {
                 inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[inventory.empty.mouseItem.hoverObj]);
             }
-            //Since a crafter should be able to use the same inventory script, might be able to just remove from one array and add to the other if it detects a different inventory
-        }
-        else
-        {
-            //Drop Item on ground
         }
         Destroy(inventory.empty.mouseItem.obj);
         inventory.empty.mouseItem.item = null;
     }
     
-
-    public Vector3 GetPosition(int i)
-    {
-        //May be displaying incorrectly when resolution is different
-        return new Vector3(_xStart + _xSpacing * i, _yStart + -_ySpacing * i,0f);
-    }
+    
 }
 

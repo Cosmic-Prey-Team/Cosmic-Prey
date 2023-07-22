@@ -24,6 +24,7 @@ public class InventoryItemInstance
         ItemName = item.ItemName;
         Description = item.Description;
         Sprite = item.Sprite;
+        ItemCount = item.ItemCount;
     }
 
     public void UpdateSlot(InventoryItemSO item)

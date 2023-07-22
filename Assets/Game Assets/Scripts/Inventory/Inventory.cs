@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 
     public InventoryItemInstance[] inventory;
     public int InventorySize;
+    [Tooltip("Placeholder item reference")]
     public InventoryItemSO empty;
     [HideInInspector]
     public DisplayCrafting displayCrafting;
