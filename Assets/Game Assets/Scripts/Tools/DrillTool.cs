@@ -15,10 +15,9 @@ public class DrillTool : MonoBehaviour
     [SerializeField] private int _damagePerDelay;
     [Tooltip("The distance you can drill from")]
     [SerializeField] private int _drillRange;
+    [Header("Drill Effects")]
     [Tooltip("Particle effect to play while drilling")]
     [SerializeField] ParticleSystem _drillEffect;
-    [Tooltip("Canvas to display while drilling")]
-    [SerializeField] Canvas _drillProgressCanvas;
     private float _currentDelayProgress;
     ParticleSystem effect;
     private void Awake()

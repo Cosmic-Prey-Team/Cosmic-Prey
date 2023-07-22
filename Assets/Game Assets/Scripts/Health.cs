@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour
@@ -11,6 +12,9 @@ public class Health : MonoBehaviour
     [SerializeField] private int _maxHealth;
     [Tooltip("Enable debug to set custom health value at Start")]
     [SerializeField] private int _health;
+    [Space]
+    [Tooltip("Optional health bar.")]
+    [SerializeField] private Image _healthBar;
     
     // events for future use
     public event Action OnHealthChanged;
@@ -25,6 +29,12 @@ public class Health : MonoBehaviour
             //sets the current health to max
             _health = _maxHealth;
         }
+
+        OnHealthChanged += RefreshHealthBar;
+    }
+    private void Start()
+    {
+        RefreshHealthBar();
     }
 
     //returns health value
@@ -65,6 +75,13 @@ public class Health : MonoBehaviour
         //Destroy(gameObject);
     }
 
+    private void RefreshHealthBar()
+    {
+        if(_healthBar != null)
+        {
+            _healthBar.fillAmount = GetHealthPercent();
+        }
+    }
 
 
 
