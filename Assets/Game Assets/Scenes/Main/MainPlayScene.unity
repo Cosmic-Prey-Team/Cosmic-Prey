@@ -392,9 +392,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _asteroid: {fileID: 5856921006705387513, guid: bf4af7ab14731dd4a963502730bddf4d,
     type: 3}
-  _minDistanceApart: 30
-  _numAsteroidsToSpawn: 30
-  _mapSize: 500
+  _minDistanceApart: 25
+  _numAsteroidsToSpawn: 50
+  _mapSize: 50
 --- !u!4 &91896412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1146006845545415398, guid: 781d4965fbe6a9243a23230c41a3c40d,
@@ -8006,8 +8006,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.2007895, y: 3.4972548, z: 13.224206}
-  m_Center: {x: -0.14272404, y: 0.6328623, z: -1.4073892}
+  m_Size: {x: 7.2007895, y: 4.3433595, z: 13.224206}
+  m_Center: {x: -0.14272404, y: 1.0559149, z: -1.4073892}
 --- !u!114 &2137623169
 MonoBehaviour:
   m_ObjectHideFlags: 0
