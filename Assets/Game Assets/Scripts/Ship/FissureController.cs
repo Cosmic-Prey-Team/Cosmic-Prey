@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,9 @@ public class FissureController : MonoBehaviour
     //[Tooltip("")]
     [Tooltip("allows you to damage the ship by pressing c")]
     [SerializeField] bool _debug = false;
+
+    [Tooltip("ui for ship health")]
+    [SerializeField] private Image _shipHealthBar;
     [Tooltip("list of all the fissure spots on the ship")]
     [SerializeField] private GameObject[] _fissures;
     [Tooltip("how much health the ship heals each second when there are zero fissures active")]
@@ -24,7 +28,7 @@ public class FissureController : MonoBehaviour
     {
         _health = gameObject.GetComponent<Health>();
         _health.OnHealthChanged += FissureChecker;
-
+        _health.OnHealthChanged += RefreshHealthBar;
     }
     // Start is called before the first frame update
     void Start()
@@ -63,7 +67,7 @@ public class FissureController : MonoBehaviour
             }
         }
     }
-
+    
     public void FissureChecker()
     {
         //Debug.Log("Health Change");
@@ -84,5 +88,11 @@ public class FissureController : MonoBehaviour
         {
             _activeFissures--;
         }
+    }
+
+    private void RefreshHealthBar()
+    {
+        if(_shipHealthBar != null)
+            _shipHealthBar.fillAmount = _health.GetHealthPercent();
     }
 }

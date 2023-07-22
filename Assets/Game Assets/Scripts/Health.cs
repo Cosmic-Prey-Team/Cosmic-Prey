@@ -32,6 +32,11 @@ public class Health : MonoBehaviour
     {
         return _health;
     }
+    public int GetMissingHealth()
+    {
+        return _maxHealth - _health;
+    }
+
     //returns health as a percent of maxHealth
     public float GetHealthPercent()
     {
