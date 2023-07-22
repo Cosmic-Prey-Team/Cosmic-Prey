@@ -79,7 +79,7 @@ public class Repairable : MonoBehaviour
         {
             //increment repair progress
             _repairProgress += 0.2f;
-            Debug.Log("Progress: " + _repairProgress);
+            //Debug.Log("Progress: " + _repairProgress);
 
             EnableProgressBar(true);
 

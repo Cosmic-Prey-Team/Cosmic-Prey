@@ -66,7 +66,7 @@ public class FissureController : MonoBehaviour
 
     public void FissureChecker()
     {
-        Debug.Log("Health Change");
+        //Debug.Log("Health Change");
 
         int fissuresRequired = _health.GetMissingHealth() / _fissureRepairAmount;
 
