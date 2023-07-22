@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Repairable : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Repairable : MonoBehaviour
     [Tooltip("How much health the object heals on repair")]
     [SerializeField] private int _healthAmountRegen = 50;
 
+    [SerializeField] Image _progressBar;
+
     private float _repairProgress = 0;
 
     //[SerializeField] private int 
@@ -32,24 +35,53 @@ public class Repairable : MonoBehaviour
             _health = GetComponent<Health>();
         else
             _health = GetComponentInParent<Health>();
+
+        EnableProgressBar(true);
     }
 
     public int GetAmountToRepair() { return _healthAmountRegen; }
     public void SetAmountToRepair(int amount) { _healthAmountRegen = amount; }
 
+    public void EnableProgressBar(bool active)
+    {
+        if(_progressBar != null)
+        {
+            if (active)
+            {
+                if (_progressBar.gameObject.activeInHierarchy == false) _progressBar.gameObject.SetActive(true);
+
+                _progressBar.fillAmount = _repairProgress;
+            }
+            else
+            {
+                if (_progressBar.gameObject.activeInHierarchy == true) _progressBar.gameObject.SetActive(false);
+            }
+        }
+
+    }
     public void Repair(Transform player)
     {
         _inventory = player.GetComponent<Inventory>();
 
-        if(_isRepairing == false && _inventory.RemoveItem(ItemToConsume) != null)
+        if(_isRepairing == false/* && _inventory.RemoveItem(ItemToConsume) != null*/)
         {
-            _isRepairing = true;
+            if(_inventory.RemoveItem(ItemToConsume) != null)
+            {
+                _isRepairing = true;
+                Debug.Log("Is repairing");
+            }
+            else
+            {
+                Debug.Log("No item to repair");
+            }
         }
         if (_isRepairing)
         {
             //increment repair progress
             _repairProgress += 0.2f;
             Debug.Log("Progress: " + _repairProgress);
+
+            EnableProgressBar(true);
 
             if (_repairProgress >= 1)
             {

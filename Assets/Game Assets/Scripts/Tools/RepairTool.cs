@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class RepairTool : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class RepairTool : MonoBehaviour
 
     private float _currentTimeToRepair = 0f;
 
+    [Space]
+    public UnityEvent OnTryRepair;
 
     private void Awake()
     {
@@ -48,7 +51,8 @@ public class RepairTool : MonoBehaviour
 
                     if(_currentTimeToRepair <= 0)
                     {
-                        Debug.Log("Repair()");
+                        Debug.Log("Try Repair()");
+                        OnTryRepair?.Invoke();
                         repairable.Repair(_player);
 
                         _currentTimeToRepair = _timeToRepair;
