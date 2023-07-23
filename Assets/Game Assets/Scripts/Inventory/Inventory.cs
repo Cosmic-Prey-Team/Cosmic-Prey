@@ -27,17 +27,19 @@ public class Inventory : MonoBehaviour
         displayCrafting = gameObject.GetComponent<DisplayCrafting>();
         empty.itemsDisplayed = new Dictionary<GameObject, InventoryItemInstance>();
     }
-    
+
     public void AddItem(InventoryItemSO item)
     {
         //Increase count of item if already in inventory, else replace an empty slot with it
-        foreach (InventoryItemInstance lookFor in inventory) {
+        foreach (InventoryItemInstance lookFor in inventory)
+        {
             if (lookFor.ItemName == item.ItemName)
             {
-                lookFor.ItemCount = lookFor.ItemCount + 1;
-                
+                //lookFor.ItemCount = lookFor.ItemCount + 1;
+                lookFor.ItemCount += 1;
+                Debug.Log("AddItem(): " + lookFor.ItemCount);
                 return;
-            }           
+            }
         }
 
         SetEmptySlot(item);
@@ -50,8 +52,9 @@ public class Inventory : MonoBehaviour
         {
             if (lookFor.ItemName == item.ItemName)
             {
-                lookFor.ItemCount = lookFor.ItemCount + amount;
-
+                //lookFor.ItemCount = lookFor.ItemCount + 1;
+                lookFor.ItemCount += amount;
+                //Debug.LogWarning("AddItem(): " + lookFor.ItemCount);
                 return;
             }
         }

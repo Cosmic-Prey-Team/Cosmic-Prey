@@ -82,7 +82,9 @@ public class PlayerState : MonoBehaviour
     void OnShipState()
     {
         //change controls
+        playerInput.SwitchCurrentActionMap("ShipControls");
         Debug.Log("Switched to Ship Controls");
+        Debug.LogWarning(playerInput.currentActionMap);
         this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlShip();
         _rb.isKinematic = true;
     }

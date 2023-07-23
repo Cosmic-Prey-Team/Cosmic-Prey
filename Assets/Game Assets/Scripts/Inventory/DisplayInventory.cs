@@ -59,7 +59,7 @@ public class DisplayInventory : MonoBehaviour
             //Debug.Log(i);
             var obj = Instantiate(inventory.inventory[i].Sprite, Vector3.zero, Quaternion.identity, canvas.transform);
             obj.GetComponent<RectTransform>().localPosition = slotPlaceholders[i+1].localPosition; //GetComponentsInChildren includes parent in array so starts at index 1
-            slotPlaceholders[i + 1].gameObject.SetActive(false);
+            //slotPlaceholders[i + 1].gameObject.SetActive(false);
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });

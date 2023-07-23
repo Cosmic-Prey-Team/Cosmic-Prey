@@ -85,8 +85,9 @@ public class ProcessorCrafting : MonoBehaviour
 
     public void CraftItem(InventoryItemSO item)
     {
+        //Debug.LogWarning("CraftItem()");
         inventory.RemoveItem(inventory.inventory[0]);
-        inventory.AddItem(item);
+        inventory.AddItem(item, 1);
         progressBar.value = 0;
     }
 }

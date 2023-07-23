@@ -4,42 +4,33 @@ using UnityEngine;
 
 public class MovePlayerWithShip : MonoBehaviour
 {
-    [SerializeField] CharacterController characterController;
-    [SerializeField] PlayerState playerState;
+    //private CharacterController characterController;
+    private PlayerState playerState;
 
     public bool onShip = false;
+
+    private void Awake()
+    {
+        playerState = FindObjectOfType<PlayerState>();
+        //characterController = playerState.GetComponent<CharacterController>();
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.transform == playerState.transform)
         {
             onShip = true;
             playerState.SwitchState(ControlState.FirstPerson);
-            Debug.Log("Trigger entered");
+            //Debug.Log("Trigger entered");
         }
             
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.transform == playerState.transform)
         {
             onShip = false;
         }
     }
-
-    //private void FixedUpdate()
-    //{
-    //    if (!onShip)
-    //    {
-    //        float distance = Vector3.Distance(playerState.transform.position, transform.position);
-    //        Debug.Log(distance);
-    //        if (distance <= 3)
-    //        {
-    //            playerState.SwitchState(ControlState.FirstPerson);
-    //            onShip = true;
-    //        }
-    //    }
-    //    
-    //}
 
 }

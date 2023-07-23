@@ -12,7 +12,9 @@ public class PlayerInteract : MonoBehaviour
     public event Action<bool> OnPressInteractionKey;
 
     //references
+    PlayerState _playerState;
     InputHandler _input;
+    ShipInput _shipInput;
 
     [SerializeField] float _interactionRange = 2f;
 
@@ -28,7 +30,9 @@ public class PlayerInteract : MonoBehaviour
 
     private void Awake()
     {
+        _playerState = GetComponent<PlayerState>();
         _input = GetComponent<InputHandler>();
+        _shipInput = GetComponent<ShipInput>();
     }
 
     private void Update()
@@ -56,30 +60,61 @@ public class PlayerInteract : MonoBehaviour
         #endregion
 
         #region Button Press Events
-        if (_isButtonDown == false)
+        if(_playerState.currentState == ControlState.FirstPerson)
         {
-            if (_input.interact == true && currentInteractable != null)
+            if (_isButtonDown == false)
             {
-                //toggle _isInteracting on button down
-                IsInteracting = !IsInteracting;
+                if (_input.interact == true && currentInteractable != null)
+                {
+                    //toggle _isInteracting on button down
+                    IsInteracting = !IsInteracting;
 
-                OnPressInteractionKey?.Invoke(true);
-                currentInteractable.TriggerInteraction(transform, IsInteracting);
-                _isButtonDown = true;
-                //Debug.Log("PressInteractionKeyDown()");
+                    OnPressInteractionKey?.Invoke(true);
+                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    _isButtonDown = true;
+                    //Debug.Log("PressInteractionKeyDown()");
+                }
+            }
+
+            if (_isButtonDown == true)
+            {
+                if (_input.interact == false && currentInteractable != null)
+                {
+                    OnPressInteractionKey?.Invoke(false);
+                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    _isButtonDown = false;
+                    //Debug.Log("PressInteractionKeyUp()");
+                }
             }
         }
-
-        if (_isButtonDown == true)
+        else if(_playerState.currentState == ControlState.Ship)
         {
-            if (_input.interact == false && currentInteractable != null)
+            if (_isButtonDown == false)
             {
-                OnPressInteractionKey?.Invoke(false);
-                currentInteractable.TriggerInteraction(transform, IsInteracting);
-                _isButtonDown = false;
-                //Debug.Log("PressInteractionKeyUp()");
+                if (_shipInput.interact == true && currentInteractable != null)
+                {
+                    //toggle _isInteracting on button down
+                    IsInteracting = !IsInteracting;
+
+                    OnPressInteractionKey?.Invoke(true);
+                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    _isButtonDown = true;
+                    //Debug.Log("PressInteractionKeyDown()");
+                }
+            }
+
+            if (_isButtonDown == true)
+            {
+                if (_shipInput.interact == false && currentInteractable != null)
+                {
+                    OnPressInteractionKey?.Invoke(false);
+                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    _isButtonDown = false;
+                    //Debug.Log("PressInteractionKeyUp()");
+                }
             }
         }
+        
         #endregion
     }
 

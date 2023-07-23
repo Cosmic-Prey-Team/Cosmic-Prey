@@ -1,25 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShipController : MonoBehaviour
 {
+    [Header("Waypoints")]
     [SerializeField] private GameObject _waypoint;
     [SerializeField] private GameObject _verticalWaypoint;
-    [SerializeField] private PlayerState _ps;
+
+    [Header("Ship Properties")]
     [SerializeField] public Vector3 velocity;
     [SerializeField] private Vector3 rotate;
     [SerializeField] public float rotateSpeed = .5f;
-
     [SerializeField] private float _maxSpeed = 1f;
     [SerializeField] private float _accelerationDelay;
-    private float _speed, _vSpeed = 0f;
-    private float _accelerate, _vAccelerate;
+    [Space]
     public bool rotating;
 
-    [SerializeField] private InputHandler _input;
-    
+    private float _speed, _vSpeed = 0f;
+    private float _accelerate, _vAccelerate;
 
+    private PlayerState _playerState;
+    private ShipInput _input;
+
+    private void Awake()
+    {
+        _playerState = FindObjectOfType<PlayerState>();
+        _input = _playerState.GetComponent<ShipInput>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -38,64 +47,43 @@ public class ShipController : MonoBehaviour
 
     private void ControlShip()
     {
-        //if the player is in ship state
-       if(_ps.currentState.ToString().Equals("Ship"))
-       {
-            // if the player is trying to rotate the ship
-            if (_input.move.x > 0)
+        // if the player is trying to rotate the ship
+        if (_input.turn != 0)
+        {
+            rotating = true;
+
+            if (_input.turn > 0 && rotateSpeed < 0 || _input.turn < 0 && rotateSpeed > 0)
+                rotateSpeed = -rotateSpeed;
+
+            rotate = new Vector3(0f, rotateSpeed, 0f);
+            transform.Rotate(rotate);
+        }
+        else
+        {
+            rotating = false;
+        }
+
+        // if the player is trying to move the ship forward
+        if (_input.thrust != 0)
+        {
+            if (_speed < _maxSpeed && Time.time > _accelerate)
             {
-                rotating = true;
-                if (rotateSpeed < 0)
-                    rotateSpeed = -rotateSpeed;
-                rotate = new Vector3(0f, rotateSpeed, 0f);
-                transform.Rotate(rotate);
-            }    
-            else if(_input.move.x < 0)
-            {
-                rotating = true;
-                if (rotateSpeed > 0)
-                    rotateSpeed = -rotateSpeed;
-                rotate = new Vector3(0f, rotateSpeed, 0f);
-                transform.Rotate(rotate);
+                _speed = (_speed * 2) + 0.5f;
+
+                if (_speed > _maxSpeed) _speed = _maxSpeed;
+
+                _accelerate = Time.time + _accelerationDelay;
+                velocity = transform.forward * _input.thrust * _speed * Time.deltaTime;
             }
-            else
-            {
-                rotating = false;
-            }
-               
+        }
 
-            // if the player is trying to move the ship forward
-            if(_input.move.y > 0)
-            {
-                if(_speed < _maxSpeed && Time.time > _accelerate)
-                {
-                    _speed = (_speed * 2) + .05f;
-
-                    if (_speed > _maxSpeed)
-                        _speed = _maxSpeed;
-
-                    _accelerate = Time.time + _accelerationDelay;
-                    velocity = -transform.forward * _speed * Time.deltaTime;
-                }
-            }
-            //if the player is trying to stop moving
-            else if (_input.move.y < 0)
-            {
-                if(_speed > 0 && Time.time > _accelerate)
-                {
-                    _speed = (_speed / 2) - .05f;
-
-                    if (_speed < 0)
-                        _speed = 0;
-
-                    velocity = -transform.forward *_speed * Time.deltaTime;
-                }
-            }
-            
+        //vertical movement stuff
+        if(_input.vMove != 0)
+        {
             //if the player is trying to move up
             if (_input.vMove > 0)
             {
-                if(_vSpeed < _maxSpeed && Time.time > _vAccelerate)
+                if (_vSpeed < _maxSpeed && Time.time > _vAccelerate)
                 {
                     if (_vSpeed >= 0)
                         _vSpeed = (_vSpeed * 2) + .05f;
@@ -127,10 +115,9 @@ public class ShipController : MonoBehaviour
                 }
             }
         }
-
-       //bring vertical movement to 0 if there is no input or player is no longer controlling ship
-       if(_input.vMove == 0)
+        else
         {
+            //bring vertical movement to 0 if there is no input or player is no longer controlling ship
             if (_vSpeed > 0 && Time.time > _vAccelerate)
             {
                 _vSpeed = (_vSpeed / 2) - .05f;
@@ -141,7 +128,7 @@ public class ShipController : MonoBehaviour
                 _vAccelerate = Time.time + _accelerationDelay;
                 velocity.y = _vSpeed * Time.deltaTime;
             }
-            else if(_vSpeed < 0 && Time.time > _vAccelerate)
+            else if (_vSpeed < 0 && Time.time > _vAccelerate)
             {
                 _vSpeed = (_vSpeed / 2) + .05f;
 
@@ -152,5 +139,12 @@ public class ShipController : MonoBehaviour
                 velocity.y = _vSpeed * Time.deltaTime;
             }
         }
+        
+
+        /*//bring vertical movement to 0 if there is no input or player is no longer controlling ship
+        if (_input.vMove == 0)
+        {
+            
+        }*/
     }
 }
