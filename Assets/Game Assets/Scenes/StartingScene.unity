@@ -1182,8 +1182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308e428038c615040b555a909b4bae95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "F" to interact with navigation
-  _isInteracting: 0
 --- !u!65 &443364260
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1677,6 +1675,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactText: Press "F" to use the turret
   _isInteracting: 0
+  _originalPosition: {fileID: 0}
+  _usingPosition: {fileID: 0}
+  _lookTarget: {fileID: 0}
+  _swivelTransform: {fileID: 0}
+  _swivelParentTransform: {fileID: 0}
+  RotationSpeed: 1
+  TopClamp: 60
+  BottomClamp: -60
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &570579374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3561,6 +3570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
+  playerState: {fileID: 0}
   onShip: 1
 --- !u!114 &1137385875
 MonoBehaviour:
@@ -4216,8 +4226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9e9d4e6c4f8e747922297b273abc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: Press "F" to interact with the Engine
-  _isInteracting: 0
 --- !u!65 &1400527639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5464,8 +5472,8 @@ Transform:
   - {fileID: 3248315488591757806}
   - {fileID: 3248315488521264169}
   - {fileID: 3248315487977589540}
-  - {fileID: 1542634062}
   - {fileID: 8136805282206378907}
+  - {fileID: 1542634062}
   - {fileID: 5456223188890362850}
   - {fileID: 7300646764339872998}
   m_Father: {fileID: 299478372}
@@ -5483,7 +5491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6c324050f410b4d9f5c66eaa40d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
+  characterController: {fileID: 8616685848642844465}
+  playerState: {fileID: 8997996947332509063}
   onShip: 0
 --- !u!114 &2137623167
 MonoBehaviour:
@@ -6112,6 +6121,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactText: Press "F" to use the turret
   _isInteracting: 0
+  _originalPosition: {fileID: 0}
+  _usingPosition: {fileID: 0}
+  _lookTarget: {fileID: 0}
+  _swivelTransform: {fileID: 0}
+  _swivelParentTransform: {fileID: 0}
+  RotationSpeed: 1
+  TopClamp: 60
+  BottomClamp: -60
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!23 &4422386835270559558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6238,7 +6258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832c86500130bf648af930215a1078a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialToCraft: -1
   craftInterval: 5
   craftTimer: 5
   canvas: {fileID: 1190311342}
@@ -6246,8 +6265,9 @@ MonoBehaviour:
   Ammo: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}
   Panel: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
   MachinePart: {fileID: 11400000, guid: caa650da2e5623d4caeebce0a7beb267, type: 2}
-  Selected: {fileID: 0}
-  inventory: {fileID: 0}
+  ammoButton: {x: -390, y: -100, z: 0}
+  panelButton: {x: -240, y: -100, z: 0}
+  partButton: {x: -90, y: -100, z: 0}
 --- !u!114 &4422386835801649230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6646,7 +6666,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2137623165}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!23 &8438117675397988233
 MeshRenderer:
@@ -6806,7 +6826,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 840896344}
 --- !u!1 &8616685848642844475
 GameObject:
   m_ObjectHideFlags: 0
@@ -6851,8 +6871,11 @@ MonoBehaviour:
   SpeedChangeRate: 10
   JumpHeight: 1.2
   Gravity: -15
+  SpaceJumpHeight: 3
+  SpaceGravity: -15
   JumpTimeout: 0.1
   FallTimeout: 0.15
+  JetpackTimeout: 0.2
   Grounded: 1
   GroundedOffset: -0.14
   GroundedRadius: 0.5
@@ -6862,6 +6885,13 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 4135013735775866464}
   TopClamp: 89
   BottomClamp: -89
+  shipController: {fileID: 2137623167}
+  movePlayerWithShip: {fileID: 2137623166}
+  playerState: {fileID: 8997996947332509063}
+  JetPackAcceleration: 0.2
+  MaxJetpackVelocity: 0.6
+  _ship: {fileID: 2137623164}
+  _playerState: {fileID: 8997996947332509063}
 --- !u!1 &8908240905045979425
 GameObject:
   m_ObjectHideFlags: 0
@@ -6955,7 +6985,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096b59fb1e5d32142984b6988623d7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _debug: 0
   _maxHealth: 100
+  _health: 0
+  _healthBar: {fileID: 0}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8997996947332509061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6969,8 +7005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
-  canvas: {fileID: 0}
-  UI: {fileID: 0}
+  canvas: {fileID: 1396785624}
 --- !u!114 &8997996947332509062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7000,4 +7035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  _shipHelm: {fileID: 0}
+  _shipHelm: {fileID: 4422386835270559559}
+  playerInput: {fileID: 8616685848642844471}
+  _rb: {fileID: 0}
+  _camera: {fileID: 840896340}

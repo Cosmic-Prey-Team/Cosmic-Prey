@@ -24,6 +24,7 @@ public class ZeroGMovement : MonoBehaviour
     [SerializeField, Range(0.001f, 0.999f)]
     private float leftRightGlideReduction = 0.111f;
 
+
     private Camera _mainCam;
 
 
@@ -42,6 +43,9 @@ public class ZeroGMovement : MonoBehaviour
     private float boostMultiplier = 1.4f; //how much faster does this make the player go?
     private bool boosting = false;
     public float currentBoostAmount;
+
+    [SerializeField] private AudioClip _rocketClip;
+    private float _rocketClipCooldown;
 
     [Header("====Mouse Movement Settings ====")]
     private PlayerInput _playerInput;
@@ -120,6 +124,12 @@ public class ZeroGMovement : MonoBehaviour
             if (currentBoostAmount <= 0f)
             {
                 boosting = false;
+            }
+
+            if(Time.time > _rocketClipCooldown)
+            {
+                SoundManager.Instance.PlaySound(_rocketClip);
+                _rocketClipCooldown = Time.time + _rocketClip.length;
             }
         }
         else
