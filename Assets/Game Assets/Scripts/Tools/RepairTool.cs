@@ -15,6 +15,8 @@ public class RepairTool : MonoBehaviour
     [SerializeField] private float _timeToRepair;
     [Tooltip("Range of the repair tool.")]
     [SerializeField] private float _repairRange;
+    [Tooltip("Layers the raycast can hit.")]
+    [SerializeField] private LayerMask _targetLayers;
 
     private float _currentTimeToRepair = 0f;
 
@@ -40,7 +42,7 @@ public class RepairTool : MonoBehaviour
             RaycastHit hit;
 
             //if the player clicked on a game object within the range
-            if (Physics.Raycast(ray, out hit, _repairRange))
+            if (Physics.Raycast(ray, out hit, _repairRange, _targetLayers))
             {
                 //if the game object can be repaired
                 Repairable repairable = hit.collider.GetComponent<Repairable>();
@@ -49,7 +51,7 @@ public class RepairTool : MonoBehaviour
                     //timer
                     _currentTimeToRepair -= Time.deltaTime;
 
-                    if(_currentTimeToRepair <= 0)
+                    if (_currentTimeToRepair <= 0)
                     {
                         Debug.Log("Try Repair()");
                         OnTryRepair?.Invoke();
