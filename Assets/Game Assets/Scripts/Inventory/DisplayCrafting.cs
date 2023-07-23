@@ -52,7 +52,7 @@ public class DisplayCrafting : MonoBehaviour
         {
             //Debug.Log(i);
             var obj = Instantiate(inventory.inventory[i].Sprite, Vector3.zero, Quaternion.identity, canvas.transform);
-            Debug.Log(slotPlaceholders[i]);
+            //Debug.Log(slotPlaceholders[i]);
             obj.GetComponent<RectTransform>().localPosition = slotPlaceholders[i + 1].localPosition; //GetComponentsInChildren includes parent in array so starts at index 1
             //slotPlaceholders[i + 1].gameObject.SetActive(false);
 

@@ -64,7 +64,34 @@ public class ShipController : MonoBehaviour
         }
 
         // if the player is trying to move the ship forward
-        if (_input.thrust != 0)
+        if (_input.thrust > 0)
+        {
+            if (_speed < _maxSpeed && Time.time > _accelerate)
+            {
+                _speed = (_speed * 2) + .05f;
+
+                if (_speed > _maxSpeed)
+                    _speed = _maxSpeed;
+
+                _accelerate = Time.time + _accelerationDelay;
+                velocity = -transform.forward * _speed * Time.deltaTime;
+            }
+        }
+        //if the player is trying to stop moving
+        else if (_input.thrust < 0)
+        {
+            if (_speed > 0 && Time.time > _accelerate)
+            {
+                _speed = (_speed / 2) - .05f;
+
+                if (_speed < 0)
+                    _speed = 0;
+
+                velocity = -transform.forward * _speed * Time.deltaTime;
+            }
+        }
+
+        /*if (_input.thrust != 0)
         {
             if (_speed < _maxSpeed && Time.time > _accelerate)
             {
@@ -75,10 +102,19 @@ public class ShipController : MonoBehaviour
                 _accelerate = Time.time + _accelerationDelay;
                 velocity = transform.forward * _input.thrust * _speed * Time.deltaTime;
             }
-        }
+            else if (_speed > 0 && Time.time > _accelerate)
+            {
+                _speed = (_speed * 0.5f) - 0.5f;
+
+                if (_speed > _maxSpeed) _speed = _maxSpeed;
+
+                _accelerate = Time.time + _accelerationDelay;
+                velocity = transform.forward * _input.thrust * _speed * Time.deltaTime;
+            }
+        }*/
 
         //vertical movement stuff
-        if(_input.vMove != 0)
+        if (_input.vMove != 0)
         {
             //if the player is trying to move up
             if (_input.vMove > 0)

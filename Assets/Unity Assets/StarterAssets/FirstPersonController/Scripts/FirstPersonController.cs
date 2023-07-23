@@ -72,8 +72,6 @@ namespace StarterAssets
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 
-		[SerializeField]  private PlayerState playerState;
-
 		Vector3 inputDirection;
 
 		//jetpack (space movement)
@@ -93,8 +91,9 @@ namespace StarterAssets
 
 		private bool _canMove = true;
 		private bool _atHelm = false;
+
 		[SerializeField] private GameObject _ship;
-		[SerializeField] PlayerState _playerState;
+		private PlayerState _playerState;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -125,6 +124,8 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+
+			_playerState = FindObjectOfType<PlayerState>();
 		}
 
 		private void Start()
@@ -274,7 +275,7 @@ namespace StarterAssets
 			if (Grounded && _canMove)
 			{
 				if (!_atHelm)
-					playerState.SwitchState(ControlState.FirstPerson);
+					_playerState.SwitchState(ControlState.FirstPerson);
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 				_jetpackTimeoutDelta = JetpackTimeout;
@@ -386,14 +387,14 @@ namespace StarterAssets
 		{
 			_canMove = false;
 			_atHelm = true;
-			playerState.SwitchState(ControlState.Ship);
+			_playerState.SwitchState(ControlState.Ship);
 		}
 
 		public void EnterControlPlayer()
 		{
 			_canMove = true;
 			_atHelm = false;
-			playerState.SwitchState(ControlState.FirstPerson);
+			_playerState.SwitchState(ControlState.FirstPerson);
 
 		}
 
