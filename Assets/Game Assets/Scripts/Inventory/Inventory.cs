@@ -37,7 +37,7 @@ public class Inventory : MonoBehaviour
             {
                 //lookFor.ItemCount = lookFor.ItemCount + 1;
                 lookFor.ItemCount += 1;
-                Debug.Log("AddItem(): " + lookFor.ItemCount);
+                //Debug.Log("AddItem(): " + lookFor.ItemCount);
                 return;
             }
         }

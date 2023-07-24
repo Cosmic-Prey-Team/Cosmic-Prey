@@ -6934,11 +6934,11 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 1681269720}
   TopClamp: 89
   BottomClamp: -89
-  shipController: {fileID: 2137623167}
-  movePlayerWithShip: {fileID: 2137623166}
+  _ship: {fileID: 2137623167}
+  _canMove: 1
+  _atHelm: 0
   JetPackAcceleration: 1
   MaxJetpackVelocity: 5
-  _ship: {fileID: 2137623164}
 --- !u!143 &1801442649
 CharacterController:
   m_ObjectHideFlags: 0
@@ -8674,7 +8674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
-  _maxHealth: 100
+  _maxHealth: 300
   _health: 0
   _healthBar: {fileID: 2074777098}
   OnDeath:

@@ -14,13 +14,15 @@ public class MovePlayerWithShip : MonoBehaviour
         playerState = FindObjectOfType<PlayerState>();
         //characterController = playerState.GetComponent<CharacterController>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.transform == playerState.transform)
         {
-            onShip = true;
-            playerState.SwitchState(ControlState.FirstPerson);
-            //Debug.Log("Trigger entered");
+            if(onShip == false) onShip = true;
+            if(playerState.currentState == ControlState.SpaceMovement)
+                playerState.SwitchState(ControlState.FirstPerson);
+            
+            Debug.LogWarning("Trigger entered");
         }
             
     }
@@ -29,7 +31,7 @@ public class MovePlayerWithShip : MonoBehaviour
     {
         if (other.transform == playerState.transform)
         {
-            onShip = false;
+            if(onShip == true) onShip = false;
         }
     }
 

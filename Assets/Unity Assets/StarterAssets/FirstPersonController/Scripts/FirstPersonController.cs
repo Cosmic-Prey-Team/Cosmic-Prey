@@ -60,8 +60,12 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
-		[SerializeField] ShipController shipController;
-		[SerializeField] MovePlayerWithShip movePlayerWithShip;
+		[Header("Movement on Ship")]
+		[SerializeField] ShipController _ship;
+		private MovePlayerWithShip movePlayerWithShip;
+
+		[SerializeField] private bool _canMove = true;
+		[SerializeField] private bool _atHelm = false;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -74,25 +78,21 @@ namespace StarterAssets
 
 		Vector3 inputDirection;
 
-		//jetpack (space movement)
-		[Header("Jetpack/Space Movement")]
-		private float _jetpackPushTimer = 5f;
-		private Vector2 _jetpackVelocity;
+        /*[Header("Jetpack/Space Movement")]
 		public float JetPackAcceleration = 0.2f; //accelerates 1 unit per second, per second
 		public float MaxJetpackVelocity = 0.6f;
-		private Vector3 _lastVel;
-		private Vector3 mv; //movement velocity for jetpack
-		private float _jetpackTimeoutDelta;
+
+		private float _jetpackPushTimer = 5f;
+        private Vector2 _jetpackVelocity;
+        private Vector3 _lastVel;
+        private Vector3 mv; //movement velocity for jetpack
+        private float _jetpackTimeoutDelta;*/
 
 
-		// timeout deltatime
-		private float _jumpTimeoutDelta;
+        // timeout deltatime
+        private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-		private bool _canMove = true;
-		private bool _atHelm = false;
-
-		[SerializeField] private GameObject _ship;
 		private PlayerState _playerState;
 
 	
@@ -126,6 +126,7 @@ namespace StarterAssets
 			}
 
 			_playerState = FindObjectOfType<PlayerState>();
+			movePlayerWithShip = _ship.GetComponent<MovePlayerWithShip>();
 		}
 
 		private void Start()
@@ -141,7 +142,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
-			_jetpackTimeoutDelta = JetpackTimeout;
+			//_jetpackTimeoutDelta = JetpackTimeout;
 		}
 
 		private void Update()
@@ -198,7 +199,7 @@ namespace StarterAssets
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
 			if (movePlayerWithShip.onShip)
-				targetSpeed += shipController.velocity.z;
+				targetSpeed += _ship.velocity.z;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -206,7 +207,7 @@ namespace StarterAssets
 			// if there is no input, set the target speed to 0
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-			// a reference to the players cur	rent horizontal velocity
+			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
@@ -250,11 +251,11 @@ namespace StarterAssets
 				//_playerState.SwitchState(ControlState.FirstPerson);
 				if (inputDirection.normalized == new Vector3(0f, 0f, 0f))
                 {
-					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime + shipController.velocity.y, 0.0f));
-					_controller.Move(shipController.transform.forward * shipController.velocity.z);
+					_controller.Move(new Vector3(0.0f, _verticalVelocity * Time.deltaTime + _ship.velocity.y, 0.0f));
+					_controller.Move(_ship.transform.forward * _ship.velocity.z);
 					
-					if(shipController.rotating)
-						transform.RotateAround(_ship.transform.position, new Vector3(0, 1, 0), shipController.rotateSpeed);
+					if(_ship.rotating)
+						transform.RotateAround(_ship.transform.position, Vector3.up/*new Vector3(0, 1, 0)*/, _ship.rotateSpeed);
 				}
 					
                 else
@@ -278,7 +279,7 @@ namespace StarterAssets
 					_playerState.SwitchState(ControlState.FirstPerson);
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
-				_jetpackTimeoutDelta = JetpackTimeout;
+				//_jetpackTimeoutDelta = JetpackTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
@@ -304,7 +305,7 @@ namespace StarterAssets
             {
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout * 3f;
-				_jetpackTimeoutDelta = JetpackTimeout;
+				//_jetpackTimeoutDelta = JetpackTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
@@ -333,7 +334,7 @@ namespace StarterAssets
 			{
 				// reset the jump timeout timer
 				_jumpTimeoutDelta = JumpTimeout;
-				_jetpackTimeoutDelta = JetpackTimeout;
+				//_jetpackTimeoutDelta = JetpackTimeout;
 
 				// fall timeout
 				if (_fallTimeoutDelta >= 0.0f)
