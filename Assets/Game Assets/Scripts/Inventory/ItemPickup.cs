@@ -6,6 +6,8 @@ public class ItemPickup : MonoBehaviour
 {
     [SerializeField]
     private InventoryItemSO _item;
+    [SerializeField]
+    private int _amount = 1;
     private void OnTriggerEnter(Collider other)
     {
         Inventory inventory = other.GetComponent<Inventory>();

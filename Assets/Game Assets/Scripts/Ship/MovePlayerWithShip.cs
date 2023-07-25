@@ -4,42 +4,46 @@ using UnityEngine;
 
 public class MovePlayerWithShip : MonoBehaviour
 {
-    [SerializeField] CharacterController characterController;
-    [SerializeField] PlayerState playerState;
+    //private CharacterController characterController;
+    [SerializeField] Transform _playerContainer;
+    [SerializeField] ShipController _shipObject;
+
+    private PlayerState playerState;
 
     public bool onShip = false;
-    private void OnTriggerEnter(Collider other)
+
+    private void Awake()
     {
-        if(other.tag == "Player")
+        playerState = _playerContainer.GetComponentInChildren<PlayerState>();
+        //characterController = playerState.GetComponent<CharacterController>();
+
+        if(_playerContainer != null) _playerContainer.SetParent(null);
+
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.transform == playerState.transform)
         {
-            onShip = true;
-            playerState.SwitchState(ControlState.FirstPerson);
-            Debug.Log("Trigger entered");
+            if(onShip == false) onShip = true;
+
+            if(playerState.currentState == ControlState.SpaceMovement)
+                playerState.SwitchState(ControlState.FirstPerson);
+
+            if(_playerContainer != null && _shipObject != null) _playerContainer.SetParent(_shipObject.transform);
+            
+            //Debug.LogWarning("Trigger entered");
         }
             
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.transform == playerState.transform)
         {
-            onShip = false;
+            if(onShip == true) onShip = false;
+
+            if(_playerContainer != null) _playerContainer.SetParent(null);
         }
     }
-
-    //private void FixedUpdate()
-    //{
-    //    if (!onShip)
-    //    {
-    //        float distance = Vector3.Distance(playerState.transform.position, transform.position);
-    //        Debug.Log(distance);
-    //        if (distance <= 3)
-    //        {
-    //            playerState.SwitchState(ControlState.FirstPerson);
-    //            onShip = true;
-    //        }
-    //    }
-    //    
-    //}
 
 }

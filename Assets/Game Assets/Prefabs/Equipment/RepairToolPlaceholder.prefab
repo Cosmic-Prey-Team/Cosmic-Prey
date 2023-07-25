@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToRepair: 1
-  _repairRange: 1.5
+  _repairRange: 2
+  _targetLayers:
+    serializedVersion: 2
+    m_Bits: 2039
   OnTryRepair:
     m_PersistentCalls:
       m_Calls: []

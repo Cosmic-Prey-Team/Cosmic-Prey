@@ -16,8 +16,11 @@ public class PlayerState : MonoBehaviour
     private void Awake()
     {
         currentState = ControlState.FirstPerson;
-        StateAction();
         _shipHelm = FindObjectOfType<ShipHelm>();
+    }
+    private void Start()
+    {
+        StateAction();
     }
 
     private void OnEnable()
@@ -66,7 +69,7 @@ public class PlayerState : MonoBehaviour
         this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlPlayer();
         _rb.isKinematic = true;
         _camera.SetActive(false);
-        _rb.GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
+        _rb.transform.rotation = new Quaternion(0, 0, 0, 0);
         _rb.inertiaTensor.Set(0, 0, 0);
     }
     void OnSpaceMovementState()
@@ -82,7 +85,9 @@ public class PlayerState : MonoBehaviour
     void OnShipState()
     {
         //change controls
+        playerInput.SwitchCurrentActionMap("ShipControls");
         Debug.Log("Switched to Ship Controls");
+        //Debug.LogWarning(playerInput.currentActionMap);
         this.gameObject.GetComponent<StarterAssets.FirstPersonController>().EnterControlShip();
         _rb.isKinematic = true;
     }

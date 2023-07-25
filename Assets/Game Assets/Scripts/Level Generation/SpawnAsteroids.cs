@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnAsteroids : MonoBehaviour
 {
+    [Tooltip("The parent transform for all spawned asteroids")]
+    [SerializeField] private Transform _parentObject;
     [Tooltip("The asteroid prefab to spawn")]
     [SerializeField] private GameObject _asteroid;
 
@@ -41,15 +43,12 @@ public class SpawnAsteroids : MonoBehaviour
 
     void Start()
     {
-        //create parent object for asteroids
-        GameObject parent = new GameObject("Asteroids");
-
         //spawn asteroids
         for (int i = 0; i < _numAsteroidsToSpawn; i++)
         {
             Vector3 Position = FindNewPosition();
             GameObject asteroid = Instantiate(_asteroid, Position, transform.rotation);
-            asteroid.transform.SetParent(parent.transform);
+            asteroid.transform.SetParent(transform);
         }
     }
 }

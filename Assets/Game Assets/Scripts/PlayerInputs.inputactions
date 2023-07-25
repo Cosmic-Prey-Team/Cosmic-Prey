@@ -485,7 +485,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Strafe",
+                    "name": "Turn",
                     "type": "PassThrough",
                     "id": "62ca0721-a119-40fc-8c9f-5fde4382285e",
                     "expectedControlType": "Button",
@@ -495,15 +495,6 @@
                 },
                 {
                     "name": "UpDown",
-                    "type": "PassThrough",
-                    "id": "bc53f1a4-c97f-4c56-993b-8cbe9deef6e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Roll",
                     "type": "PassThrough",
                     "id": "10c0ad19-d758-4e10-96f9-a3dd20375d2f",
                     "expectedControlType": "Button",
@@ -528,6 +519,24 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "PassThrough",
+                    "id": "635c17d1-a1ca-438e-b5bb-8266a3c52c9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "4948d871-6a92-4847-81b2-9cab8740d0f7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -598,13 +607,13 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "StrafeKeyboard",
+                    "name": "TurnKeyboard",
                     "id": "0e1e134f-4a4e-4e0d-8e38-e3b750661f89",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe",
+                    "action": "Turn",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -615,7 +624,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -626,18 +635,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "StrafeController",
+                    "name": "TurnController",
                     "id": "90824d35-d1cb-4f41-8420-6359f45f2292",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe",
+                    "action": "Turn",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -648,7 +657,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -659,84 +668,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "UpDownKB",
-                    "id": "32bafd09-3d90-481b-919f-9a7f1d3ff560",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpDown",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Negative",
-                    "id": "a61eb2e3-c33b-474d-a6be-6ff82cc16bf5",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpDown",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Positive",
-                    "id": "f9067ffe-1d9c-4f91-83db-c8ffc59e89b7",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpDown",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "UpDownController",
-                    "id": "24024595-469b-4c40-86c1-0c532e574a99",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpDown",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Negative",
-                    "id": "6ca64540-7b59-41fb-9f2d-2db312f45210",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpDown",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Positive",
-                    "id": "b914fd6a-d637-40ce-a31a-5b4c5d20ecbd",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpDown",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "RollKB",
                     "id": "9d24678a-142d-4396-997f-781d0cc97a4a",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "UpDown",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -747,7 +690,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "UpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -758,18 +701,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "UpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "RollController",
+                    "name": "UpDownController",
                     "id": "869416e0-cdce-4bf9-ac13-6f2286ba7397",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "UpDown",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -780,7 +723,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "UpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -791,7 +734,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "UpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -836,6 +779,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe751896-3516-46ed-ac3e-9e12efbec4e6",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4609dd80-b399-4e53-84b6-14656fbfa93f",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c047a5f-d1b4-4da3-a5e5-487d71474779",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "InvertVector2(invertX=false),ScaleVector2(x=0.05,y=0.05)",
+                    "groups": "KeyboardMouse",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c24bea80-2b21-4800-8aae-81cbf8d6af0f",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)",
+                    "groups": "Gamepad",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
