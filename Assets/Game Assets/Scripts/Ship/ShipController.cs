@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class ShipController : MonoBehaviour
@@ -16,13 +17,19 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float _maxSpeed = 1f;
     [SerializeField] private float _accelerationDelay;
     [Space]
-    public bool rotating;
+    public bool Rotating;
+
+    [Header("Events")]
+    public UnityEvent OnShipStartMove;
+    public UnityEvent OnShipStopMove;
 
     private float _speed, _vSpeed = 0f;
     private float _accelerate, _vAccelerate;
 
     private PlayerState _playerState;
     private ShipInput _input;
+
+    private bool _isMoving = false;
 
     private void Awake()
     {
@@ -43,6 +50,25 @@ public class ShipController : MonoBehaviour
         }
 
         ControlShip();
+
+        #region Trigger Events
+        if (_input.thrust != 0 || _input.turn != 0 || _input.vMove != 0)
+        {
+            if(_isMoving == false)
+            {
+                _isMoving = true;
+                OnShipStartMove?.Invoke();
+            }
+        }
+        if (_input.thrust == 0 && _input.turn == 0 && _input.vMove == 0)
+        {
+            if (_isMoving == true)
+            {
+                _isMoving = false;
+                OnShipStopMove?.Invoke();
+            }
+        }
+        #endregion
     }
 
     private void ControlShip()
@@ -50,7 +76,7 @@ public class ShipController : MonoBehaviour
         // if the player is trying to rotate the ship
         if (_input.turn != 0)
         {
-            rotating = true;
+            Rotating = true;
 
             if (_input.turn > 0 && rotateSpeed < 0 || _input.turn < 0 && rotateSpeed > 0)
                 rotateSpeed = -rotateSpeed;
@@ -60,7 +86,7 @@ public class ShipController : MonoBehaviour
         }
         else
         {
-            rotating = false;
+            Rotating = false;
         }
 
         // if the player is trying to move the ship forward
