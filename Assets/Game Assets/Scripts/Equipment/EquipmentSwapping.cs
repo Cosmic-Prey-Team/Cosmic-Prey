@@ -68,6 +68,6 @@ public class EquipmentSwapping : MonoBehaviour
 
             i++;
         }
-        OnSwap?.Inovke(_selectedWeapon);
+        OnSwap?.Invoke(_selectedWeapon);
     }
 }
