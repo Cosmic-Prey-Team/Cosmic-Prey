@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class Loadout : MonoBehaviour
 {
-    private EquipmentSwapping equipment;
-    public Sprite[] selectedLoadout_Array;
-    public SpriteRenderer inactiveLoadout;
-   
+    public EquipmentSwapping equipment;
+    public Image[] ObjectwithImage;       //Gray scale icon
+    public Sprite[] spriteToChangeItTo;   //Active icon
+
 
     // Start is called before the first frame update
     void Awake()
@@ -26,19 +26,22 @@ public class Loadout : MonoBehaviour
         switch (selectedEquipment)
         {
             case 0:     //Empty hand selected
-                inactiveLoadout.sprite = selectedLoadout_Array[selectedEquipment];               
+                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
+
+                /* Hand changeSprite = new Hand();
+                 changeSprite.Swap(true);*/
                 break;
             case 1:     //Melee weapon selected
-                inactiveLoadout.sprite = selectedLoadout_Array[selectedEquipment];
+                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment]; 
                 break;
             case 2:     //Handgun selected
-                inactiveLoadout.sprite = selectedLoadout_Array[selectedEquipment];
+                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment]; 
                 break;
             case 3:     //Drill selected
-                inactiveLoadout.sprite = selectedLoadout_Array[selectedEquipment];
+                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment]; 
                 break;
             case 4:     //Repair tool selected
-                inactiveLoadout.sprite = selectedLoadout_Array[selectedEquipment];
+                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
                 break;
         }//End of SWITCH
              
