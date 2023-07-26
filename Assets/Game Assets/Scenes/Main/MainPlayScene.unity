@@ -4988,9 +4988,34 @@ PrefabInstance:
       objectReference: {fileID: 1027800139}
     - target: {fileID: 5877554461878336162, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
+      propertyPath: craftTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877554461878336162, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
       propertyPath: progressBar
       value: 
       objectReference: {fileID: 1893437721}
+    - target: {fileID: 5877554461878336162, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: craftInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877554461878336162, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: ammoCraftAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877554461878336162, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: panelCraftAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877554461878336162, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: machinePartCraftAmount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5877554461878336163, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _craftingDisplay

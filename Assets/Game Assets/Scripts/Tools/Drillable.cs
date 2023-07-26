@@ -63,10 +63,7 @@ public class Drillable : MonoBehaviour
     private void GainItem(Transform player)
     {
         _inventory = player.GetComponent<Inventory>();
-        for (int i = 0; i < _amountGained; i++)
-        {
-            _inventory.AddItem(_itemToReceive);
-        }
+        _inventory.AddItem(_itemToReceive, _amountGained);
     }
     public void EnableHealthBar(Vector3 uiPos, Transform camTransform)
     {

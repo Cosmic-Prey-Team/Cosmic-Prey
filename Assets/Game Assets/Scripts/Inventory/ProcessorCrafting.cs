@@ -13,8 +13,11 @@ public class ProcessorCrafting : MonoBehaviour
     public GameObject canvas;
     public Slider progressBar;
     public InventoryItemSO Ammo;
+    public int ammoCraftAmount = 1;
     public InventoryItemSO Panel;
+    public int panelCraftAmount = 1;
     public InventoryItemSO MachinePart;
+    public int machinePartCraftAmount = 1;
     public Vector3 ammoButton = new Vector3(-390, -100, 0f);
     public Vector3 panelButton = new Vector3(-240, -100, 0f);
     public Vector3 partButton = new Vector3(-90, -100, 0f);
@@ -85,9 +88,33 @@ public class ProcessorCrafting : MonoBehaviour
 
     public void CraftItem(InventoryItemSO item)
     {
-        //Debug.LogWarning("CraftItem()");
-        inventory.RemoveItem(inventory.inventory[0]);
-        inventory.AddItem(item, 1);
-        progressBar.value = 0;
+        if(item == Ammo)
+        {
+            Debug.LogWarning("CraftItem()");
+            inventory.RemoveItem(inventory.inventory[0]);
+            inventory.AddItem(item, ammoCraftAmount);
+            progressBar.value = 0;
+        }
+        else if(item == Panel)
+        {
+            Debug.LogWarning("CraftItem()");
+            inventory.RemoveItem(inventory.inventory[0]);
+            inventory.AddItem(item, panelCraftAmount);
+            progressBar.value = 0;
+        }
+        else if(item == MachinePart)
+        {
+            Debug.LogWarning("CraftItem()");
+            inventory.RemoveItem(inventory.inventory[0]);
+            inventory.AddItem(item, machinePartCraftAmount);
+            progressBar.value = 0;
+        }
+        else
+        {
+            Debug.LogWarning("CraftItem()");
+            inventory.RemoveItem(inventory.inventory[0]);
+            inventory.AddItem(item);
+            progressBar.value = 0;
+        }
     }
 }

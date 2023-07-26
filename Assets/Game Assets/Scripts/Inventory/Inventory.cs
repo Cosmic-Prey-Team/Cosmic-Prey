@@ -54,12 +54,11 @@ public class Inventory : MonoBehaviour
             {
                 //lookFor.ItemCount = lookFor.ItemCount + 1;
                 lookFor.ItemCount += amount;
-                //Debug.LogWarning("AddItem(): " + lookFor.ItemCount);
                 return;
             }
         }
 
-        SetEmptySlot(item);
+        SetEmptySlot(item, amount);
 
     }
     public void AddStack(InventoryItemInstance item)
@@ -133,6 +132,20 @@ public class Inventory : MonoBehaviour
             if (inventory[i].ItemName == "Empty")
             {
                 inventory[i].UpdateSlot(item);
+                return inventory[i];
+            }
+        }
+        return null;
+    }
+    public InventoryItemInstance SetEmptySlot(InventoryItemSO item, int amount)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i].ItemName == "Empty")
+            {
+                inventory[i].UpdateSlot(item);
+                AddItem(item, amount - 1);
+
                 return inventory[i];
             }
         }
