@@ -10,12 +10,16 @@ public class LoadoutUI : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        equipment.OnSwap += refreshEquipment;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void refreshEquipment (int selectedEquipm)
+    {
+
     }
 }
