@@ -88,30 +88,27 @@ public class ProcessorCrafting : MonoBehaviour
 
     public void CraftItem(InventoryItemSO item)
     {
-        if(item == Ammo)
+        //Debug.LogWarning("CraftItem()");
+        if (item == Ammo)
         {
-            Debug.LogWarning("CraftItem()");
             inventory.RemoveItem(inventory.inventory[0]);
             inventory.AddItem(item, ammoCraftAmount);
             progressBar.value = 0;
         }
         else if(item == Panel)
         {
-            Debug.LogWarning("CraftItem()");
             inventory.RemoveItem(inventory.inventory[0]);
             inventory.AddItem(item, panelCraftAmount);
             progressBar.value = 0;
         }
         else if(item == MachinePart)
         {
-            Debug.LogWarning("CraftItem()");
             inventory.RemoveItem(inventory.inventory[0]);
             inventory.AddItem(item, machinePartCraftAmount);
             progressBar.value = 0;
         }
         else
         {
-            Debug.LogWarning("CraftItem()");
             inventory.RemoveItem(inventory.inventory[0]);
             inventory.AddItem(item);
             progressBar.value = 0;
