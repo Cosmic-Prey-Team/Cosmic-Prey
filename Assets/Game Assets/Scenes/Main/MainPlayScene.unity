@@ -4971,6 +4971,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 299478372}
     m_Modifications:
+    - target: {fileID: 3629064309406967105, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624878506041041763, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5877554461349342632, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _playerState
@@ -5021,6 +5031,11 @@ PrefabInstance:
       propertyPath: _craftingDisplay
       value: 
       objectReference: {fileID: 1027800139}
+    - target: {fileID: 7840271902323933294, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: _healthRegenRate
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7840271902323933329, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _playerContainer

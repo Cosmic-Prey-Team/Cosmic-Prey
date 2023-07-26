@@ -29,7 +29,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
 
     private InputHandler _input;
     private Transform _playerTransform;
-    private Gun _gun;
+    private Gun[] _guns;
     private EquipmentSwapping _equipmentSwapping;
     private StarterAssets.FirstPersonController _firstPersonController;
     private CharacterController _characterController;
@@ -71,8 +71,8 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     private void Start()
     {
         _input = FindObjectOfType<InputHandler>();
-        _gun = GetComponentInChildren<Gun>();
-        _gun.gameObject.SetActive(false);
+        _guns = GetComponentsInChildren<Gun>();
+        EnableGun(false);
         _cinemachine = FindObjectOfType<CinemachineVirtualCamera>();
     }
     private void Update()
@@ -201,7 +201,10 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     private void EnableGun(bool enabled)
     {
         //_gun.enabled = enabled;
-        _gun.gameObject.SetActive(enabled);
+        foreach (var gun in _guns)
+        {
+            gun.gameObject.SetActive(enabled);
+        }
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
