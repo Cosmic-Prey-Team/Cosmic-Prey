@@ -27,13 +27,13 @@ public class Loadout : MonoBehaviour
         for (int equip=0; equip < 5 ; equip++)
         {
             // Open hands option
+            //Comment me out if there is only 5 icons
             if (selectedEquipment == 0)
             {
                 ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
                 ObjectwithImage[^1].sprite = spriteToChangeItTo[spriteToChangeItTo.Length/2 - 1 ];
                 ObjectwithImage[1].sprite = spriteToChangeItTo[7]; //Handsaw debugging
                 ObjectwithImage[ObjectwithImage.Length - 2].sprite = spriteToChangeItTo[spriteToChangeItTo.Length - 2]; //Repair gun debugging
-
             }
 
             else if (equip == selectedEquipment) 
@@ -45,7 +45,8 @@ public class Loadout : MonoBehaviour
             else 
             {
                 ObjectwithImage[equip].sprite = spriteToChangeItTo[equip + spriteToChangeItTo.Length / 2];
-                ObjectwithImage[5].sprite = spriteToChangeItTo[^1];
+                ObjectwithImage[5].sprite = spriteToChangeItTo[^1]; //Comment me out if there is only 5 icons
+
             }
 
         }
