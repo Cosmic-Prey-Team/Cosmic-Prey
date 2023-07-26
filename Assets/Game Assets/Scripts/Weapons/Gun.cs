@@ -7,10 +7,12 @@ public enum FireMode { Semi, Auto };
 public class Gun : MonoBehaviour
 {
     InputHandler _input;
+    Inventory _playerInventory;
 
     [Header("Prefabs")]
     [SerializeField] GameObject _bulletPrefab;
-    //[SerializeField] ParticleSystem _muzzleFlash;
+    [SerializeField] ParticleSystem _muzzleFlash;
+    [SerializeField] InventoryItemSO _ammoSO;
 
     [Header("Gun Settings")]
     [SerializeField] FireMode FireMode = FireMode.Semi;
@@ -42,6 +44,8 @@ public class Gun : MonoBehaviour
     {
         _input = FindObjectOfType<InputHandler>();
         _currentAmmoCount = _maxAmmoCount;
+        _playerInventory = _input.GetComponent<Inventory>();
+        if (_playerInventory == null) Debug.LogError("Inventory not found");
     }
     private void Update()
     {
@@ -84,51 +88,57 @@ public class Gun : MonoBehaviour
     }
     public void FireAction()
     {
-        if(_currentAmmoCount > 0)
+        if(_playerInventory != null)
         {
-            Debug.Log("Fire");
-
-            //create muzzleflash
-            //Debug.LogError("add muzzle flash back in");
-            /*var flash = Instantiate(muzzleflash, bulletSpawn);
-            Destroy(flash, 0.2f);*/
-
-            //decrease ammo counter
-            if (_infiniteAmmo != true)
+            if(_playerInventory.RemoveItem(_ammoSO) != null)
             {
-                //_currentAmmoCount = _currentAmmoCount - 1;
-                _currentAmmoCount--;
-                OnAmmoCountChanged?.Invoke(_currentAmmoCount);
-                RefreshAmmoStatus();
+                Debug.Log("Fire");
+
+                //create muzzleflash
+                //Debug.LogError("add muzzle flash back in");
+                if (_muzzleFlash != null)
+                {
+                    var flash = Instantiate(_muzzleFlash, _bulletSpawnPoint);
+                }
+
+                //decrease ammo counter
+                if (_infiniteAmmo != true)
+                {
+                    //_currentAmmoCount = _currentAmmoCount - 1;
+                    _currentAmmoCount--;
+                    OnAmmoCountChanged?.Invoke(_currentAmmoCount);
+                    RefreshAmmoStatus();
+                }
+
+                #region Rigidbody Method
+                //using raycast to determine direction of projectile
+                Vector3 rayStartPos = _raySpawnPoint.position;
+                Vector3 rayDirection = _raySpawnPoint.forward;
+                Vector3 offsetPos = _raySpawnPoint.position + _raySpawnPoint.forward * _maxRange;
+
+                RaycastHit hitInfo;
+                if (Physics.Raycast(rayStartPos, rayDirection, out hitInfo, _maxRange))
+                {
+                    _target.position = hitInfo.point;
+                }
+                else
+                {
+                    _target.position = _raySpawnPoint.TransformPoint(_raySpawnPoint.InverseTransformPoint(offsetPos));
+                }
+
+                //rotate spawn point to face target
+                _bulletSpawnPoint.LookAt(_target);
+
+                //spawn bullet prefab
+                GameObject bulletObject = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
+                Projectile bullet = bulletObject.GetComponent<Projectile>();
+                bullet.Configure(_bulletSpawnPoint, _damagePerBullet);
+
+                OnShoot?.Invoke();
+                #endregion
             }
-
-            #region Rigidbody Method
-            //using raycast to determine direction of projectile
-            Vector3 rayStartPos = _raySpawnPoint.position;
-            Vector3 rayDirection = _raySpawnPoint.forward;
-            Vector3 offsetPos = _raySpawnPoint.position + _raySpawnPoint.forward * _maxRange;
-
-            RaycastHit hitInfo;
-            if (Physics.Raycast(rayStartPos, rayDirection, out hitInfo, _maxRange))
-            {
-                _target.position = hitInfo.point;
-            }
-            else
-            {
-                _target.position = _raySpawnPoint.TransformPoint(_raySpawnPoint.InverseTransformPoint(offsetPos));
-            }
-
-            //rotate spawn point to face target
-            _bulletSpawnPoint.LookAt(_target);
-
-            //spawn bullet prefab
-            GameObject bulletObject = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
-            Projectile bullet = bulletObject.GetComponent<Projectile>();
-            bullet.Configure(_bulletSpawnPoint, _damagePerBullet);
-
-            OnShoot?.Invoke();
-            #endregion
         }
+        //if (_currentAmmoCount > 0) { }
     }
     public void ReloadAmmo()
     {
