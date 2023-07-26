@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * I should be no longer needed for 
+ * loadout active indication.
+ * **/
 public class Hand : MonoBehaviour
 {
     public Image ObjectwithImage;       //Gray scale icon
