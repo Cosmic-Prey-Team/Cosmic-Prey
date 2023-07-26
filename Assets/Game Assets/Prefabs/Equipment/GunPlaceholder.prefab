@@ -538,6 +538,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 2226084845381448654, guid: cc788444dc6507841819db3a69476e59,
     type: 3}
   _muzzleFlash: {fileID: 0}
+  _ammoSO: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}
   FireMode: 0
   _damagePerBullet: 1
   _fireRate: 15
@@ -548,6 +549,9 @@ MonoBehaviour:
   _bulletSpawnPoint: {fileID: 239028872162562466}
   _raySpawnPoint: {fileID: 0}
   _target: {fileID: 5031009217407472623}
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls: []
   OnAmmoCountChanged:
     m_PersistentCalls:
       m_Calls: []
