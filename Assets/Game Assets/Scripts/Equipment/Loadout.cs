@@ -24,12 +24,29 @@ public class Loadout : MonoBehaviour
     private void refreshEquipment (int selectedEquipment)
     {
         //Main idea = selectedEquiment num corrispondeds identically to current weapon array
-        for (int equip=0; equip < (spriteToChangeItTo.Length/2); equip++)
+        for (int equip=0; equip < 5 ; equip++)
         {
-            if (equip == selectedEquipment)
+            // Open hands option
+            if (selectedEquipment == 0)
+            {
                 ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
-            else
-                ObjectwithImage[equip].sprite = spriteToChangeItTo[equip+ spriteToChangeItTo.Length / 2];
+                ObjectwithImage[^1].sprite = spriteToChangeItTo[spriteToChangeItTo.Length/2 - 1 ];
+                ObjectwithImage[1].sprite = spriteToChangeItTo[7]; //Handsaw debugging
+                ObjectwithImage[ObjectwithImage.Length - 2].sprite = spriteToChangeItTo[spriteToChangeItTo.Length - 2]; //Repair gun debugging
+
+            }
+
+            else if (equip == selectedEquipment) 
+            {
+                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
+            }
+
+            //Ensure the icon is back to the inactive icon
+            else 
+            {
+                ObjectwithImage[equip].sprite = spriteToChangeItTo[equip + spriteToChangeItTo.Length / 2];
+                ObjectwithImage[5].sprite = spriteToChangeItTo[^1];
+            }
 
         }
 
