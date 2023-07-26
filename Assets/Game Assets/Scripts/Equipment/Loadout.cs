@@ -13,6 +13,7 @@ public class Loadout : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        equipment = FindObjectOfType<EquipmentSwapping>();
         equipment.OnSwap += refreshEquipment;
     }
 
@@ -42,6 +43,14 @@ public class Loadout : MonoBehaviour
                 ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
                 break;
         }//End of SWITCH
-             
+
+        /*For int equip=0, 4
+        *   if equip == selectedEquipment
+        *   ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
+        *
+        *   else
+        *   ObjectwithImage[equip].sprite = ObjectwithImage[equip];
+
+         */
     }
 }
