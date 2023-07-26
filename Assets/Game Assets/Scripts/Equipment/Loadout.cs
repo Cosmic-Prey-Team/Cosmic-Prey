@@ -23,13 +23,11 @@ public class Loadout : MonoBehaviour
     }
     private void refreshEquipment (int selectedEquipment)
     {
+        //Main idea = selectedEquiment num corrispondeds identically to current weapon array
         switch (selectedEquipment)
         {
             case 0:     //Empty hand selected
                 ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
-
-                /* Hand changeSprite = new Hand();
-                 changeSprite.Swap(true);*/
                 break;
             case 1:     //Melee weapon selected
                 ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment]; 
