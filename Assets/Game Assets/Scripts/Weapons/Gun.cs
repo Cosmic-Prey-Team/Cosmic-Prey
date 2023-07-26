@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] GameObject _bulletPrefab;
-    [SerializeField] ParticleSystem _muzzleFlash;
+    //[SerializeField] ParticleSystem _muzzleFlash;
 
     [Header("Gun Settings")]
     [SerializeField] FireMode FireMode = FireMode.Semi;
@@ -89,7 +89,7 @@ public class Gun : MonoBehaviour
             Debug.Log("Fire");
 
             //create muzzleflash
-            Debug.LogError("add muzzle flash back in");
+            //Debug.LogError("add muzzle flash back in");
             /*var flash = Instantiate(muzzleflash, bulletSpawn);
             Destroy(flash, 0.2f);*/
 
