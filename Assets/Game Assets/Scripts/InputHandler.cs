@@ -62,12 +62,12 @@ public class InputHandler : MonoBehaviour
 
 	public void OnFirePrimary(InputValue value)
     {
-        FirePrimaryInput(value.isPressed);
-    }
+        if (cursorLocked) FirePrimaryInput(value.isPressed);
+	}
 
 	public void OnFireSecondary(InputValue value)
 	{
-		FireSecondaryInput(value.isPressed);
+		if (cursorLocked) FireSecondaryInput(value.isPressed);
 	}
 
 	public void OnInteract(InputValue value)
