@@ -9,7 +9,6 @@ public class Loadout : MonoBehaviour
     public Image[] ObjectwithImage;       //Gray scale icon
     public Sprite[] spriteToChangeItTo;   //Active icon
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,32 +24,14 @@ public class Loadout : MonoBehaviour
     private void refreshEquipment (int selectedEquipment)
     {
         //Main idea = selectedEquiment num corrispondeds identically to current weapon array
-        switch (selectedEquipment)
+        for (int equip=0; equip < (spriteToChangeItTo.Length/2); equip++)
         {
-            case 0:     //Empty hand selected
+            if (equip == selectedEquipment)
                 ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
-                break;
-            case 1:     //Melee weapon selected
-                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment]; 
-                break;
-            case 2:     //Handgun selected
-                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment]; 
-                break;
-            case 3:     //Drill selected
-                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment]; 
-                break;
-            case 4:     //Repair tool selected
-                ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
-                break;
-        }//End of SWITCH
+            else
+                ObjectwithImage[equip].sprite = spriteToChangeItTo[equip+ spriteToChangeItTo.Length / 2];
 
-        /*For int equip=0, 4
-        *   if equip == selectedEquipment
-        *   ObjectwithImage[selectedEquipment].sprite = spriteToChangeItTo[selectedEquipment];
-        *
-        *   else
-        *   ObjectwithImage[equip].sprite = ObjectwithImage[equip];
+        }
 
-         */
     }
 }
