@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class Loadout : MonoBehaviour
 {
-    public EquipmentSwapping equipment;
+    public EquipmentSwapping equipmentSwapping;
     public Image[] ObjectwithImage;       //Gray scale icon
     public Sprite[] spriteToChangeItTo;   //Active icon
 
     // Start is called before the first frame update
     void Awake()
     {
-        equipment = FindObjectOfType<EquipmentSwapping>();
-        equipment.OnSwap += refreshEquipment;
+        equipmentSwapping = FindObjectOfType<EquipmentSwapping>();
+        equipmentSwapping.OnSwap += refreshEquipment;
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class Loadout : MonoBehaviour
     private void refreshEquipment (int selectedEquipment)
     {
         //Main idea = selectedEquiment num corrispondeds identically to current weapon array
-        for (int equip=0; equip < 5 ; equip++)
+        for (int equip=0; equip < equipmentSwapping.transform.childCount ; equip++)
         {
             // Open hands option
             //Comment me out if there is only 5 icons
