@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events; 
 
 public class EquipmentSwapping : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class EquipmentSwapping : MonoBehaviour
 
     [SerializeField]
     private int _selectedWeapon = 0;
-
+    public event Action<int> OnSwap;
     #region Monobehavior
     private void Awake()
     {
@@ -67,5 +68,6 @@ public class EquipmentSwapping : MonoBehaviour
 
             i++;
         }
+        OnSwap?.Invoke(_selectedWeapon);
     }
 }
