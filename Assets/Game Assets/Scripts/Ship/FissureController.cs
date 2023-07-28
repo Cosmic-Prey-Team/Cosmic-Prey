@@ -35,8 +35,9 @@ public class FissureController : MonoBehaviour
 
         foreach (GameObject fissure in _fissures)
         {
-            fissure.GetComponent<Repairable>().SetAmountToRepair(_fissureRepairAmount + 1);
-            fissure.SetActive(false);
+            fissure.GetComponent<Repairable>().SetAmountToRepair(_fissureRepairAmount);
+            //fissure.SetActive(false);
+            fissure.GetComponent<FissureVisuals>().Deactivate();
         }
     }
 
@@ -74,9 +75,12 @@ public class FissureController : MonoBehaviour
         while(_activeFissures < fissuresRequired)
         {
             int random = Random.Range(0, _fissures.Length);
-            if (_fissures[random].activeSelf == false)
+
+            FissureVisuals fissureV = _fissures[random].GetComponent<FissureVisuals>();
+            if (fissureV.GetIsActive() == false /*_fissures[random].activeSelf == false*/)
             {
-                _fissures[random].SetActive(true);
+                //_fissures[random].SetActive(true);
+                fissureV.Activate();
                 _activeFissures++;
             }
         }

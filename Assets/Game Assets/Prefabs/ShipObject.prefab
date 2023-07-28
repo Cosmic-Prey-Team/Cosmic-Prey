@@ -113,8 +113,11 @@ MonoBehaviour:
   canvas: {fileID: 0}
   progressBar: {fileID: 0}
   Ammo: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}
+  ammoCraftAmount: 1
   Panel: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
+  panelCraftAmount: 1
   MachinePart: {fileID: 11400000, guid: caa650da2e5623d4caeebce0a7beb267, type: 2}
+  machinePartCraftAmount: 1
   ammoButton: {x: -390, y: -100, z: 0}
   panelButton: {x: -240, y: -100, z: 0}
   partButton: {x: -90, y: -100, z: 0}
@@ -1771,11 +1774,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fissure (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 5475142100394945721, guid: ffe846c85c8903249ac147a31f28a9dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 23de47fb2b6cce94781cacc3a20550b2, type: 2}
     - target: {fileID: 6328066671596836467, guid: ffe846c85c8903249ac147a31f28a9dd,
         type: 3}
       propertyPath: m_RootOrder
@@ -1932,11 +1930,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fissure
       objectReference: {fileID: 0}
-    - target: {fileID: 5475142100394945721, guid: ffe846c85c8903249ac147a31f28a9dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 23de47fb2b6cce94781cacc3a20550b2, type: 2}
     - target: {fileID: 6328066671596836467, guid: ffe846c85c8903249ac147a31f28a9dd,
         type: 3}
       propertyPath: m_RootOrder
@@ -2018,11 +2011,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fissure (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5475142100394945721, guid: ffe846c85c8903249ac147a31f28a9dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 23de47fb2b6cce94781cacc3a20550b2, type: 2}
     - target: {fileID: 6328066671596836467, guid: ffe846c85c8903249ac147a31f28a9dd,
         type: 3}
       propertyPath: m_RootOrder
@@ -2104,11 +2092,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fissure (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 5475142100394945721, guid: ffe846c85c8903249ac147a31f28a9dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 23de47fb2b6cce94781cacc3a20550b2, type: 2}
     - target: {fileID: 6328066671596836467, guid: ffe846c85c8903249ac147a31f28a9dd,
         type: 3}
       propertyPath: m_RootOrder
