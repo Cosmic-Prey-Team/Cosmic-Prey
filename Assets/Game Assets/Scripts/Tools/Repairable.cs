@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Repairable : MonoBehaviour
 {
+    public UnityEvent OnStartRepairing;
     public UnityEvent OnFullyRepaired;
 
     private Health _health;
@@ -39,6 +40,10 @@ public class Repairable : MonoBehaviour
         EnableProgressBar(true);
     }
 
+    public bool GetIsRepairing()
+    {
+        return _isRepairing;
+    }
     public int GetAmountToRepair() { return _healthAmountRegen; }
     public void SetAmountToRepair(int amount) { _healthAmountRegen = amount; }
 
@@ -63,10 +68,11 @@ public class Repairable : MonoBehaviour
     {
         _inventory = player.GetComponent<Inventory>();
 
-        if(_isRepairing == false/* && _inventory.RemoveItem(ItemToConsume) != null*/)
+        if(_isRepairing == false)
         {
             if(_inventory.RemoveItem(ItemToConsume) != null)
             {
+                OnStartRepairing?.Invoke();
                 _isRepairing = true;
                 Debug.Log("Is repairing");
             }
