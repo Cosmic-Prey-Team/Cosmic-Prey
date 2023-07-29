@@ -62,7 +62,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.2705882787704468,"g":2.9960784912109377,"b":1.615686297416687,"a":1.0},"time":0.1441214680671692},{"color":{"r":0.06514789909124375,"g":3.7484922409057619,"b":0.0,"a":1.0},"time":0.2735332250595093},{"color":{"r":1.913370132446289,"g":0.270476371049881,"b":0.7160317897796631,"a":1.0},"time":0.6235294342041016},{"color":{"r":1.0,"g":0.6705882549285889,"b":0.3686274588108063,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.24411383271217347},{"alpha":1.0,"time":0.7676509022712708},{"alpha":0.0,"time":0.9882352948188782}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.6352941393852234,"g":1.4980392456054688,"b":0.8078431487083435,"a":1.0},"time":0.1441214680671692},{"color":{"r":0.019625619053840638,"g":0.9371232390403748,"b":0.0,"a":1.0},"time":0.2735332250595093},{"color":{"r":0.9566850662231445,"g":0.13523820042610169,"b":0.3606352210044861,"a":1.0},"time":0.6235294342041016},{"color":{"r":1.0,"g":0.6705882549285889,"b":0.3686274588108063,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.24411383271217347},{"alpha":1.0,"time":0.7676509022712708},{"alpha":0.0,"time":0.9882352948188782}],"gradientMode":0}'
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -3530,7 +3530,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -3584,7 +3584,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.2705882787704468,"g":2.9960784912109377,"b":1.615686297416687,"a":1.0},"time":0.1441214680671692},{"color":{"r":0.06514789909124375,"g":3.7484922409057619,"b":0.0,"a":1.0},"time":0.2735332250595093},{"color":{"r":1.913370132446289,"g":0.270476371049881,"b":0.7160317897796631,"a":1.0},"time":0.6235294342041016},{"color":{"r":1.0,"g":0.6705882549285889,"b":0.3686274588108063,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.24411383271217347},{"alpha":1.0,"time":0.7676509022712708},{"alpha":0.0,"time":0.9882352948188782}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.6352941393852234,"g":1.4980392456054688,"b":0.8078431487083435,"a":1.0},"time":0.1441214680671692},{"color":{"r":0.019625619053840638,"g":0.9371232390403748,"b":0.0,"a":1.0},"time":0.2735332250595093},{"color":{"r":0.9566850662231445,"g":0.13523820042610169,"b":0.3606352210044861,"a":1.0},"time":0.6235294342041016},{"color":{"r":1.0,"g":0.6705882549285889,"b":0.3686274588108063,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.24411383271217347},{"alpha":1.0,"time":0.7676509022712708},{"alpha":0.0,"time":0.9882352948188782}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: o
