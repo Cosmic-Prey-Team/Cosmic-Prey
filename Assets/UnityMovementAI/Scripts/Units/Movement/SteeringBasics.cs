@@ -128,8 +128,8 @@ namespace UnityMovementAI
                     /* Mulitply by -1 because counter clockwise on the y-axis is in the negative direction */
                     float toRotation = -1 * (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg);
                     float rotation = Mathf.LerpAngle(rb.Rotation.eulerAngles.y, toRotation, Time.deltaTime * turnSpeed);
-
-                    rb.Rotation = Quaternion.Euler(0, rotation, 0);
+                    float yRotation = Mathf.LerpAngle(rb.Rotation.eulerAngles.z, direction.y * Mathf.Rad2Deg, Time.deltaTime * turnSpeed); ;
+                    rb.Rotation = Quaternion.Euler(0, rotation, yRotation);
                 }
                 else
                 {

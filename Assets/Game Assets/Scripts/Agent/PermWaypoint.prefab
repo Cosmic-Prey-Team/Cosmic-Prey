@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6195344447089500943}
   m_Layer: 8
   m_Name: PermWaypoint
-  m_TagString: Waypoint
+  m_TagString: PermWaypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

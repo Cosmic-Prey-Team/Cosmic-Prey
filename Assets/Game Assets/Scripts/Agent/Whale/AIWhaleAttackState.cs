@@ -28,6 +28,7 @@ public class AIWhaleAttackState : AIState
     public void Enter(AIAgent agent)
     {      
         _target = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log("Attack");
     }
 
     public void Exit(AIAgent agent)
@@ -49,7 +50,7 @@ public class AIWhaleAttackState : AIState
 
         if (!_attacking)
         {
-            _attack = 2;//Random.Range(0, 3);
+            _attack = Random.Range(0, 3);
             Debug.Log(_attack);
         }
 

@@ -13,4 +13,6 @@ public class AIAgentConfig : ScriptableObject
     public GameObject enemyPrefab;
     public List<MovementAIRigidbody> krill;
     public Transform destination;
+    public Animator animator;
+    public int layerIndex;
 }

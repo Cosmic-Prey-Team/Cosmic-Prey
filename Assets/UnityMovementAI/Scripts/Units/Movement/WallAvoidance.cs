@@ -145,7 +145,7 @@ namespace UnityMovementAI
                 }
                 else
                 {
-                    result = Physics.SphereCast(origin, (rb.Radius * 0.5f), direction, out h, distance, castMask.value);
+                    result = Physics.SphereCast(origin, (rb.Radius * 2f), direction, out h, distance, castMask.value);
                 }
 
                 hit = new GenericCastHit(h);
