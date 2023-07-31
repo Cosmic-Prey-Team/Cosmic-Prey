@@ -14,7 +14,7 @@ public class DrillTool : MonoBehaviour
     [Tooltip("The amount of damage done every tick")]
     [SerializeField] private int _damagePerDelay;
     [Tooltip("The distance you can drill from")]
-    [SerializeField] private int _drillRange;
+    [SerializeField] private float _drillRange;
     [Header("Drill Effects")]
     [Tooltip("Particle effect to play while drilling")]
     [SerializeField] ParticleSystem _drillEffect;

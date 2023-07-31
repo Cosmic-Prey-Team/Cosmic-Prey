@@ -23,8 +23,8 @@ TagManager:
   - Waypoint
   - Obstacle
   - Food
-  - Ship
-  - 
+  - Ship Trigger
+  - Ship Colliders
   - 
   - 
   - 
