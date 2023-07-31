@@ -33,7 +33,27 @@ public class Radar : MonoBehaviour
 
         if (_currentDist != dist)
         {
-            if(dist <= _maxRange)
+            //do fraction of distance
+            float screenDist = (_displayRadius * dist) / _maxRange;
+
+            //get direction
+            var direction = heading / dist;
+
+            Vector3 adjDirection = new Vector3(-direction.x, -direction.z, direction.y);
+
+            //move dot by screenDist in correct direction
+            if (dist <= _maxRange)
+                _dot.localPosition = screenDist * adjDirection;
+            else
+                _dot.localPosition = _displayRadius * adjDirection;
+
+            _currentDist = dist;
+
+            //rotate display to match ship orientation
+            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x,
+                transform.localRotation.eulerAngles.y, _ship.transform.rotation.eulerAngles.y);
+
+            /*if (dist <= _maxRange)
             {
                 if (_dot.gameObject.activeInHierarchy == false)
                     _dot.gameObject.SetActive(true);
@@ -59,7 +79,7 @@ public class Radar : MonoBehaviour
             {
                 if(_dot.gameObject.activeInHierarchy == true)
                     _dot.gameObject.SetActive(false);
-            }
+            }*/
             
         }
     }
