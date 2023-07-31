@@ -12,12 +12,17 @@ public class Radar : MonoBehaviour
 
     [Header("Radar Properties")]
     [Tooltip("Detection range of the radar.")]
-    [SerializeField] float _maxRange;
+    [SerializeField] float _maxRange = 100f;
     [Tooltip("Radius of the radar's display.")]
-    [SerializeField] float _displayRadius;
+    [SerializeField] float _displayRadius = 0.115f;
     
     private float _currentDist;
+    private ShipController _ship;
 
+    private void Awake()
+    {
+        _ship = FindObjectOfType<ShipController>();
+    }
     private void Update()
     {
         if (_objectToTrack == null || _dot == null) return;
@@ -45,7 +50,10 @@ public class Radar : MonoBehaviour
                 _dot.localPosition = screenDist * adjDirection;
 
                 _currentDist = dist;
-                //Debug.Log("rDist: " + _currentDist + "; sDist: " + screenDist);
+
+                //rotate display to match ship orientation
+                transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x,
+                    transform.localRotation.eulerAngles.y, _ship.transform.rotation.eulerAngles.y);
             }
             else
             {

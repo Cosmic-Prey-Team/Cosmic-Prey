@@ -1348,8 +1348,7 @@ MonoBehaviour:
   _objectToTrack: {fileID: 405913109}
   _dot: {fileID: 1110871006}
   _maxRange: 50
-  _screenRange: 0.115
-  _currentDist: 0
+  _displayRadius: 0.115
 --- !u!1 &405913105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4363,7 +4362,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332062921}
-  m_LocalRotation: {x: 0.38019884, y: 0, z: 0, w: 0.9249048}
+  m_LocalRotation: {x: 0.38019884, y: -0, z: -0, w: 0.9249048}
   m_LocalPosition: {x: 0, y: 0, z: -6.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4375,7 +4374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 44.692, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.381, y: 3.942}
+  m_AnchoredPosition: {x: 1.381, y: 3.945}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1338818001 stripped
