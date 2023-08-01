@@ -24,11 +24,11 @@ TagManager:
   - Obstacle
   - Food
   - Ship
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LayerMask
+  - SeeThrough
+  - HideThis
+  - MaskWhale
+  - HideWhale
   - 
   - 
   - 
