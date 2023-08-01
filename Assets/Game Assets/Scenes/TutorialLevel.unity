@@ -1069,13 +1069,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207535507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.389999, y: -0.25, z: -1.38}
+  m_LocalPosition: {x: 8.639877, y: 4.3112645, z: 2.008493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2131815782}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1233392681}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &207535509
 MonoBehaviour:
@@ -1358,8 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentObject: {fileID: 0}
-  _asteroid: {fileID: 5856921006705387513, guid: bf4af7ab14731dd4a963502730bddf4d,
-    type: 3}
+  _asteroid: {fileID: 311925180}
   _minDistanceApart: 25
   _numAsteroidsToSpawn: 50
   _mapSize: 50
@@ -6100,8 +6099,9 @@ Transform:
   - {fileID: 225346995}
   - {fileID: 1282932684}
   - {fileID: 1548630892}
+  - {fileID: 207535508}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1233392682
 MonoBehaviour:
