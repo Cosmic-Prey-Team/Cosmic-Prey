@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     private int _selectedResolution;
 
     //Full screen toogle and resolution option needs testing once build errors are fixed
-    //Fix bug where player can still look around while paused
 
     private void Awake()
     {
@@ -73,12 +72,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UnpauseGame()
+    public void UnpauseGame()
     {
         Time.timeScale = 1;
         _pauseMenuUI.gameObject.SetActive(false);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        InputHandler.ModifyCursorState(true, true);
         _isPaused = false;
     }
 
@@ -86,19 +84,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         _pauseMenuUI.gameObject.SetActive(true);
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        InputHandler.ModifyCursorState(false, false);
         _isPaused = true;
-    }
-
-    public void ContinueButton()
-    {
-        _pauseMenuUI.gameObject.SetActive(false);
-        _isPaused = false;
-        Time.timeScale = 1;
-        _pauseMenuUI.gameObject.SetActive(false);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
     }
 
     public void OptionsButton()
@@ -112,6 +99,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
     public void ToogleFullScreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
@@ -155,6 +143,18 @@ public class GameManager : MonoBehaviour
     {
         _currentResolutionText.text = _resolutions[_selectedResolution].width.ToString() + "x" + _resolutions[_selectedResolution].height.ToString();
         Screen.SetResolution(_resolutions[_selectedResolution].width, _resolutions[_selectedResolution].height, _isFullscreen);
+    }
+
+    public void OnHover(Image hoveredImage)
+    {
+        this.transform.parent.gameObject.SetActive(false);
+        hoveredImage.gameObject.SetActive(true);
+    }
+
+    public void OnExitHover(Image unhoveredImage)
+    {
+        this.transform.parent.gameObject.SetActive(false);
+        unhoveredImage.gameObject.SetActive(true);
     }
 }
 

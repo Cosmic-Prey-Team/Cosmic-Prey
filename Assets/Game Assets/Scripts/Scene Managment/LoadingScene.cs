@@ -16,13 +16,16 @@ public class LoadingScene : MonoBehaviour
 
     public IEnumerator LoadScene_Coroutine(string sceneName)
     {
+        Debug.Log("Coroutine is starting");
         progressSlider.value = 0;
         LoaderUI.SetActive(true);
+        Debug.Log("LoaderUI is on");
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
         float progress = 0;
 
+        Debug.Log("while loop is about to start");
         while (!asyncOperation.isDone)
         {
             progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
