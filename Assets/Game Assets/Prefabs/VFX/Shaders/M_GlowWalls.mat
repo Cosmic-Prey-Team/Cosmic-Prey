@@ -35,14 +35,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BaseColorFuzz: 2.55
+    - _BaseColorFuzz: 5.16
     - _BaseColorRange: 0
     - _GlowPower: 4
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _BaseColor: {r: 0.27169815, g: 0, b: 0.33962262, a: 0}
-    - _GlowColor: {r: 1.6063993, g: 0.08108455, b: 1.7207954, a: 1}
+    - _BaseColor: {r: 0.05694587, g: 0.013349997, b: 0.17799999, a: 0}
+    - _GlowColor: {r: 1.3532083, g: 0.09982684, b: 2.1185474, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7711183979390408021
 MonoBehaviour:
