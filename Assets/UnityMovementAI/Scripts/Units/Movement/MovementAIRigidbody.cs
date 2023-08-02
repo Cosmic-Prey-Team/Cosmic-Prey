@@ -21,7 +21,7 @@ namespace UnityMovementAI
         [SerializeField]
         Rigidbody2D rb2D;
         [SerializeField]
-        SphereCollider col3D;
+        CapsuleCollider col3D;
         [SerializeField]
         CircleCollider2D col2D;
 
@@ -123,7 +123,7 @@ namespace UnityMovementAI
         {
             if (is3D)
             {
-                SphereCollider col = rb3D.GetComponent<SphereCollider>();
+                CapsuleCollider col = rb3D.GetComponent<CapsuleCollider>();
 
                 if (col != null)
                 {

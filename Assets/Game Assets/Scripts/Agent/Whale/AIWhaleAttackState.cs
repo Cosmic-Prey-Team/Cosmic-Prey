@@ -9,10 +9,10 @@ using UnityMovementAI;
 
 public class AIWhaleAttackState : AIState
 {
-       
-    private GameObject _teleportMarker = null;
-    private GameObject _target;
     private AIAgentConfig _krillConfig;
+    private GameObject _teleportMarker = null;
+    private Transform _destination = null;
+    private GameObject _target;
     private float _chargeTimer = 0f;
     private float _teleportTimer = 0f;
     private float _spawnTimer = 0f;
@@ -21,13 +21,17 @@ public class AIWhaleAttackState : AIState
     private float _spawnCooldown = 20f;
     protected bool _attacking = false;
     protected int _attack;
-    private Vector3[] _nodes = new Vector3[4];
-
-   
+    private FlyingController _flyingController;
+    private AStarAgent _aStarAgent;
+    private Transform whaleModel;
 
     public void Enter(AIAgent agent)
     {      
         _target = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log("Attack");
+        _flyingController = agent.GetComponent<FlyingController>();
+        _aStarAgent = agent.GetComponent<AStarAgent>();
+        _krillConfig = agent.config.enemyPrefab.GetComponent<AIAgent>().config;
     }
 
     public void Exit(AIAgent agent)
@@ -49,7 +53,7 @@ public class AIWhaleAttackState : AIState
 
         if (!_attacking)
         {
-            _attack = 2;//Random.Range(0, 3);
+            _attack = Random.Range(0, 3);
             Debug.Log(_attack);
         }
 
@@ -88,95 +92,51 @@ public class AIWhaleAttackState : AIState
     {       
         if (_attacking == false)
         {
-            agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity * 2;
-            _nodes[0] = agent.transform.position;
-            for (int i = 1; i < _nodes.Length; i++)
-            {
-                _nodes[i] = _target.transform.position;
-            }
-            agent.path = new LinePath(_nodes);
-            agent.path.CalcDistances();
+            _aStarAgent.Speed = _aStarAgent.Speed * 2;
+            agent.config.destination = _target.transform;
+            _flyingController.delay = 0.33f;
         }
 
         _attacking = true;
 
+        agent.config.destination = _target.transform;
         _chargeTimer += Time.deltaTime;
-        _updateTimer += Time.deltaTime;
-
-        if (_updateTimer > 0.33f && _chargeTimer < 1)
-        {
-            agent.path.nodes[0] = agent.transform.position;
-            agent.path.nodes[3] = _target.transform.position;
-            agent.path.CalcDistances();
-            _updateTimer = 0f;
-        }
-        else if(_updateTimer > 0.33f && _chargeTimer < 2)
-        {
-            agent.path.nodes[0] = agent.transform.position;
-            agent.path.nodes[2] = agent.path.nodes[2];
-            agent.path.nodes[3] = _target.transform.position;
-            agent.path.CalcDistances();
-            _updateTimer = 0f;
-        }
-        else if(_updateTimer > 0.33f)
-        {
-            agent.path.nodes[0] = agent.transform.position;
-            agent.path.nodes[1] = agent.path.nodes[2];
-            agent.path.nodes[2] = agent.path.nodes[3];
-            agent.path.nodes[3] = _target.transform.position;
-            agent.path.CalcDistances();
-            _updateTimer = 0f;
-        }
 
         if (_chargeTimer > 5)
         {
+            Debug.Log("did it");
             _attacking = false;
             _chargeTimer = 0;
-            agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity / 2;
+            _aStarAgent.Speed = _aStarAgent.Speed * 0.5f;
+            _flyingController.delay = 2f;
         }
-
-        
-
-        Vector3 accel = agent.wallAvoidance.GetSteering();
-
-
-        if (accel.magnitude < 0.005f)
-        {
-            accel = agent.followPath.GetSteering(agent.path);
-        }
-
-        agent.steeringBasics.Steer(accel);
-        agent.steeringBasics.LookWhereYoureGoing();
-
-        agent.path.Draw();
 
     }
 
     private void Teleport(AIAgent agent)
-    {      
+    {
+        
         if (_attacking == false)
         {
-            agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity * 2;
-            _nodes[0] = agent.transform.position;
+            _aStarAgent.Speed = _aStarAgent.Speed * 2;
+            _flyingController.delay = 0.33f;
             Vector3 direction = (agent.gameObject.transform.position - _target.transform.position).normalized;           
-            direction = agent.gameObject.transform.position + direction * 3f + new Vector3(0f, 20f, 0f);
-
-            for (int i = 1; i < _nodes.Length; i++)
-            {
-                _nodes[i] = direction;
-            }
-            agent.path = new LinePath(_nodes);
-            agent.path.CalcDistances();
+            direction = agent.gameObject.transform.position + direction * 5f + new Vector3(0f, 30f, 0f);
+            _destination = GameObject.Instantiate(agent.config.Waypoint, direction, agent.transform.rotation).transform;
+            agent.config.destination = _destination;
+            _aStarAgent.Pathfinding(_destination.position);
+            whaleModel = agent.GetComponentsInChildren<Transform>()[1];
         }
 
         _attacking = true;
         _teleportTimer += Time.deltaTime;
 
+        
         if (_teleportTimer > _teleportCooldown + 3f && _teleportTimer < _teleportCooldown + 5f)
         {
             if (_teleportMarker == null)
             {
-                agent.GetComponent<MeshRenderer>().enabled = false;
+                whaleModel.gameObject.SetActive(false);
                 _teleportMarker = GameObject.Instantiate(agent.config.teleportEffect, agent.transform.position, agent.transform.rotation);
             }
             
@@ -186,39 +146,21 @@ public class AIWhaleAttackState : AIState
             if (_teleportMarker != null)
             {
                 agent.transform.position = new Vector3((_target.transform.position - _teleportMarker.transform.position).normalized.x * 3f, _target.transform.position.y, (_target.transform.position - _teleportMarker.transform.position).normalized.z * 3f);
-                agent.GetComponent<MeshRenderer>().enabled = true;
-                _nodes[0] = agent.transform.position;
-                for (int i = 1; i < _nodes.Length; i++)
-                {
-                    _nodes[i] = _target.transform.position;
-                }
-                agent.path = new LinePath(_nodes);
-                agent.path.CalcDistances();
+                whaleModel.gameObject.SetActive(true);
+                agent.config.destination = _target.transform;
                 GameObject.Destroy(_teleportMarker);
             }
         }
         else if (_teleportTimer > _teleportCooldown + 7f)
         {
+            GameObject.Destroy(_destination);
             GameObject.Destroy(_teleportMarker);
+            agent.config.destination = _target.transform;
             _attacking = false;
             _teleportTimer = 0;
-            agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity / 2;
+            _aStarAgent.Speed = _aStarAgent.Speed * 0.5f;
+            _flyingController.delay = 2f;
         }
-
-
-
-       Vector3 accel = agent.wallAvoidance.GetSteering();
-
-
-        if (accel.magnitude < 0.005f)
-        {
-            accel = agent.followPath.GetSteering(agent.path);
-        }
-
-        agent.steeringBasics.Steer(accel);
-        agent.steeringBasics.LookWhereYoureGoing();
-
-        agent.path.Draw();
     }
 
     private void SpawnEnemies(AIAgent agent)

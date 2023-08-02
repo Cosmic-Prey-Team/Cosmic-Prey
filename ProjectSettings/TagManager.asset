@@ -11,6 +11,7 @@ TagManager:
   - Waypoint
   - Whale
   - PermWaypoint
+  - World
   layers:
   - Default
   - TransparentFX
