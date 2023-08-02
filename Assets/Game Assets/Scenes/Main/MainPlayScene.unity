@@ -199,9 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b91e214f97f6544c843fa8d2584619e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parentObject: {fileID: 0}
-  _asteroid: {fileID: 5856921006705387513, guid: bf4af7ab14731dd4a963502730bddf4d,
-    type: 3}
+  _parentObject: {fileID: 88353702}
+  _asteroidPrefabs:
+  - {fileID: 5856921006705387513, guid: bf4af7ab14731dd4a963502730bddf4d, type: 3}
   _minDistanceApart: 25
   _numAsteroidsToSpawn: 50
   _mapSize: 50

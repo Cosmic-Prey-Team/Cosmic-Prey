@@ -6,8 +6,8 @@ public class SpawnAsteroids : MonoBehaviour
 {
     [Tooltip("The parent transform for all spawned asteroids")]
     [SerializeField] private Transform _parentObject;
-    [Tooltip("The asteroid prefab to spawn")]
-    [SerializeField] private GameObject _asteroid;
+    [Tooltip("The asteroid prefabs to spawn")]
+    [SerializeField] private GameObject[] _asteroidPrefabs;
 
     [Header("Asteroid Spawning Properties")]
     [Tooltip("The minimum distance between asteroids")]
@@ -47,8 +47,16 @@ public class SpawnAsteroids : MonoBehaviour
         for (int i = 0; i < _numAsteroidsToSpawn; i++)
         {
             Vector3 Position = FindNewPosition();
-            GameObject asteroid = Instantiate(_asteroid, Position, transform.rotation);
-            asteroid.transform.SetParent(transform);
+            if(_asteroidPrefabs.Length > 0)
+            {
+                int rand = Random.Range(0, _asteroidPrefabs.Length - 1);
+                GameObject asteroid = Instantiate(_asteroidPrefabs[rand], Position, transform.rotation);
+                asteroid.transform.SetParent(transform);
+            }
+            else
+            {
+                Debug.LogError("No asteroid prefabs.");
+            }
         }
     }
 }
