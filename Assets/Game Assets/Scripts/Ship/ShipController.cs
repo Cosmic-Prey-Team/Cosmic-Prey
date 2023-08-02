@@ -71,6 +71,16 @@ public class ShipController : MonoBehaviour
         #endregion
     }
 
+    public float GetMaxSpeed()
+    {
+        return _maxSpeed;
+    }
+
+    public float GetSpeed()
+    {
+        return _speed;
+    }
+
     private void ControlShip()
     {
         // if the player is trying to rotate the ship
