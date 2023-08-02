@@ -1358,7 +1358,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentObject: {fileID: 0}
-  _asteroid: {fileID: 311925180}
+  _asteroidPrefabs:
+  - {fileID: 311925180}
+  - {fileID: 2087195646}
+  - {fileID: 33522838}
   _minDistanceApart: 25
   _numAsteroidsToSpawn: 50
   _mapSize: 50
