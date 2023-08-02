@@ -7,6 +7,8 @@ public class FlyingController : MonoBehaviour
     AIAgent aiAgent;
     AStarAgent _Agent;
     [SerializeField] Vector3 target;
+    [HideInInspector] 
+    public float delay = 2f;
     //[SerializeField] Animator _Anim;
     //[SerializeField] AnimationCurve _SpeedCurve;
     //[SerializeField] float _Speed;
@@ -34,7 +36,7 @@ public class FlyingController : MonoBehaviour
         while (_Agent.Status != AStarAgentStatus.Finished)
             {
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(delay);
             if (target != aiAgent.config.destination.position)
             {
                 target = aiAgent.config.destination.position;

@@ -12,12 +12,14 @@ public class AIWhaleWanderState : AIState
     private Transform destination;
     private float scanTimer = 0f;
     private AISensor sensor;
-
+    private FlyingController flyingController;
 
     public void Enter(AIAgent agent)
     {
         destinations = GameObject.FindGameObjectsWithTag("PermWaypoint");
         sensor = agent.GetComponent<AISensor>();
+        flyingController = agent.GetComponent<FlyingController>();
+        flyingController.delay = 2f;
     }
 
     public void Exit(AIAgent agent)
@@ -55,19 +57,17 @@ public class AIWhaleWanderState : AIState
             GameObject[] player = sensor.Filter(new GameObject[1], "Player");
             if (player[0] != null)
             {
-                agent.stateMachine.ChangeState(AIStateID.WhaleAttack);
+                Debug.Log("Saw Player");
+                agent.stateMachine.ChangeState(AIStateID.WhaleFlee);
             }
             else if (food[0] != null)
             {
-                Vector3[] nodes = new Vector3[1];
-                nodes[0] = food[0].transform.position;
-                agent.path = new LinePath(nodes);
-                agent.path.CalcDistances();
-               
+                agent.config.destination = destination = food[0].transform;              
             }
         }
 
     }
+
 
     
 }
