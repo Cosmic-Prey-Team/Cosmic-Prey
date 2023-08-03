@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class TurretInteractable : MonoBehaviour, IInteractable
 {
+    [SerializeField] bool _debug = false;
+    [Space]
     [Header("IInteractable variables")]
     [SerializeField] string _interactText;
     [SerializeField] bool _isInteracting = false;
@@ -77,6 +80,15 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     }
     private void Update()
     {
+        if (_debug)
+        {
+            if (Keyboard.current.vKey.wasPressedThisFrame)
+            {
+                Health health = GetComponent<Health>();
+                health.Damage(2);
+            }
+        }
+
         if (_isInteracting)
         {
             MaintainPosition();
