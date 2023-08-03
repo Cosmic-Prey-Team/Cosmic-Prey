@@ -26,7 +26,6 @@ public class Drillable : MonoBehaviour
     private int _currentHealth;
     private float _target;
     private bool _gainedLastOre = false;
-
     private void Awake()
     {
         _health = GetComponent<Health>();
