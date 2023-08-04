@@ -1693,7 +1693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _replacement: {fileID: 2710628333089961810, guid: ab3df9c92931d394b93240e0948d611a,
     type: 3}
-  _collisionMultiplier: 100
+  _original: {fileID: 485465934}
+  _collisionMultiplier: 50
   time: 5
 --- !u!64 &485465941
 MeshCollider:
@@ -4000,7 +4001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442708190, guid: bf4af7ab14731dd4a963502730bddf4d, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1442708190, guid: bf4af7ab14731dd4a963502730bddf4d, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
