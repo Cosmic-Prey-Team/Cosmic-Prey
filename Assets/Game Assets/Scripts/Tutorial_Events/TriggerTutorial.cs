@@ -6,6 +6,7 @@ public class TriggerTutorial : Tutorial_Steps
 {
     private bool isCurrentTutorial = false;
     public Transform HitTransform;
+    GameObject Inventory;
     public override void CheckIf_Happending()
     {
         isCurrentTutorial = true;
@@ -18,6 +19,21 @@ public class TriggerTutorial : Tutorial_Steps
 
         //The player reaches a collision space
         if (other.transform == HitTransform)
+            InventoryisEmpty();
+    }
+
+    //Checking if inventory is empty
+    public void InventoryisEmpty()
+    {
+        Inventory = GameObject.Find("Inventory");
+
+        if (Inventory.transform.childCount > 4)
+        {
+            GameTutorial_Manager.Instace.TutorialIncrement();
             isCurrentTutorial = false;
+        }        
+        else
+            isCurrentTutorial = true;
+
     }
 }

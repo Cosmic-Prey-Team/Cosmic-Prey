@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Tutorial_Steps : MonoBehaviour
 {
-    public int Order;
+    public int _Order;
 
     //Min and max amount of lines
     [TextArea(3,25)]
-    public string QueenPopups,
-                  Questopups;
+    public string _QueenPopups,
+                  _Questopups;
 
 
     // Start is called before the first frame update

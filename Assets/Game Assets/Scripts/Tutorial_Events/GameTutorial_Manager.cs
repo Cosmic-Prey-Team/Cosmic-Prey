@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading;
+using TMPro;
 
 public class GameTutorial_Manager : MonoBehaviour
 {
     //Player progress of the tutorial script
     public List<Tutorial_Steps> Tutorials = new List<Tutorial_Steps>();
 
-    public Text expTexts;
+    public Text _QueenTexts,
+                    _QuestTexts;
 
     private Tutorial_Steps currentTutorial;
 
@@ -48,7 +51,7 @@ public class GameTutorial_Manager : MonoBehaviour
     {
         for (int step = 0; step < Tutorials.Count; step++)
         {
-            if (Tutorials[step].Order == order)
+            if (Tutorials[step]._Order == order)
                 return Tutorials[step];
         }
 
@@ -59,7 +62,7 @@ public class GameTutorial_Manager : MonoBehaviour
     //Next step of the tutorial
     public void TutorialIncrement()
     {
-        SetNextTutorial(currentTutorial.Order + 1);
+        SetNextTutorial(currentTutorial._Order + 1);
     }
     
     public void SetNextTutorial(int currentOrder)
@@ -73,11 +76,13 @@ public class GameTutorial_Manager : MonoBehaviour
             return;
         }
         //Next player quest/task
-        expTexts.text = currentTutorial.QueenPopups;
+        _QueenTexts.text = currentTutorial._QueenPopups;
+        // Thread.Sleep(60000);    //20 sec wait
+        _QuestTexts.text = currentTutorial._Questopups;
     }
 
     public void CompletedAllTuturials()
     {
-        expTexts.text = "Queen: Well, moment of truth… Let's hope those hull parts hold. Go get that whale! ";
+        _QueenTexts.text = "Queen: Well, moment of truth… Let's hope those hull parts hold. Go get that whale! ";
     }
 }
