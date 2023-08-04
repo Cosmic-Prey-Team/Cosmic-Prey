@@ -6,9 +6,7 @@ public class Breakable : MonoBehaviour
 {
 
     [SerializeField] private GameObject _replacement; //broken asteroid
-    [SerializeField] private GameObject _original; //original asteroid
-    [SerializeField] private float _collisionMultiplier = 50;
-    [SerializeField] private int time = 5; //time taken to despawn
+    //[SerializeField] private GameObject _original; //original asteroid
 
     public Vector3 explosionPoint;
 
@@ -25,27 +23,15 @@ public class Breakable : MonoBehaviour
         //get position of drill, so that's where the force comes from
         //Vector3 mousePos = Input.mousePosition;
 
-
         //spawns replacement in place of original
         var replacement = Instantiate(_replacement, null);
-        Debug.Log("asteroid: " + (transform.TransformPoint(transform.position) / 3.2f));
-        Debug.Log("explosion poinnt: " + explosionPoint);
-        replacement.transform.position = transform.position + transform.TransformPoint(transform.position);   //_original.transform.position;
-        replacement.transform.rotation = _original.transform.rotation;
+                
+        //Debug.Log("asteroid: " + (transform.TransformPoint(transform.position) / 3.2f));
+        //Debug.Log("explosion poinnt: " + explosionPoint);   //_original.transform.position;
+        replacement.transform.position = transform.position;
+        replacement.transform.rotation = transform.rotation;
 
-
-
-
-        /*//calls each child
-        var rbs = replacement.GetComponentsInChildren<Rigidbody>();
-        //adds force to each child
-        foreach (var rb in rbs)
-        {
-            //rb.transform.SetParent(null);
-            rb.AddExplosionForce(5 * _collisionMultiplier, replacement.transform.position, 2);
-            //Delete object sequence
-          Destroy(rb.gameObject, time);
-        }*/
+        
     }
 
 }
