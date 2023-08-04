@@ -68,6 +68,8 @@ public class Repairable : MonoBehaviour
     {
         _inventory = player.GetComponent<Inventory>();
 
+        if (_hasHealthComponent && _health.GetMissingHealth() == 0) return;
+
         if(_isRepairing == false)
         {
             if(_inventory.RemoveItem(ItemToConsume) != null)

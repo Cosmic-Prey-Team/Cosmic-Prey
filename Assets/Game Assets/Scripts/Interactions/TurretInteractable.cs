@@ -29,6 +29,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     public UnityEvent OnInteracted;
 
     private float _targetPitch;
+    private bool _interactionEnabled = true;
 
     private InputHandler _input;
     private Transform _playerTransform;
@@ -68,6 +69,18 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             DoInteractableAction(false);
         }
     }
+    public bool CanInteract()
+    {
+        return _interactionEnabled;
+    }
+    public void DisableInteractions()
+    {
+        _interactionEnabled = false;
+    }
+    public void EnableInteractions()
+    {
+        _interactionEnabled = true;
+    }
     #endregion
 
     #region Monobehavior
@@ -85,7 +98,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             if (Keyboard.current.vKey.wasPressedThisFrame)
             {
                 Health health = GetComponent<Health>();
-                health.Damage(2);
+                health.Damage(5);
             }
         }
 
