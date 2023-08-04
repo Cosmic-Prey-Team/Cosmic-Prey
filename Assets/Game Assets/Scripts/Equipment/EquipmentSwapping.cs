@@ -49,9 +49,20 @@ public class EquipmentSwapping : MonoBehaviour
     }
     #endregion
 
+    public Animator playerAnimator;
+    public GameObject handObject;
+    public GameObject drillObject;
     private void SelectWeapon()
     {
+        playerAnimator.Play("mc_switchtool");
         //enables only selected weapon and disables the rest
+        /*
+            0 - hand
+            1 - drill
+            2 - chainsaw
+            3 - repair tool
+            4 - gun
+        */
         int i = 0;
         foreach (Transform equipment in transform)
         {
@@ -66,8 +77,20 @@ public class EquipmentSwapping : MonoBehaviour
                 equipment.gameObject.SetActive(false);
             }
 
+          /*  if(_selectedWeapon == 0)
+            {
+                handObject.SetActive(true);
+                drillObject.SetActive(false);
+            }else if(_selectedWeapon == 1)
+            {
+                handObject.SetActive(false);
+                drillObject.SetActive(true);
+            }*/
+
             i++;
         }
+        
+        //change selected weapon UI
         OnSwap?.Invoke(_selectedWeapon);
     }
 }
