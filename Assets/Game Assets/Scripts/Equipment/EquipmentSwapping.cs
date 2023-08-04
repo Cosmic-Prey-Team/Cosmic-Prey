@@ -11,6 +11,7 @@ public class EquipmentSwapping : MonoBehaviour
     [SerializeField]
     private int _selectedWeapon = 0;
     public event Action<int> OnSwap;
+    
     #region Monobehavior
     private void Awake()
     {
@@ -50,8 +51,7 @@ public class EquipmentSwapping : MonoBehaviour
     #endregion
 
     public Animator playerAnimator;
-    public GameObject handObject;
-    public GameObject drillObject;
+    
     private void SelectWeapon()
     {
         playerAnimator.Play("mc_switchtool");
@@ -68,7 +68,7 @@ public class EquipmentSwapping : MonoBehaviour
         {
             if(i == _selectedWeapon)
             {
-                equipment.gameObject.SetActive(true);
+                //equipment.gameObject.SetActive(true);
                 Debug.Log("SelectWeapon(): " + equipment.name);
 
             }
@@ -77,20 +77,16 @@ public class EquipmentSwapping : MonoBehaviour
                 equipment.gameObject.SetActive(false);
             }
 
-          /*  if(_selectedWeapon == 0)
-            {
-                handObject.SetActive(true);
-                drillObject.SetActive(false);
-            }else if(_selectedWeapon == 1)
-            {
-                handObject.SetActive(false);
-                drillObject.SetActive(true);
-            }*/
-
             i++;
         }
         
         //change selected weapon UI
         OnSwap?.Invoke(_selectedWeapon);
     }
+    public int GetSelectedWeapon()
+    {
+        return _selectedWeapon;
+    }
+
+    
 }
