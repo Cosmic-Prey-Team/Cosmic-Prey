@@ -66,7 +66,7 @@ public class DrillTool : MonoBehaviour
 
                         if (breakable != null)
                         {
-                            Debug.Log("hittpoint: " + hit.point);
+                            //Debug.Log("hittpoint: " + hit.point);
                             breakable.explosionPoint = hit.point;
                         }
                         _currentDelayProgress = _damageDelay;
