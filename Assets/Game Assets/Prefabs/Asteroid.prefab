@@ -557,6 +557,9 @@ MonoBehaviour:
   _gainOverTime: 1
   _progressBar: {fileID: 8885342844962934016}
   _progressBarMoveSpeed: 1
+  OnCoolDown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8008764619162513203
 GameObject:
   m_ObjectHideFlags: 0
