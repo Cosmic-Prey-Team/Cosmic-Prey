@@ -30,17 +30,19 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != _ignoreLayer) return;
-
-        Health otherHealth = other.GetComponent<Health>();
-        if(otherHealth != null)
+        if (other.gameObject.layer == _ignoreLayer)
         {
+            Health otherHealth = other.GetComponent<Health>();
+            if (otherHealth != null)
+            {
+                Debug.Log("Hit Damagable");
+                otherHealth.Damage(_damage);
 
-            Debug.Log("Hit Damagable");
-            otherHealth.Damage(_damage);
+                //destroy projectile
+                Destroy(gameObject);
+            }
         }
 
-        //destroy projectile
-        Destroy(gameObject);
+        
     }
 }

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class TurretInteractable : MonoBehaviour, IInteractable
 {
+    [SerializeField] bool _debug = false;
+    [Space]
     [Header("IInteractable variables")]
     [SerializeField] string _interactText;
     [SerializeField] bool _isInteracting = false;
@@ -26,6 +29,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     public UnityEvent OnInteracted;
 
     private float _targetPitch;
+    private bool _interactionEnabled = true;
 
     private InputHandler _input;
     private Transform _playerTransform;
@@ -65,6 +69,18 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             DoInteractableAction(false);
         }
     }
+    public bool CanInteract()
+    {
+        return _interactionEnabled;
+    }
+    public void DisableInteractions()
+    {
+        _interactionEnabled = false;
+    }
+    public void EnableInteractions()
+    {
+        _interactionEnabled = true;
+    }
     #endregion
 
     #region Monobehavior
@@ -77,6 +93,15 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     }
     private void Update()
     {
+        if (_debug)
+        {
+            if (Keyboard.current.vKey.wasPressedThisFrame)
+            {
+                Health health = GetComponent<Health>();
+                health.Damage(5);
+            }
+        }
+
         if (_isInteracting)
         {
             MaintainPosition();

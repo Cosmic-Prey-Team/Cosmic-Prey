@@ -8,4 +8,7 @@ public interface IInteractable
     void LeaveInteraction();
     string GetInteractText();
     Transform GetTransform();
+    bool CanInteract();
+    void DisableInteractions();
+    void EnableInteractions();
 }

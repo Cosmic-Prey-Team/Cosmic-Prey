@@ -21,6 +21,9 @@ public class FissureVisuals : MonoBehaviour
     private void Start()
     {
         if(_panel != null) _panel.gameObject.SetActive(false);
+
+        //disable collider visual
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public bool GetIsActive()
@@ -31,8 +34,10 @@ public class FissureVisuals : MonoBehaviour
     {
         //activate panel visual on isRepairing
         _panel.gameObject.SetActive(true);
-        float rand = UnityEngine.Random.Range(0, 90f);
-        _panel.localRotation = Quaternion.Euler(rand, 0, 0);
+        float randRotation = UnityEngine.Random.Range(0, 90f);
+        float randScale = UnityEngine.Random.Range(0.9f, 1.2f);
+        _panel.localRotation = Quaternion.Euler(randRotation, _panel.localRotation.eulerAngles.y, _panel.localRotation.eulerAngles.z);
+        _panel.localScale = Vector3.one * randScale;
         Debug.Log("Enable panel");
     }
     public void Activate()
