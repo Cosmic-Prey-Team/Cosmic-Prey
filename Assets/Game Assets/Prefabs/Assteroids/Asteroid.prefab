@@ -199,7 +199,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5105863419346507463}
         m_TargetAssemblyTypeName: Breakable, Assembly-CSharp
-        m_MethodName: AlmostAwake
+        m_MethodName: BreakAsteroid
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -241,7 +241,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _replacement: {fileID: 4831443418952971050, guid: c104591565360af418e31c220c7f14ba,
     type: 3}
-  _original: {fileID: 0}
+  _collisionForce: 5
+  _collisionMultiplier: 50
+  _collisionRadius: 2
+  time: 5
   explosionPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &3026264224059614515
 GameObject:
