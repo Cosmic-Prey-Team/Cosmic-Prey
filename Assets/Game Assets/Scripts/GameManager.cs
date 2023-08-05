@@ -7,8 +7,19 @@ using UnityEngine.InputSystem;
 using UnityEngine.Audio;
 using TMPro;
 
+public enum GameState
+{
+    GameIsPaused,
+    GameIsUnpaused,
+    PlayerIsDead,
+    PlayerIsAlive,
+    WhaleIsAlive,
+    WhaleIsDefeated,
+}
+
 public class GameManager : MonoBehaviour
 {
+    private GameState _gameState;
     [SerializeField] private Canvas _pauseMenuUI;
     [SerializeField] private Canvas _optionsMenuUI;
     [SerializeField] AudioMixer _mainAudioMixer;
@@ -22,10 +33,9 @@ public class GameManager : MonoBehaviour
     public List<ResItem> _resolutions = new List<ResItem>();
     private int _selectedResolution;
 
-    //Full screen toogle and resolution option needs testing once build errors are fixed
-
     private void Awake()
     {
+        _gameState = GameState.GameIsUnpaused;
         //defaulting game to fullscreen
         Screen.fullScreen = true;
         _isFullscreen = true;
@@ -55,11 +65,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //escape pauses game and pressing it again un pauses
-        if (Keyboard.current.escapeKey.wasPressedThisFrame && _isPaused == false && !_isInOptions)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && _isPaused == false && _gameState == GameState.GameIsUnpaused)
         {
             PauseGame();
         }
-        else if (Keyboard.current.escapeKey.wasPressedThisFrame && _isPaused == true && !_isInOptions)
+        else if (Keyboard.current.escapeKey.wasPressedThisFrame && _isPaused == true && _gameState == GameState.GameIsPaused)
         {
             UnpauseGame();
         }
@@ -78,6 +88,7 @@ public class GameManager : MonoBehaviour
         _pauseMenuUI.gameObject.SetActive(false);
         InputHandler.ModifyCursorState(true, true);
         _isPaused = false;
+        _gameState = GameState.GameIsUnpaused;
     }
 
     private void PauseGame()
@@ -86,6 +97,7 @@ public class GameManager : MonoBehaviour
         _pauseMenuUI.gameObject.SetActive(true);
         InputHandler.ModifyCursorState(false, false);
         _isPaused = true;
+        _gameState = GameState.GameIsPaused;
     }
 
     public void OptionsButton()
