@@ -5679,6 +5679,11 @@ PrefabInstance:
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BreakAsteroid
       objectReference: {fileID: 0}
+    - target: {fileID: 5105863419346507463, guid: 90ec1c3effd1a6946adbf392219f0a5f,
+        type: 3}
+      propertyPath: _collisionRadius
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ec1c3effd1a6946adbf392219f0a5f, type: 3}
 --- !u!1001 &7840271900689763055

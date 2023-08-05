@@ -37,6 +37,13 @@ public class Breakable : MonoBehaviour
             //adds force to each child
             foreach (var rb in rbs)
             {
+                if(Random.Range(0,2) == 0)
+                {
+                    _collisionForce = _collisionForce * 1;
+                }else
+                {
+                    _collisionForce = _collisionForce * -1;
+                }
                 rb.transform.SetParent(null);
                 rb.AddExplosionForce(_collisionForce * _collisionMultiplier, transform.position, _collisionRadius);
                 //Delete object sequence
