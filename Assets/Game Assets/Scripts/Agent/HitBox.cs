@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hitbox : MonoBehaviour, IHitDetector
+public class HitBox : MonoBehaviour, IHitDetector
 {
     [SerializeField] private BoxCollider m_collider;
     [SerializeField] private LayerMask m_layerMask;
@@ -11,7 +11,7 @@ public class Hitbox : MonoBehaviour, IHitDetector
     private IHitResponder m_hitResponder;
     public IHitResponder HitResponder { get => m_hitResponder; set => m_hitResponder = value; }
 
-    void IHitDetector.CheckHit()
+    public void CheckHit()
     {
         Vector3 _scaledSize = new Vector3(
             m_collider.size.x * transform.lossyScale.x,

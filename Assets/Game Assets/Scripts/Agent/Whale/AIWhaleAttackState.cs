@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityMovementAI;
 
 public class AIWhaleAttackState : AIState
 {
@@ -59,7 +58,8 @@ public class AIWhaleAttackState : AIState
 
         if (_attack == 2 && _spawnTimer >= _spawnCooldown)
         {
-            if (_krillConfig.krill.Count < 10)
+            agent.krill.RemoveAll(k => k == null);
+            if (agent.krill.Count < 10)
             {
                 SpawnEnemies(agent);
             }           
@@ -168,7 +168,7 @@ public class AIWhaleAttackState : AIState
         for (int i = 0; i < Random.Range(4,6); i++)
         {
             Vector3 offset = new Vector3(Random.Range(-5, 6), Random.Range(-5, 6), Random.Range(-5, 6));
-            GameObject.Instantiate(agent.config.enemyPrefab, agent.gameObject.transform.position + offset, Quaternion.identity);
+            agent.krill.Add(GameObject.Instantiate(agent.config.enemyPrefab, agent.gameObject.transform.position + offset, Quaternion.identity));
         }
         return;
     }

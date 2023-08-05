@@ -5,13 +5,11 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityMovementAI;
 
 public class AIKrillFollowState : AIState
 {
     private GameObject whale;
     private AIAgent whaleAgent;
-    private List<MovementAIRigidbody> krillInstances;
     private float scanTimer = 0f;
     private AISensor sensor;
     [SerializeField]
@@ -28,18 +26,7 @@ public class AIKrillFollowState : AIState
         whale = GameObject.FindGameObjectWithTag("Whale");
         whaleAgent = whale.GetComponent<AIAgent>();
 
-        krillInstances = new List<MovementAIRigidbody>();
-        //this only needs to run once, dont like this
-        if (!agent.config.krill.Contains(whale.GetComponent<MovementAIRigidbody>()))
-        {
-            agent.config.krill.Add(whale.GetComponent<MovementAIRigidbody>());
-        }
-        agent.config.krill.Add(agent.gameObject.GetComponent<MovementAIRigidbody>());
-        foreach (MovementAIRigidbody r in agent.config.krill)
-        {
-            krillInstances.Add(r);
-        }
-        krillInstances.Remove(agent.gameObject.GetComponent<MovementAIRigidbody>());
+        
         sensor = agent.GetComponent<AISensor>();
         worldManager = GameObject.FindGameObjectWithTag("World").GetComponent<WorldManager>();
         _flyingController = agent.GetComponent<FlyingController>();
@@ -69,10 +56,7 @@ public class AIKrillFollowState : AIState
         {
             agent.stateMachine.ChangeState(AIStateID.KrillAttack);
         }
-        if (krillInstances.Count+1 < agent.config.krill.Count)
-        {
-            krillInstances.Add(agent.config.krill[agent.config.krill.Count - 1]);
-        }
+        
 
         
 

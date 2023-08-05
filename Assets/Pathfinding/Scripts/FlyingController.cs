@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityMovementAI;
 
 public class FlyingController : MonoBehaviour
 {
@@ -53,36 +52,23 @@ public class FlyingController : MonoBehaviour
                     //target = aiAgent.config.destination.position;
                     //_Agent.Pathfinding(aiAgent.config.destination.position);
                 }
-            }
-            
+            }           
             Debug.Log("finished");
-            while (true)
+            
+            while ((aiAgent.config.destination.position - transform.position).magnitude < 12)
             {
-                //This is terrible but it works and can adjust distance to keep from player with stop radius on follow path. Make this not repath every time and also end
-                //This also just doesnt work since the ship will be moving and this will not path accordingly
-                _nodes[0] = aiAgent.config.destination.position;
-                aiAgent.path = new LinePath(_nodes);
-                aiAgent.path.CalcDistances();
-                Vector3 accel = aiAgent.followPath.GetSteering(aiAgent.path);
-                
+                if ((aiAgent.config.destination.position - transform.position).magnitude > 1.5)
+                {
+                    transform.forward = (aiAgent.config.destination.position - transform.position).normalized;
+                    transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
+                    //transform.forward = Vector3.Slerp(transform.forward, forwardDirection, Time.deltaTime * TurnSpeed);
+                }
+                yield return null;
 
-                aiAgent.steeringBasics.Steer(accel);
-                Vector3 forwardDirection = (_nodes[0] - transform.position).normalized;
-                transform.forward = forwardDirection;
-                yield return new WaitForSeconds(delay);
+
             }
             
         }
     }
-    /**
-    IEnumerator Coroutine_Animation()
-    {
-        _Anim.SetBool("Flying", true);
-        while (_Agent.Status != AStarAgentStatus.Finished)
-        {
-            yield return null;
-        }
-        _Anim.SetBool("Flying", false);
-    }
-    **/
+    
 }
