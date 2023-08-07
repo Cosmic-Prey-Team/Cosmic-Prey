@@ -22,6 +22,6 @@ public class PlayerHurtResponder : MonoBehaviour, IHurtResponder
 
     void IHurtResponder.Response(HitData data) 
     {
-        Debug.Log("hurt");
+        gameObject.GetComponent<Health>().Damage(data.damage);
     }
 }

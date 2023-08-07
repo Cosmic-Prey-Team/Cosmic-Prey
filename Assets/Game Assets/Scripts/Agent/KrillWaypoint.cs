@@ -8,7 +8,7 @@ public class KrillWaypoint : MonoBehaviour
     public void Update()
     {
         _destroyTimer += Time.deltaTime;
-        if (_destroyTimer > 1f)
+        if (_destroyTimer > 2.5f)
         {
             Destroy(gameObject);
         }

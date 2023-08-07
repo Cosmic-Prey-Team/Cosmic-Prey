@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingController : MonoBehaviour
+public class KrillFlyingController : MonoBehaviour
 {
     AIAgent aiAgent;
     AStarAgent _Agent;
     [SerializeField] Vector3 target;
     [HideInInspector] 
     public float delay = 2f;
-    private Vector3[] _nodes = new Vector3[1];
     //[SerializeField] Animator _Anim;
     //[SerializeField] AnimationCurve _SpeedCurve;
     //[SerializeField] float _Speed;
@@ -31,43 +30,43 @@ public class FlyingController : MonoBehaviour
             while (aiAgent.config.destination == null)
             {
                 yield return null;
-                Debug.Log(aiAgent.config.destination);
             }
             target = aiAgent.config.destination.position;
             _Agent.Pathfinding(aiAgent.config.destination.position);
 
             while (_Agent.Status != AStarAgentStatus.Finished && _Agent.Status != AStarAgentStatus.Invalid)
             {
-                Debug.Log("still going");
                 yield return new WaitForSeconds(delay);
                 if (target != aiAgent.config.destination.position)
                 {
-                    Debug.Log("repath 1");
                     target = aiAgent.config.destination.position;
                     _Agent.Pathfinding(aiAgent.config.destination.position);
-                }
-                else if ((aiAgent.config.destination.position - gameObject.transform.position).magnitude < 15)
-                {
-                    Debug.Log("repath 2");
-                    //target = aiAgent.config.destination.position;
-                    //_Agent.Pathfinding(aiAgent.config.destination.position);
                 }
             }           
             Debug.Log("finished");
             
-            while ((aiAgent.config.destination.position - transform.position).magnitude < 12)
+            while ((aiAgent.config.destination.position - transform.position).magnitude < aiAgent.config.maxDistance)
             {
-                if ((aiAgent.config.destination.position - transform.position).magnitude > 1.5)
+                transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed * 2);
+                if ((aiAgent.config.destination.position - transform.position).magnitude > aiAgent.config.minDistance)
                 {
-                    transform.forward = (aiAgent.config.destination.position - transform.position).normalized;
+                    //transform.forward = (aiAgent.config.destination.position - transform.position).normalized;
                     transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
-                    //transform.forward = Vector3.Slerp(transform.forward, forwardDirection, Time.deltaTime * TurnSpeed);
+                    //transform.position += transform.forward * Time.deltaTime * _Agent.Speed;
+                    //transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed*2);
                 }
                 yield return null;
 
 
             }
-            
+            if (aiAgent.stateMachine.currentState == AIStateID.KrillAttack && _Agent.Status == AStarAgentStatus.Invalid)
+            {
+                Debug.Log("Forcing Attack Pathing");
+                transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed * 2);
+                transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
+            }
+            Debug.Log("Dead?" + aiAgent.config.destination.position + "   " + _Agent.Status + "    " + gameObject);
+            yield return null;
         }
     }
     

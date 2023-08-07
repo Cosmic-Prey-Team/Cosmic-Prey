@@ -33,8 +33,11 @@ public class AStarAgent : MonoBehaviour
 
     [HideInInspector] public AStarAgentStatus Status = AStarAgentStatus.Finished;
 
+    private AIAgent _agent;
+
     private void Awake()
     {
+        _agent = GetComponent<AIAgent>();
         AssignPriority();
 
     }
@@ -52,7 +55,7 @@ public class AStarAgent : MonoBehaviour
         {
             for (int j = i; j < agents.Length; j++)
             {
-                if (agents[i].Speed > agents[j].Speed)
+                if ((agents[i]._agent.config.name == "Krill" && agents[j]._agent.config.name == "Whale") || agents[i].Speed > agents[j].Speed)
                 {
                     AStarAgent pom = agents[i];
                     agents[i] = agents[j];
@@ -371,8 +374,6 @@ public class AStarAgent : MonoBehaviour
                     transform.forward = forwardDirection;
                     transform.position = Vector3.MoveTowards(transform.position, TotalPath[i].WorldPosition, Time.deltaTime * Speed);
                 }
-                Debug.Log(length);
-                Debug.Log(l);
                 l += Time.deltaTime * Speed;
                 yield return new WaitForFixedUpdate();
             }

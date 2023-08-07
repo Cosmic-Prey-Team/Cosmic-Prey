@@ -12,6 +12,7 @@ TagManager:
   - Whale
   - PermWaypoint
   - World
+  - Ship
   layers:
   - Default
   - TransparentFX

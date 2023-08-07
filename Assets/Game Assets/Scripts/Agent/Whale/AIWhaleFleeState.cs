@@ -49,10 +49,9 @@ public class AIWhaleFleeState : AIState
             float angleZ = Random.Range(-rotationLimit, rotationLimit);
             float distance = Random.Range(8, distanceLimit);
             direction = Quaternion.Euler(0, angleY / 0.5f, angleZ / 1.5f) * direction * distance;
-            Point p = WorldManager.Instance.GetClosestPointWorldSpace(direction);
+            Point p = WorldManager.Instance.GetClosestPointWorldSpace(agent.gameObject.transform.position + direction);
             _destination = GameObject.Instantiate(agent.config.Waypoint, p.WorldPosition, agent.transform.rotation).transform;
             agent.config.destination = _destination;
-            _aStarAgent.Pathfinding(_destination.position);
         }
 
     }

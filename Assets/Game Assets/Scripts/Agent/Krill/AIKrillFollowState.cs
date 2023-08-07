@@ -16,7 +16,7 @@ public class AIKrillFollowState : AIState
     float rotationLimit = 30f;
     [SerializeField]
     float distanceLimit = 6f;
-    private FlyingController _flyingController;
+    private KrillFlyingController _flyingController;
     private AStarAgent _aStarAgent;
     private WorldManager worldManager;
 
@@ -29,7 +29,7 @@ public class AIKrillFollowState : AIState
         
         sensor = agent.GetComponent<AISensor>();
         worldManager = GameObject.FindGameObjectWithTag("World").GetComponent<WorldManager>();
-        _flyingController = agent.GetComponent<FlyingController>();
+        _flyingController = agent.GetComponent<KrillFlyingController>();
         _aStarAgent = agent.GetComponent<AStarAgent>();
     }
 

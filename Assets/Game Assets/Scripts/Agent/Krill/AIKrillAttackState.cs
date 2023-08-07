@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -19,22 +20,25 @@ public class AIKrillAttackState : AIState
     protected bool _attacking = false;
     protected bool _charging = false;
     protected int _attack;
-    private FlyingController _flyingController;
+    private int _numAttacks = 0;
+    private KrillFlyingController _flyingController;
     private AStarAgent _aStarAgent;
     private AISensor _sensor;
     private Animator _animator;
     private BasicHitResponder _hitResponder;
-    
+    private WorldManager worldManager;
+    private GameObject _delayTarget;
 
 
     public void Enter(AIAgent agent)
     {
         _sensor = agent.GetComponent<AISensor>();
         _target = GameObject.FindGameObjectWithTag("Player");
-        _flyingController = agent.GetComponent<FlyingController>();
+        _flyingController = agent.GetComponent<KrillFlyingController>();
         _aStarAgent = agent.GetComponent<AStarAgent>();
         _animator = agent.GetComponent<Animator>();
         _hitResponder = agent._hitbox.GetComponent<BasicHitResponder>();
+        worldManager = GameObject.FindGameObjectWithTag("World").GetComponent<WorldManager>();
     }
 
     public void Exit(AIAgent agent)
@@ -54,10 +58,24 @@ public class AIKrillAttackState : AIState
             return;
         }
 
-            
-        
-        Charge(agent);           
-                
+        if (_delayTarget == null)
+        {
+            Debug.Log(_numAttacks + " " + _charging);
+            if (_charging == false && _numAttacks + UnityEngine.Random.Range(0, 2) > 2)
+            {
+                Vector3 offset = new Vector3(UnityEngine.Random.Range(-10, 11), UnityEngine.Random.Range(0, 11), UnityEngine.Random.Range(-10, 11));
+                Vector3 destination = worldManager.GetClosestPointWorldSpace(agent.transform.position + offset).WorldPosition;
+                _delayTarget = GameObject.Instantiate(agent.config.Waypoint, destination, Quaternion.identity);
+                agent.config.destination = _delayTarget.transform;
+                _numAttacks = 0;
+            }
+            else
+            {
+                Charge(agent);
+            }                             
+        }
+
+
     }
 
     private void Charge(AIAgent agent)
@@ -79,7 +97,6 @@ public class AIKrillAttackState : AIState
 
         if (_chargeTimer > 5)
         {
-            Debug.Log("did it");
             _charging = false;
             _chargeTimer = 0;
             _sensor.distance = 7f;
@@ -89,6 +106,7 @@ public class AIKrillAttackState : AIState
         }
 
         AttemptAttack();
+        
     }
 
     public void AttemptAttack()
@@ -120,6 +138,7 @@ public class AIKrillAttackState : AIState
             if (player[0] != null)
             {
                 _animator.Play("Attack", 0, 0.0f);
+                _numAttacks++;
                 _hitResponder._objectsHit = new List<GameObject>();
             }
         }

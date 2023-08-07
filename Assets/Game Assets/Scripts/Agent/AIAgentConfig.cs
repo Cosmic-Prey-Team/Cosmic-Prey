@@ -4,7 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu()]
 public class AIAgentConfig : ScriptableObject
-{    
+{
+    public string name;
     public float Speed;
     public GameObject Waypoint;
     public LayerMask occlusionLayers;
@@ -13,4 +14,6 @@ public class AIAgentConfig : ScriptableObject
     public Transform destination;
     public Animator animator;
     public int layerIndex;
+    public float maxDistance;
+    public float minDistance;
 }

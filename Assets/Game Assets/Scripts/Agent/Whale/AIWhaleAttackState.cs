@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 
 public class AIWhaleAttackState : AIState
 {
-    private AIAgentConfig _krillConfig;
     private GameObject _teleportMarker = null;
     private Transform _destination = null;
     private GameObject _target;
@@ -19,18 +18,26 @@ public class AIWhaleAttackState : AIState
     private float _teleportCooldown = 15f;
     private float _spawnCooldown = 20f;
     protected bool _attacking = false;
+    protected bool _charging = false;
     protected int _attack;
-    private FlyingController _flyingController;
+    private WhaleFlyingController _flyingController;
     private AStarAgent _aStarAgent;
-    private Transform whaleModel;
+    private AISensor _sensor;
+    private Animator _animator;
+    private BasicHitResponder _hitResponder;
+
+
 
     public void Enter(AIAgent agent)
-    {      
-        _target = GameObject.FindGameObjectWithTag("Player");
+    {
         Debug.Log("Attack");
-        _flyingController = agent.GetComponent<FlyingController>();
+        _sensor = agent.GetComponent<AISensor>();
+        _target = GameObject.FindGameObjectWithTag("Ship");
+        _flyingController = agent.GetComponent<WhaleFlyingController>();
         _aStarAgent = agent.GetComponent<AStarAgent>();
-        _krillConfig = agent.config.enemyPrefab.GetComponent<AIAgent>().config;
+        agent.config.destination = _target.transform;
+        //_animator = agent.GetComponent<Animator>();
+        //_hitResponder = agent._hitbox.GetComponent<BasicHitResponder>();
     }
 
     public void Exit(AIAgent agent)
@@ -50,7 +57,7 @@ public class AIWhaleAttackState : AIState
             return;
         }
 
-        if (!_attacking)
+        if (!_charging) //|| _teleporting)
         {
             _attack = Random.Range(0, 3);
             Debug.Log(_attack);
@@ -59,26 +66,29 @@ public class AIWhaleAttackState : AIState
         if (_attack == 2 && _spawnTimer >= _spawnCooldown)
         {
             agent.krill.RemoveAll(k => k == null);
-            if (agent.krill.Count < 10)
+            if (agent.krill.Count < 5)
             {
                 SpawnEnemies(agent);
             }           
             _spawnTimer = 0f;
         }
+        else
+        {
+            Charge(agent);
+        }
+        /**
         else if (_attack == 1 && _teleportTimer >= _teleportCooldown)
         {
             Teleport(agent);
         }
-        else
-        {           
-            Charge(agent);           
-        }
+        **/
 
+        /**
         if (_teleportTimer < _teleportCooldown)
         {
             _teleportTimer += Time.deltaTime;
         }
-
+        **/
         if (_spawnTimer < _spawnCooldown)
         {
             _spawnTimer += Time.deltaTime;
@@ -89,30 +99,36 @@ public class AIWhaleAttackState : AIState
     }
 
     private void Charge(AIAgent agent)
-    {       
-        if (_attacking == false)
+    {
+        if (_charging == false)
         {
+            _sensor.distance = 15f;
+            _sensor.angle = 45;
             _aStarAgent.Speed = _aStarAgent.Speed * 2;
             agent.config.destination = _target.transform;
             _flyingController.delay = 0.33f;
         }
 
-        _attacking = true;
+        _charging = true;
 
         agent.config.destination = _target.transform;
         _chargeTimer += Time.deltaTime;
+        _updateTimer += Time.deltaTime;
 
         if (_chargeTimer > 5)
         {
-            Debug.Log("did it");
-            _attacking = false;
+            _charging = false;
             _chargeTimer = 0;
+            _sensor.distance = 40f;
+            _sensor.angle = 90;
             _aStarAgent.Speed = _aStarAgent.Speed * 0.5f;
             _flyingController.delay = 2f;
         }
 
+        //AttemptAttack();
     }
 
+    /**
     private void Teleport(AIAgent agent)
     {
         
@@ -162,6 +178,7 @@ public class AIWhaleAttackState : AIState
             _flyingController.delay = 2f;
         }
     }
+    **/
 
     private void SpawnEnemies(AIAgent agent)
     {
@@ -173,5 +190,60 @@ public class AIWhaleAttackState : AIState
         return;
     }
 
+    public void AttemptAttack()
+    {
+        //This may cause it to play the attack animation while death animation plays
+        int id = Animator.StringToHash("Attack");
+        if (_animator.HasState(0, id))
+        {
+            var state = _animator.GetCurrentAnimatorStateInfo(0);
+            if (state.fullPathHash == id || state.shortNameHash == id)
+            {
+                _attacking = true;
+                int totalFrames = GetTotalFrames(_animator, 0);
+
+                int currentFrame = GetCurrentFrame(totalFrames, GetNormalizedTime(state));
+                if (currentFrame > 24 && currentFrame < 36)
+                {
+                    //Krill can damage the ship
+                    _hitResponder._hitBox.CheckHit();
+                }
+                return;
+            }
+            _attacking = false;
+        }
+        if (_updateTimer > 0.33f)
+        {
+            _sensor.Scan();
+            GameObject[] player = _sensor.Filter(new GameObject[1], "Player");
+            if (player[0] != null)
+            {
+                _animator.Play("Attack", 0, 0.0f);
+                _hitResponder._objectsHit = new List<GameObject>();
+            }
+        }
+    }
+
+    private int GetTotalFrames(Animator animator, int layerIndex)
+    {
+        AnimatorClipInfo[] _clipInfos = animator.GetNextAnimatorClipInfo(layerIndex);
+        if (_clipInfos.Length == 0)
+        {
+            _clipInfos = animator.GetCurrentAnimatorClipInfo(layerIndex);
+        }
+
+        AnimationClip clip = _clipInfos[0].clip;
+        return Mathf.RoundToInt(clip.length * clip.frameRate);
+    }
+
+    private float GetNormalizedTime(AnimatorStateInfo stateInfo)
+    {
+        return stateInfo.normalizedTime > 1 ? 1 : stateInfo.normalizedTime;
+    }
+
+    private int GetCurrentFrame(int totalFrames, float normalizedTime)
+    {
+        return Mathf.RoundToInt(totalFrames * normalizedTime);
+    }
 
 }

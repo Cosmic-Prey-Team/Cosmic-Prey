@@ -114,11 +114,11 @@ public class AISensor : MonoBehaviour
 
     private void OnValidate()
     {
-        mesh = CreateWedgeMesh();
+        //mesh = CreateWedgeMesh();
         scanInterval = 1.0f / scanFrequency;
     }
 
-
+    /**
     // Debugging code to display vision
     Mesh CreateWedgeMesh()
     {
@@ -222,6 +222,6 @@ public class AISensor : MonoBehaviour
             Gizmos.DrawSphere(obj.transform.position, 0.2f);
         }
     }
-    //
+    **/
     
 }
