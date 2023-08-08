@@ -15,7 +15,7 @@ public class AnimatorEventFunctions : MonoBehaviour
             3 - repair tool
             4 - gun
     */
-    void SwaptoolMesh()
+    void swaptoolMesh()
     {
         if(_equipmentSwap.GetSelectedWeapon() == 0)
         {
