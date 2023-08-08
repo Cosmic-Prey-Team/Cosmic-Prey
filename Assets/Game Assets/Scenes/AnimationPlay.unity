@@ -1028,8 +1028,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324228838}
-  m_LocalRotation: {x: 0.26395297, y: 0.0019662979, z: -0.00049632794, w: 0.96453345}
-  m_LocalPosition: {x: 0.0057427213, y: 1.8682694, z: 0.23523235}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5900002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1137,7 +1137,7 @@ Camera:
     height: 1
   near clip plane: 0.2
   far clip plane: 1000
-  field of view: 60
+  field of view: 65
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -11197,7 +11197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1228802142
 Transform:
   m_ObjectHideFlags: 0
@@ -11237,7 +11237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228802141}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -19269,7 +19269,7 @@ MonoBehaviour:
   _shipHelm: {fileID: 4422386835270559559}
   playerInput: {fileID: 1801442645}
   _rb: {fileID: 1801442640}
-  _camera: {fileID: 0}
+  _camera: {fileID: 1228802141}
 --- !u!114 &1801442642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19326,7 +19326,7 @@ MonoBehaviour:
   boostRechargeRate: 0.5
   boostMultiplier: 10
   currentBoostAmount: 0
-  CinemachineCameraTarget: {fileID: 324228838}
+  CinemachineCameraTarget: {fileID: 1228802141}
   TopClamp: 90
   BottomClamp: -90
   RotationSpeed: 1
