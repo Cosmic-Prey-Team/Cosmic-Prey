@@ -78,7 +78,7 @@ public class PlayerState : MonoBehaviour
         _rb.isKinematic = false;
         _rb.inertiaTensor.Set(0, 0, 0);
         _rb.angularVelocity.Set(0, 0, 0);
-        _camera.SetActive(true);
+        //_camera.SetActive(true);
         Debug.Log("Switched to FP Space Controls");
 
     }
