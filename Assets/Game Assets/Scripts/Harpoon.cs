@@ -6,13 +6,21 @@ public class Harpoon : MonoBehaviour
 {
     private InputHandler _input;
 
+    [Header("Properties")]
+    [Tooltip("The speed the harpoon fires at")]
     [SerializeField] float _speed;
+    [Tooltip("The duration the harpoon stays out for")]
     [SerializeField] float _lifetime = 5f;
+    [Tooltip("The max distance you can be from the tethered object")]
     [SerializeField] float _maxDistance;
-    [SerializeField] LayerMask _ignoreLayer;
+
+    [Header("GameObjects")]
+    [Tooltip("The harpoon barrel, so the harpoon knows where to return to")]
     [SerializeField] GameObject _harpoonBarrel;
+    [Tooltip("The ship, so it can move with the tethered object")]
     [SerializeField] GameObject _ship;
     [SerializeField] GameObject _player;
+    [Tooltip("The swivel that makes the turret rotate")]
     [SerializeField] GameObject _swivel;
 
     private bool _whaleHit = false;
