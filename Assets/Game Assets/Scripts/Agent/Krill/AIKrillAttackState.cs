@@ -139,8 +139,9 @@ public class AIKrillAttackState : AIState
             {
                 _animator.Play("Attack", 0, 0.0f);
                 _numAttacks++;
-                _hitResponder._objectsHit = new List<GameObject>();
+                _hitResponder._objectsHit = new List<GameObject>();                
             }
+            _updateTimer = 0;
         }
     }
 

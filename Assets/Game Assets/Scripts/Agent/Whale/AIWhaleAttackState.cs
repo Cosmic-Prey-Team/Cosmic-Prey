@@ -11,6 +11,7 @@ public class AIWhaleAttackState : AIState
     private GameObject _teleportMarker = null;
     private Transform _destination = null;
     private GameObject _target;
+    private float _aggroTimer = 0f;
     private float _chargeTimer = 0f;
     private float _teleportTimer = 0f;
     private float _spawnTimer = 0f;
@@ -92,9 +93,12 @@ public class AIWhaleAttackState : AIState
         if (_spawnTimer < _spawnCooldown)
         {
             _spawnTimer += Time.deltaTime;
+        }       
+
+        if ((_aggroTimer += Time.deltaTime) > 60f)
+        {
+            agent.stateMachine.ChangeState(AIStateID.WhaleFlee);
         }
-       
-        
 
     }
 
@@ -221,6 +225,7 @@ public class AIWhaleAttackState : AIState
                 _animator.Play("Attack", 0, 0.0f);
                 _hitResponder._objectsHit = new List<GameObject>();
             }
+            _updateTimer = 0;
         }
     }
 

@@ -14,8 +14,8 @@ public class AIWhaleFleeState : AIState
     float rotationLimit = 40f;
     [SerializeField]
     float distanceLimit = 16f;
+    private float _fleeTimer = 0f;
 
-   
 
     public void Enter(AIAgent agent)
     {
@@ -54,6 +54,16 @@ public class AIWhaleFleeState : AIState
             agent.config.destination = _destination;
         }
 
+        _fleeTimer += Time.deltaTime;
+
+        if ((agent.gameObject.transform.position - _target.transform.position).magnitude > 100f)
+        {
+            agent.stateMachine.ChangeState(AIStateID.WhaleWander);
+        }
+        else if (_fleeTimer > 60f)
+        {
+            agent.stateMachine.ChangeState(AIStateID.WhaleAttack);
+        }
     }
 
     
