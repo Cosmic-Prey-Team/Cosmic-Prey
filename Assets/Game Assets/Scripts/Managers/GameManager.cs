@@ -19,6 +19,7 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     private GameState _gameState;
     [SerializeField] private Canvas _pauseMenuUI;
     [SerializeField] private Canvas _optionsMenuUI;
@@ -35,6 +36,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
+        if(Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        else if(Instance != null)
+        {
+            Destroy(gameObject);
+        }
         _gameState = GameState.GameIsUnpaused;
         //defaulting game to fullscreen
         Screen.fullScreen = true;
