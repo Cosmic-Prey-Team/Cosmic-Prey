@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.ProBuilder.Shapes;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class AIKrillAttackState : AIState
 {
@@ -60,7 +55,7 @@ public class AIKrillAttackState : AIState
 
         if (_delayTarget == null)
         {
-            Debug.Log(_numAttacks + " " + _charging);
+            //Debug.Log(_numAttacks + " " + _charging);
             if (_charging == false && _numAttacks + UnityEngine.Random.Range(0, 2) > 2)
             {
                 Vector3 offset = new Vector3(UnityEngine.Random.Range(-10, 11), UnityEngine.Random.Range(0, 11), UnityEngine.Random.Range(-10, 11));

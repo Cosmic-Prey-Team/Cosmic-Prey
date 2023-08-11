@@ -37,7 +37,7 @@ public class AStarAgent : MonoBehaviour
 
     private void Awake()
     {
-        _agent = GetComponent<AIAgent>();
+        _agent = gameObject.GetComponent<AIAgent>();
         AssignPriority();
 
     }
@@ -55,7 +55,7 @@ public class AStarAgent : MonoBehaviour
         {
             for (int j = i; j < agents.Length; j++)
             {
-                if ((agents[i]._agent.config.name == "Krill" && agents[j]._agent.config.name == "Whale") || agents[i].Speed > agents[j].Speed)
+                if (agents[i].Speed > agents[j].Speed)//if ((agents[i]._agent.config.name == "Krill" && agents[j]._agent.config.name == "Whale") || agents[i].Speed > agents[j].Speed)
                 {
                     AStarAgent pom = agents[i];
                     agents[i] = agents[j];
@@ -166,11 +166,15 @@ public class AStarAgent : MonoBehaviour
 
     public AStarAgentStatus Pathfinding(Vector3 goal,bool supressMovement=false)
     {
+        
         _startPosition = transform.position;
         _endPosition = goal;
+       
         _start = WorldManager.Instance.GetClosestPointWorldSpace(transform.position);
+        
         _end = WorldManager.Instance.GetClosestPointWorldSpace(goal);
-        if (_start == _end || _start.Invalid || _end.Invalid)
+        
+        if (_start == _end || _start.Invalid || _end == null || _end.Invalid)
         {
             Status = AStarAgentStatus.Invalid;
             return Status;
@@ -183,7 +187,7 @@ public class AStarAgent : MonoBehaviour
                 TotalPath[i].MovingData.Remove(TotalPath[i].MovingData.Find(x => x.MovingObj == this));
             }
         }
-
+        
         PointData[][][] dataSet = new PointData[WorldManager.Instance.Grid.Length][][];
         for (int i = 0; i < dataSet.Length; i++)
         {
@@ -193,7 +197,7 @@ public class AStarAgent : MonoBehaviour
                 dataSet[i][j] = new PointData[WorldManager.Instance.Grid[i][j].Length];
             }
         }
-
+        
         List<PointData> openSet = new List<PointData>();
 
         PointData startPoint = new PointData(_start);
@@ -203,11 +207,12 @@ public class AStarAgent : MonoBehaviour
         startPoint.TimeToReach = 0;
 
         openSet.Add(startPoint);
-
+        
 
 
         while (openSet.Count > 0)
         {
+            
             PointData current = openSet[0];
 
 
@@ -271,6 +276,7 @@ public class AStarAgent : MonoBehaviour
                 }
             }
         }
+        
         Status = AStarAgentStatus.Invalid;
         return Status;
 

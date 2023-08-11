@@ -12,6 +12,7 @@ public class WhaleFlyingController : MonoBehaviour
     //[SerializeField] Animator _Anim;
     //[SerializeField] AnimationCurve _SpeedCurve;
     //[SerializeField] float _Speed;
+
     private void Start()
     {
         aiAgent = GetComponent<AIAgent>();

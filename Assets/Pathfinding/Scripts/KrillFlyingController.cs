@@ -39,6 +39,7 @@ public class KrillFlyingController : MonoBehaviour
                 yield return new WaitForSeconds(delay);
                 if (target != aiAgent.config.destination.position)
                 {
+                    Debug.Log(target + "   " + aiAgent.config.destination.position);
                     target = aiAgent.config.destination.position;
                     _Agent.Pathfinding(aiAgent.config.destination.position);
                 }

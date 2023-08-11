@@ -19,14 +19,17 @@ public class BasicHitResponder : MonoBehaviour, IHitResponder
     //Should be called whenever attack
     bool IHitResponder.CheckHit(HitData data)
     {
+        Debug.Log("Checking");
         if (_objectsHit.Contains(data.hurtBox.Owner))
         {
             return false;
         }
         if (targetTag != null && !data.hurtBox.Owner.CompareTag(targetTag))
         {
+            Debug.Log("Bad");
             return false;
         }
+        Debug.Log("Check done");
         return true; 
     }
     void IHitResponder.Response(HitData data)

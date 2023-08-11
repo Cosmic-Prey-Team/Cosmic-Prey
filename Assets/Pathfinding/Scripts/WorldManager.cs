@@ -96,8 +96,11 @@ public class WorldManager : MonoBehaviour
         int y = Mathf.Clamp(Mathf.RoundToInt(percentageY * GridHeight), 0, GridHeight - 1);
         int z = Mathf.Clamp(Mathf.RoundToInt(percentageZ * GridLength), 0, GridLength - 1);
         Point result= Grid[x][y][z];
+        //Debug.Log("Do i need to ask");
+        int attempts = 0;
         while (result.Invalid)
         {
+            //Debug.Log("yeah dead");
             int step = 1;
             List<Point> freePoints = new List<Point>();
             for (int p = -step; p <= step; p++)
@@ -134,6 +137,11 @@ public class WorldManager : MonoBehaviour
                     result = freePoints[i];
                     dist = distance;
                 }
+            }
+            attempts++;
+            if (attempts == 50)
+            {
+                return null;
             }
         }
         return result;

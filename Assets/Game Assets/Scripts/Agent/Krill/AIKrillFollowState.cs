@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
-
 public class AIKrillFollowState : AIState
 {
     private GameObject whale;

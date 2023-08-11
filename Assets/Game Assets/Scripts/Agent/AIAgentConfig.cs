@@ -6,10 +6,9 @@ using UnityEngine;
 public class AIAgentConfig : ScriptableObject
 {
     public string name;
-    public float Speed;
     public GameObject Waypoint;
     public LayerMask occlusionLayers;
-    public GameObject teleportEffect;
+    //public GameObject teleportEffect;
     public GameObject enemyPrefab;
     public Transform destination;
     public Animator animator;

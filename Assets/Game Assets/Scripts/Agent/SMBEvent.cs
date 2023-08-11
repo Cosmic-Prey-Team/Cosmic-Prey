@@ -60,7 +60,7 @@ public class SMBEvent : AIState
 
     public AIStateID GetID()
     {
-        return AIStateID.WhaleIdle;
+        return AIStateID.WhaleWander;
     }
 
     public void Update(AIAgent agent)
