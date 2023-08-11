@@ -34,11 +34,11 @@ public class DrillTool : MonoBehaviour
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             if(effect != null) effect.Stop();
-            playerAnimator.Play("mc_mineend");
+            playerAnimator.Play("mc_idle", 2);
         }
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            playerAnimator.Play("mc_mine");
+            playerAnimator.Play("mc_mine", 2);
         }
         //if the player clicked
         if (_inputHandler.firePrimary)
