@@ -48,7 +48,6 @@ public class ShipController : MonoBehaviour
             //NOTE: Change Velocity.z to apply to Velocity.x as well. How would we set the Vector3 Velocity to the same as the ships?
             velocity.z = _speed * Time.deltaTime;
         }
-
         ControlShip();
 
         #region Trigger Events
