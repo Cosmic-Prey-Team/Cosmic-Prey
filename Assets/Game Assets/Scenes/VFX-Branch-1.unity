@@ -3356,7 +3356,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 22
+      scalar: 41.5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -3409,7 +3409,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 24
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3483,11 +3483,11 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.97492164
           value: 0
-          inSlope: -0.2640556
-          outSlope: -0.2640556
+          inSlope: -0.11987319
+          outSlope: -0.11987319
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.5304381
+          inWeight: 0.40018028
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -5173,7 +5173,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.72
+      scalar: 0.77
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6101,7 +6101,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 0
     collisionMode: 0
