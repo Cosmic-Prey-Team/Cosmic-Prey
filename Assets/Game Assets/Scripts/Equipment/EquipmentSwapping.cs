@@ -50,11 +50,13 @@ public class EquipmentSwapping : MonoBehaviour
     }
     #endregion
 
-    public Animator playerAnimator;
+    public Animator firstpersonAnimator;
+    public Animator thirdpersonAnimator;
     
     private void SelectWeapon()
     {
-        playerAnimator.Play("mc_switchtool");
+        firstpersonAnimator.SetTrigger("TriggerSwitch");
+        thirdpersonAnimator.SetTrigger("TriggerSwitch");
         //enables only selected weapon and disables the rest
         /*
             0 - hand
