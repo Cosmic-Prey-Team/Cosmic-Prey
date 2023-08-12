@@ -11,6 +11,7 @@ public enum GameState
 {
     GameIsPaused,
     GameIsUnpaused,
+    InOptionsMenu,
     PlayerIsDead,
     PlayerIsAlive,
     WhaleIsAlive,
@@ -76,18 +77,21 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //escape pauses game and pressing it again un pauses
-        if (Keyboard.current.escapeKey.wasPressedThisFrame && _isPaused == false && _gameState == GameState.GameIsUnpaused)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && _gameState == GameState.GameIsUnpaused)
         {
             PauseGame();
         }
-        else if (Keyboard.current.escapeKey.wasPressedThisFrame && _isPaused == true && _gameState == GameState.GameIsPaused)
+        else if (Keyboard.current.escapeKey.wasPressedThisFrame && _gameState == GameState.GameIsPaused)
         {
             UnpauseGame();
         }
-        else if (Keyboard.current.backspaceKey.wasPressedThisFrame && _isPaused == true && _isInOptions)
+        else if (Keyboard.current.backspaceKey.wasPressedThisFrame && _gameState == GameState.InOptionsMenu)
         {
             _optionsMenuUI.gameObject.SetActive(false);
-            _pauseMenuUI.gameObject.SetActive(true);
+            if (_pauseMenuUI != null)
+            {
+                _pauseMenuUI.gameObject.SetActive(true);
+            }
             _isInOptions = false;
             _isPaused = true;
         }
@@ -96,7 +100,10 @@ public class GameManager : MonoBehaviour
     public void UnpauseGame()
     {
         Time.timeScale = 1;
-        _pauseMenuUI.gameObject.SetActive(false);
+        if(_pauseMenuUI != null)
+        {
+            _pauseMenuUI.gameObject.SetActive(false);
+        }
         InputHandler.ModifyCursorState(true, true);
         _isPaused = false;
         _gameState = GameState.GameIsUnpaused;
@@ -105,7 +112,10 @@ public class GameManager : MonoBehaviour
     private void PauseGame()
     {
         Time.timeScale = 0;
-        _pauseMenuUI.gameObject.SetActive(true);
+        if (_pauseMenuUI != null)
+        {
+            _pauseMenuUI.gameObject.SetActive(true);
+        }
         InputHandler.ModifyCursorState(false, false);
         _isPaused = true;
         _gameState = GameState.GameIsPaused;
@@ -113,14 +123,17 @@ public class GameManager : MonoBehaviour
 
     public void OptionsButton()
     {
-        _pauseMenuUI.gameObject.SetActive(false);
-        _optionsMenuUI.gameObject.SetActive(true);
-        _isInOptions = true;
+        _gameState = GameState.InOptionsMenu;
     }
 
     public void ExitGameButton(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void ToogleFullScreen()
@@ -129,7 +142,7 @@ public class GameManager : MonoBehaviour
         _isFullscreen = !_isFullscreen;
         if(_isFullscreen)
         {
-            _currentFullscreenText.text = "Fullscrene";
+            _currentFullscreenText.text = "Fullscreen";
         }
         else if (!_isFullscreen)
         {
