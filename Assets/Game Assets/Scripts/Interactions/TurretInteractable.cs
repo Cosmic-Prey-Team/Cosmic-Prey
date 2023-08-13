@@ -112,7 +112,7 @@ public class TurretInteractable : MonoBehaviour, IInteractable
 
             //disable first person controller
             _firstPersonController = _playerTransform.GetComponent<StarterAssets.FirstPersonController>();
-            _firstPersonController.enabled = false;
+            //_firstPersonController.enabled = false;
 
             //disable character controller
             _characterController = _playerTransform.GetComponent<CharacterController>();

@@ -9,9 +9,16 @@ public class WhaleFlyingController : MonoBehaviour
     [SerializeField] Vector3 target;
     [HideInInspector] 
     public float delay = 2f;
+
+
     //[SerializeField] Animator _Anim;
     //[SerializeField] AnimationCurve _SpeedCurve;
     //[SerializeField] float _Speed;
+
+    public float GetSpeed()
+    {
+        return _Agent.Speed;
+    }
 
     private void Start()
     {
@@ -51,6 +58,7 @@ public class WhaleFlyingController : MonoBehaviour
                 while ((aiAgent.config.destination.position - transform.position).magnitude < aiAgent.config.maxDistance)
                 {
                     transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed * 2);
+
                     transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
                                     
                     yield return null;
