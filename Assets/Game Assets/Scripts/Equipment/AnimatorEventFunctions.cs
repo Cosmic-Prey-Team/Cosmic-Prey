@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 
 public class AnimatorEventFunctions : MonoBehaviour
 {
     [SerializeField] private EquipmentSwapping _equipmentSwap;
+    public Animator firstpersonAnimator;
+    public Animator thirdpersonAnimator;
     public GameObject handObject;
     public GameObject drillObject;
     public GameObject chainsawObject;
@@ -15,6 +18,17 @@ public class AnimatorEventFunctions : MonoBehaviour
             3 - repair tool
             4 - gun
     */
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        firstpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
+        thirdpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
+    }
+
     void swaptoolMesh()
     {
         if(_equipmentSwap.GetSelectedWeapon() == 0)
