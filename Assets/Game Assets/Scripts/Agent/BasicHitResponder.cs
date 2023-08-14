@@ -19,7 +19,6 @@ public class BasicHitResponder : MonoBehaviour, IHitResponder
     //Should be called whenever attack
     bool IHitResponder.CheckHit(HitData data)
     {
-        Debug.Log("Checking");
         if (_objectsHit.Contains(data.hurtBox.Owner))
         {
             return false;

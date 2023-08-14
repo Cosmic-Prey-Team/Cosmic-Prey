@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: krill-config
   m_EditorClassIdentifier: 
   name: Krill
-  Speed: 5
+  newState: 5
   Waypoint: {fileID: 4160088872108794334, guid: b28751b8e2a3f5741a00e44f799552a6,
     type: 3}
   occlusionLayers:
     serializedVersion: 2
     m_Bits: 512
-  teleportEffect: {fileID: 0}
   enemyPrefab: {fileID: 0}
   destination: {fileID: 0}
   animator: {fileID: 0}

@@ -20,7 +20,8 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIWhaleAttackState());
         stateMachine.RegisterState(new AIWhaleFleeState());
         stateMachine.RegisterState(new AIKrillFollowState());
-        stateMachine.RegisterState(new AIKrillAttackState());        
+        stateMachine.RegisterState(new AIKrillAttackState());
+        stateMachine.RegisterState(new AIKrillDeathState());
         stateMachine.ChangeState(initialState);
     }
 
@@ -28,5 +29,10 @@ public class AIAgent : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
+    }
+
+    public void ChangeState()
+    {
+        stateMachine.ChangeState(config.newState);
     }
 }

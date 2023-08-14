@@ -8,7 +8,8 @@ public enum AIStateID {
     WhaleAttack,
     WhaleFlee,
     KrillFollow,
-    KrillAttack
+    KrillAttack,
+    KrillDeath
 }
 
 public interface AIState

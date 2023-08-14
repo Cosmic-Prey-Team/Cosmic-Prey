@@ -29,9 +29,8 @@ public class HitBox : MonoBehaviour, IHitDetector
         HitData _hitData = null;
         IHurtBox _hurtBox = null;
         //Registers all hits instead of just first one
-        Debug.Log("About to boxcast");
         RaycastHit[] _hits = Physics.BoxCastAll(_start, _halfExtents, _direction, _orientation, _distance, m_layerMask);
-        Debug.Log("Boxcast");
+
         foreach (RaycastHit _hit in _hits)
         {
             _hurtBox = _hit.collider.GetComponent<IHurtBox>();

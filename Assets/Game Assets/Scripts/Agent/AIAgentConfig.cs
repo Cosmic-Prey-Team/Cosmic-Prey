@@ -6,6 +6,7 @@ using UnityEngine;
 public class AIAgentConfig : ScriptableObject
 {
     public string name;
+    public AIStateID newState;
     public GameObject Waypoint;
     public LayerMask occlusionLayers;
     //public GameObject teleportEffect;
