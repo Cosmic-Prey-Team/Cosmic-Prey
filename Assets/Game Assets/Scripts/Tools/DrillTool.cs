@@ -15,7 +15,7 @@ public class DrillTool : MonoBehaviour
     [Tooltip("The amount of damage done every tick")]
     [SerializeField] private int _damagePerDelay;
     [Tooltip("The distance you can drill from")]
-    [SerializeField] private int _drillRange;
+    [SerializeField] private float _drillRange;
     [Header("Drill Effects")]
     [Tooltip("Particle effect to play while drilling")]
     [SerializeField] ParticleSystem _drillEffect;
@@ -53,6 +53,7 @@ public class DrillTool : MonoBehaviour
             {
                 //if the game object is drillable and has health
                 Drillable drillable = hit.collider.GetComponent<Drillable>();
+                Breakable breakable = hit.collider.GetComponent<Breakable>();
 
                 if (drillable != null && hit.collider.GetComponent<Health>() != null)
                 {
@@ -68,6 +69,12 @@ public class DrillTool : MonoBehaviour
                     {
                         //do damage to drillable game object
                         drillable.DrillDamage(_damagePerDelay, _player);
+
+                        if (breakable != null)
+                        {
+                            //Debug.Log("hittpoint: " + hit.point);
+                            breakable.explosionPoint = hit.point;
+                        }
                         _currentDelayProgress = _damageDelay;
                     }
                     else

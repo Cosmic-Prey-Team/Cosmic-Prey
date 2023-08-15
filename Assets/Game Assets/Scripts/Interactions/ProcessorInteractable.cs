@@ -15,6 +15,8 @@ public class ProcessorInteractable : MonoBehaviour, IInteractable
     [Header("Processor variables")]
     [SerializeField] GameObject _craftingDisplay;
 
+    private bool _interactionEnabled = true;
+
     #region IInteractable Methods
     public string GetInteractText()
     {
@@ -42,6 +44,18 @@ public class ProcessorInteractable : MonoBehaviour, IInteractable
             _isInteracting = false;
             ToggleProcessorMenu(false);
         }
+    }
+    public bool CanInteract()
+    {
+        return _interactionEnabled;
+    }
+    public void DisableInteractions()
+    {
+        _interactionEnabled = false;
+    }
+    public void EnableInteractions()
+    {
+        _interactionEnabled = true;
     }
     #endregion
 

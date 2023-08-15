@@ -11,6 +11,9 @@ TagManager:
   - Waypoint
   - Whale
   - PermWaypoint
+  - World
+  - Ship
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -25,11 +28,11 @@ TagManager:
   - Food
   - Ship
   - LayerMask
-  - HideFromPOVCamera
+  - SeeThrough
   - HideThis
   - MaskWhale
   - HideWhale
-  - HideShadows
+  - Hurtbox
   - 
   - 
   - 

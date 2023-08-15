@@ -69,8 +69,18 @@ public class PlayerInteract : MonoBehaviour
                     //toggle _isInteracting on button down
                     IsInteracting = !IsInteracting;
 
-                    OnPressInteractionKey?.Invoke(true);
-                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    if (currentInteractable.CanInteract())
+                    {
+                        OnPressInteractionKey?.Invoke(true);
+                        currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    }
+                    else
+                    {
+                        OnPressInteractionKey?.Invoke(false);
+                    }
+                    /*OnPressInteractionKey?.Invoke(true);
+                    if(currentInteractable.CanInteract())
+                        currentInteractable.TriggerInteraction(transform, IsInteracting);*/
                     _isButtonDown = true;
                     //Debug.Log("PressInteractionKeyDown()");
                 }
@@ -81,7 +91,8 @@ public class PlayerInteract : MonoBehaviour
                 if (_input.interact == false && currentInteractable != null)
                 {
                     OnPressInteractionKey?.Invoke(false);
-                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    if (currentInteractable.CanInteract())
+                        currentInteractable.TriggerInteraction(transform, IsInteracting);
                     _isButtonDown = false;
                     //Debug.Log("PressInteractionKeyUp()");
                 }
@@ -97,7 +108,8 @@ public class PlayerInteract : MonoBehaviour
                     IsInteracting = !IsInteracting;
 
                     OnPressInteractionKey?.Invoke(true);
-                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    if (currentInteractable.CanInteract())
+                        currentInteractable.TriggerInteraction(transform, IsInteracting);
                     _isButtonDown = true;
                     //Debug.Log("PressInteractionKeyDown()");
                 }
@@ -108,7 +120,8 @@ public class PlayerInteract : MonoBehaviour
                 if (_shipInput.interact == false && currentInteractable != null)
                 {
                     OnPressInteractionKey?.Invoke(false);
-                    currentInteractable.TriggerInteraction(transform, IsInteracting);
+                    if (currentInteractable.CanInteract())
+                        currentInteractable.TriggerInteraction(transform, IsInteracting);
                     _isButtonDown = false;
                     //Debug.Log("PressInteractionKeyUp()");
                 }

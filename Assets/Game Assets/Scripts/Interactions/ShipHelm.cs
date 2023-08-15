@@ -14,6 +14,7 @@ public class ShipHelm : MonoBehaviour, IInteractable
 
     public event Action<ControlState> OnSwitchState = delegate { };
 
+    private bool _interactionEnabled = true;
 
     private void Awake()
     {
@@ -50,6 +51,18 @@ public class ShipHelm : MonoBehaviour, IInteractable
             _isInteracting = false;
             DoInteractableAction(false);
         }
+    }
+    public bool CanInteract()
+    {
+        return _interactionEnabled;
+    }
+    public void DisableInteractions()
+    {
+        _interactionEnabled = false;
+    }
+    public void EnableInteractions()
+    {
+        _interactionEnabled = true;
     }
 
     public void DoInteractableAction(bool value)

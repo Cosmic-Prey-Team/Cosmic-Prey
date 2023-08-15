@@ -26,13 +26,13 @@ public class Drillable : MonoBehaviour
     private int _currentHealth;
     private float _target;
     private bool _gainedLastOre = false;
-
     private void Awake()
     {
         _health = GetComponent<Health>();
         _maxHealth = _health.GetHealth();
         _currentHealth = _maxHealth;
         _timeToRecover = _recoveryTime;
+        transform.SetParent(null);
 
         if (_progressBar.gameObject.activeInHierarchy == true) _progressBar.gameObject.SetActive(false);
     }

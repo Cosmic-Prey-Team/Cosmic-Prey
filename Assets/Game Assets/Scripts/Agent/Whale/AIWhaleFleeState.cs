@@ -1,33 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityMovementAI;
 
 public class AIWhaleFleeState : AIState
 {
     private GameObject _target;
-    private int castFails = 0;
-    private float scanTimer = 0f;
-
+    private AStarAgent _aStarAgent;
+    private Transform _destination = null;
     [SerializeField]
     float rotationLimit = 40f;
     [SerializeField]
     float distanceLimit = 16f;
+    private float _fleeTimer = 0f;
 
-   
 
     public void Enter(AIAgent agent)
     {
         _target = GameObject.FindGameObjectWithTag("Player");
-        agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity * 1.25f;
+        _aStarAgent = agent.GetComponent<AStarAgent>();
+        _aStarAgent.Speed = _aStarAgent.Speed * 1.25f;
     }
 
     public void Exit(AIAgent agent)
     {
-        agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity / 1.25f;
+        _aStarAgent.Speed = _aStarAgent.Speed / 1.25f;
     }
 
     public AIStateID GetID()
@@ -43,63 +40,28 @@ public class AIWhaleFleeState : AIState
             return;
         }
 
-        scanTimer -= Time.deltaTime;
-
-        if (agent.path.nodes.Length == 0 || agent.followPath.IsAtEndOfPath(agent.path))
+        if (_destination == null)
         {
-            
-            Vector3[] nodes = new Vector3[1];
-
             Vector3 direction = (agent.gameObject.transform.position - _target.transform.position).normalized;
             float angleY = Random.Range(-rotationLimit, rotationLimit);
             float angleZ = Random.Range(-rotationLimit, rotationLimit);
             float distance = Random.Range(8, distanceLimit);
             direction = Quaternion.Euler(0, angleY / 0.5f, angleZ / 1.5f) * direction * distance;
-
-            RaycastHit hit;
-            Debug.DrawRay(agent.gameObject.transform.position, direction, Color.yellow, 5.0f);
-            if (!Physics.Raycast(agent.gameObject.transform.position, direction, out hit, distanceLimit, agent.config.occlusionLayers))
-            {
-                
-                nodes[0] = (direction + agent.gameObject.transform.position) * .95f;
-                
-
-                agent.path = new LinePath(nodes);
-                agent.path.CalcDistances();
-
-                castFails = 0;
-                rotationLimit = 30f;
-            }
-            else if (castFails++ > 7)
-            {
-                scanTimer = 0.5f;
-                nodes[0] = hit.collider.transform.position + (agent.gameObject.transform.position - hit.collider.transform.position).normalized + hit.collider.bounds.size * .75f;
-                agent.path = new LinePath(nodes);
-                agent.path.CalcDistances();
-            }
+            Point p = WorldManager.Instance.GetClosestPointWorldSpace(agent.gameObject.transform.position + direction);
+            _destination = GameObject.Instantiate(agent.config.Waypoint, p.WorldPosition, agent.transform.rotation).transform;
+            agent.config.destination = _destination;
         }
-        else if (scanTimer < 0 && castFails > 7)
+
+        _fleeTimer += Time.deltaTime;
+
+        if ((agent.gameObject.transform.position - _target.transform.position).magnitude > 100f)
         {
-            if (agent.path.Length > 0)
-            {
-                agent.path.RemoveNodes();
-            }       
+            agent.stateMachine.ChangeState(AIStateID.WhaleWander);
         }
-        else
+        else if (_fleeTimer > 60f)
         {
-            Vector3 accel = agent.wallAvoidance.GetSteering();
-
-            if (accel.magnitude < 0.005f)
-            {
-                accel = agent.followPath.GetSteering(agent.path);
-            }
-
-            agent.steeringBasics.Steer(accel);
-            agent.steeringBasics.LookWhereYoureGoing();
-
-            agent.path.Draw();
+            agent.stateMachine.ChangeState(AIStateID.WhaleAttack);
         }
-
     }
 
     

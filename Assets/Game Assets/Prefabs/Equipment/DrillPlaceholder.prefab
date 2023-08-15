@@ -80,10 +80,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageDelay: 1
   _damagePerDelay: 1
-  _drillRange: 2
+  _drillRange: 1.5
   _drillEffect: {fileID: 4232219060638481117, guid: be74d3583d3ea96429f55bf778f6af0c,
     type: 3}
-  _drillProgressCanvas: {fileID: 0}
 --- !u!1 &6670192580289438731
 GameObject:
   m_ObjectHideFlags: 0

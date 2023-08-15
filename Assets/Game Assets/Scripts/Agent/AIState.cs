@@ -5,11 +5,11 @@ using UnityEngine;
 
 public enum AIStateID { 
     WhaleWander,
-    WhaleIdle,
     WhaleAttack,
     WhaleFlee,
     KrillFollow,
-    KrillAttack
+    KrillAttack,
+    KrillDeath
 }
 
 public interface AIState

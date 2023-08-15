@@ -35,8 +35,11 @@ public class PlayerInteractionUI : MonoBehaviour
     //shows and hides UI
     private void Show(IInteractable interactable)
     {
-        _interactionText.gameObject.SetActive(true);
-        _interactionText.text = interactable.GetInteractText();
+        if (interactable.CanInteract())
+        {
+            _interactionText.gameObject.SetActive(true);
+            _interactionText.text = interactable.GetInteractText();
+        }
     }
     private void Hide()
     {

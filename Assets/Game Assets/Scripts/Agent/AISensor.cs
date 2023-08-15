@@ -74,7 +74,7 @@ public class AISensor : MonoBehaviour
             return false;
         }
 
-        float deltaAngle = Vector3.Angle(direction, transform.right);
+        float deltaAngle = Vector3.Angle(direction, transform.forward);
         
         if (deltaAngle > angle)
         {
@@ -114,11 +114,11 @@ public class AISensor : MonoBehaviour
 
     private void OnValidate()
     {
-        mesh = CreateWedgeMesh();
+        //mesh = CreateWedgeMesh();
         scanInterval = 1.0f / scanFrequency;
     }
 
-
+    /**
     // Debugging code to display vision
     Mesh CreateWedgeMesh()
     {
@@ -132,8 +132,8 @@ public class AISensor : MonoBehaviour
         int[] triangles = new int[numVertices];
 
         Vector3 bottomCenter = Vector3.zero;
-        Vector3 bottomLeft = Quaternion.Euler(0, -angle, 0) * Vector3.right * distance;
-        Vector3 bottomRight = Quaternion.Euler(0, angle, 0) * Vector3.right * distance;
+        Vector3 bottomLeft = Quaternion.Euler(0, -angle, 0) * Vector3.forward * distance;
+        Vector3 bottomRight = Quaternion.Euler(0, angle, 0) * Vector3.forward * distance;
 
         Vector3 topCenter = bottomCenter + Vector3.up * height;
         Vector3 topLeft = bottomLeft + Vector3.up * height;
@@ -163,8 +163,8 @@ public class AISensor : MonoBehaviour
         for (int i = 0; i < segments; ++i)
         {
 
-            bottomLeft = Quaternion.Euler(0, currentAngle, 0) * Vector3.right * distance;
-            bottomRight = Quaternion.Euler(0, currentAngle + deltaAngle, 0) * Vector3.right * distance;
+            bottomLeft = Quaternion.Euler(0, currentAngle, 0) * Vector3.forward * distance;
+            bottomRight = Quaternion.Euler(0, currentAngle + deltaAngle, 0) * Vector3.forward * distance;
 
             topLeft = bottomLeft + Vector3.up * height;
             topRight = bottomRight + Vector3.up * height;
@@ -222,6 +222,6 @@ public class AISensor : MonoBehaviour
             Gizmos.DrawSphere(obj.transform.position, 0.2f);
         }
     }
-    //
+    **/
     
 }
