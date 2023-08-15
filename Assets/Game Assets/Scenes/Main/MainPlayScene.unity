@@ -189,8 +189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -75}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 150, y: -245}
+  m_SizeDelta: {x: 250, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &53065198
 CanvasRenderer:
@@ -1486,10 +1486,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b45f8847216a9438b5141aab262dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Order: 3
-  _QueenPopups: Test string. gO TO craft box
-  _Questopups: Call in the Fissures dynamic objects
-  HitTransform: {fileID: 0}
+  _Order: 4
+  _QueenPopups: 'Queen: There now we can fix those damages and move on finally, just
+    use your weirdly designed repair tool that was provided to you'
+  _Questopups: 'Using the mouse wheel, equip the repair tool.
+
+    By left clicking
+    near the holes, you can fix up
+
+    the boat.  '
+  HitTransform: {fileID: 1338818001}
 --- !u!65 &383747806
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1542,6 +1548,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.1, z: 2}
   m_Center: {x: -5, y: 0, z: -1.3}
+--- !u!1 &399669717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5373279052426287985, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7840271900689763055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &399669724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399669717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b45f8847216a9438b5141aab262dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Order: 2
+  _QueenPopups: 'Queen: Right! To the processor! Let''s get some new hull parts for
+    this hunk-a-junk!'
+  _Questopups: 'Head towards the processor and press F.
+
+'
+  HitTransform: {fileID: 1801442642}
+--- !u!65 &399669725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399669717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2.5}
+  m_Center: {x: -0.5, y: 0, z: 0}
 --- !u!1 &405928931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2927,8 +2971,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 150, y: 100}
+  m_AnchoredPosition: {x: 0, y: -180}
+  m_SizeDelta: {x: 700, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &863589745
 CanvasRenderer:
@@ -2969,7 +3013,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Test
 --- !u!1 &878906614
@@ -4233,12 +4277,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Order: 1
-  _QueenPopups: Test string OMG!!!!
-  _Questopups: Test string OMG!!!!
+  _QueenPopups: 'Queen: Alright, now switch me to drill mode and bingo bango we can
+    get movin'
+  _Questopups: 'Using the mouse wheel, equip the drill tool.
+
+    Harvest ore from
+    the asteroid by Left clicking it.  '
   Keysinput:
   - d
   - s
-  - p
+  - w
 --- !u!224 &1236599937
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4739,7 +4787,7 @@ MonoBehaviour:
   Tutorials:
   - {fileID: 1953022400}
   - {fileID: 1236599936}
-  - {fileID: 2134991981}
+  - {fileID: 399669724}
   _QueenTexts: {fileID: 863589746}
   _QuestTexts: {fileID: 53065199}
 --- !u!1 &1591160009
@@ -5127,6 +5175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca96aac9e979acd47825ee2ea38b50a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1801442642 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9024171193341987805, guid: e876fb5ed0ecdf049bdbea6eb6398cec,
+    type: 3}
+  m_PrefabInstance: {fileID: 9024171191810236050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1801715131
 GameObject:
   m_ObjectHideFlags: 0
@@ -5238,8 +5292,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1804838049}
   - component: {fileID: 1804838051}
-  - component: {fileID: 1804838050}
   - component: {fileID: 1804838052}
+  - component: {fileID: 1804838053}
   m_Layer: 0
   m_Name: TutorialDriving
   m_TagString: Untagged
@@ -5262,26 +5316,6 @@ Transform:
   m_Father: {fileID: 1576476987}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1804838050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804838048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7af6bdad4be7042b73c98d161c1133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Order: 5
-  _QueenPopups: 
-  _Questopups: 
-  Keysinput:
-  - f
-  - w
-  - a
-  - s
 --- !u!114 &1804838051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5294,9 +5328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b45f8847216a9438b5141aab262dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Order: 4
-  _QueenPopups: Test string. gO TO craft box
-  _Questopups: Test string
+  _Order: 5
+  _QueenPopups: "Queen: Perfect! Let\u2019s get this over with. Go check the radar
+    on the steering panel, so we can figure out where Stella is!"
+  _Questopups: "Head towards the steering panel and press F \nonce near to control
+    the ship."
   HitTransform: {fileID: 1338818001}
 --- !u!65 &1804838052
 BoxCollider:
@@ -5311,6 +5347,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1804838053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804838048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7af6bdad4be7042b73c98d161c1133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Order: 6
+  _QueenPopups: "Queen: Well, moment of truth\u2026 Let's hope those hull parts hold.
+    Go get that whale!"
+  _Questopups: 
+  Keysinput:
+  - f
+  - a
+  - d
 --- !u!1 &1893437720
 GameObject:
   m_ObjectHideFlags: 0
@@ -5698,8 +5754,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Order: 0
-  _QueenPopups: Test sting
-  _Questopups: Test string
+  _QueenPopups: 'Queen: Careful space boy, i don''t need you dying on me before we
+    even get to the whale'
+  _Questopups: 'Press P to view the control system.
+
+    Head towards the asteroid
+    on the left'
   Keysinput:
   - a
   - w
@@ -6152,8 +6212,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2134991980}
-  - component: {fileID: 2134991981}
-  - component: {fileID: 2134991982}
   m_Layer: 0
   m_Name: TutorialCrafting
   m_TagString: Untagged
@@ -6176,35 +6234,6 @@ Transform:
   m_Father: {fileID: 1576476987}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2134991981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134991979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b45f8847216a9438b5141aab262dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Order: 2
-  _QueenPopups: Test string. gO TO craft box
-  _Questopups: Test string
-  HitTransform: {fileID: 1338818001}
---- !u!65 &2134991982
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134991979}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2137548785
 GameObject:
   m_ObjectHideFlags: 0
@@ -6354,6 +6383,16 @@ PrefabInstance:
       propertyPath: _craftingDisplay
       value: 
       objectReference: {fileID: 1027800139}
+    - target: {fileID: 6841015266589760461, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841015266589760461, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6841015267139718336, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: m_Size.x

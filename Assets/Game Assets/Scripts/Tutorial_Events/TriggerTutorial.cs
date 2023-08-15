@@ -19,9 +19,13 @@ public class TriggerTutorial : Tutorial_Steps
 
         //The player reaches a collision space
         if (other.transform == HitTransform)
-            InventoryisEmpty();
+        {
+            GameTutorial_Manager.Instace.TutorialIncrement();
+            isCurrentTutorial = false;
+        }
+        //InventoryisEmpty();
     }
-
+/*
     //Checking if inventory is empty
     public void InventoryisEmpty()
     {
@@ -35,5 +39,5 @@ public class TriggerTutorial : Tutorial_Steps
         else
             isCurrentTutorial = true;
 
-    }
+    }*/
 }
