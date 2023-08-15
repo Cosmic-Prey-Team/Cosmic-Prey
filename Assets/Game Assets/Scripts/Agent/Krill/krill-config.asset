@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d18a7006e908b4e9228bc08d5832e1, type: 3}
   m_Name: krill-config
   m_EditorClassIdentifier: 
-  name: Krill
+  AIName: Krill
   newState: 5
   Waypoint: {fileID: 4160088872108794334, guid: b28751b8e2a3f5741a00e44f799552a6,
     type: 3}

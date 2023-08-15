@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class AIAgentConfig : ScriptableObject
 {
-    public string name;
+    public string AIName;
     public AIStateID newState;
     public GameObject Waypoint;
     public LayerMask occlusionLayers;

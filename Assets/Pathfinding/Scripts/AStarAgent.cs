@@ -55,7 +55,7 @@ public class AStarAgent : MonoBehaviour
         {
             for (int j = i; j < agents.Length; j++)
             {
-                if (agents[i].Speed > agents[j].Speed)//if ((agents[i]._agent.config.name == "Krill" && agents[j]._agent.config.name == "Whale") || agents[i].Speed > agents[j].Speed)
+                if (agents[i].Speed > agents[j].Speed)//if ((agents[i]._agent.config.AIName == "Krill" && agents[j]._agent.config.AIName == "Whale") || agents[i].Speed > agents[j].Speed)
                 {
                     AStarAgent pom = agents[i];
                     agents[i] = agents[j];

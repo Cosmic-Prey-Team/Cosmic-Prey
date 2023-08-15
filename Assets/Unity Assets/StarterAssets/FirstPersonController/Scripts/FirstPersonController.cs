@@ -295,7 +295,7 @@ namespace StarterAssets
 					_verticalVelocity = -2f;
 					
 				}
-				Debug.Log(_verticalVelocity);
+				//Debug.Log(_verticalVelocity);
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
