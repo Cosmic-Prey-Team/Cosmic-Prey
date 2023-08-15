@@ -77,6 +77,8 @@ namespace StarterAssets
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 
+		public static bool triggerJump;
+
 		Vector3 inputDirection;
 
         /*[Header("Jetpack/Space Movement")]
@@ -91,7 +93,7 @@ namespace StarterAssets
 
 
         // timeout deltatime
-        private float _jumpTimeoutDelta;
+        public static float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
 		private PlayerState _playerState;
@@ -291,8 +293,9 @@ namespace StarterAssets
 				if (_verticalVelocity < 0.0f)
 				{
 					_verticalVelocity = -2f;
+					
 				}
-
+				Debug.Log(_verticalVelocity);
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{

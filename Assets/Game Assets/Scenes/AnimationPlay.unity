@@ -35887,8 +35887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _equipmentSwap: {fileID: 1837404733}
-  firstpersonAnimator: {fileID: 0}
-  thirdpersonAnimator: {fileID: 0}
+  firstpersonAnimator: {fileID: 1953378884}
+  thirdpersonAnimator: {fileID: 643733138}
   handObject: {fileID: 1953378879}
   drillObject: {fileID: 1953378880}
   chainsawObject: {fileID: 1953378881}

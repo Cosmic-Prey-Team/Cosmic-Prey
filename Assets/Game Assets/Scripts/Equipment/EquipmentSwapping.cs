@@ -55,8 +55,28 @@ public class EquipmentSwapping : MonoBehaviour
     
     private void SelectWeapon()
     {
-        firstpersonAnimator.SetTrigger("TriggerSwitch");
-        thirdpersonAnimator.SetTrigger("TriggerSwitch");
+        if(GetSelectedWeapon() <= 2 && firstpersonAnimator.GetBool("liftingLHand") == false)
+        {
+           // firstpersonAnimator.SetFloat("liftingRHand", 0f);
+            //thirdpersonAnimator.SetFloat("liftingRHand", 0f);
+
+            firstpersonAnimator.SetTrigger("triggerSwitch");
+            thirdpersonAnimator.SetTrigger("triggerSwitch");
+        }/*else
+        {
+            firstpersonAnimator.SetFloat("liftingRHand", 1f);
+            thirdpersonAnimator.SetFloat("liftingRHand", 1f);
+        }*/
+        
+        if(GetSelectedWeapon() == 3)
+        {
+            firstpersonAnimator.SetBool("liftingLHand", true);
+            thirdpersonAnimator.SetBool("liftingLHand", true);
+        }else
+        {
+            firstpersonAnimator.SetBool("liftingLHand", false);
+            thirdpersonAnimator.SetBool("liftingLHand", false);
+        }
         //enables only selected weapon and disables the rest
         /*
             0 - hand
