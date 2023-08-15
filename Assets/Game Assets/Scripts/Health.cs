@@ -15,7 +15,9 @@ public class Health : MonoBehaviour
     [Space]
     [Tooltip("Optional health bar.")]
     [SerializeField] private Image _healthBar;
-    
+
+    private bool _dead;
+
     // events for future use
     public event Action OnHealthChanged;
     //public event Action OnDeath;
@@ -59,7 +61,11 @@ public class Health : MonoBehaviour
         if (_health < 0) _health = 0;
         OnHealthChanged?.Invoke();
 
-        if (_health == 0) Die();
+        if (_health == 0 && !_dead)
+        {
+            Die();
+            _dead = true;
+        }
     }
 
     public void Heal(int amount)

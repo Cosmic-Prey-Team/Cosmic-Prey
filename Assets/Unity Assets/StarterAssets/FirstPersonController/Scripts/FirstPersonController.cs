@@ -77,6 +77,8 @@ namespace StarterAssets
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 
+		public static bool triggerJump;
+
 		Vector3 inputDirection;
 
         /*[Header("Jetpack/Space Movement")]
@@ -91,7 +93,7 @@ namespace StarterAssets
 
 
         // timeout deltatime
-        private float _jumpTimeoutDelta;
+        public static float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
 		private PlayerState _playerState;
@@ -195,10 +197,11 @@ namespace StarterAssets
 			}
 		}
 
+		public static float targetSpeed;
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
             //if (movePlayerWithShip.onShip) targetSpeed += _ship.velocity.z;
 
@@ -207,6 +210,9 @@ namespace StarterAssets
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+			
+			
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -232,6 +238,7 @@ namespace StarterAssets
 			inputDirection = new Vector3(0f, 0f, 0f);
 			if (_canMove)
 			{
+				
 				// normalise input direction
 				/*Vector3*/ inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
@@ -286,8 +293,9 @@ namespace StarterAssets
 				if (_verticalVelocity < 0.0f)
 				{
 					_verticalVelocity = -2f;
+					
 				}
-
+				Debug.Log(_verticalVelocity);
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{

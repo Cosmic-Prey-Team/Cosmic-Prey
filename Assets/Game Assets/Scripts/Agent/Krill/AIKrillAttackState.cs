@@ -2,41 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityMovementAI;
+
 
 public class AIKrillAttackState : AIState
 {
        
     private GameObject _target;
-    private FollowPath followPath;
-    private Cohesion cohesion;
-    private Separation separation;
-    private List<MovementAIRigidbody> krillInstances;
     private float _chargeTimer = 0f;  
     private float _updateTimer = 0f;
     protected bool _attacking = false;
+    protected bool _charging = false;
     protected int _attack;
-    private Vector3[] _nodes = new Vector3[3];
+    private int _numAttacks = 0;
+    private KrillFlyingController _flyingController;
+    private AStarAgent _aStarAgent;
+    private AISensor _sensor;
+    private Animator _animator;
+    private BasicHitResponder _hitResponder;
+    private WorldManager worldManager;
+    private GameObject _delayTarget;
 
-   
 
     public void Enter(AIAgent agent)
     {
-        krillInstances = new List<MovementAIRigidbody>();
+        _sensor = agent.GetComponent<AISensor>();
         _target = GameObject.FindGameObjectWithTag("Player");
-        followPath = agent.GetComponent<FollowPath>();
-        cohesion = agent.GetComponent<Cohesion>();
-        separation = agent.GetComponent<Separation>();
-
-        foreach (MovementAIRigidbody r in agent.config.krill)
-        {
-            krillInstances.Add(r);
-        }
-        krillInstances.Remove(agent.gameObject.GetComponent<MovementAIRigidbody>());
+        _flyingController = agent.GetComponent<KrillFlyingController>();
+        _aStarAgent = agent.GetComponent<AStarAgent>();
+        _animator = agent.GetComponent<Animator>();
+        _hitResponder = agent._hitbox.GetComponent<BasicHitResponder>();
+        worldManager = GameObject.FindGameObjectWithTag("World").GetComponent<WorldManager>();
     }
 
     public void Exit(AIAgent agent)
@@ -56,77 +53,115 @@ public class AIKrillAttackState : AIState
             return;
         }
 
-        if (krillInstances.Count + 1 < agent.config.krill.Count)
+        if (_delayTarget == null)
         {
-            krillInstances.Add(agent.config.krill[agent.config.krill.Count - 1]);
+            //Debug.Log(_numAttacks + " " + _charging);
+            if (_charging == false && _numAttacks + UnityEngine.Random.Range(0, 2) > 2)
+            {
+                Vector3 offset = new Vector3(UnityEngine.Random.Range(-10, 11), UnityEngine.Random.Range(0, 11), UnityEngine.Random.Range(-10, 11));
+                Vector3 destination = worldManager.GetClosestPointWorldSpace(agent.transform.position + offset).WorldPosition;
+                _delayTarget = GameObject.Instantiate(agent.config.Waypoint, destination, Quaternion.identity);
+                agent.config.destination = _delayTarget.transform;
+                _numAttacks = 0;
+            }
+            else
+            {
+                Charge(agent);
+            }                             
         }
 
-            
-        
-        Charge(agent);           
-                
+
     }
 
     private void Charge(AIAgent agent)
-    {       
-        if (_attacking == false)
+    {
+        if (_charging == false)
         {
-            agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity * 2;
-            _nodes[0] = agent.transform.position;
-            for (int i = 1; i < _nodes.Length; i++)
-            {
-                _nodes[i] = _target.transform.position;
-            }
-            agent.path = new LinePath(_nodes);
-            agent.path.CalcDistances();
+            _sensor.distance = 2f;
+            _sensor.angle = 45;
+            _aStarAgent.Speed = _aStarAgent.Speed * 2;
+            agent.config.destination = _target.transform;
+            _flyingController.delay = 0.33f;
         }
 
-        _attacking = true;
+        _charging = true;
 
+        agent.config.destination = _target.transform;
         _chargeTimer += Time.deltaTime;
         _updateTimer += Time.deltaTime;
 
-        if (_updateTimer > 0.33f && _chargeTimer < 1)
-        {
-            agent.path.nodes[0] = agent.transform.position;
-            agent.path.nodes[2] = _target.transform.position;
-            agent.path.CalcDistances();
-            _updateTimer = 0f;
-        }
-        else if(_updateTimer > 0.33f)
-        {
-            agent.path.nodes[0] = agent.transform.position;
-            agent.path.nodes[1] = agent.path.nodes[2];
-            agent.path.nodes[2] = _target.transform.position;
-            agent.path.CalcDistances();
-            _updateTimer = 0f;
-        }
-
         if (_chargeTimer > 5)
         {
-            _attacking = false;
+            _charging = false;
             _chargeTimer = 0;
-            agent.steeringBasics.maxVelocity = agent.steeringBasics.maxVelocity / 2;
+            _sensor.distance = 7f;
+            _sensor.angle = 90;
+            _aStarAgent.Speed = _aStarAgent.Speed * 0.5f;
+            _flyingController.delay = 2f;
         }
 
-
-        Vector3 accel = Vector3.zero;
-        accel += followPath.GetSteering(agent.path) * 1.5f;
-        accel += agent.wallAvoidance.GetSteering();
-        //accel += cohesion.GetSteering(krillInstances) * 1.5f;
-        accel += separation.GetSteering(krillInstances);
-
-        agent.steeringBasics.Steer(accel);
-        agent.steeringBasics.LookWhereYoureGoing();
-
-        agent.path.Draw();
+        AttemptAttack();
         
-
     }
 
-   
+    public void AttemptAttack()
+    {
+        //This may cause it to play the attack animation while death animation plays
+        int id = Animator.StringToHash("Attack");
+        if (_animator.HasState(0, id))
+        {
+            var state = _animator.GetCurrentAnimatorStateInfo(0);
+            if (state.fullPathHash == id || state.shortNameHash == id)
+            {
+                _attacking = true;
+                int totalFrames = GetTotalFrames(_animator, 0);
 
-    
+                int currentFrame = GetCurrentFrame(totalFrames, GetNormalizedTime(state));
+                if (currentFrame > 24 && currentFrame < 36)
+                {
+                    //Krill can damage the ship
+                    _hitResponder._hitBox.CheckHit();
+                }                
+                return;
+            }
+            _attacking = false;
+        }
+        if (_updateTimer > 0.33f)
+        {
+            _sensor.Scan();
+            GameObject[] player = _sensor.Filter(new GameObject[1], "Player");
+            if (player[0] != null)
+            {
+                _animator.Play("Attack", 0, 0.0f);
+                _numAttacks++;
+                _hitResponder._objectsHit = new List<GameObject>();                
+            }
+            _updateTimer = 0;
+        }
+    }
+
+    private int GetTotalFrames(Animator animator, int layerIndex)
+    {
+        AnimatorClipInfo[] _clipInfos = animator.GetNextAnimatorClipInfo(layerIndex);
+        if (_clipInfos.Length == 0)
+        {
+            _clipInfos = animator.GetCurrentAnimatorClipInfo(layerIndex);
+        }
+
+        AnimationClip clip = _clipInfos[0].clip;
+        return Mathf.RoundToInt(clip.length * clip.frameRate);
+    }
+
+    private float GetNormalizedTime(AnimatorStateInfo stateInfo)
+    {
+        return stateInfo.normalizedTime > 1 ? 1 : stateInfo.normalizedTime;
+    }
+
+    private int GetCurrentFrame(int totalFrames, float normalizedTime)
+    {
+        return Mathf.RoundToInt(totalFrames * normalizedTime);
+    }
+
 
 
 }

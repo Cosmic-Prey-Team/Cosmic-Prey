@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7243bbe15301d9b488a602596892aca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 2226084845381448654, guid: cc788444dc6507841819db3a69476e59,
+  _bulletPrefab: {fileID: 2226084845381448654, guid: 9a437a84880fa6843b0d600cf0bbbdd3,
     type: 3}
   _muzzleFlash: {fileID: 0}
   _ammoSO: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}

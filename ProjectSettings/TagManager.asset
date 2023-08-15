@@ -11,6 +11,9 @@ TagManager:
   - Waypoint
   - Whale
   - PermWaypoint
+  - World
+  - Ship
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -23,13 +26,13 @@ TagManager:
   - Waypoint
   - Obstacle
   - Food
-  - Ship Trigger
-  - Ship Colliders
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ship
+  - LayerMask
+  - SeeThrough
+  - HideThis
+  - MaskWhale
+  - HideWhale
+  - Hurtbox
   - 
   - 
   - 
