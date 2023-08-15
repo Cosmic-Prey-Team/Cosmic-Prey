@@ -31,6 +31,8 @@ public class ShipController : MonoBehaviour
 
     private bool _isMoving = false;
 
+    [SerializeField] ParticleSystem _crashFx;
+
     private void Awake()
     {
         _playerState = FindObjectOfType<PlayerState>();
