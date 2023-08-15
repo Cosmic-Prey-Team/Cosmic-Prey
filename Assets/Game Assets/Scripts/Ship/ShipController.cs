@@ -28,6 +28,8 @@ public class ShipController : MonoBehaviour
 
     private PlayerState _playerState;
     private ShipInput _input;
+    private Harpoon _harpoon;
+    private WhaleFlyingController _whaleFlyingController;
 
     private bool _isMoving = false;
 
@@ -35,21 +37,31 @@ public class ShipController : MonoBehaviour
     {
         _playerState = FindObjectOfType<PlayerState>();
         _input = _playerState.GetComponent<ShipInput>();
+        _harpoon = FindObjectOfType<Harpoon>();
+        _whaleFlyingController = FindObjectOfType<WhaleFlyingController>();
     }
     // Update is called once per frame
     void Update()
     {
+        //if the whale has been hit, and we are further than the harpoon's max distance
+        if (_harpoon.GetWhaleHit() && Vector3.Distance(transform.position, _harpoon.transform.position) > _harpoon.GetMaxDistance())
+        {
+            // pull us to the harpoon. Moves at same speed as whale, should always stay max distance unless the whale gets closer to you
+            transform.position = Vector3.MoveTowards(transform.position, _harpoon.transform.position, Time.deltaTime * _whaleFlyingController.GetSpeed());
+        }
 
-        if (_waypoint)
+        //if the whale has not been hit
+        else if (_waypoint && !_harpoon.GetWhaleHit())
         {
             transform.position = Vector3.MoveTowards(transform.position, _waypoint.transform.position, _speed * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, _verticalWaypoint.transform.position, _vSpeed * Time.deltaTime);
-            
+
             //NOTE: Change Velocity.z to apply to Velocity.x as well. How would we set the Vector3 Velocity to the same as the ships?
             velocity.z = _speed * Time.deltaTime;
-        }
 
-        ControlShip();
+            ControlShip();
+        }
+            
 
         #region Trigger Events
         if (_input.thrust != 0 || _input.turn != 0 || _input.vMove != 0)
