@@ -31,8 +31,16 @@ public class ShipController : MonoBehaviour
 
     private bool _isMoving = false;
 
-    //VFX
-    [SerializeField] ParticleSystem _crashFX;
+    //VFX coordinates and prefab
+    [SerializeField] GameObject _topRocketFlame;
+    [SerializeField] GameObject _rightRocketFlame;
+    [SerializeField] GameObject _leftRocketFlame;
+    [SerializeField] ParticleSystem _rocketFlamePreFab;
+
+    //checks to see if particle system is alive...
+    private bool _topFlameisPlaying;
+    private bool _rightFlameisPlaying;
+    private bool _leftFlameisPlaying;
 
     private void Awake()
     {
@@ -86,15 +94,81 @@ public class ShipController : MonoBehaviour
 
             rotate = new Vector3(0f, rotateSpeed, 0f);
             transform.Rotate(rotate);
+            
+            //
+            if(_input.turn > 0)
+            {
+                if (_rightFlameisPlaying == false)
+                {
+                    //creates particle system at game object pos
+                    Instantiate(_rocketFlamePreFab, _rightRocketFlame.transform.position, _rightRocketFlame.transform.rotation);
+                    _rightFlameisPlaying = true;
+                    Debug.Log("righty");
+                }
+
+            }
+            else if(_input.turn < 0)
+            {
+                if (_leftFlameisPlaying == false)
+                {
+                    //creates particle system at game object pos
+                    Instantiate(_rocketFlamePreFab, _leftRocketFlame.transform.position, _leftRocketFlame.transform.rotation);
+                    _leftFlameisPlaying = true;
+                    Debug.Log("lefty");
+                }
+            }
         }
         else
         {
+            if (_rightFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _rightFlameisPlaying = false;
+                Debug.Log("Right Off");
+
+            }
+
+            if (_leftFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _leftFlameisPlaying = false;
+                Debug.Log("Left Off");
+
+            }
             Rotating = false;
         }
 
         // if the player is trying to move the ship forward
         if (_input.thrust > 0)
         {
+            
+
+            if(_topFlameisPlaying == false)
+            {
+                //creates particle system at game object pos
+                Instantiate(_rocketFlamePreFab, _topRocketFlame.transform.position, _topRocketFlame.transform.rotation);
+                _topFlameisPlaying = true;
+                Debug.Log("angel want's me to write thrust.. sus");
+            }
+            
+            if (_rightFlameisPlaying == false)
+            {
+                //creates particle system at game object pos
+                Instantiate(_rocketFlamePreFab, _rightRocketFlame.transform.position, _rightRocketFlame.transform.rotation);
+                _rightFlameisPlaying = true;
+                Debug.Log("righty");
+            }
+
+            if (_leftFlameisPlaying == false)
+            {
+                //creates particle system at game object pos
+                Instantiate(_rocketFlamePreFab, _leftRocketFlame.transform.position, _leftRocketFlame.transform.rotation);
+                _leftFlameisPlaying = true;
+                Debug.Log("lefty");
+            }
+
+
+
             if (_speed < _maxSpeed && Time.time > _accelerate)
             {
                 _speed = (_speed * 2) + .05f;
@@ -105,10 +179,36 @@ public class ShipController : MonoBehaviour
                 _accelerate = Time.time + _accelerationDelay;
                 velocity = -transform.forward * _speed * Time.deltaTime;
             }
+            
         }
         //if the player is trying to stop moving
         else if (_input.thrust < 0)
         {
+            if (_topFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _topFlameisPlaying = false;
+                Debug.Log("topOff");
+
+            }
+
+            if (_rightFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _rightFlameisPlaying = false;
+                Debug.Log("Right Off");
+
+            }
+
+            if (_leftFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _leftFlameisPlaying = false;
+                Debug.Log("Left Off");
+
+            }
+
+
             if (_speed > 0 && Time.time > _accelerate)
             {
                 _speed = (_speed / 2) - .05f;
@@ -145,6 +245,29 @@ public class ShipController : MonoBehaviour
         //vertical movement stuff
         if (_input.vMove != 0)
         {
+            if (_topFlameisPlaying == false)
+            {
+                //creates particle system at game object pos
+                Instantiate(_rocketFlamePreFab, _topRocketFlame.transform.position, _topRocketFlame.transform.rotation);
+                _topFlameisPlaying = true;
+                Debug.Log("angel want's me to write thrust.. sus");
+            }
+
+            if (_rightFlameisPlaying == false)
+            {
+                //creates particle system at game object pos
+                Instantiate(_rocketFlamePreFab, _rightRocketFlame.transform.position, _rightRocketFlame.transform.rotation);
+                _rightFlameisPlaying = true;
+                Debug.Log("righty");
+            }
+
+            if (_leftFlameisPlaying == false)
+            {
+                //creates particle system at game object pos
+                Instantiate(_rocketFlamePreFab, _leftRocketFlame.transform.position, _leftRocketFlame.transform.rotation);
+                _leftFlameisPlaying = true;
+                Debug.Log("lefty");
+            }
             //if the player is trying to move up
             if (_input.vMove > 0)
             {
@@ -179,9 +302,33 @@ public class ShipController : MonoBehaviour
                     velocity.y = _vSpeed * Time.deltaTime;
                 }
             }
+
         }
         else
         {
+            if (_topFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _topFlameisPlaying = false;
+                Debug.Log("topOff");
+
+            }
+
+            if (_rightFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _rightFlameisPlaying = false;
+                Debug.Log("Right Off");
+
+            }
+
+            if (_leftFlameisPlaying == true)
+            {
+                //creates particle system at game object pos
+                _leftFlameisPlaying = false;
+                Debug.Log("Left Off");
+
+            }
             //bring vertical movement to 0 if there is no input or player is no longer controlling ship
             if (_vSpeed > 0 && Time.time > _vAccelerate)
             {
@@ -203,6 +350,21 @@ public class ShipController : MonoBehaviour
                 _vAccelerate = Time.time + _accelerationDelay;
                 velocity.y = _vSpeed * Time.deltaTime;
             }
+        }
+
+        private void MovingShipFX()
+        {
+
+        }
+
+        private void StoppedShipFX()
+        {
+
+        }
+
+        private void TurningShipFX()
+        {
+
         }
         
 
