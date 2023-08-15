@@ -3643,17 +3643,23 @@ PrefabInstance:
         type: 3}
       propertyPath: _topRocketFlame
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2076756584}
     - target: {fileID: 7840271902323933328, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _leftRocketFlame
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1490320725}
     - target: {fileID: 7840271902323933328, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _rightRocketFlame
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1038824603}
+    - target: {fileID: 7840271902323933328, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: _rocketFlamePreFab
+      value: 
+      objectReference: {fileID: 5052091136644181096, guid: b00a819136414ec42817c7d2eb24f0fa,
+        type: 3}
     - target: {fileID: 7840271902323933329, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _playerContainer
