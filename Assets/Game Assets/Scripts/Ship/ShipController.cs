@@ -47,7 +47,6 @@ public class ShipController : MonoBehaviour
     [SerializeField] ParticleSystem _topRocketFlame;
     [SerializeField] ParticleSystem _rightRocketFlame;
     [SerializeField] ParticleSystem _leftRocketFlame;
-    [SerializeField] ParticleSystem _rocketFlamePreFab;
 
     private void Awake()
     {
