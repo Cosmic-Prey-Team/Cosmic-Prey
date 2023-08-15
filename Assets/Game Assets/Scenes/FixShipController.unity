@@ -8628,7 +8628,13 @@ MonoBehaviour:
   rotateSpeed: 0.1
   _maxSpeed: 5
   _accelerationDelay: 0
-  rotating: 0
+  Rotating: 0
+  OnShipStartMove:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShipStopMove:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2137623168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8825,8 +8831,11 @@ MonoBehaviour:
   canvas: {fileID: 1027800139}
   progressBar: {fileID: 1893437721}
   Ammo: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}
+  ammoCraftAmount: 1
   Panel: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
+  panelCraftAmount: 1
   MachinePart: {fileID: 11400000, guid: caa650da2e5623d4caeebce0a7beb267, type: 2}
+  machinePartCraftAmount: 1
   ammoButton: {x: -390, y: -100, z: 0}
   panelButton: {x: -240, y: -100, z: 0}
   partButton: {x: -90, y: -100, z: 0}

@@ -58,7 +58,7 @@ public class EquipmentSwapping : MonoBehaviour
             if(i == _selectedWeapon)
             {
                 equipment.gameObject.SetActive(true);
-                Debug.Log("SelectWeapon(): " + equipment.name);
+                //Debug.Log("SelectWeapon(): " + equipment.name);
 
             }
             else
