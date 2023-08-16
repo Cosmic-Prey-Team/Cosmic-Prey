@@ -10,8 +10,9 @@ public class Breakable : MonoBehaviour
 
     [SerializeField] private float _collisionForce = 5f;
     [SerializeField] private float _collisionMultiplier = 50f;
-    [SerializeField] private float _collisionRadius = 2f;
+    [SerializeField] private float _collisionRadius = 200f;
     [SerializeField] private int time = 5; //time taken to despawn
+    [SerializeField] GameObject _smokeEffect;
 
     public Vector3 explosionPoint;
 
@@ -22,15 +23,18 @@ public class Breakable : MonoBehaviour
     // After a set period of time it will despawn
     public void BreakAsteroid()
     {
-        Debug.Log("BreakAsteroid()");
+        //Debug.Log("BreakAsteroid()");
         if(_broken == false)
         {
+            
             _broken = true;
             //spawns replacement in place of original
             var replacement = Instantiate(_replacement, null);
-            Debug.Log("rp: " + replacement.name);
+            //Debug.Log("rp: " + replacement.name);
             replacement.transform.position = transform.position;
             replacement.transform.rotation = transform.rotation;
+
+            Instantiate(_smokeEffect, replacement.transform.position, replacement.transform.rotation);
 
             //calls each child
             var rbs = replacement.GetComponentsInChildren<Rigidbody>();
