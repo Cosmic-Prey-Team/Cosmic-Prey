@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public enum ShipState
 {
     stopped,
+    gliding,
     goingForward,
     goingForwardAndTurningLeft,
     goingForwardAndTurningRight,
@@ -62,9 +63,12 @@ public class ShipController : MonoBehaviour
             _shipState = ShipState.stopped;
         }
         //if gliding forward
-        if(_shipState == ShipState.goingForward && _input.thrust == 0)
+        if(_shipState == ShipState.goingForward && _input.thrust == 0 || _shipState == ShipState.gliding)
         {
-            _topRocketFlame.Stop();
+            _topRocketFlame.Play();
+            _leftRocketFlame.Play();
+            _rightRocketFlame.Play();
+            _shipState = ShipState.gliding;
         }
         if (_waypoint)
         {
@@ -111,36 +115,48 @@ public class ShipController : MonoBehaviour
             transform.Rotate(rotate);
             
             //turning right
-            if(_input.turn > 0)
+            if(_input.turn > 0 && _shipState == ShipState.goingForward)
             {
                 _shipState = ShipState.turningRight;
-                if (_leftRocketFlame != null)
-                {
-                    _leftRocketFlame.Play();
-                }
+                if (_leftRocketFlame != null) { _leftRocketFlame.Play(); }
+
+            }
+            //gliding and turning right
+            else if(_input.turn > 0 && _shipState == ShipState.gliding || _shipState == ShipState.goingForwardAndTurningLeft && _input.turn > 0)
+            {
+                _shipState = ShipState.goingForwardAndTurningRight;
+
+                if (_leftRocketFlame != null) { _topRocketFlame.Play(); }
+
+                if (_topRocketFlame != null) { _topRocketFlame.Play(); }
+
+                if (_rightRocketFlame != null) { _rightRocketFlame.Stop(); }
+
             }
             //turning left
             else if(_input.turn < 0)
             {
                 _shipState = ShipState.turningLeft;
-                if (_rightRocketFlame != null)
-                {
-                    _rightRocketFlame.Play();
-                }
+                if (_rightRocketFlame != null) { _rightRocketFlame.Play(); }
+            }
+            //gliding and turning left
+            else if (_input.turn < 0 && _shipState == ShipState.gliding || _shipState == ShipState.goingForwardAndTurningRight && _input.turn < 0)
+            {
+                _shipState = ShipState.goingForwardAndTurningLeft;
+
+                if (_rightRocketFlame != null) { _rightRocketFlame.Play(); }
+
+                if (_topRocketFlame != null) { _topRocketFlame.Play(); }
+
+                if (_leftRocketFlame != null) { _leftRocketFlame.Stop(); }
             }
         }
         else
         {
             Rotating = false;
-            if (_leftRocketFlame != null)
-            {
-                _leftRocketFlame.Stop();
-            }
+            if (_leftRocketFlame != null) { _leftRocketFlame.Stop(); }
 
-            if (_rightRocketFlame != null)
-            {
-                _rightRocketFlame.Stop();
-            }
+            if (_rightRocketFlame != null) { _rightRocketFlame.Stop(); }
         }
 
         // if the player is trying to move the ship forward
@@ -174,40 +190,22 @@ public class ShipController : MonoBehaviour
             if(_shipState == ShipState.goingForwardAndTurningLeft)
             {
                 Debug.Log("going forawrd and turning left and playing right effects");
-                if (_rightRocketFlame != null)
-                {
-                    _rightRocketFlame.Play();
-                }
+                if (_rightRocketFlame != null) { _rightRocketFlame.Play(); }
 
-                if (_topRocketFlame != null)
-                {
-                    _topRocketFlame.Play();
-                }
+                if (_topRocketFlame != null) { _topRocketFlame.Play(); }
 
-                if (_leftRocketFlame != null)
-                {
-                    _leftRocketFlame.Stop();
-                }
+                if (_leftRocketFlame != null) { _leftRocketFlame.Stop(); }
             }
 
             //going forward and turning right
             if (_shipState == ShipState.goingForwardAndTurningRight)
             {
                 Debug.Log("going forawrd and turning right and playing right effects");
-                if (_leftRocketFlame != null)
-                {
-                    _leftRocketFlame.Play();
-                }
+                if (_leftRocketFlame != null) { _topRocketFlame.Play(); }
 
-                if (_topRocketFlame != null)
-                {
-                    _topRocketFlame.Play();
-                }
+                if (_topRocketFlame != null) { _topRocketFlame.Play(); }
 
-                if (_rightRocketFlame != null)
-                {
-                    _rightRocketFlame.Stop();
-                }
+                if (_rightRocketFlame != null) { _rightRocketFlame.Stop(); }
             }
 
 
@@ -228,20 +226,11 @@ public class ShipController : MonoBehaviour
         {
             _shipState = ShipState.stopping;
 
-            if (_topRocketFlame != null)
-            {
-                _topRocketFlame.Stop();
-            }
+            if (_topRocketFlame != null) { _topRocketFlame.Stop(); }
 
-            if (_leftRocketFlame != null)
-            {
-                _leftRocketFlame.Stop();
-            }
+            if (_leftRocketFlame != null) { _leftRocketFlame.Stop(); }
 
-            if (_rightRocketFlame != null)
-            {
-                _rightRocketFlame.Stop();
-            }
+            if (_rightRocketFlame != null) { _rightRocketFlame.Stop(); }
 
             if (_speed > 0 && Time.time > _accelerate)
             {
