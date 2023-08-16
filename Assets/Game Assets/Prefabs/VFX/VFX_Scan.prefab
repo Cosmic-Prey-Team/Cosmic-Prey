@@ -286,7 +286,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7722444460399885820}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -392,10 +392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeTransform: {fileID: 6263419672059949476}
   originPoint: {fileID: 0}
-  rayPoint: {fileID: 0}
+  rayPoint: {fileID: 5750059128116865626}
   visFX: {fileID: 1034893115982487396}
   vectorToModify: {x: 0, y: 0, z: 0}
-  originalTransform: {fileID: 0}
+  originalTransform: {fileID: 6263419672059949476}
 --- !u!1001 &5357739971926579537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -468,7 +468,8 @@ PrefabInstance:
       propertyPath: field of view
       value: 57
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7619037011114781291, guid: d3f4d6c5782683642947b2fe7d0ef130, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d3f4d6c5782683642947b2fe7d0ef130, type: 3}
 --- !u!4 &956504072347427004 stripped
 Transform:

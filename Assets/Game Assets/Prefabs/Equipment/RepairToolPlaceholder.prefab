@@ -602,6 +602,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_Scan
       objectReference: {fileID: 0}
+    - target: {fileID: 2999968387421399410, guid: 9e12cc5362cb494428489421d7177760,
+        type: 3}
+      propertyPath: originPoint
+      value: 
+      objectReference: {fileID: 1146006845545415398}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e12cc5362cb494428489421d7177760, type: 3}
 --- !u!4 &6095591990217404766 stripped
