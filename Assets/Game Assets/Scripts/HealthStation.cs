@@ -6,6 +6,7 @@ public class HealthStation : MonoBehaviour
 {
     [SerializeField] private int _healAmount;
     [SerializeField] private float _healInterval;
+    [SerializeField] ParticleSystem _healingEffect;
     private float _currentHealInterval;
 
     private void Awake()
@@ -16,6 +17,10 @@ public class HealthStation : MonoBehaviour
     {
         if (other.GetComponent<Health>())
         {
+            if (!_healingEffect.isPlaying)
+            {
+                _healingEffect.Play();
+            }
             Health health = other.GetComponent<Health>();
             if(_currentHealInterval < 0)
             {
@@ -26,6 +31,13 @@ public class HealthStation : MonoBehaviour
             {
                 _currentHealInterval -= Time.deltaTime;
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.GetComponent<Health>())
+        {
+            _healingEffect.Stop();
         }
     }
 }
