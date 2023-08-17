@@ -5897,6 +5897,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 299478372}
     m_Modifications:
+    - target: {fileID: 8263350102116702262, guid: e876fb5ed0ecdf049bdbea6eb6398cec,
+        type: 3}
+      propertyPath: _drillEffect
+      value: 
+      objectReference: {fileID: 5248877474341754841, guid: d115a0f04cd084b4eabb8d665a19fcda,
+        type: 3}
     - target: {fileID: 9024171192879489858, guid: e876fb5ed0ecdf049bdbea6eb6398cec,
         type: 3}
       propertyPath: m_Name

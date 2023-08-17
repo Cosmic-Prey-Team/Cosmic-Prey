@@ -27,19 +27,16 @@ public class Breakable : MonoBehaviour
         //Debug.Log("BreakAsteroid()");
         if(_broken == false)
         {
-            
             _broken = true;
+            if (_smokeObject != null)
+            {
+                Instantiate(_smokeObject, explosionPoint, Quaternion.identity);
+            }
             //spawns replacement in place of original
             var replacement = Instantiate(_replacement, null);
             //Debug.Log("rp: " + replacement.name);
             replacement.transform.position = transform.position;
             replacement.transform.rotation = transform.rotation;
-
-            if(_smokeObject != null)
-            {
-                Instantiate(_smokeObject, replacement.transform.position, replacement.transform.rotation);
-
-            }
 
             //calls each child
             var rbs = replacement.GetComponentsInChildren<Rigidbody>();
@@ -63,5 +60,4 @@ public class Breakable : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

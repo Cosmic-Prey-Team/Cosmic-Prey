@@ -73,8 +73,9 @@ public class Drillable : MonoBehaviour
         }
 
         _progressBar.transform.position = uiPos;
-        _progressBar.transform.LookAt(transform/*camTransform*/);
-        _progressBar.transform.localPosition += _progressBar.transform.forward * -0.05f;
+        //_progressBar.transform.LookAt(transform/*camTransform*/);
+        _progressBar.transform.LookAt(camTransform);
+        _progressBar.transform.localPosition += _progressBar.transform.forward * 0.05f;
     }
     public void DrillDamage(int _damagePerSecond, Transform player)
     {

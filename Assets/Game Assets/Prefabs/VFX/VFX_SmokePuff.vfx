@@ -270,7 +270,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":-2.749265670776367,"y":-1.8526747226715088,"z":0.0},"size":{"x":8.041467666625977,"y":4.205349445343018,"z":5.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":8.041467666625977,"y":4.205349445343018,"z":5.0}}'
     m_Space: 0
   m_Property:
     name: bounds
