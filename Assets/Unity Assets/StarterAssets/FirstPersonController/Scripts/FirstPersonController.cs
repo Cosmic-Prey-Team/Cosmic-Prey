@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 #if ENABLE_INPUT_SYSTEM
@@ -77,6 +78,7 @@ namespace StarterAssets
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 
+		[SerializeField] private AnimatorEventFunctions _animatorFunctions;
 		public static bool triggerJump;
 
 		Vector3 inputDirection;
@@ -301,7 +303,14 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+					if(Grounded && movePlayerWithShip.onShip)
+					{
+					_animatorFunctions.firstpersonAnimator.SetBool("triggerJump", true);
+            		_animatorFunctions.thirdpersonAnimator.SetBool("triggerJump", true);
 					Debug.Log("Regular Jump");
+					}
+					
 				}
 
 				// jump timeout
@@ -353,7 +362,13 @@ namespace StarterAssets
 
 				// if we are not grounded, do not jump
 				if (movePlayerWithShip.onShip)
+				{
 					_input.jump = false;
+				}
+				
+				//Jump animation
+				_animatorFunctions.firstpersonAnimator.SetBool("triggerJump", false);
+            	_animatorFunctions.thirdpersonAnimator.SetBool("triggerJump", false);
 			}
 
 			if (movePlayerWithShip.onShip)

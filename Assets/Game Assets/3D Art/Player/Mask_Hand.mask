@@ -1,0 +1,1039 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mask_Hand
+  m_Mask: 00000000000000000000000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: animBot
+    m_Weight: 0
+  - m_Path: animBot/animBot_Anim_Recovery_Scene_ID
+    m_Weight: 0
+  - m_Path: bodycam
+    m_Weight: 0
+  - m_Path: master_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_01_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_01_CC_GRP/c_spineFK_01_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_01_CC_GRP/c_spineFK_01_CC/c_spineFK_02_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_01_CC_GRP/c_spineFK_01_CC/c_spineFK_02_CC_GRP/c_spineFK_02_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_bandana_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_bandana_CC_GRP/c_bandana_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_bandana_CC_GRP/c_bandana_CC/c_knot01_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_bandana_CC_GRP/c_bandana_CC/c_knot01_CC_GRP/c_knot01_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_bandana_CC_GRP/c_bandana_CC/c_knot02_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_bandana_CC_GRP/c_bandana_CC/c_knot02_CC_GRP/c_knot02_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_jaw_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_jaw_CC_GRP/c_jaw_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_nose01_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_nose01_CC_GRP/c_nose01_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_nose01_CC_GRP/c_nose01_CC/c_nose02_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/c_nose01_CC_GRP/c_nose01_CC/c_nose02_CC_GRP/c_nose02_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/l_ear_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/l_ear_CC_GRP/l_ear_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/ponytail01_grp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/ponytail01_grp/ponytail01_Ctrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/ponytail01_grp/ponytail01_Ctrl/ponytail02_grp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/ponytail01_grp/ponytail01_Ctrl/ponytail02_grp/ponytail02_Ctrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/ponytail01_grp/ponytail01_Ctrl/ponytail02_grp/ponytail02_Ctrl/ponytail03_grp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/ponytail01_grp/ponytail01_Ctrl/ponytail02_grp/ponytail02_Ctrl/ponytail03_grp/ponytail03_Ctrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/r_ear_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/r_ear_CC_GRP/r_ear_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_02_01_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_02_01_JNTgrp/strand_02_01_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_02_01_JNTgrp/strand_02_01_JNTCtrl/strand_02_02_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_02_01_JNTgrp/strand_02_01_JNTCtrl/strand_02_02_JNTgrp/strand_02_02_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_03_01_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_03_01_JNTgrp/strand_03_01_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_03_01_JNTgrp/strand_03_01_JNTCtrl/strand_03_02_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_03_01_JNTgrp/strand_03_01_JNTCtrl/strand_03_02_JNTgrp/strand_03_02_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_04_01_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_04_01_JNTgrp/strand_04_01_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_04_01_JNTgrp/strand_04_01_JNTCtrl/strand_04_02_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_04_01_JNTgrp/strand_04_01_JNTCtrl/strand_04_02_JNTgrp/strand_04_02_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_05_01_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_05_01_JNTgrp/strand_05_01_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_05_01_JNTgrp/strand_05_01_JNTCtrl/strand_05_02_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_05_01_JNTgrp/strand_05_01_JNTCtrl/strand_05_02_JNTgrp/strand_05_02_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_06_01_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_06_01_JNTgrp/strand_06_01_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_06_01_JNTgrp/strand_06_01_JNTCtrl/strand_06_02_JNTgrp
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/c_neck_CC_GRP/c_neck_CC/c_head_CC_GRP/c_head_CC/strand_CC_GRP/strand_06_01_JNTgrp/strand_06_01_JNTCtrl/strand_06_02_JNTgrp/strand_06_02_JNTCtrl
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP/l_clavical_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP/l_shoulderFK_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP/l_shoulderFK_GRP/l_shoulderFK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP/l_shoulderFK_GRP/l_shoulderFK/l_elbowFK_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP/l_shoulderFK_GRP/l_shoulderFK/l_elbowFK_GRP/l_elbowFK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP/l_shoulderFK_GRP/l_shoulderFK/l_elbowFK_GRP/l_elbowFK/l_wristFK_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/l_clavical_GRP/l_shoulderFK_GRP/l_shoulderFK/l_elbowFK_GRP/l_elbowFK/l_wristFK_GRP/l_wristFK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_clavical_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP/r_elbowFK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP/r_elbowFK/r_handle01_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP/r_elbowFK/r_handle01_CC_GRP/r_handle01_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP/r_elbowFK/r_handle01_CC_GRP/r_handle01_CC/r_handle02_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP/r_elbowFK/r_handle01_CC_GRP/r_handle01_CC/r_handle02_CC_GRP/r_handle02_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP/r_elbowFK/r_wristFK_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/c_spineFK_01/c_spineFK_02/c_spineFK_03/c_spineFK_04/chest_CC_GRP/chest_CC/r_clavical_GRP/r_shoulderFK_GRP/r_shoulderFK/r_elbowFK_GRP/r_elbowFK/r_wristFK_GRP/r_wristFK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/pelvis_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/pelvis_CC_GRP/pelvis_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/body_CC_GRP/body_CC/pelvis_CC_GRP/pelvis_CC/c_pelvis_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_arm_IK_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_arm_IK_CC_GRP/l_arm_IK_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_arm_IK_CC_GRP/l_arm_IK_CC/l_arm_IK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_arm_IK_CC_GRP/l_arm_IK_CC/l_arm_ik_endpos
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_arm_PV_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_arm_PV_CC_GRP/l_arm_PV_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_footRot_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_footRot_CC_GRP/l_footRot_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe/l_rev_ball
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe/l_rev_ball/l_ball_IKSC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe/l_rev_ball/l_rev_ankle
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe/l_rev_ball/l_rev_ankle/l_ankle_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe/l_rev_ball/l_rev_ankle/l_ankle_CC_GRP/l_ankle_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe/l_rev_ball/l_rev_ankle/l_ankle_CC_GRP/l_ankle_CC/l_foot_IKRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_CC_GRP/l_foot_CC/l_rev_inBank/l_rev_outBank/l_rev_pivot/l_rev_heel/l_rev_toe/l_toe_IKSC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_PV_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_foot_PV_CC_GRP/l_foot_PV_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_IKFK_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose/l_index01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose/l_index01_NB/l_index02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose/l_index01_NB/l_index02_offset/l_index02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose/l_index01_NB/l_index02_offset/l_index02_pose/l_index02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose/l_index01_NB/l_index02_offset/l_index02_pose/l_index02_NB/l_index03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose/l_index01_NB/l_index02_offset/l_index02_pose/l_index02_NB/l_index03_offset/l_index03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_index01_offset/l_index01_pose/l_index01_NB/l_index02_offset/l_index02_pose/l_index02_NB/l_index03_offset/l_index03_pose/l_index03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose/l_middle01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose/l_middle01_NB/l_middle02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose/l_middle01_NB/l_middle02_offset/l_middle02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose/l_middle01_NB/l_middle02_offset/l_middle02_pose/l_middle02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose/l_middle01_NB/l_middle02_offset/l_middle02_pose/l_middle02_NB/l_middle03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose/l_middle01_NB/l_middle02_offset/l_middle02_pose/l_middle02_NB/l_middle03_offset/l_middle03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_middle01_offset/l_middle01_pose/l_middle01_NB/l_middle02_offset/l_middle02_pose/l_middle02_NB/l_middle03_offset/l_middle03_pose/l_middle03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose/l_pinky01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose/l_pinky01_NB/l_pinky02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose/l_pinky01_NB/l_pinky02_offset/l_pinky02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose/l_pinky01_NB/l_pinky02_offset/l_pinky02_pose/l_pinky02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose/l_pinky01_NB/l_pinky02_offset/l_pinky02_pose/l_pinky02_NB/l_pinky03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose/l_pinky01_NB/l_pinky02_offset/l_pinky02_pose/l_pinky02_NB/l_pinky03_offset/l_pinky03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_pinky01_offset/l_pinky01_pose/l_pinky01_NB/l_pinky02_offset/l_pinky02_pose/l_pinky02_NB/l_pinky03_offset/l_pinky03_pose/l_pinky03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose/l_ring01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose/l_ring01_NB/l_ring02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose/l_ring01_NB/l_ring02_offset/l_ring02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose/l_ring01_NB/l_ring02_offset/l_ring02_pose/l_ring02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose/l_ring01_NB/l_ring02_offset/l_ring02_pose/l_ring02_NB/l_ring03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose/l_ring01_NB/l_ring02_offset/l_ring02_pose/l_ring02_NB/l_ring03_offset/l_ring03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_ring01_offset/l_ring01_pose/l_ring01_NB/l_ring02_offset/l_ring02_pose/l_ring02_NB/l_ring03_offset/l_ring03_pose/l_ring03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose/l_thumb01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose/l_thumb01_NB/l_thumb02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose/l_thumb01_NB/l_thumb02_offset/l_thumb02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose/l_thumb01_NB/l_thumb02_offset/l_thumb02_pose/l_thumb02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose/l_thumb01_NB/l_thumb02_offset/l_thumb02_pose/l_thumb02_NB/l_thumb03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose/l_thumb01_NB/l_thumb02_offset/l_thumb02_pose/l_thumb02_NB/l_thumb03_offset/l_thumb03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/l_wrist_GRP/l_thumb01_offset/l_thumb01_pose/l_thumb01_NB/l_thumb02_offset/l_thumb02_pose/l_thumb02_NB/l_thumb03_offset/l_thumb03_pose/l_thumb03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_arm_IK_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_arm_IK_CC_GRP/r_arm_IK_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_arm_IK_CC_GRP/r_arm_IK_CC/r_arm_IK
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_arm_IK_CC_GRP/r_arm_IK_CC/r_arm_ik_endpos
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_arm_PV_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_arm_PV_CC_GRP/l_arm_PV_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_footRot_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_footRot_CC_GRP/r_footRot_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe/r_rev_ball
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe/r_rev_ball/r_ball_IKSC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe/r_rev_ball/r_rev_ankle
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe/r_rev_ball/r_rev_ankle/r_ankle_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe/r_rev_ball/r_rev_ankle/r_ankle_CC_GRP/r_ankle_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe/r_rev_ball/r_rev_ankle/r_ankle_CC_GRP/r_ankle_CC/r_foot_IKRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_CC_GRP/r_foot_CC/r_rev_inBank/r_rev_outBank/r_rev_pivot/r_rev_heel/r_rev_toe/r_toe_IKSC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_PV_CC_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_foot_PV_CC_GRP/r_foot_PV_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_IKFK_CC
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose/r_index01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose/r_index01_NB/r_index02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose/r_index01_NB/r_index02_offset/r_index02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose/r_index01_NB/r_index02_offset/r_index02_pose/r_index02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose/r_index01_NB/r_index02_offset/r_index02_pose/r_index02_NB/r_index03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose/r_index01_NB/r_index02_offset/r_index02_pose/r_index02_NB/r_index03_offset/r_index03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_index01_offset/r_index01_pose/r_index01_NB/r_index02_offset/r_index02_pose/r_index02_NB/r_index03_offset/r_index03_pose/r_index03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose/r_middle01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose/r_middle01_NB/r_middle02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose/r_middle01_NB/r_middle02_offset/r_middle02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose/r_middle01_NB/r_middle02_offset/r_middle02_pose/r_middle02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose/r_middle01_NB/r_middle02_offset/r_middle02_pose/r_middle02_NB/r_middle03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose/r_middle01_NB/r_middle02_offset/r_middle02_pose/r_middle02_NB/r_middle03_offset/r_middle03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_middle01_offset/r_middle01_pose/r_middle01_NB/r_middle02_offset/r_middle02_pose/r_middle02_NB/r_middle03_offset/r_middle03_pose/r_middle03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose/r_pinky01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose/r_pinky01_NB/r_pinky02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose/r_pinky01_NB/r_pinky02_offset/r_pinky02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose/r_pinky01_NB/r_pinky02_offset/r_pinky02_pose/r_pinky02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose/r_pinky01_NB/r_pinky02_offset/r_pinky02_pose/r_pinky02_NB/r_pinky03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose/r_pinky01_NB/r_pinky02_offset/r_pinky02_pose/r_pinky02_NB/r_pinky03_offset/r_pinky03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_pinky01_offset/r_pinky01_pose/r_pinky01_NB/r_pinky02_offset/r_pinky02_pose/r_pinky02_NB/r_pinky03_offset/r_pinky03_pose/r_pinky03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose/r_ring01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose/r_ring01_NB/r_ring02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose/r_ring01_NB/r_ring02_offset/r_ring02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose/r_ring01_NB/r_ring02_offset/r_ring02_pose/r_ring02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose/r_ring01_NB/r_ring02_offset/r_ring02_pose/r_ring02_NB/r_ring03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose/r_ring01_NB/r_ring02_offset/r_ring02_pose/r_ring02_NB/r_ring03_offset/r_ring03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_ring01_offset/r_ring01_pose/r_ring01_NB/r_ring02_offset/r_ring02_pose/r_ring02_NB/r_ring03_offset/r_ring03_pose/r_ring03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose/r_thumb01_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose/r_thumb01_NB/r_thumb02_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose/r_thumb01_NB/r_thumb02_offset/r_thumb02_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose/r_thumb01_NB/r_thumb02_offset/r_thumb02_pose/r_thumb02_NB
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose/r_thumb01_NB/r_thumb02_offset/r_thumb02_pose/r_thumb02_NB/r_thumb03_offset
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose/r_thumb01_NB/r_thumb02_offset/r_thumb02_pose/r_thumb02_NB/r_thumb03_offset/r_thumb03_pose
+    m_Weight: 0
+  - m_Path: master_GRP/controls/master_CC/r_wrist_GRP/r_thumb01_offset/r_thumb01_pose/r_thumb01_NB/r_thumb02_offset/r_thumb02_pose/r_thumb02_NB/r_thumb03_offset/r_thumb03_pose/r_thumb03_NB
+    m_Weight: 0
+  - m_Path: master_GRP/extra
+    m_Weight: 0
+  - m_Path: master_GRP/extra/chainsaw_CRV
+    m_Weight: 0
+  - m_Path: master_GRP/extra/spine_CRV
+    m_Weight: 0
+  - m_Path: master_GRP/extra/spine_IK
+    m_Weight: 0
+  - m_Path: master_GRP/extra/spine_IK_CRV
+    m_Weight: 0
+  - m_Path: master_GRP/geometry
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP/Legs_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP/Legs_GRP/foot_L
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP/Legs_GRP/foot_R
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP/Legs_GRP/leg_L
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP/Legs_GRP/leg_R
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP/pelvis
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/Lowerbody_GRP/torso
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/arm_L
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Balljoint
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Bicep_R
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface2
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface3
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface4
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface5
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface6
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface7
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface8
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface9
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface10
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface11
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface12
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface13
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface14
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface15
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface16
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface17
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface18
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface19
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface20
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface21
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface22
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface23
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface24
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface25
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface26
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface27
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface28
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface29
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface30
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface31
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface32
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface33
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface34
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/polySurface35
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/guard_R1/transform1
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Chainsaw_GRP/polySurface1
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/drill
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/hand_R
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/multiTool
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Ripcord_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Ripcord_GRP/cord
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/Multitool_GRP/Ripcord_GRP/handle
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/Arm_R_GRP/shoulderPiece
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Bandana
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Bandana/hat
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Bandana/Knots_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Bandana/Knots_GRP/knot_01
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Bandana/Knots_GRP/knot_02
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Eyes_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Eyes_GRP/eye_L
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Eyes_GRP/eye_R
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/eyebrow
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/hair_Base
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Ponytail_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Ponytail_GRP/ponytail_01
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Ponytail_GRP/ponytail_02
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Ponytail_GRP/ponytail_03
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP/strand_01
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP/strand_02
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP/strand_03
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP/strand_04
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP/strand_05
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP/strand_06
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/HeadAccessories_GRP/Hair_GRP/Strands_GRP/strand_07
+    m_Weight: 0
+  - m_Path: master_GRP/geometry/UpperBody_GRP/upperbod
+    m_Weight: 0
+  - m_Path: master_GRP/joints
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_bandana_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_bandana_JNT/c_knot01_01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_bandana_JNT/c_knot01_01_JNT/c_knot01_02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_bandana_JNT/c_knot02_01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_bandana_JNT/c_knot02_01_JNT/c_knot02_02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_jaw01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_jaw01/c_jaw02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_nose01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_nose01/c_nose02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_nose01/c_nose02/c_nose03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_ponytail01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_ponytail01_JNT/c_ponytail02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_ponytail01_JNT/c_ponytail02_JNT/c_ponytail03_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/c_ponytail01_JNT/c_ponytail02_JNT/c_ponytail03_JNT/c_ponytail04_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/l_ear_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/l_eye_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/r_ear_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/r_eye_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_02_01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_02_01_JNT/strand_02_02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_02_01_JNT/strand_02_02_JNT/strand_02_03_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_03_01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_03_01_JNT/strand_03_02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_03_01_JNT/strand_03_02_JNT/strand_03_03_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_04_01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_04_01_JNT/strand_04_02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_04_01_JNT/strand_04_02_JNT/strand_04_03_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_05_01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_05_01_JNT/strand_05_02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_05_01_JNT/strand_05_02_JNT/strand_05_03_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_06_01_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_06_01_JNT/strand_06_02_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/c_spine03/c_chest/c_neck/c_head/strand_06_01_JNT/strand_06_02_JNT/strand_06_03_JNT
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_FK_shoulder
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_FK_shoulder/l_FK_elbow
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_FK_shoulder/l_FK_elbow/l_FK_wrist
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_IK_shoulder
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_IK_shoulder/l_IK_elbow
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_IK_shoulder/l_IK_elbow/l_IK_wrist
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_index01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_index01/l_index02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_index01/l_index02/l_index03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_index01/l_index02/l_index03/l_index04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_middle01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_middle01/l_middle02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_middle01/l_middle02/l_middle03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_middle01/l_middle02/l_middle03/l_middle04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_pinky01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_pinky01/l_pinky02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_pinky01/l_pinky02/l_pinky03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_pinky01/l_pinky02/l_pinky03/l_pinky04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_ring01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_ring01/l_ring02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_ring01/l_ring02/l_ring03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_ring01/l_ring02/l_ring03/l_ring04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_thumb01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_thumb01/l_thumb02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_thumb01/l_thumb02/l_thumb03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/l_clavical/l_shoulder/l_elbow/l_wrist/l_thumb01/l_thumb02/l_thumb03/l_thumb04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_FK_shoulder
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_FK_shoulder/r_FK_elbow
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_FK_shoulder/r_FK_elbow/r_FK_wrist
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_FK_shoulder/r_FK_elbow/r_handle01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_FK_shoulder/r_FK_elbow/r_handle01/r_handle02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_FK_shoulder/r_FK_elbow/r_handle01/r_handle02/r_handle03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_IK_shoulder
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_IK_shoulder/r_IK_elbow
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_IK_shoulder/r_IK_elbow/r_IK_multiTool
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_IK_shoulder/r_IK_elbow/r_IK_multiTool/r_IK_chainsaw
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_IK_shoulder/r_IK_elbow/r_IK_multiTool/r_IK_drill
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_IK_shoulder/r_IK_elbow/r_IK_wrist
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_arm_blades_GRP
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_arm_blades_GRP/ffd1Lattice
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_index01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_index01/r_index02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_index01/r_index02/r_index03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_index01/r_index02/r_index03/r_index04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_middle01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_middle01/r_middle02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_middle01/r_middle02/r_middle03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_middle01/r_middle02/r_middle03/r_middle04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group1
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group1/blade_01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group2
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group2/blade_02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group3
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group3/blade_03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group4
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group4/blade_04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group5
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group5/blade_05
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group6
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group6/blade_07
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group7
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group7/blade_06
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group8
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group8/blade_08
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group9
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group9/blade_09
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group10
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group10/blade_10
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group11
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group11/blade_11
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group12
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group12/blade_12
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group13
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group13/blade_13
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group14
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group14/blade_14
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group15
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group15/blade_15
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group16
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group16/blade_16
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group17
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group17/blade_17
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group18
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group18/blade_18
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group19
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group19/blade_19
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group20
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group20/blade_20
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group21
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group21/blade_21
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group22
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group22/blade_22
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group23
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group23/blade_23
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group24
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group24/blade_24
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group25
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group25/blade_25
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group26
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group26/blade_26
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group27
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group27/blade_27
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group28
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group28/blade_28
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group29
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group29/blade_29
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group30
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group30/blade_30
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group31
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group31/blade_31
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group32
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group32/blade_32
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group33
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group33/blade_33
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group34
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_chainsaw01/r_chainsaw02/group34/blade_34
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_drill01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_multiTool/r_drill01/r_drill02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_pinky01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_pinky01/r_pinky02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_pinky01/r_pinky02/r_pinky03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_pinky01/r_pinky02/r_pinky03/r_pinky04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_ring01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_ring01/r_ring02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_ring01/r_ring02/r_ring03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_ring01/r_ring02/r_ring03/r_ring04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_thumb01
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_thumb01/r_thumb02
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_thumb01/r_thumb02/r_thumb03
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/c_spine02/r_clavical/r_shoulder/r_elbow/r_wrist/r_thumb01/r_thumb02/r_thumb03/r_thumb04
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/l_hip
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/l_hip/l_knee
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/l_hip/l_knee/l_ankle
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/l_hip/l_knee/l_ankle/l_foot
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/l_hip/l_knee/l_ankle/l_foot/l_toe
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/r_hip
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/r_hip/r_knee
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/r_hip/r_knee/r_ankle
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/r_hip/r_knee/r_ankle/r_foot
+    m_Weight: 0
+  - m_Path: master_GRP/joints/root/c_spine01/r_hip/r_knee/r_ankle/r_foot/r_toe
+    m_Weight: 0
+  - m_Path: repair_tool_body1
+    m_Weight: 0

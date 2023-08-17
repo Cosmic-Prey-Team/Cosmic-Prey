@@ -29,14 +29,6 @@ public class AnimatorEventFunctions : MonoBehaviour
     {
         firstpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
         thirdpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
-
-        if(FirstPersonController.triggerJump == true)
-        {
-            //FirstPersonController.triggerJump = false;
-            firstpersonAnimator.SetTrigger("triggerJump");
-            thirdpersonAnimator.SetTrigger("triggerJump");
-            Debug.Log(FirstPersonController.triggerJump);
-        }
     }
 
     void swaptoolMesh()
@@ -65,7 +57,7 @@ public class AnimatorEventFunctions : MonoBehaviour
             drillObject.SetActive(false);
             chainsawObject.SetActive(false);
             repairtoolObject.SetActive(true);
-        }else if(_equipmentSwap.GetSelectedWeapon() == 3)
+        }else if(_equipmentSwap.GetSelectedWeapon() == 4)
         {
             handObject.SetActive(false);
             drillObject.SetActive(false);
