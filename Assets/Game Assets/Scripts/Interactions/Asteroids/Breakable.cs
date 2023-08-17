@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Breakable : MonoBehaviour
 {
@@ -36,13 +37,9 @@ public class Breakable : MonoBehaviour
 
             if(_smokeObject != null)
             {
-                //VisualEffect _smokeEffect;
-
-
+                Instantiate(_smokeObject, replacement.transform.position, replacement.transform.rotation);
 
             }
-
-            
 
             //calls each child
             var rbs = replacement.GetComponentsInChildren<Rigidbody>();
