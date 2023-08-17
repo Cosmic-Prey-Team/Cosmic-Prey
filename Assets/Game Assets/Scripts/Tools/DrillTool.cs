@@ -52,12 +52,12 @@ public class DrillTool : MonoBehaviour
                 Drillable drillable = hit.collider.GetComponent<Drillable>();
                 Breakable breakable = hit.collider.GetComponent<Breakable>();
 
+
                 if (drillable != null && hit.collider.GetComponent<Health>() != null)
                 {
                     if(effect != null)
                     {
                         effect.transform.position = hit.point;
- 
                     }
                     //_drillProgressCanvas.gameObject.SetActive(true);
                     drillable.EnableHealthBar(hit.point, _camera.transform);
