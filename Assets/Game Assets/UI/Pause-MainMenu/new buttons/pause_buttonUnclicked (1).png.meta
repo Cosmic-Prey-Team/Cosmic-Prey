@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 69c487a675d557b47b13abc998c68aa9
+guid: ea5176d3877df6645aff4a6196a3a7ba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: options_volumeBarFull_0
+      name: pause_buttonUnclicked (1)_0
       rect:
         serializedVersion: 2
-        x: 911
-        y: 592
-        width: 346
-        height: 36
+        x: 736
+        y: 349
+        width: 449
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 139f2ebb99a835e4bb9a40b7fa876f18
-      internalID: 1100995532
+      spriteID: f9293212db0d264489ec309d2ff15ff9
+      internalID: 1224768388
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      options_volumeBarFull_0: 1100995532
+      pause_buttonUnclicked (1)_0: 1224768388
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

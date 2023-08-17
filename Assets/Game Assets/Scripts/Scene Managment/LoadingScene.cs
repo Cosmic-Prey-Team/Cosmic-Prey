@@ -11,6 +11,7 @@ public class LoadingScene : MonoBehaviour
     // public method that loads the scene by inputing the scene name
     public void LoadScene(string sceneName)
     {
+        Debug.Log("load scene is being called");
         StartCoroutine(LoadScene_Coroutine(sceneName));
     }
 
