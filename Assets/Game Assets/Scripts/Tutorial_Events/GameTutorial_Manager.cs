@@ -84,5 +84,6 @@ public class GameTutorial_Manager : MonoBehaviour
     public void CompletedAllTuturials()
     {
         _QueenTexts.text = "Queen: Well, moment of truth… Let's hope those hull parts hold. Go get that whale! ";
+        _QuestTexts.text = "";
     }
 }

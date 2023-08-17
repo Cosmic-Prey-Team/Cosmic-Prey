@@ -1586,6 +1586,49 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1, z: 2.5}
   m_Center: {x: -0.5, y: 0, z: 0}
+--- !u!114 &399669732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399669717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7af6bdad4be7042b73c98d161c1133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Order: 3
+  _QueenPopups: 'Queen: Right! To the processor! Let''s get some new hull parts for
+    this hunk-a-junk!'
+  _Questopups: 'Head towards the processor and press F.
+
+'
+  Keysinput:
+  - f
+--- !u!114 &399669733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399669717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7af6bdad4be7042b73c98d161c1133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Order: 4
+  _QueenPopups: "Queen: Come on, it hasn\u2019t been that long! Just put in that
+    ore\r\nyou got and select what you want"
+  _Questopups: 'Click and drag the ore to the left most resource box. Then click
+    metal panel in order to repair the ship.
+
+
+    Press F to shut off the processor.'
+  Keysinput:
+  - s
+  - f
 --- !u!1 &405928931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,6 +4831,10 @@ MonoBehaviour:
   - {fileID: 1953022400}
   - {fileID: 1236599936}
   - {fileID: 399669724}
+  - {fileID: 399669732}
+  - {fileID: 399669733}
+  - {fileID: 7840271900689763059}
+  - {fileID: 7840271900689763057}
   _QueenTexts: {fileID: 863589746}
   _QuestTexts: {fileID: 53065199}
 --- !u!1 &1591160009
@@ -6295,7 +6342,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7840271900689763055}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7840271900689763056}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7992864342436f4886f3c73bb35e78a, type: 3}
@@ -6323,12 +6370,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3717081466112861288, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4078974210976105354, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _objectToTrack
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4624878506041041763, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373279052949015676, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6402,6 +6459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.z
       value: 1.977634
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841015267139718336, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6841015267139718336, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
@@ -6560,6 +6622,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c55b5ee9ab956e04d93c3dc4ced29d1c, type: 3}
+--- !u!1 &7840271900689763056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5373279052949015676, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7840271900689763055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7840271900689763057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840271900689763056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7af6bdad4be7042b73c98d161c1133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Order: 6
+  _QueenPopups: "Queen: Perfect! Let\u2019s get this over with. Go check the radar
+    on\r\nthe steering panel, so we can figure out where Stella is!"
+  _Questopups: Head to the steering panel and press F once near the helm.
+  Keysinput:
+  - f
+--- !u!65 &7840271900689763058
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840271900689763056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5155416, y: 0.95777726, z: 2.3}
+  m_Center: {x: -0.16021943, y: 0.04133928, z: -1.5}
+--- !u!114 &7840271900689763059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840271900689763056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b45f8847216a9438b5141aab262dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Order: 5
+  _QueenPopups: "Queen: Perfect! Let\u2019s get this over with. Go check the radar
+    on\r\nthe steering panel, so we can figure out where Stella is!"
+  _Questopups: Head to the steering panel and press F once near the helm.
+  HitTransform: {fileID: 1801442642}
 --- !u!1001 &9024171191810236050
 PrefabInstance:
   m_ObjectHideFlags: 0
