@@ -12,6 +12,7 @@ public class AnimatorEventFunctions : MonoBehaviour
     public GameObject handObject;
     public GameObject drillObject;
     public GameObject chainsawObject;
+    public GameObject repairtoolObject;
     /*
             0 - hand
             1 - drill
@@ -45,16 +46,31 @@ public class AnimatorEventFunctions : MonoBehaviour
             handObject.SetActive(true);
             drillObject.SetActive(false);
             chainsawObject.SetActive(false);
+            repairtoolObject.SetActive(false);
         }else if(_equipmentSwap.GetSelectedWeapon() == 1)
         {
             handObject.SetActive(false);
             drillObject.SetActive(true);
             chainsawObject.SetActive(false);
+            repairtoolObject.SetActive(false);
         }else if(_equipmentSwap.GetSelectedWeapon() == 2)
         {
             handObject.SetActive(false);
             drillObject.SetActive(false);
             chainsawObject.SetActive(true);
+            repairtoolObject.SetActive(false);
+        }else if(_equipmentSwap.GetSelectedWeapon() == 3)
+        {
+            handObject.SetActive(false);
+            drillObject.SetActive(false);
+            chainsawObject.SetActive(false);
+            repairtoolObject.SetActive(true);
+        }else if(_equipmentSwap.GetSelectedWeapon() == 3)
+        {
+            handObject.SetActive(false);
+            drillObject.SetActive(false);
+            chainsawObject.SetActive(false);
+            repairtoolObject.SetActive(false);
         }
         
     }
