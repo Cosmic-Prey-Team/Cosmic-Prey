@@ -12,7 +12,7 @@ public class Breakable : MonoBehaviour
     [SerializeField] private float _collisionMultiplier = 50f;
     [SerializeField] private float _collisionRadius = 200f;
     [SerializeField] private int time = 5; //time taken to despawn
-    [SerializeField] GameObject _smokeEffect;
+    [SerializeField] GameObject _smokeObject;
 
     public Vector3 explosionPoint;
 
@@ -34,7 +34,15 @@ public class Breakable : MonoBehaviour
             replacement.transform.position = transform.position;
             replacement.transform.rotation = transform.rotation;
 
-            Instantiate(_smokeEffect, replacement.transform.position, replacement.transform.rotation);
+            if(_smokeObject != null)
+            {
+                //VisualEffect _smokeEffect;
+
+
+
+            }
+
+            
 
             //calls each child
             var rbs = replacement.GetComponentsInChildren<Rigidbody>();
