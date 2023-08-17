@@ -602,7 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b91e214f97f6544c843fa8d2584619e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parentObject: {fileID: 0}
   _asteroid: {fileID: 5856921006705387513, guid: bf4af7ab14731dd4a963502730bddf4d,
     type: 3}
   _minDistanceApart: 25
@@ -687,7 +686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 732e1b03ab6c859428dc79c8f2575dd2, type: 2}
-  _amount: 1
 --- !u!135 &139309475
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1108,7 +1106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: caa650da2e5623d4caeebce0a7beb267, type: 2}
-  _amount: 1
 --- !u!135 &258562374
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4067,7 +4064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}
-  _amount: 1
 --- !u!135 &591524069
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4807,7 +4803,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 732e1b03ab6c859428dc79c8f2575dd2, type: 2}
-  _amount: 1
 --- !u!135 &771903447
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5512,7 +5507,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 732e1b03ab6c859428dc79c8f2575dd2, type: 2}
-  _amount: 1
 --- !u!135 &878906616
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5887,7 +5881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1000576517
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7142,7 +7136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
-  _amount: 1
 --- !u!135 &1180999061
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7339,7 +7332,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10637,9 +10630,13 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 1681269720}
   TopClamp: 89
   BottomClamp: -89
+  shipController: {fileID: 2137623167}
+  movePlayerWithShip: {fileID: 2137623166}
+  playerState: {fileID: 1801442641}
+  JetPackAcceleration: 1
+  MaxJetpackVelocity: 5
   _ship: {fileID: 2137623164}
-  _canMove: 1
-  _atHelm: 0
+  _playerState: {fileID: 1801442641}
 --- !u!143 &1801442649
 CharacterController:
   m_ObjectHideFlags: 0
@@ -13414,8 +13411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6c324050f410b4d9f5c66eaa40d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerContainer: {fileID: 0}
-  _shipObject: {fileID: 0}
+  characterController: {fileID: 1801442649}
+  playerState: {fileID: 1801442641}
   onShip: 0
 --- !u!114 &2137623167
 MonoBehaviour:
@@ -13431,18 +13428,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waypoint: {fileID: 2093227652}
   _verticalWaypoint: {fileID: 1689814533}
+  _ps: {fileID: 8997996947332509063}
   velocity: {x: 0, y: 0, z: 0}
   rotate: {x: 0, y: 0, z: 0}
   rotateSpeed: 0.5
   _maxSpeed: 1
   _accelerationDelay: 0
-  Rotating: 0
-  OnShipStartMove:
-    m_PersistentCalls:
-      m_Calls: []
-  OnShipStopMove:
-    m_PersistentCalls:
-      m_Calls: []
+  rotating: 0
+  _input: {fileID: 8997996947332509058}
 --- !u!65 &2137623168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14141,7 +14134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309025764a074994c97bc4cb17a96e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debug: 0
   _interactText: Press "F" to use the turret
   _isInteracting: 0
   _originalPosition: {fileID: 0}
@@ -14340,11 +14332,8 @@ MonoBehaviour:
   canvas: {fileID: 1027800139}
   progressBar: {fileID: 1893437721}
   Ammo: {fileID: 11400000, guid: c4eb7e46a2c70f44b8a7e1463fab08ab, type: 2}
-  ammoCraftAmount: 1
   Panel: {fileID: 11400000, guid: 18fc5817e5b411a4f9a9f60cbfd6f9d5, type: 2}
-  panelCraftAmount: 1
   MachinePart: {fileID: 11400000, guid: caa650da2e5623d4caeebce0a7beb267, type: 2}
-  machinePartCraftAmount: 1
   ammoButton: {x: -390, y: -100, z: 0}
   panelButton: {x: -240, y: -100, z: 0}
   partButton: {x: -90, y: -100, z: 0}
@@ -14975,9 +14964,13 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 4135013735775866464}
   TopClamp: 89
   BottomClamp: -89
+  shipController: {fileID: 0}
+  movePlayerWithShip: {fileID: 0}
+  playerState: {fileID: 0}
+  JetPackAcceleration: 0.2
+  MaxJetpackVelocity: 0.6
   _ship: {fileID: 0}
-  _canMove: 1
-  _atHelm: 0
+  _playerState: {fileID: 0}
 --- !u!1 &8908240905045979425
 GameObject:
   m_ObjectHideFlags: 0
