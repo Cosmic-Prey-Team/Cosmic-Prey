@@ -61,7 +61,8 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_shipState);
+        
+            Debug.Log(_shipState);
         if(_speed == 0)
         {
             _shipState = ShipState.stopped;
@@ -74,7 +75,15 @@ public class ShipController : MonoBehaviour
             _rightRocketFlame.Play();
             _shipState = ShipState.gliding;
         }
-        if (_waypoint)
+
+        //if the whale has been hit, and we are further than the harpoon's max distance
+        if (_harpoon.GetWhaleHit() && Vector3.Distance(transform.position, _harpoon.transform.position) > _harpoon.GetMaxDistance())
+        {
+            // pull us to the harpoon. Moves at same speed as whale, should always stay max distance unless the whale gets closer to you
+            transform.position = Vector3.MoveTowards(transform.position, _harpoon.transform.position, Time.deltaTime * _whaleFlyingController.GetSpeed());
+        }
+        //if the whale has not been hit
+        else if (_waypoint && !_harpoon.GetWhaleHit())
         {
             transform.position = Vector3.MoveTowards(transform.position, _waypoint.transform.position, _speed * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, _verticalWaypoint.transform.position, _vSpeed * Time.deltaTime);
