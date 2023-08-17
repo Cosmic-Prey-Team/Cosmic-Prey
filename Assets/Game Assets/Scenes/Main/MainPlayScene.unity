@@ -19447,6 +19447,11 @@ PrefabInstance:
       propertyPath: _healthRegenRate
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7840271902323933295, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7840271902323933329, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: _playerContainer

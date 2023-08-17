@@ -17,10 +17,10 @@ public class DrillTool : MonoBehaviour
     [Tooltip("The distance you can drill from")]
     [SerializeField] private float _drillRange;
     [Header("Drill Effects")]
-    [Tooltip("Particle effect to play while drilling")]
-    [SerializeField] ParticleSystem _drillEffect;
+    [Tooltip("Effect to play while drilling")]
+    [SerializeField] GameObject _drillEffect;
     private float _currentDelayProgress;
-    ParticleSystem effect;
+    private GameObject effect;
     private void Awake()
     {
         _currentDelayProgress = _damageDelay;
@@ -31,10 +31,12 @@ public class DrillTool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        if(effect != null)
         {
-            if(effect != null) effect.Stop();
-            playerAnimator.Play("mc_idle", 2);
+            if (Mouse.current.leftButton.wasReleasedThisFrame || Vector3.Distance(this.transform.position, effect.transform.position) > _drillRange)
+            {
+                Destroy(effect);
+            }
         }
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
@@ -55,14 +57,21 @@ public class DrillTool : MonoBehaviour
                 Drillable drillable = hit.collider.GetComponent<Drillable>();
                 Breakable breakable = hit.collider.GetComponent<Breakable>();
 
+
                 if (drillable != null && hit.collider.GetComponent<Health>() != null)
                 {
+                    if(effect != null)
+                    {
+                        effect.transform.position = hit.point;
+                    }
                     //_drillProgressCanvas.gameObject.SetActive(true);
                     drillable.EnableHealthBar(hit.point, _camera.transform);
-                    if(Mouse.current.leftButton.wasPressedThisFrame)
+                    if(Mouse.current.leftButton.isPressed)
                     {
-                        effect = Instantiate(_drillEffect);
-                        effect.transform.position = hit.point;
+                        if(effect == null)
+                        {
+                            effect = Instantiate(_drillEffect, hit.point, Quaternion.identity);
+                        }
                     }
                     //timer for rate of gain
                     if(_currentDelayProgress <= 0)

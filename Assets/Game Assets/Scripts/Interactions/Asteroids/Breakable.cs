@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Breakable : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class Breakable : MonoBehaviour
 
     [SerializeField] private float _collisionForce = 5f;
     [SerializeField] private float _collisionMultiplier = 50f;
-    [SerializeField] private float _collisionRadius = 2f;
+    [SerializeField] private float _collisionRadius = 200f;
     [SerializeField] private int time = 5; //time taken to despawn
+    [SerializeField] GameObject _smokeObject;
 
     public Vector3 explosionPoint;
 
@@ -22,13 +24,17 @@ public class Breakable : MonoBehaviour
     // After a set period of time it will despawn
     public void BreakAsteroid()
     {
-        Debug.Log("BreakAsteroid()");
+        //Debug.Log("BreakAsteroid()");
         if(_broken == false)
         {
             _broken = true;
+            if (_smokeObject != null)
+            {
+                Instantiate(_smokeObject, explosionPoint, Quaternion.identity);
+            }
             //spawns replacement in place of original
             var replacement = Instantiate(_replacement, null);
-            Debug.Log("rp: " + replacement.name);
+            //Debug.Log("rp: " + replacement.name);
             replacement.transform.position = transform.position;
             replacement.transform.rotation = transform.rotation;
 
@@ -54,5 +60,4 @@ public class Breakable : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }
