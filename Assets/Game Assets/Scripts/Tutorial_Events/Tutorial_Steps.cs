@@ -11,7 +11,7 @@ public class Tutorial_Steps : MonoBehaviour
     //Min and max amount of lines
     [TextArea(3,25)]
     public string _QueenPopups,
-                  _Questopups;
+                  _QuestPopups;
 
 
     // Start is called before the first frame update
@@ -24,12 +24,12 @@ public class Tutorial_Steps : MonoBehaviour
 
     }
 
-    public void DisplayQuotes_Queen(int phrase)
+    public void DisplayQuotes_Queen(string phrase)
     {
         //print(QueenPopups[phrase]);
     }
-    public void DisplayQuotes_Quest(int phrase)
+    public void DisplayQuotes_Quest(string phrase)
     {
-        //Print out quest line
+        _QuestPopups = phrase;
     }
 }

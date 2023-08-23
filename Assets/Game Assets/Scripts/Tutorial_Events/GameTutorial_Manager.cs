@@ -78,7 +78,7 @@ public class GameTutorial_Manager : MonoBehaviour
         //Next player quest/task
         _QueenTexts.text = currentTutorial._QueenPopups;
         // Thread.Sleep(60000);    //20 sec wait
-        _QuestTexts.text = currentTutorial._Questopups;
+        _QuestTexts.text = currentTutorial._QuestPopups;
     }
 
     public void CompletedAllTuturials()

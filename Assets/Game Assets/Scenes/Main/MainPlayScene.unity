@@ -189,8 +189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -245}
-  m_SizeDelta: {x: 250, y: 450}
+  m_AnchoredPosition: {x: 180, y: -270}
+  m_SizeDelta: {x: 300, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &53065198
 CanvasRenderer:
@@ -221,11 +221,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
+    m_Font: {fileID: 12800000, guid: 3750c318f40cab44a97d3a81beaefeb3, type: 3}
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -470,7 +470,7 @@ RectTransform:
   - {fileID: 863589743}
   - {fileID: 53065196}
   m_Father: {fileID: 1576476987}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1438,116 +1438,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363831452}
   m_CullTransparentMesh: 1
---- !u!1 &383747803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 383747804}
-  - component: {fileID: 383747805}
-  - component: {fileID: 383747806}
-  - component: {fileID: 383747809}
-  - component: {fileID: 383747808}
-  - component: {fileID: 383747807}
-  m_Layer: 0
-  m_Name: TutorialRepair
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &383747804
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383747803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.397, y: 0.6, z: 4.363}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1576476987}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &383747805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383747803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b45f8847216a9438b5141aab262dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Order: 4
-  _QueenPopups: 'Queen: There now we can fix those damages and move on finally, just
-    use your weirdly designed repair tool that was provided to you'
-  _Questopups: 'Using the mouse wheel, equip the repair tool.
-
-    By left clicking
-    near the holes, you can fix up
-
-    the boat.  '
-  HitTransform: {fileID: 1338818001}
---- !u!65 &383747806
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383747803}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &383747807
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383747803}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
-  m_Center: {x: -0.5, y: 2.2, z: -15.8}
---- !u!65 &383747808
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383747803}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
-  m_Center: {x: -1.8, y: 0, z: -5.3}
---- !u!65 &383747809
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383747803}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
-  m_Center: {x: -5, y: 0, z: -1.3}
 --- !u!1 &399669717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5373279052426287985, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
@@ -1569,9 +1459,7 @@ MonoBehaviour:
   _Order: 2
   _QueenPopups: 'Queen: Right! To the processor! Let''s get some new hull parts for
     this hunk-a-junk!'
-  _Questopups: 'Head towards the processor and press F.
-
-'
+  _QuestPopups: Head towards the Processor bay and press f to interact with it.
   HitTransform: {fileID: 1801442642}
 --- !u!65 &399669725
 BoxCollider:
@@ -1584,8 +1472,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2.5}
-  m_Center: {x: -0.5, y: 0, z: 0}
+  m_Size: {x: 2.5, y: 1, z: 2.5}
+  m_Center: {x: -2, y: 0, z: 0}
 --- !u!114 &399669732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1601,9 +1489,7 @@ MonoBehaviour:
   _Order: 3
   _QueenPopups: 'Queen: Right! To the processor! Let''s get some new hull parts for
     this hunk-a-junk!'
-  _Questopups: 'Head towards the processor and press F.
-
-'
+  _QuestPopups: Head towards the Processor bay and press f to interact with it.
   Keysinput:
   - f
 --- !u!114 &399669733
@@ -1620,15 +1506,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Order: 4
   _QueenPopups: "Queen: Come on, it hasn\u2019t been that long! Just put in that
-    ore\r\nyou got and select what you want"
-  _Questopups: 'Click and drag the ore to the left most resource box. Then click
-    metal panel in order to repair the ship.
+    ore\r you got and select what ya need\n"
+  _QuestPopups: 'Drag and drop your ore to the crafting center square and click either:
 
 
-    Press F to shut off the processor.'
+    Star
+    = gun ammo
+
+    Gear parts = chainsaw ammo
+
+    Metla pannels = repair tool ammo'
   Keysinput:
   - s
-  - f
 --- !u!1 &405928931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,10 +4211,8 @@ MonoBehaviour:
   _Order: 1
   _QueenPopups: 'Queen: Alright, now switch me to drill mode and bingo bango we can
     get movin'
-  _Questopups: 'Using the mouse wheel, equip the drill tool.
-
-    Harvest ore from
-    the asteroid by Left clicking it.  '
+  _QuestPopups: "Using the scrolling wheel, change your tool to the drill. \nLeft
+    click on the asteriod to harvest its ore."
   Keysinput:
   - d
   - s
@@ -4808,8 +4695,6 @@ Transform:
   m_Children:
   - {fileID: 1953022399}
   - {fileID: 1236599937}
-  - {fileID: 2134991980}
-  - {fileID: 383747804}
   - {fileID: 1804838049}
   - {fileID: 206029563}
   m_Father: {fileID: 122155086}
@@ -4833,6 +4718,7 @@ MonoBehaviour:
   - {fileID: 399669724}
   - {fileID: 399669732}
   - {fileID: 399669733}
+  - {fileID: 7840271900689763061}
   - {fileID: 7840271900689763059}
   - {fileID: 7840271900689763057}
   _QueenTexts: {fileID: 863589746}
@@ -5361,7 +5247,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1576476987}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1804838051
 MonoBehaviour:
@@ -5378,8 +5264,7 @@ MonoBehaviour:
   _Order: 5
   _QueenPopups: "Queen: Perfect! Let\u2019s get this over with. Go check the radar
     on the steering panel, so we can figure out where Stella is!"
-  _Questopups: "Head towards the steering panel and press F \nonce near to control
-    the ship."
+  _QuestPopups: Head towards the helm of the ship to steer it. Press f to start sailing
   HitTransform: {fileID: 1338818001}
 --- !u!65 &1804838052
 BoxCollider:
@@ -5409,7 +5294,7 @@ MonoBehaviour:
   _Order: 6
   _QueenPopups: "Queen: Well, moment of truth\u2026 Let's hope those hull parts hold.
     Go get that whale!"
-  _Questopups: 
+  _QuestPopups: Head towards the helm of the ship to steer it. Press f to start sailing
   Keysinput:
   - f
   - a
@@ -5803,10 +5688,8 @@ MonoBehaviour:
   _Order: 0
   _QueenPopups: 'Queen: Careful space boy, i don''t need you dying on me before we
     even get to the whale'
-  _Questopups: 'Press P to view the control system.
-
-    Head towards the asteroid
-    on the left'
+  _QuestPopups: Press p to see the keybindings. Walk to the nearest asteriod to your
+    left
   Keysinput:
   - a
   - w
@@ -6250,37 +6133,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -269}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2134991979
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2134991980}
-  m_Layer: 0
-  m_Name: TutorialCrafting
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2134991980
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134991979}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.85, y: 1.02, z: -2.5}
-  m_LocalScale: {x: 2.5, y: 1, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1576476987}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2137548785
 GameObject:
   m_ObjectHideFlags: 0
@@ -6443,6 +6295,11 @@ PrefabInstance:
     - target: {fileID: 6841015266589760461, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
         type: 3}
       propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841015266589760461, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6841015266589760461, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
@@ -6640,10 +6497,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7af6bdad4be7042b73c98d161c1133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Order: 6
+  _Order: 7
   _QueenPopups: "Queen: Perfect! Let\u2019s get this over with. Go check the radar
     on\r\nthe steering panel, so we can figure out where Stella is!"
-  _Questopups: Head to the steering panel and press F once near the helm.
+  _QuestPopups: 
   Keysinput:
   - f
 --- !u!65 &7840271900689763058
@@ -6658,7 +6515,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.5155416, y: 0.95777726, z: 2.3}
-  m_Center: {x: -0.16021943, y: 0.04133928, z: -1.5}
+  m_Center: {x: -0.16021943, y: 0.04133928, z: -2}
 --- !u!114 &7840271900689763059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6671,11 +6528,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b45f8847216a9438b5141aab262dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Order: 5
+  _Order: 6
   _QueenPopups: "Queen: Perfect! Let\u2019s get this over with. Go check the radar
     on\r\nthe steering panel, so we can figure out where Stella is!"
-  _Questopups: Head to the steering panel and press F once near the helm.
+  _QuestPopups: 
   HitTransform: {fileID: 1801442642}
+--- !u!1 &7840271900689763060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7840271901635663672, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7840271900689763055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7840271900689763061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840271900689763060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf513c663cd0654bafe89735e111f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Order: 5
+  _QueenPopups: 'Queen: There now we can fix those damages and move on finally, just
+    use your weirdly designed repair tool that was provided to you'
+  _QuestPopups: 'By equiping the repair tool using the scroll wheel, you can patch
+    up the fissures around the ship deck. '
+  Keysinput:
+  - s
+  - w
+  - a
+  _repairProgress: {fileID: 0}
+  _repairProgressFL: 0
 --- !u!1001 &9024171191810236050
 PrefabInstance:
   m_ObjectHideFlags: 0
