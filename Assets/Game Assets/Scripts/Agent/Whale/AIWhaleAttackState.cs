@@ -34,8 +34,8 @@ public class AIWhaleAttackState : AIState
         _flyingController = agent.GetComponent<WhaleFlyingController>();
         _aStarAgent = agent.GetComponent<AStarAgent>();
         agent.config.destination = _target.transform;
-        //_animator = agent.GetComponent<Animator>();
-        //_hitResponder = agent._hitbox.GetComponent<BasicHitResponder>();
+        _animator = agent.GetComponentInChildren<Animator>();
+        _hitResponder = agent._hitbox.GetComponent<BasicHitResponder>();
     }
 
     public void Exit(AIAgent agent)
@@ -50,6 +50,7 @@ public class AIWhaleAttackState : AIState
 
     public void Update(AIAgent agent)
     {
+        
         if (!agent.enabled)
         {
             return;
@@ -126,7 +127,7 @@ public class AIWhaleAttackState : AIState
             _flyingController.delay = 2f;
         }
 
-        //AttemptAttack();
+        AttemptAttack();
     }
 
     /**
@@ -194,7 +195,7 @@ public class AIWhaleAttackState : AIState
     public void AttemptAttack()
     {
         //This may cause it to play the attack animation while death animation plays
-        int id = Animator.StringToHash("Attack");
+        int id = Animator.StringToHash("Stella_Headbutt_Final");
         if (_animator.HasState(0, id))
         {
             var state = _animator.GetCurrentAnimatorStateInfo(0);
@@ -204,9 +205,8 @@ public class AIWhaleAttackState : AIState
                 int totalFrames = GetTotalFrames(_animator, 0);
 
                 int currentFrame = GetCurrentFrame(totalFrames, GetNormalizedTime(state));
-                if (currentFrame > 24 && currentFrame < 36)
+                if (currentFrame > 64 && currentFrame < 90)
                 {
-                    //Krill can damage the ship
                     _hitResponder._hitBox.CheckHit();
                 }
                 return;
@@ -216,10 +216,10 @@ public class AIWhaleAttackState : AIState
         if (_updateTimer > 0.33f)
         {
             _sensor.Scan();
-            GameObject[] player = _sensor.Filter(new GameObject[1], "Player");
+            GameObject[] player = _sensor.Filter(new GameObject[1], "Ship");
             if (player[0] != null)
             {
-                _animator.Play("Attack", 0, 0.0f);
+                _animator.Play("Stella_Headbutt_Final", 0, 0.0f);
                 _hitResponder._objectsHit = new List<GameObject>();
             }
             _updateTimer = 0;

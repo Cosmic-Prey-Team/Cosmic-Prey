@@ -12,6 +12,7 @@ public class AIKrillAttackState : AIState
     private GameObject _target;
     private float _chargeTimer = 0f;  
     private float _updateTimer = 0f;
+    private float _delayTimer = 0f;
     protected bool _attacking = false;
     protected bool _charging = false;
     protected int _attack;
@@ -69,6 +70,17 @@ public class AIKrillAttackState : AIState
                 Charge(agent);
             }                             
         }
+        else
+        {
+            _delayTimer += Time.deltaTime;
+        }
+
+        if(_delayTimer >= 2.5f) 
+        {
+            agent.config.destination = _target.transform;
+            GameObject.Destroy(_delayTarget);
+            _delayTimer = 0;
+        }
 
 
     }
@@ -77,11 +89,11 @@ public class AIKrillAttackState : AIState
     {
         if (_charging == false)
         {
-            _sensor.distance = 2f;
+            _sensor.distance = 2.5f;
             _sensor.angle = 45;
             _aStarAgent.Speed = _aStarAgent.Speed * 2;
             agent.config.destination = _target.transform;
-            _flyingController.delay = 0.33f;
+            _flyingController.delay = 1f;
         }
 
         _charging = true;
@@ -134,7 +146,7 @@ public class AIKrillAttackState : AIState
             {
                 _animator.Play("Attack", 0, 0.0f);
                 _numAttacks++;
-                _hitResponder._objectsHit = new List<GameObject>();                
+                _hitResponder._objectsHit = new List<GameObject>();
             }
             _updateTimer = 0;
         }

@@ -62,7 +62,6 @@ public class ShipController : MonoBehaviour
     void Update()
     {
         
-            Debug.Log(_shipState);
         if(_speed == 0)
         {
             _shipState = ShipState.stopped;
