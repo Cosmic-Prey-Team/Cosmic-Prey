@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7337413740593294663}
   - component: {fileID: 4465914180943457474}
   - component: {fileID: 7387420231731953173}
+  - component: {fileID: 4200417165464288419}
+  - component: {fileID: 5758087294639951729}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.004
   m_TagString: Untagged
@@ -83,6 +85,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4200417165464288419
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333919561745425510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1578958047863394741, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &5758087294639951729
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333919561745425510}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &783007424621021680
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +126,8 @@ GameObject:
   - component: {fileID: 8618188401486546085}
   - component: {fileID: 5171740797508455466}
   - component: {fileID: 5589364164811059550}
+  - component: {fileID: 7116301465572660097}
+  - component: {fileID: 7478680528586106885}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.008
   m_TagString: Untagged
@@ -166,6 +200,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7116301465572660097
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783007424621021680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -915315288106510802, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &7478680528586106885
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783007424621021680}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &849195361734290449
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +241,8 @@ GameObject:
   - component: {fileID: 5117555105312957563}
   - component: {fileID: 3377453696393899856}
   - component: {fileID: 8103777005296404656}
+  - component: {fileID: 3546667745916756405}
+  - component: {fileID: 1093226844179230230}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.013
   m_TagString: Untagged
@@ -249,6 +315,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3546667745916756405
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849195361734290449}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6688813684513982423, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &1093226844179230230
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849195361734290449}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &961652383472979684
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +356,8 @@ GameObject:
   - component: {fileID: 6221142603611517609}
   - component: {fileID: 2486820884285600130}
   - component: {fileID: 3945392857996290205}
+  - component: {fileID: 1055269190291826744}
+  - component: {fileID: 1930692028172615241}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.003
   m_TagString: Untagged
@@ -332,6 +430,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1055269190291826744
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961652383472979684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -185637309126865285, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &1930692028172615241
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961652383472979684}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &1664031518467233359
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +471,8 @@ GameObject:
   - component: {fileID: 3255844540975151704}
   - component: {fileID: 4832940774434882123}
   - component: {fileID: 5675641479440206535}
+  - component: {fileID: 8694156619200025080}
+  - component: {fileID: 1887716320150244268}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.007
   m_TagString: Untagged
@@ -415,6 +545,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8694156619200025080
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664031518467233359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4034170330969180235, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &1887716320150244268
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664031518467233359}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &1759250384026406651
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +586,8 @@ GameObject:
   - component: {fileID: 2770874424182851464}
   - component: {fileID: 3262767198521735751}
   - component: {fileID: 1517151368529274932}
+  - component: {fileID: 5589305562400736388}
+  - component: {fileID: 8329612354061710154}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.017
   m_TagString: Untagged
@@ -498,6 +660,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5589305562400736388
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759250384026406651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5244851379178143447, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &8329612354061710154
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759250384026406651}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &2093628189960734611
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +701,8 @@ GameObject:
   - component: {fileID: 9107884818603536279}
   - component: {fileID: 2960342556153846805}
   - component: {fileID: 6428286412997200752}
+  - component: {fileID: 7829080727419973517}
+  - component: {fileID: 3000006976944802496}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.009
   m_TagString: Untagged
@@ -581,6 +775,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7829080727419973517
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093628189960734611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3497340179276176767, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &3000006976944802496
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093628189960734611}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &3390952491773488365
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +816,8 @@ GameObject:
   - component: {fileID: 9199382810484580009}
   - component: {fileID: 9190911644898032105}
   - component: {fileID: 2406611383443842674}
+  - component: {fileID: 494134286861585080}
+  - component: {fileID: 9207681913816864815}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.019
   m_TagString: Untagged
@@ -664,6 +890,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &494134286861585080
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390952491773488365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4711936138143042278, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &9207681913816864815
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390952491773488365}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &4068073688781879396
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +931,8 @@ GameObject:
   - component: {fileID: 4889595252002831700}
   - component: {fileID: 7591673958254477684}
   - component: {fileID: 5142670658607866153}
+  - component: {fileID: 2885946179579299780}
+  - component: {fileID: 1163479492875688157}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.006
   m_TagString: Untagged
@@ -747,6 +1005,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2885946179579299780
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068073688781879396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -568195546683402702, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &1163479492875688157
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068073688781879396}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &4418998861983411547
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +1046,8 @@ GameObject:
   - component: {fileID: 6030054081878206525}
   - component: {fileID: 6181909344316963616}
   - component: {fileID: 5538447277615375542}
+  - component: {fileID: 1836732045055892207}
+  - component: {fileID: 5020809787981110124}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.005
   m_TagString: Untagged
@@ -830,6 +1120,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1836732045055892207
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418998861983411547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9038992739072573207, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &5020809787981110124
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418998861983411547}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &5297926371180392029
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +1161,8 @@ GameObject:
   - component: {fileID: 5244409159433256427}
   - component: {fileID: 2759052052520038189}
   - component: {fileID: 336943681053875870}
+  - component: {fileID: 7953474771836011633}
+  - component: {fileID: 4311075694217019869}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.014
   m_TagString: Untagged
@@ -913,6 +1235,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7953474771836011633
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297926371180392029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1913028505555690715, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &4311075694217019869
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297926371180392029}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &5576836414665605576
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +1290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5576836414665605576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5285997, y: -0.00000047683716, z: -14.42941}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -985,6 +1337,8 @@ GameObject:
   - component: {fileID: 897044840239962066}
   - component: {fileID: 7484800850287391547}
   - component: {fileID: 4462307125149409095}
+  - component: {fileID: 8836590241013845187}
+  - component: {fileID: 9070706763221838995}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.012
   m_TagString: Untagged
@@ -1057,6 +1411,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8836590241013845187
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592824213749738570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8228989375587235896, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &9070706763221838995
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592824213749738570}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &6176964093569703052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1452,8 @@ GameObject:
   - component: {fileID: 3867524144268295180}
   - component: {fileID: 9138687888256657947}
   - component: {fileID: 7857478875705316367}
+  - component: {fileID: 1929254393145013698}
+  - component: {fileID: 7618921964357506007}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.015
   m_TagString: Untagged
@@ -1140,6 +1526,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1929254393145013698
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176964093569703052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4359132741303728266, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &7618921964357506007
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176964093569703052}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &6205487205186864528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1567,8 @@ GameObject:
   - component: {fileID: 2237530959858992082}
   - component: {fileID: 8791934374164040140}
   - component: {fileID: 6642295093182998592}
+  - component: {fileID: 8282937744746277980}
+  - component: {fileID: 7527119393624959888}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell
   m_TagString: Untagged
@@ -1223,6 +1641,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8282937744746277980
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205487205186864528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3496284886130137570, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &7527119393624959888
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205487205186864528}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &8268172563626770223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1682,8 @@ GameObject:
   - component: {fileID: 7364347695448537124}
   - component: {fileID: 8135895042130414363}
   - component: {fileID: 3328785734420060810}
+  - component: {fileID: 1983249753654180574}
+  - component: {fileID: 6294202156319917218}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.011
   m_TagString: Untagged
@@ -1306,6 +1756,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1983249753654180574
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8268172563626770223}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2160933782403180548, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &6294202156319917218
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8268172563626770223}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &8581478402500619846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1797,8 @@ GameObject:
   - component: {fileID: 3239697440219265290}
   - component: {fileID: 4614916446884939065}
   - component: {fileID: 7610989482908975229}
+  - component: {fileID: 647180785155536187}
+  - component: {fileID: 4863105339849978272}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.010
   m_TagString: Untagged
@@ -1389,6 +1871,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &647180785155536187
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581478402500619846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6830588021715524843, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &4863105339849978272
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581478402500619846}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &8899448131122328582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1912,8 @@ GameObject:
   - component: {fileID: 5571841791498819574}
   - component: {fileID: 8410042115228700577}
   - component: {fileID: 2504751915253488182}
+  - component: {fileID: 5460499131335034404}
+  - component: {fileID: 5531478336190205673}
   m_Layer: 0
   m_Name: AsteroidMedium_low_cell.002
   m_TagString: Untagged
@@ -1472,3 +1986,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5460499131335034404
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899448131122328582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4788954268888808212, guid: 8f06ca982ffdc544c808aeed4b333add, type: 3}
+--- !u!54 &5531478336190205673
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899448131122328582}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
+[RequireComponent(typeof(MeshCollider))]
 public class Breakable : MonoBehaviour
 {
 
