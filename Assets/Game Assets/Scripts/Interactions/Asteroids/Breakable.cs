@@ -15,6 +15,8 @@ public class Breakable : MonoBehaviour
     [SerializeField] private int time = 5; //time taken to despawn
     [SerializeField] GameObject _smokeObject;
 
+    [SerializeField] private float _delayTimer;
+
     public Vector3 explosionPoint;
 
     private bool _broken = false;
