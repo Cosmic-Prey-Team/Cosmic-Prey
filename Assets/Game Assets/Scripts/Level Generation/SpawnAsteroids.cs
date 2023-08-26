@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SpawnAsteroids : MonoBehaviour
 {
-    [Tooltip("The parent transform for all spawned asteroids")]
-    [SerializeField] private Transform _parentObject;
+    //[Tooltip("The parent transform for all spawned asteroids")]
+    //[SerializeField] private Transform _parentObject;
     [Tooltip("The asteroid prefab to spawn")]
-    [SerializeField] private GameObject _asteroid;
+    [SerializeField] private GameObject[] _asteroidPrefabs;
 
     [Header("Asteroid Spawning Properties")]
     [Tooltip("The minimum distance between asteroids")]
@@ -43,12 +43,22 @@ public class SpawnAsteroids : MonoBehaviour
 
     void Start()
     {
-        //spawn asteroids
-        for (int i = 0; i < _numAsteroidsToSpawn; i++)
+        if(_asteroidPrefabs.Length > 0)
         {
-            Vector3 Position = FindNewPosition();
-            GameObject asteroid = Instantiate(_asteroid, Position, transform.rotation);
-            asteroid.transform.SetParent(transform);
+            //spawn asteroids
+            for (int i = 0; i < _numAsteroidsToSpawn; i++)
+            {
+                int rand = Random.Range(0, _asteroidPrefabs.Length);
+                Vector3 Position = FindNewPosition();
+                GameObject asteroid = Instantiate(_asteroidPrefabs[rand], Position, transform.rotation);
+                asteroid.transform.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+                asteroid.transform.SetParent(transform);
+
+            }
+        }
+        else
+        {
+            Debug.LogError("No asteroid prefabs.");
         }
     }
 }
