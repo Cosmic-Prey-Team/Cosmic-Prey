@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,9 @@ public class Repairable : MonoBehaviour
     [Tooltip("How much health the object heals on repair")]
     [SerializeField] private int _healthAmountRegen = 50;
 
-    [SerializeField] Image _progressBar;
+    [SerializeField] 
+    Image _progressBar;
+    public event Action<float> RepairedQuest;
 
     private float _repairProgress = 0;
 
@@ -96,6 +99,7 @@ public class Repairable : MonoBehaviour
                 _health.Heal(_healthAmountRegen);
 
                 OnFullyRepaired?.Invoke();
+                RepairedQuest?.Invoke(_repairProgress);
                 _isRepairing = false;
                 _repairProgress = 0;
             }
