@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
+[RequireComponent(typeof(MeshCollider))]
 public class Breakable : MonoBehaviour
 {
 
@@ -14,6 +15,8 @@ public class Breakable : MonoBehaviour
     [SerializeField] private float _collisionRadius = 200f;
     [SerializeField] private int time = 5; //time taken to despawn
     [SerializeField] GameObject _smokeObject;
+
+    [SerializeField] private float _delayTimer;
 
     public Vector3 explosionPoint;
 

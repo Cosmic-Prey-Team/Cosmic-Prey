@@ -71,6 +71,7 @@ public class DrillTool : MonoBehaviour
                         if(effect == null)
                         {
                             effect = Instantiate(_drillEffect, hit.point, Quaternion.identity);
+                            effect.transform.LookAt(hit.collider.transform);
                         }
                     }
                     //timer for rate of gain

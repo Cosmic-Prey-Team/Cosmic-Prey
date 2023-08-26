@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 2935359339444725348}
   - component: {fileID: 2935359339430854780}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: Asteroid Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8789772324400610114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 2.99, z: -7.92}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.21, y: 2.21, z: 2.21}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -552,6 +552,7 @@ MonoBehaviour:
   time: 5
   _smokeObject: {fileID: 8270955856414614559, guid: 69208c0271090fd4b868fac77a26d881,
     type: 3}
+  _delayTimer: 0
   explosionPoint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4515531476651585852
 PrefabInstance:
