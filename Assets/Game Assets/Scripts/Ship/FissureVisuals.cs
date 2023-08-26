@@ -7,6 +7,7 @@ public class FissureVisuals : MonoBehaviour
 {
     [SerializeField] Transform _panel;
     [SerializeField] Transform _fissure;
+    [SerializeField] GameObject _smoke;
 
     Repairable _repairable;
     Collider _collider;
@@ -46,6 +47,8 @@ public class FissureVisuals : MonoBehaviour
         _collider.enabled = true;
         //enable fissure visual
         _fissure.gameObject.SetActive(true);
+        //start smoke effect
+        Instantiate(_smoke, transform.position, Quaternion.identity);
         //disable panel
         _panel.gameObject.SetActive(false);
 

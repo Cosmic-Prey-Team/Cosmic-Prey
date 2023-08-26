@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panel: {fileID: 1040630192466073037}
   _fissure: {fileID: 4076297908023141548}
+  _smoke: {fileID: 7721228742955678059, guid: 9aacf885639658e49bed4d8cea722393, type: 3}
 --- !u!1 &4543718305126450896
 GameObject:
   m_ObjectHideFlags: 0
