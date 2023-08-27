@@ -7,16 +7,16 @@ public class FissureVisuals : MonoBehaviour
 {
     [SerializeField] Transform _panel;
     [SerializeField] Transform _fissure;
-    [SerializeField] GameObject _smoke;
+    [SerializeField] GameObject _smokeEffect;
 
-    Repairable _repairable;
+    private GameObject _smoke; 
+
     Collider _collider;
 
     private bool _isActive;
 
     private void Awake()
     {
-        _repairable = GetComponent<Repairable>();
         _collider = GetComponent<Collider>();
     }
     private void Start()
@@ -48,7 +48,7 @@ public class FissureVisuals : MonoBehaviour
         //enable fissure visual
         _fissure.gameObject.SetActive(true);
         //start smoke effect
-        Instantiate(_smoke, transform.position, Quaternion.identity);
+        _smoke = Instantiate(_smoke, transform.position, Quaternion.identity);
         //disable panel
         _panel.gameObject.SetActive(false);
 
@@ -62,6 +62,8 @@ public class FissureVisuals : MonoBehaviour
         _collider.enabled = false;
         //disable fissure visual
         _fissure.gameObject.SetActive(false);
+        //disable smoke
+        Destroy(_smoke);
 
         _isActive = false;
         Debug.Log("Deactivate Fissure");

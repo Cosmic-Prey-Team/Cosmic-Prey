@@ -41,6 +41,7 @@ public class AnimatorEventFunctions : MonoBehaviour
 
     void swaptoolMesh()
     {
+        Debug.Log("this is running");
         if(_equipmentSwap.GetSelectedWeapon() == 0)
         {
             handObject.SetActive(true);
