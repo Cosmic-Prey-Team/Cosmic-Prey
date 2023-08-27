@@ -27,14 +27,14 @@ public class AnimatorEventFunctions : MonoBehaviour
 
     void Update()
     {
-        firstpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
-        thirdpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
+        if (firstpersonAnimator != null) firstpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
+        if (thirdpersonAnimator != null) thirdpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
 
         if(FirstPersonController.triggerJump == true)
         {
             //FirstPersonController.triggerJump = false;
-            firstpersonAnimator.SetTrigger("triggerJump");
-            thirdpersonAnimator.SetTrigger("triggerJump");
+            if (firstpersonAnimator != null) firstpersonAnimator.SetTrigger("triggerJump");
+            if (thirdpersonAnimator != null) thirdpersonAnimator.SetTrigger("triggerJump");
             Debug.Log(FirstPersonController.triggerJump);
         }
     }

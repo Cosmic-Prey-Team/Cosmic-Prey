@@ -61,7 +61,7 @@ public class EquipmentSwapping : MonoBehaviour
             //thirdpersonAnimator.SetFloat("liftingRHand", 0f);
 
             firstpersonAnimator.SetTrigger("triggerSwitch");
-            thirdpersonAnimator.SetTrigger("triggerSwitch");
+            //thirdpersonAnimator.SetTrigger("triggerSwitch");
         }/*else
         {
             firstpersonAnimator.SetFloat("liftingRHand", 1f);
@@ -71,11 +71,11 @@ public class EquipmentSwapping : MonoBehaviour
         if(GetSelectedWeapon() == 3 || GetSelectedWeapon() == 4)
         {
             firstpersonAnimator.SetBool("liftingLHand", true);
-            thirdpersonAnimator.SetBool("liftingLHand", true);
+            //thirdpersonAnimator.SetBool("liftingLHand", true);
         }else
         {
             firstpersonAnimator.SetBool("liftingLHand", false);
-            thirdpersonAnimator.SetBool("liftingLHand", false);
+            //thirdpersonAnimator.SetBool("liftingLHand", false);
         }
         //enables only selected weapon and disables the rest
         /*
