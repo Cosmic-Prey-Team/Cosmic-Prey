@@ -17,8 +17,8 @@ public class TurretInteractable : MonoBehaviour, IInteractable
     [SerializeField] Transform _originalPosition;
     [SerializeField] Transform _usingPosition;
     [SerializeField] Transform _lookTarget;
-    [SerializeField] Transform _swivelTransform;
-    [SerializeField] Transform _swivelParentTransform;
+    [SerializeField] Transform _pivotTransform;
+    [SerializeField] Transform _baseTransform;
 
     [Header("Look Settings")]
     [SerializeField] float RotationSpeed = 1f;
@@ -156,6 +156,9 @@ public class TurretInteractable : MonoBehaviour, IInteractable
 
             //move player
             //_playerTransform.position = _playerTransform.TransformPoint(_usingPosition.localPosition);
+            //_baseTransform.localRotation = Quaternion.Euler(Vector3.zero);
+            _pivotTransform.localRotation = Quaternion.Euler(Vector3.zero);
+
             _playerTransform.position = _usingPosition.position;
             //_playerTransform.localRotation = _usingPosition.localRotation;
             //_playerTransform.LookAt(_lookTarget);
@@ -208,10 +211,10 @@ public class TurretInteractable : MonoBehaviour, IInteractable
             _targetPitch = ClampAngle(_targetPitch, BottomClamp, TopClamp);
 
             // Update Cinemachine camera target pitch
-            _swivelTransform.localRotation = Quaternion.Euler(_targetPitch, 0.0f, 0.0f);
+            _pivotTransform.localRotation = Quaternion.Euler(_targetPitch, 0.0f, 0.0f);
 
             // rotate the player left and right
-            _swivelParentTransform.Rotate(Vector3.up * rotationVelocity);
+            _baseTransform.Rotate(Vector3.up * rotationVelocity);
         }
     }
     private void MaintainPosition()
