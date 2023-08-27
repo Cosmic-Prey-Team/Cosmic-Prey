@@ -9,7 +9,7 @@ public class Repairable : MonoBehaviour
 {
     public UnityEvent OnStartRepairing;
     public UnityEvent OnFullyRepaired;
-    KeyTutorial_Fissures keyTutorial_fissures = new KeyTutorial_Fissures;
+    KeyTutorial_Fissures keyTutorial_fissures = new KeyTutorial_Fissures();
     private Health _health;
     private Inventory _inventory;
 
