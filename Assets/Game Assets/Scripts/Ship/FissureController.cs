@@ -89,5 +89,15 @@ public class FissureController : MonoBehaviour
         {
             _activeFissures--;
         }
+
+        //If the ship just respawned, deactivate the fissures
+        if (_health.GetHealthPercent() == 1)
+        {
+            foreach (GameObject fissure in _fissures)
+            {
+                fissure.SetActive(false);
+                _activeFissures = 0;
+            }
+        }
     }
 }
