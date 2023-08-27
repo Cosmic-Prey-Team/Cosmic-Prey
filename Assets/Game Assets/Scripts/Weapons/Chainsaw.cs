@@ -16,7 +16,7 @@ public class Chainsaw : MonoBehaviour
     [Tooltip("Damage distance from hit transform.")]
     [SerializeField] float _hitRange = 0.5f;
     [Tooltip("Amount of damage weapon does on hit.")]
-    [SerializeField] int _damagePerHit = 1;
+    [SerializeField] int _damagePerHit = 10;
     [Tooltip("Seconds between damage.")]
     [SerializeField] float _damageRate = 1f;
 
