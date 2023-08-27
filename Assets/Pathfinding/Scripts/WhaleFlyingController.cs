@@ -64,6 +64,12 @@ public class WhaleFlyingController : MonoBehaviour
                     yield return null;
 
                 }
+                if (_Agent.Status == AStarAgentStatus.Invalid)
+                {
+                    Debug.Log("Forcing Wander Pathing");
+                    transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed * 2);
+                    transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
+                }
             }
             else if (aiAgent.stateMachine.currentState == AIStateID.WhaleAttack)
             {

@@ -25,10 +25,8 @@ public class BasicHitResponder : MonoBehaviour, IHitResponder
         }
         if (targetTag != null && !data.hurtBox.Owner.CompareTag(targetTag))
         {
-            Debug.Log("Bad");
             return false;
         }
-        Debug.Log("Check done");
         return true; 
     }
     void IHitResponder.Response(HitData data)

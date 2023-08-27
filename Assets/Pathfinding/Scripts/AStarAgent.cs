@@ -55,7 +55,7 @@ public class AStarAgent : MonoBehaviour
         {
             for (int j = i; j < agents.Length; j++)
             {
-                if (agents[i].Speed > agents[j].Speed)//if ((agents[i]._agent.config.AIName == "Krill" && agents[j]._agent.config.AIName == "Whale") || agents[i].Speed > agents[j].Speed)
+                if ((agents[i]._agent.config != null && (agents[i]._agent.config.AIName == "Krill" && agents[j]._agent.config.AIName == "Whale")) || agents[i].Speed > agents[j].Speed) //if (agents[i].Speed > agents[j].Speed)
                 {
                     AStarAgent pom = agents[i];
                     agents[i] = agents[j];
@@ -360,6 +360,7 @@ public class AStarAgent : MonoBehaviour
 
     IEnumerator Coroutine_CharacterFollowPath()
     {
+        
         Status = AStarAgentStatus.InProgress;
         for (int i = TotalPath.Count - 1; i >= 0; i--)
         {
@@ -368,6 +369,9 @@ public class AStarAgent : MonoBehaviour
             float l = 0;
             while (l<length)
             {
+                //Debug.Log(gameObject);
+                //Debug.Log(l);
+               //Debug.Log(length);
                 SetPathColor();
                 Vector3 forwardDirection = (TotalPath[i].WorldPosition - transform.position).normalized;
                 if (CurvePath)
