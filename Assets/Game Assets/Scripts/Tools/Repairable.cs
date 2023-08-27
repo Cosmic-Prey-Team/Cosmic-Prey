@@ -9,7 +9,7 @@ public class Repairable : MonoBehaviour
 {
     public UnityEvent OnStartRepairing;
     public UnityEvent OnFullyRepaired;
-
+    KeyTutorial_Fissures keyTutorial_fissures = new KeyTutorial_Fissures;
     private Health _health;
     private Inventory _inventory;
 
@@ -25,12 +25,10 @@ public class Repairable : MonoBehaviour
 
     [SerializeField] 
     Image _progressBar;
-    public event Action<float> RepairedQuest;
 
     private float _repairProgress = 0;
 
     //[SerializeField] private int 
-
     private bool _isRepairing = false;
 
     private void Awake()
@@ -63,6 +61,8 @@ public class Repairable : MonoBehaviour
             else
             {
                 if (_progressBar.gameObject.activeInHierarchy == true) _progressBar.gameObject.SetActive(false);
+                //fissures left to fix
+                keyTutorial_fissures.FissuresFixed();
             }
         }
 
@@ -95,9 +95,7 @@ public class Repairable : MonoBehaviour
             if (_repairProgress >= 1)
             {
                 _health.Heal(_healthAmountRegen);
-
                 OnFullyRepaired?.Invoke();
-                RepairedQuest?.Invoke(_repairProgress);
                 _isRepairing = false;
                 _repairProgress = 0;
             }

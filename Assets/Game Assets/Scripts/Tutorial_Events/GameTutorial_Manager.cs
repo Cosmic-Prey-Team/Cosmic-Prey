@@ -52,7 +52,11 @@ public class GameTutorial_Manager : MonoBehaviour
         for (int step = 0; step < Tutorials.Count; step++)
         {
             if (Tutorials[step]._Order == order)
+            {
                 return Tutorials[step];
+
+            }
+                
         }
 
         //Tutorial ends or skipped

@@ -25,20 +25,4 @@ public class TriggerTutorial : Tutorial_Steps
         }
         //InventoryisEmpty();
     }
-
-    /*
-        //Checking if inventory is empty
-        public void InventoryisEmpty()
-        {
-            Inventory = GameObject.Find("Inventory");
-
-            if (Inventory.transform.childCount > 4)
-            {
-                GameTutorial_Manager.Instace.TutorialIncrement();
-                isCurrentTutorial = false;
-            }        
-            else
-                isCurrentTutorial = true;
-
-        }*/
 }
