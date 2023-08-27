@@ -8026,7 +8026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitTransform: {fileID: 1483332952}
   _hitRange: 0.5
-  _damagePerHit: 8
+  _damagePerHit: 15
   _damageRate: 0.5
   OnDamage:
     m_PersistentCalls:
@@ -11924,6 +11924,7 @@ GameObject:
   - component: {fileID: 1752287432}
   - component: {fileID: 1752287431}
   - component: {fileID: 1752287444}
+  - component: {fileID: 1752287445}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -12029,9 +12030,22 @@ MonoBehaviour:
   _maxHealth: 100
   _health: 50
   _healthBar: {fileID: 0}
+  _dead: 0
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1752287445}
+        m_TargetAssemblyTypeName: PlayerRespawn, Assembly-CSharp
+        m_MethodName: Respawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1752287436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12467,6 +12481,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7c37163fa1754478d0f89c49f7daad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1752287445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752287429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d638ad8a8455ac442b712f028421fce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debug: 1
+  _whale: {fileID: 1484979219}
+  _ship: {fileID: 6344965029787917767}
+  _movePlayerWithShip: {fileID: 6344965029787917774}
+  _minDistanceFromWhale: 25
+  _maxDistanceFromWhale: 50
+  _world: {fileID: 1980318329}
 --- !u!1001 &1784923121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30202,6 +30235,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc7c37163fa1754478d0f89c49f7daad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6344965029787917774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6344965028963243963, guid: b09b6f7d1a345b34da62ca9e170250c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6344965029787917765}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344965029787917767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6c324050f410b4d9f5c66eaa40d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &6351736802685447855

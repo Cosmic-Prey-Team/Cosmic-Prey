@@ -24,10 +24,18 @@ public class PlayerRespawn : MonoBehaviour
     private Health _shipHealth;
     private PlayerState _playerState;
 
+    [SerializeField] private WorldManager _world;
+    private float _worldX;
+    private float _worldY;
+    private float _worldZ;
+
     private void Awake()
     {
         _health = gameObject.GetComponent<Health>();
         _shipHealth = _ship.GetComponent<Health>();
+        _worldX = _world.GridWidth * _world.PointDistance;
+        _worldY = _world.GridHeight * _world.PointDistance;
+        _worldZ = _world.GridLength * _world.PointDistance;
     }
 
     public void Respawn()
@@ -44,7 +52,7 @@ public class PlayerRespawn : MonoBehaviour
         {
             //the player is a child of the ship, move the ship and the player moves with it
             _ship.transform.Rotate(new Vector3(0f, angle, 0f));
-            _ship.transform.position = new Vector3(_whale.transform.position.x + distance, 0f, _whale.transform.position.z + distance);
+            _ship.transform.position = new Vector3(Mathf.Clamp(_whale.transform.position.x + distance, _whale.transform.position.x + distance, _worldX*0.90f), Mathf.Clamp(_whale.transform.position.y + distance, _whale.transform.position.y + distance, _worldY * 0.90f), Mathf.Clamp(_whale.transform.position.z + distance, _whale.transform.position.z + distance, _worldZ * 0.90f));
         }
         else
         {
@@ -56,7 +64,9 @@ public class PlayerRespawn : MonoBehaviour
         }
 
         _health.Heal(_health.GetMissingHealth());
+        _health._dead = false;
         _shipHealth.Heal(_shipHealth.GetMissingHealth());
+        _whale.GetComponent<AIAgent>().stateMachine.ChangeState(AIStateID.WhaleWander);
     }
 
     void Update()

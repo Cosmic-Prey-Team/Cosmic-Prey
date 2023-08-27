@@ -6,9 +6,9 @@ public class WorldManager : MonoBehaviour
 {
     public static WorldManager Instance { get; private set; }
     [SerializeField] GameObject _GridPointPrefab;
-    [SerializeField] int GridWidth;
-    [SerializeField] int GridHeight;
-    [SerializeField] int GridLength;
+    public int GridWidth;
+    public int GridHeight;
+    public int GridLength;
     public Point[][][] Grid;
     public float PointDistance;
     public float PointSize;

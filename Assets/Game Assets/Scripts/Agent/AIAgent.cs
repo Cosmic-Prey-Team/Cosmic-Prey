@@ -19,6 +19,7 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIWhaleWanderState());
         stateMachine.RegisterState(new AIWhaleAttackState());
         stateMachine.RegisterState(new AIWhaleFleeState());
+        stateMachine.RegisterState(new AIWhaleDeathState());
         stateMachine.RegisterState(new AIKrillFollowState());
         stateMachine.RegisterState(new AIKrillAttackState());
         stateMachine.RegisterState(new AIKrillDeathState());

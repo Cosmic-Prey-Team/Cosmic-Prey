@@ -16,7 +16,8 @@ public class Health : MonoBehaviour
     [Tooltip("Optional health bar.")]
     [SerializeField] private Image _healthBar;
 
-    private bool _dead;
+    //[HideInInspector]
+    public bool _dead;
 
     // events for future use
     public event Action OnHealthChanged;
@@ -63,8 +64,8 @@ public class Health : MonoBehaviour
 
         if (_health == 0 && !_dead)
         {
-            Die();
             _dead = true;
+            Die();
         }
     }
 
@@ -78,6 +79,7 @@ public class Health : MonoBehaviour
     public void Die()
     {
         OnDeath?.Invoke();
+        Debug.Log(gameObject);
         //Destroy(gameObject);
     }
 

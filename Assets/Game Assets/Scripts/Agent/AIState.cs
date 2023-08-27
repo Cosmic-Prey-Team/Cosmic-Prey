@@ -7,6 +7,7 @@ public enum AIStateID {
     WhaleWander,
     WhaleAttack,
     WhaleFlee,
+    WhaleDeath,
     KrillFollow,
     KrillAttack,
     KrillDeath
