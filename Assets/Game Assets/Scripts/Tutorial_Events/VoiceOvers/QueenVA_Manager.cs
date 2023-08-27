@@ -23,6 +23,15 @@ public class QueenVA_Manager : MonoBehaviour
 
     public void PlayQueenVA_Line(AudioClip clip)
     {
-        _effectsSource.PlayOneShot(clip);
+        if(clip == null)
+        {
+            Debug.LogError("No audio clip found.");
+            return;
+        }
+
+        if (_effectsSource != null)
+            _effectsSource.PlayOneShot(clip);
+        else
+            Debug.LogError("_effectsSource == null");
     }
 }

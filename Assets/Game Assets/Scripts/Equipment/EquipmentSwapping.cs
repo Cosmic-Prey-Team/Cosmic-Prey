@@ -68,7 +68,7 @@ public class EquipmentSwapping : MonoBehaviour
             thirdpersonAnimator.SetFloat("liftingRHand", 1f);
         }*/
         
-        if(GetSelectedWeapon() == 3)
+        if(GetSelectedWeapon() == 3 || GetSelectedWeapon() == 4)
         {
             firstpersonAnimator.SetBool("liftingLHand", true);
             thirdpersonAnimator.SetBool("liftingLHand", true);
