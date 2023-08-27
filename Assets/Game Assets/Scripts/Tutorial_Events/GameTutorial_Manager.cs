@@ -3,16 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Threading;
 using TMPro;
 
 public class GameTutorial_Manager : MonoBehaviour
 {
+
     //Player progress of the tutorial script
     public List<Tutorial_Steps> Tutorials = new List<Tutorial_Steps>();
 
     public Text _QueenTexts,
                     _QuestTexts;
+
+    [Space]
+    public UnityEvent OnQuestsComplete;
 
     private Tutorial_Steps currentTutorial;
 
@@ -85,5 +90,7 @@ public class GameTutorial_Manager : MonoBehaviour
     {
         _QueenTexts.text = "Queen: Well, moment of truth… Let's hope those hull parts hold. Go get that whale! ";
         _QuestTexts.text = "";
+
+        OnQuestsComplete?.Invoke();
     }
 }
