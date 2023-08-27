@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: whale-config
   m_EditorClassIdentifier: 
   AIName: Whale
-  newState: 0
+  newState: 3
   Waypoint: {fileID: 4160088872108794334, guid: ad89d0a68e02d6b439c8e47356bc8f33,
     type: 3}
   occlusionLayers:
