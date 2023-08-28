@@ -9,6 +9,8 @@ public class SpawnAsteroids : MonoBehaviour
     [Tooltip("The asteroid prefab to spawn")]
     [SerializeField] private GameObject[] _asteroidPrefabs;
 
+    [SerializeField] private GameObject _waypointPrefab;
+
     [Header("Asteroid Spawning Properties")]
     [Tooltip("The minimum distance between asteroids")]
     [SerializeField] private float _minDistanceApart = 50;
@@ -19,6 +21,8 @@ public class SpawnAsteroids : MonoBehaviour
     [Tooltip("the size of the map")]
     [SerializeField] private float _mapSize = 500;
 
+    private int attempts = 0;
+    Vector3 dead = new Vector3(-1000, -1000, -1000);
 
     private Vector3 FindNewPosition()
     {
@@ -35,6 +39,11 @@ public class SpawnAsteroids : MonoBehaviour
             _collision = Physics.OverlapSphere(Position, _minDistanceApart);
 
             //repeat until we find a position far enough from everything
+            attempts++;
+            if (attempts == 25)
+            {
+                return new Vector3(-1000,-1000,-1000);
+            }
         } while (_collision.Length > 0);
 
         //if it is far enough from everything, return the generated position
@@ -45,14 +54,28 @@ public class SpawnAsteroids : MonoBehaviour
     {
         if(_asteroidPrefabs.Length > 0)
         {
+            for (int i = 0; i < 6; i++)
+            {
+                Vector3 Position = FindNewPosition();
+                if (Position != dead)
+                {
+                    GameObject waypoint = Instantiate(_waypointPrefab, Position, transform.rotation);
+                }
+
+
+            }
             //spawn asteroids
             for (int i = 0; i < _numAsteroidsToSpawn; i++)
             {
                 int rand = Random.Range(0, _asteroidPrefabs.Length);
                 Vector3 Position = FindNewPosition();
-                GameObject asteroid = Instantiate(_asteroidPrefabs[rand], Position, transform.rotation);
-                asteroid.transform.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
-                asteroid.transform.SetParent(transform);
+                if (Position != dead)
+                {
+                    GameObject asteroid = Instantiate(_asteroidPrefabs[rand], Position, transform.rotation);
+                    asteroid.transform.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+                    asteroid.transform.SetParent(transform);
+                }
+                
 
             }
         }

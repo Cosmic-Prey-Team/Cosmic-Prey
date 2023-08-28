@@ -25,7 +25,7 @@ public class Chainsaw : MonoBehaviour
     public UnityEvent OnChainsawStart;
     public UnityEvent OnChainsawEnd;
 
-    private float _timeElapsed;
+    private float _timeElapsed = 0;
 
     //button press events
     bool _isLeftButtonDown = false;
@@ -69,6 +69,7 @@ public class Chainsaw : MonoBehaviour
             _timeElapsed -= Time.deltaTime;
             if (_timeElapsed <= 0)
             {
+                _timeElapsed = _damageRate;
                 DoDamage();
             }
         }
@@ -94,7 +95,7 @@ public class Chainsaw : MonoBehaviour
     private Collider[] GetHitColliders()
     {
         //gets all colliders within range
-        Collider[] colliders = Physics.OverlapSphere(_hitTransform.position, 0.5f);
+        Collider[] colliders = Physics.OverlapSphere(_hitTransform.position, _hitRange);
 
         return colliders;
     }

@@ -60,7 +60,7 @@ public class PlayerRespawn : MonoBehaviour
             transform.Rotate(new Vector3(0f, angle, 0f));
             transform.Translate(new Vector3(_whale.transform.position.x + distance, 0f, _whale.transform.position.z + distance));
             //move the ship to the same spot, -1 in the y axis so the player spawns on top of the ship
-            _ship.transform.position = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+            _ship.transform.position = new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z);
         }
 
         _health.Heal(_health.GetMissingHealth());

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: krill-config
   m_EditorClassIdentifier: 
   AIName: Krill
-  newState: 5
+  newState: 6
   Waypoint: {fileID: 4160088872108794334, guid: b28751b8e2a3f5741a00e44f799552a6,
     type: 3}
   occlusionLayers:

@@ -4775,7 +4775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cfe47479f25164790d67b4727e8829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 4
+  initialState: 5
   config: {fileID: 11400000, guid: d89df1760e1da48419dbefe79f1ab5d9, type: 2}
   _hitbox: {fileID: 699772405}
   krill: []
@@ -4853,6 +4853,7 @@ MonoBehaviour:
   _maxHealth: 40
   _health: 40
   _healthBar: {fileID: 0}
+  _dead: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls:

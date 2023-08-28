@@ -139,8 +139,9 @@ public class WorldManager : MonoBehaviour
                 }
             }
             attempts++;
-            if (attempts == 50)
+            if (attempts == 15)
             {
+                attempts = 0;
                 return null;
             }
         }

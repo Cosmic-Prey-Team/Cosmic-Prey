@@ -96,7 +96,6 @@ public class AStarAgent : MonoBehaviour
         int count = 0;
         while (current.CameFrom.x != -1 && count < 10000)
         {
-
             currentPoint = WorldManager.Instance.Grid[current.Coords.x][current.Coords.y][current.Coords.z];
             PointData cameFromPointData = dataSet[current.CameFrom.x][current.CameFrom.y][current.CameFrom.z];
             cameFromPoint = WorldManager.Instance.Grid[current.CameFrom.x][current.CameFrom.y][current.CameFrom.z];
@@ -174,7 +173,7 @@ public class AStarAgent : MonoBehaviour
         
         _end = WorldManager.Instance.GetClosestPointWorldSpace(goal);
         
-        if (_start == _end || _start.Invalid || _end == null || _end.Invalid)
+        if (_start == null || _start == _end || _start.Invalid || _end == null || _end.Invalid)
         {
             Status = AStarAgentStatus.Invalid;
             return Status;
@@ -212,7 +211,6 @@ public class AStarAgent : MonoBehaviour
 
         while (openSet.Count > 0)
         {
-            
             PointData current = openSet[0];
 
 
@@ -276,7 +274,6 @@ public class AStarAgent : MonoBehaviour
                 }
             }
         }
-        
         Status = AStarAgentStatus.Invalid;
         return Status;
 
@@ -304,6 +301,7 @@ public class AStarAgent : MonoBehaviour
             if (Status == AStarAgentStatus.Invalid)
             {
                 Status = AStarAgentStatus.RePath;
+                Debug.Log("repath loop");
                 yield return new WaitForSeconds(0.2f);
             }
         }
@@ -371,7 +369,7 @@ public class AStarAgent : MonoBehaviour
             {
                 //Debug.Log(gameObject);
                 //Debug.Log(l);
-               //Debug.Log(length);
+                //Debug.Log(length);
                 SetPathColor();
                 Vector3 forwardDirection = (TotalPath[i].WorldPosition - transform.position).normalized;
                 if (CurvePath)

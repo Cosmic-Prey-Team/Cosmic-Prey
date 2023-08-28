@@ -22,9 +22,9 @@ public class KrillFlyingController : MonoBehaviour
 
     IEnumerator Coroutine_MoveRandom()
     {
-        List<Point> freePoints = WorldManager.Instance.GetFreePoints();
-        Point start = freePoints[Random.Range(0, freePoints.Count)];
-        transform.position = start.WorldPosition;
+        //List<Point> freePoints = WorldManager.Instance.GetFreePoints();
+        //Point start = freePoints[Random.Range(0, freePoints.Count)];
+        //transform.position = start.WorldPosition;
         while (true)
         {
             while (aiAgent.config.destination == null)
