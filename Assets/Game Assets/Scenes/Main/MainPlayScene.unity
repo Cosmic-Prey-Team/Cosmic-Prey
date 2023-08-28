@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 133761546}
   m_Layer: 17
   m_Name: Hurtbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4481,6 +4481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936908861289343654, guid: 8bdc5c9151c470e428d8579cae172358,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7936908861289343660, guid: 8bdc5c9151c470e428d8579cae172358,
         type: 3}
@@ -10362,6 +10367,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1484979230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484979219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7c37163fa1754478d0f89c49f7daad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1489340665
 GameObject:
   m_ObjectHideFlags: 2
@@ -12801,7 +12818,7 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 2561
+    m_Bits: 2048
   CinemachineCameraTarget: {fileID: 1323158911}
   TopClamp: 89
   BottomClamp: -89

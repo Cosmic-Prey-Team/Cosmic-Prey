@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 6738755411922974236}
   - component: {fileID: 7572622118009259645}
   - component: {fileID: 1817283857089304359}
-  - component: {fileID: 8558258756122295541}
   - component: {fileID: 7329847211445489547}
+  - component: {fileID: 2681100651485902751}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -182,22 +182,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8558258756122295541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426414373534071058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8baa83499bd02104382c70773bbec7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 10
-  _hitBox: {fileID: 7329847211445489547}
-  _objectsHit: []
-  targetTag: Enemy
 --- !u!114 &7329847211445489547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +198,22 @@ MonoBehaviour:
   m_layerMask:
     serializedVersion: 2
     m_Bits: 131072
+--- !u!114 &2681100651485902751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426414373534071058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec071326e629064aaffd1a0a0666d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
+  _hitBox: {fileID: 7329847211445489547}
+  _objectsHit: []
+  targetTag: Enemy
 --- !u!1 &2226084845381448654
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,9 +281,6 @@ MonoBehaviour:
   _hitbox: {fileID: 1426414373534071058}
   _speed: 50
   _lifetime: 5
-  _ignoreLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!136 &682256030034500969
 CapsuleCollider:
   m_ObjectHideFlags: 0
