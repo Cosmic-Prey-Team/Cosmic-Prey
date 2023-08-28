@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30406424, g: 0.10202309, b: 0.22924824, a: 1}
+  m_IndirectSpecularColor: {r: 0.30373684, g: 0.10177624, b: 0.22880575, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &88353702
 Transform:
   m_ObjectHideFlags: 0
@@ -9651,6 +9651,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Krill_Full_Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428833327762366333, guid: 8e50edd64d2135948be00ecb7c4bdcda,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e50edd64d2135948be00ecb7c4bdcda, type: 3}

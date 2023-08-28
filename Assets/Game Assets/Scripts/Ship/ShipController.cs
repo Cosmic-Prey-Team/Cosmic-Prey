@@ -69,9 +69,9 @@ public class ShipController : MonoBehaviour
         //if gliding forward
         if(_shipState == ShipState.goingForward && _input.thrust == 0 || _shipState == ShipState.gliding)
         {
-            _topRocketFlame.Play();
-            _leftRocketFlame.Play();
-            _rightRocketFlame.Play();
+            if(_topRocketFlame != null) _topRocketFlame.Play();
+            if (_leftRocketFlame != null) _leftRocketFlame.Play();
+            if (_rightRocketFlame != null) _rightRocketFlame.Play();
             _shipState = ShipState.gliding;
         }
 
