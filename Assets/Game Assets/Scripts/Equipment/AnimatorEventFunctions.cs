@@ -8,7 +8,7 @@ public class AnimatorEventFunctions : MonoBehaviour
 {
     [SerializeField] private EquipmentSwapping _equipmentSwap;
     public Animator firstpersonAnimator;
-    public Animator thirdpersonAnimator;
+    //public Animator thirdpersonAnimator;
     public GameObject handObject;
     public GameObject drillObject;
     public GameObject chainsawObject;
@@ -28,13 +28,13 @@ public class AnimatorEventFunctions : MonoBehaviour
     void Update()
     {
         if (firstpersonAnimator != null) firstpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
-        if (thirdpersonAnimator != null) thirdpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
+        //if (thirdpersonAnimator != null) thirdpersonAnimator.SetFloat("moveSpeed", FirstPersonController.targetSpeed);
 
         if(FirstPersonController.triggerJump == true)
         {
             //FirstPersonController.triggerJump = false;
             if (firstpersonAnimator != null) firstpersonAnimator.SetTrigger("triggerJump");
-            if (thirdpersonAnimator != null) thirdpersonAnimator.SetTrigger("triggerJump");
+            //if (thirdpersonAnimator != null) thirdpersonAnimator.SetTrigger("triggerJump");
             Debug.Log(FirstPersonController.triggerJump);
         }
     }

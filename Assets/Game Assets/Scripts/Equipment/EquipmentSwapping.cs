@@ -51,11 +51,14 @@ public class EquipmentSwapping : MonoBehaviour
     #endregion
 
     public Animator firstpersonAnimator;
-    public Animator thirdpersonAnimator;
+    //public Animator thirdpersonAnimator;
     
     private void SelectWeapon()
     {
-        if(GetSelectedWeapon() <= 2 && firstpersonAnimator.GetBool("liftingLHand") == false)
+        if (firstpersonAnimator != null)
+
+
+        if (GetSelectedWeapon() <= 2 && firstpersonAnimator.GetBool("liftingLHand") == false)
         {
            // firstpersonAnimator.SetFloat("liftingRHand", 0f);
             //thirdpersonAnimator.SetFloat("liftingRHand", 0f);
@@ -77,6 +80,7 @@ public class EquipmentSwapping : MonoBehaviour
             firstpersonAnimator.SetBool("liftingLHand", false);
             //thirdpersonAnimator.SetBool("liftingLHand", false);
         }
+
         //enables only selected weapon and disables the rest
         /*
             0 - hand
@@ -85,6 +89,7 @@ public class EquipmentSwapping : MonoBehaviour
             3 - repair tool
             4 - gun
         */
+
         int i = 0;
         foreach (Transform equipment in transform)
         {
