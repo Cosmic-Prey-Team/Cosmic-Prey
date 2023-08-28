@@ -55,7 +55,7 @@ public class EquipmentSwapping : MonoBehaviour
     
     private void SelectWeapon()
     {
-        if (firstpersonAnimator != null)
+        if (firstpersonAnimator == null) return;
 
 
         if (GetSelectedWeapon() <= 2 && firstpersonAnimator.GetBool("liftingLHand") == false)
