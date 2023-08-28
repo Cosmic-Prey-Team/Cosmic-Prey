@@ -9,9 +9,11 @@ public class Repairable : MonoBehaviour
 {
     public UnityEvent OnStartRepairing;
     public UnityEvent OnFullyRepaired;
-    KeyTutorial_Fissures keyTutorial_fissures = new KeyTutorial_Fissures();
     private Health _health;
     private Inventory _inventory;
+
+    KeyTutorial_Fissures keyTutorial_fissure = GameObject.FindObjectOfType<KeyTutorial_Fissures>();
+
 
     [Header("Repair Properties")]
     [Tooltip("Is there a health script on this gameobject")]
@@ -61,8 +63,6 @@ public class Repairable : MonoBehaviour
             else
             {
                 if (_progressBar.gameObject.activeInHierarchy == true) _progressBar.gameObject.SetActive(false);
-                //fissures left to fix
-                keyTutorial_fissures.FissuresFixed();
             }
         }
 
@@ -96,6 +96,9 @@ public class Repairable : MonoBehaviour
             {
                 _health.Heal(_healthAmountRegen);
                 OnFullyRepaired?.Invoke();
+                //fissures left to fix
+                keyTutorial_fissure.FissuresFixed();
+
                 _isRepairing = false;
                 _repairProgress = 0;
             }
