@@ -2001,7 +2001,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 299b4a6010c580248835775ba08c419e, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 89dc05001f835c74cad0e96531e9d9d9,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2704,6 +2705,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 29092691}
     m_Modifications:
+    - target: {fileID: 754474868917313808, guid: 0edb413d81eb435438057b98600205b4,
+        type: 3}
+      propertyPath: _amount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 754474868917313811, guid: 0edb413d81eb435438057b98600205b4,
         type: 3}
       propertyPath: m_Name
@@ -5094,7 +5100,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 299b4a6010c580248835775ba08c419e, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 89dc05001f835c74cad0e96531e9d9d9,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7593,7 +7600,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 299b4a6010c580248835775ba08c419e, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 89dc05001f835c74cad0e96531e9d9d9,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8133,7 +8141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1094994626
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12132,7 +12140,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 299b4a6010c580248835775ba08c419e, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 89dc05001f835c74cad0e96531e9d9d9,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12732,8 +12741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _debug: 1
   _maxHealth: 500
-  _health: 500
-  _healthBar: {fileID: 0}
+  _health: 400
+  _healthBar: {fileID: 1989330706}
   _dead: 0
   OnDeath:
     m_PersistentCalls:
@@ -13969,7 +13978,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 299b4a6010c580248835775ba08c419e, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 89dc05001f835c74cad0e96531e9d9d9,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14915,7 +14925,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 299b4a6010c580248835775ba08c419e, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 89dc05001f835c74cad0e96531e9d9d9,
+    type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30758,8 +30769,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 889611268160885920, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
+      propertyPath: _maxRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 889611268160885920, guid: b09b6f7d1a345b34da62ca9e170250c0,
+        type: 3}
       propertyPath: _objectToTrack
       value: 
+      objectReference: {fileID: 1484979220}
+    - target: {fileID: 5096255393312319236, guid: b09b6f7d1a345b34da62ca9e170250c0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6344965028703685282, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
@@ -30794,7 +30815,7 @@ PrefabInstance:
     - target: {fileID: 6344965028963243844, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
       propertyPath: _debug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344965028963243844, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
@@ -30881,6 +30902,16 @@ PrefabInstance:
       propertyPath: _playerContainer
       value: 
       objectReference: {fileID: 1651328454}
+    - target: {fileID: 6344965029201849721, guid: b09b6f7d1a345b34da62ca9e170250c0,
+        type: 3}
+      propertyPath: _healAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344965029201849721, guid: b09b6f7d1a345b34da62ca9e170250c0,
+        type: 3}
+      propertyPath: _healingEffect
+      value: 
+      objectReference: {fileID: 6344965029787917769}
     - target: {fileID: 6344965029236998728, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
       propertyPath: m_Layer
@@ -30890,6 +30921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344965029272232776, guid: b09b6f7d1a345b34da62ca9e170250c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6344965029600639029, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
@@ -30997,6 +31033,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7c37163fa1754478d0f89c49f7daad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &6344965029787917769 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3851404000326717322, guid: b09b6f7d1a345b34da62ca9e170250c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6344965029787917765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6344965029787917774 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6344965028963243963, guid: b09b6f7d1a345b34da62ca9e170250c0,
