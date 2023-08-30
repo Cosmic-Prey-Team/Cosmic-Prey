@@ -29,7 +29,6 @@ public class KrillFlyingController : MonoBehaviour
         {
             while (aiAgent.config.destination == null)
             {
-                Debug.Log("null loop");
                 yield return null;
             }
             target = aiAgent.config.destination.position;
@@ -38,27 +37,20 @@ public class KrillFlyingController : MonoBehaviour
             while (_Agent.Status != AStarAgentStatus.Finished && _Agent.Status != AStarAgentStatus.Invalid)
             {
                 yield return new WaitForSeconds(delay);
-                Debug.Log(aiAgent.config.destination.position + "" + aiAgent.config.destination);
                 if (target != aiAgent.config.destination.position || transform.position == _lastPos)
                 {
-                    Debug.Log("Repath" + (transform.position == _lastPos));
                     target = aiAgent.config.destination.position;
                     _Agent.Pathfinding(aiAgent.config.destination.position);
                 }
                 _lastPos = transform.position;
 
             }
-            Debug.Log("finished");
             while ((aiAgent.config.destination.position - transform.position).magnitude < aiAgent.config.maxDistance)
             {
-                Debug.Log("finished loop" + aiAgent.config.destination.position + "" + aiAgent.config.destination);
                 transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed); //* 2);
                 if ((aiAgent.config.destination.position - transform.position).magnitude > aiAgent.config.minDistance)
                 {
-                    //transform.forward = (aiAgent.config.destination.position - transform.position).normalized;
                     transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
-                    //transform.position += transform.forward * Time.deltaTime * _Agent.Speed;
-                    //transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed*2);
                 }
                 yield return null;
 
@@ -67,11 +59,9 @@ public class KrillFlyingController : MonoBehaviour
 
             if (aiAgent.stateMachine.currentState == AIStateID.KrillAttack && _Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
             {
-                Debug.Log("Forcing Attack Pathing");
                 transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed * 2);
                 transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
             }
-            Debug.Log("Dead?" + aiAgent.config.destination.position + "   " + _Agent.Status + "    " + gameObject);
             yield return null;
         }
     }

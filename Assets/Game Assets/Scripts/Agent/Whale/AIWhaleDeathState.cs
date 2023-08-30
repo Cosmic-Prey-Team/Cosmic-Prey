@@ -15,8 +15,8 @@ public class AIWhaleDeathState : AIState
 
     public void Enter(AIAgent agent)
     {
-        _animator = agent.GetComponent<Animator>();
-        _animator.Play("Death", 0, 0.0f);
+        //_animator = agent.GetComponent<Animator>();
+        //_animator.Play("Death", 0, 0.0f);
     }
 
     public void Exit(AIAgent agent)
@@ -31,7 +31,7 @@ public class AIWhaleDeathState : AIState
 
     public void Update(AIAgent agent)
     {
-        WaitForDeath(agent);
+        //WaitForDeath(agent);
     }
 
    

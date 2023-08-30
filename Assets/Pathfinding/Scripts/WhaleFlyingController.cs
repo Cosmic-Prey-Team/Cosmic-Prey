@@ -51,7 +51,6 @@ public class WhaleFlyingController : MonoBehaviour
                     _Agent.Pathfinding(aiAgent.config.destination.position);
                 }
             }           
-            Debug.Log("finished");
 
             if (aiAgent.stateMachine.currentState == AIStateID.WhaleWander)
             {
@@ -66,7 +65,6 @@ public class WhaleFlyingController : MonoBehaviour
                 }
                 if (_Agent.Status == AStarAgentStatus.Invalid)
                 {
-                    Debug.Log("Forcing Wander Pathing");
                     transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed * 2);
                     transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
                 }
@@ -87,13 +85,11 @@ public class WhaleFlyingController : MonoBehaviour
                 }
                 if (_Agent.Status == AStarAgentStatus.Invalid)
                 {
-                    Debug.Log("Forcing Attack Pathing");
                     transform.forward = Vector3.Slerp(transform.forward, (aiAgent.config.destination.position - transform.position).normalized, Time.deltaTime * _Agent.TurnSpeed * 2);
                     transform.position = Vector3.MoveTowards(transform.position, aiAgent.config.destination.position, Time.deltaTime * _Agent.Speed);
                 }
             }
 
-            Debug.Log("Dead?" + aiAgent.config.destination.position + "   " + _Agent.Status + "    " + gameObject);
             yield return null;
         }
     }

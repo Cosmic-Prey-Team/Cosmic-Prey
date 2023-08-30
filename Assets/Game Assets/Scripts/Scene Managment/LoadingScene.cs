@@ -39,4 +39,10 @@ public class LoadingScene : MonoBehaviour
             yield return null;
         }
     }
+
+    public void LoadSceneNoUI(string sceneName)
+    {
+        Debug.Log("load scene no ui is being called");
+        SceneManager.LoadSceneAsync(sceneName);
+    }
 }
