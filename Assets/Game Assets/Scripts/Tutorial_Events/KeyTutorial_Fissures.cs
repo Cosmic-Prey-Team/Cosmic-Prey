@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class KeyTutorial_Fissures : Tutorial_Steps
 {
+    public Repairable _repairProgress;
+
     public List<string> Keysinput = new List<string>();
 
-    //public Repairable _repairProgress;
+    public static int _RepairedFissures = 0;
 
-    private int _RepairedFissures;
-   
-
-    /*void Awake()
+    void Awake()
     {
-        _repairProgress = FindObjectOfType<Repairable>();
-        _repairProgress.RepairedQuest += repairProgressTransfer;
-    }*/
+  
+    }
     public override void CheckIf_Happending()
     {
         for (int index = 0; index < Keysinput.Count; index++)
@@ -26,19 +24,16 @@ public class KeyTutorial_Fissures : Tutorial_Steps
                 break;
             }
         }
-       
-        if (Keysinput.Count == 0 && _RepairedFissures >= 4)
-            GameTutorial_Manager.Instace.TutorialIncrement();
-        else if (_RepairedFissures < 4)
+
+        if (Keysinput.Count == 0 && _RepairedFissures >= 2) 
         {
-            int _remainingFissurse = 4 - _RepairedFissures;
-            DisplayQuotes_Quest($"There are {_remainingFissurse} left to fix!");
-        }  
+            _RepairedFissures = 0;
+            GameTutorial_Manager.Instace.TutorialIncrement();
+        }
+    }
+    public void repairProgressTransfer()
+    {
+        _RepairedFissures++;
     }
 
-    public void FissuresFixed() 
-    {
-       _RepairedFissures++;
-        return;
-    }
 }

@@ -12,7 +12,7 @@ public class GameTutorial_Manager : MonoBehaviour
     public List<Tutorial_Steps> Tutorials = new List<Tutorial_Steps>();
 
     public Text _QueenTexts,
-                    _QuestTexts;
+                _QuestTexts;
 
     private Tutorial_Steps currentTutorial;
 
@@ -79,12 +79,19 @@ public class GameTutorial_Manager : MonoBehaviour
             CompletedAllTuturials();
             return;
         }
-        //Next player quest/task
-        _QueenTexts.text = currentTutorial._QueenPopups;
-        // Thread.Sleep(60000);    //20 sec wait
-        _QuestTexts.text = currentTutorial._QuestPopups;
+        DisplayQueenText(currentTutorial._QueenPopups);
+        DisplayQuestText(currentTutorial._QuestPopups);
     }
 
+    public void DisplayQueenText(string sentence)
+    {
+        _QueenTexts.text = sentence;
+    }
+
+    public void DisplayQuestText(string sentence)
+    {
+        _QuestTexts.text = sentence;
+    }
     public void CompletedAllTuturials()
     {
         _QueenTexts.text = "Queen: Well, moment of truth… Let's hope those hull parts hold. Go get that whale! ";

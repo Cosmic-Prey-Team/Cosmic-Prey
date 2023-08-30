@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using static KeyTutorial_Fissures; 
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,8 +13,7 @@ public class Repairable : MonoBehaviour
     private Health _health;
     private Inventory _inventory;
 
-    KeyTutorial_Fissures keyTutorial_fissure = GameObject.FindObjectOfType<KeyTutorial_Fissures>();
-
+    KeyTutorial_Fissures keyTutorial_fissure = new KeyTutorial_Fissures();
 
     [Header("Repair Properties")]
     [Tooltip("Is there a health script on this gameobject")]
@@ -31,6 +31,7 @@ public class Repairable : MonoBehaviour
     private float _repairProgress = 0;
 
     //[SerializeField] private int 
+
     private bool _isRepairing = false;
 
     private void Awake()
@@ -56,13 +57,14 @@ public class Repairable : MonoBehaviour
         {
             if (active)
             {
-                if (_progressBar.gameObject.activeInHierarchy == false) _progressBar.gameObject.SetActive(true);
+                if (_progressBar.gameObject.activeInHierarchy == false) _progressBar.gameObject.SetActive(true); 
 
                 _progressBar.fillAmount = _repairProgress;
             }
             else
             {
                 if (_progressBar.gameObject.activeInHierarchy == true) _progressBar.gameObject.SetActive(false);
+                
             }
         }
 
@@ -94,11 +96,10 @@ public class Repairable : MonoBehaviour
 
             if (_repairProgress >= 1)
             {
+                keyTutorial_fissure.repairProgressTransfer();
+
                 _health.Heal(_healthAmountRegen);
                 OnFullyRepaired?.Invoke();
-                //fissures left to fix
-                keyTutorial_fissure.FissuresFixed();
-
                 _isRepairing = false;
                 _repairProgress = 0;
             }
