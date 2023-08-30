@@ -30895,7 +30895,7 @@ PrefabInstance:
     - target: {fileID: 6344965028963243962, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
       propertyPath: _accelerationDelay
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344965028963243963, guid: b09b6f7d1a345b34da62ca9e170250c0,
         type: 3}
