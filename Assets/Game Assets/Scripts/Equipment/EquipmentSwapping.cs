@@ -47,15 +47,30 @@ public class EquipmentSwapping : MonoBehaviour
             SelectWeapon();
         }
         #endregion
+
+        //quick fix for repair tool
+        if(_repairTool != null)
+        {
+            if(_selectedWeapon == 3 && _repairTool.activeInHierarchy == false)
+            {
+                _repairTool.SetActive(true);
+                Debug.Log("Repair tool override");
+            }
+        }
     }
     #endregion
 
     public Animator firstpersonAnimator;
     public Animator thirdpersonAnimator;
-    
+
+    [Space]
+    [SerializeField] GameObject _repairTool;
+    [SerializeField] GameObject _gun;
+
     private void SelectWeapon()
     {
-        if(GetSelectedWeapon() <= 2 && firstpersonAnimator.GetBool("liftingLHand") == false)
+        #region Animations
+        if (GetSelectedWeapon() <= 2 && firstpersonAnimator.GetBool("liftingLHand") == false)
         {
            // firstpersonAnimator.SetFloat("liftingRHand", 0f);
             //thirdpersonAnimator.SetFloat("liftingRHand", 0f);
@@ -72,6 +87,7 @@ public class EquipmentSwapping : MonoBehaviour
         {
             firstpersonAnimator.SetBool("liftingLHand", true);
             //thirdpersonAnimator.SetBool("liftingLHand", true);
+
         }else
         {
             firstpersonAnimator.SetBool("liftingLHand", false);
@@ -85,6 +101,9 @@ public class EquipmentSwapping : MonoBehaviour
             3 - repair tool
             4 - gun
         */
+        #endregion
+
+        #region Enable/Disable active
         int i = 0;
         foreach (Transform equipment in transform)
         {
@@ -93,15 +112,25 @@ public class EquipmentSwapping : MonoBehaviour
                 //equipment.gameObject.SetActive(true);
                 Debug.Log("SelectWeapon(): " + equipment.name);
 
+                if (i == 3)
+                    if (_repairTool != null) _repairTool.SetActive(true);
+                if (i == 4)
+                    if (_gun != null) _gun.SetActive(true);
             }
             else
             {
                 equipment.gameObject.SetActive(false);
+
+                if (_repairTool != null)
+                    if (_repairTool.activeInHierarchy) _repairTool.SetActive(false);
+                if (_gun != null)
+                    if (_gun.activeInHierarchy) _gun.SetActive(false);
             }
 
             i++;
         }
-        
+        #endregion
+
         //change selected weapon UI
         OnSwap?.Invoke(_selectedWeapon);
     }
