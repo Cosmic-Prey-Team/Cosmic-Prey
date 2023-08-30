@@ -6088,6 +6088,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989979457}
   m_CullTransparentMesh: 1
+--- !u!114 &2019598807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2414356324494248440, guid: c55b5ee9ab956e04d93c3dc4ced29d1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7840271900689763055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56bff98de36c7044b604e64c5aa0eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2033001859
 GameObject:
   m_ObjectHideFlags: 0
@@ -6627,6 +6639,7 @@ MonoBehaviour:
     use your weirdly designed repair tool that was provided to you'
   _QuestPopups: 'By equiping the repair tool using the scroll wheel, you can patch
     up the fissures around the ship deck. '
+  _repairProgress: {fileID: 2019598807}
   Keysinput:
   - s
   - w
