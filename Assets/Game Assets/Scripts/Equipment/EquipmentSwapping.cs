@@ -31,25 +31,36 @@ public class EquipmentSwapping : MonoBehaviour
         {
             if (scrollValue > 0)
             {
-                if (_selectedWeapon >= transform.childCount - 1)
-                    _selectedWeapon = 0;
-                else
-                    _selectedWeapon++;
+                if(_selectedWeapon != 2)
+                {
+                    if (_selectedWeapon >= transform.childCount - 1)
+                        _selectedWeapon = 0;
+                    else
+                        _selectedWeapon++;
+
+                    SelectWeapon();
+                }
             }
             else if (scrollValue < 0)
             {
-                if (_selectedWeapon <= 0)
-                    _selectedWeapon = transform.childCount - 1;
-                else
-                    _selectedWeapon--;
+                if(_selectedWeapon != 3)
+                {
+                    if (_selectedWeapon <= 0)
+                        _selectedWeapon = transform.childCount - 1;
+                    else
+                        _selectedWeapon--;
+
+                    SelectWeapon();
+                }
             }
 
-            SelectWeapon();
+            //SelectWeapon();
         }
         #endregion
 
+        #region Quick fix for repair tool
         //quick fix for repair tool
-        if(_repairTool != null)
+        if (_repairTool != null)
         {
             if(_selectedWeapon == 3 && _repairTool.activeInHierarchy == false)
             {
@@ -57,6 +68,7 @@ public class EquipmentSwapping : MonoBehaviour
                 Debug.Log("Repair tool override");
             }
         }
+        #endregion
     }
     #endregion
 
