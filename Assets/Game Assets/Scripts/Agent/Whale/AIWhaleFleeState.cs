@@ -51,7 +51,7 @@ public class AIWhaleFleeState : AIState
             _destination = GameObject.Instantiate(agent.config.Waypoint, p.WorldPosition, agent.transform.rotation).transform;
             agent.config.destination = _destination;
         }
-
+        agent.config.destination = _destination;
         _fleeTimer += Time.deltaTime;
 
         /**if ((agent.gameObject.transform.position - _target.transform.position).magnitude > 100f)

@@ -25,4 +25,4 @@ MonoBehaviour:
   animator: {fileID: 0}
   layerIndex: 0
   maxDistance: 25
-  minDistance: 6
+  minDistance: 10

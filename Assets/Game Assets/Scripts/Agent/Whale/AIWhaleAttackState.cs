@@ -194,8 +194,7 @@ public class AIWhaleAttackState : AIState
 
     public void AttemptAttack()
     {
-        //This may cause it to play the attack animation while death animation plays
-        int id = Animator.StringToHash("Stella_Headbutt_Final");
+        int id = Animator.StringToHash("Stella_Headbutt");
         if (_animator.HasState(0, id))
         {
             var state = _animator.GetCurrentAnimatorStateInfo(0);
@@ -219,7 +218,7 @@ public class AIWhaleAttackState : AIState
             GameObject[] player = _sensor.Filter(new GameObject[1], "Ship");
             if (player[0] != null)
             {
-                _animator.Play("Stella_Headbutt_Final", 0, 0.0f);
+                _animator.Play("Stella_Headbutt", 0, 0.0f);
                 _hitResponder._objectsHit = new List<GameObject>();
             }
             _updateTimer = 0;

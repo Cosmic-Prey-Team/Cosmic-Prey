@@ -301,7 +301,6 @@ public class AStarAgent : MonoBehaviour
             if (Status == AStarAgentStatus.Invalid)
             {
                 Status = AStarAgentStatus.RePath;
-                Debug.Log("repath loop");
                 yield return new WaitForSeconds(0.2f);
             }
         }
