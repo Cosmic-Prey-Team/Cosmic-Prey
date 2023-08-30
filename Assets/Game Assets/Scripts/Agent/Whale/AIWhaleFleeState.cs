@@ -54,11 +54,11 @@ public class AIWhaleFleeState : AIState
 
         _fleeTimer += Time.deltaTime;
 
-        if ((agent.gameObject.transform.position - _target.transform.position).magnitude > 100f)
+        /**if ((agent.gameObject.transform.position - _target.transform.position).magnitude > 100f)
         {
             agent.stateMachine.ChangeState(AIStateID.WhaleWander);
         }
-        else if (_fleeTimer > 60f)
+        else**/ if (_fleeTimer > 60f)
         {
             agent.stateMachine.ChangeState(AIStateID.WhaleAttack);
         }

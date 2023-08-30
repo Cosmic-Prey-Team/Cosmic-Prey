@@ -24,15 +24,22 @@ public class SpawnAsteroids : MonoBehaviour
     private int attempts = 0;
     Vector3 dead = new Vector3(-1000, -1000, -1000);
 
-    private Vector3 FindNewPosition()
+    private Vector3 FindNewPosition(bool waypoint)
     {
         Vector3 Position;
         Collider[] _collision;
 
         do
         {
-            //generates a random position within the map
-            Position = new Vector3(Random.Range(-_mapSize, _mapSize), Random.Range(-_mapSize, _mapSize), Random.Range(-_mapSize, _mapSize));
+            if (waypoint)
+            {
+                //Borders of grid
+                Position = new Vector3(Random.Range(-130, 130), Random.Range(-130, 130), Random.Range(-130, 130));
+            }
+            else
+            {
+                Position = new Vector3(Random.Range(-_mapSize, _mapSize), Random.Range(-_mapSize, _mapSize), Random.Range(-_mapSize, _mapSize));
+            }
 
             //checks if anything exists within a range of _minDistanceApart
             //this means no asteroids will spawn within a set distance from the ship and whale's spawning position
@@ -56,7 +63,7 @@ public class SpawnAsteroids : MonoBehaviour
         {
             for (int i = 0; i < 6; i++)
             {
-                Vector3 Position = FindNewPosition();
+                Vector3 Position = FindNewPosition(true);
                 if (Position != dead)
                 {
                     GameObject waypoint = Instantiate(_waypointPrefab, Position, transform.rotation);
@@ -68,7 +75,7 @@ public class SpawnAsteroids : MonoBehaviour
             for (int i = 0; i < _numAsteroidsToSpawn; i++)
             {
                 int rand = Random.Range(0, _asteroidPrefabs.Length);
-                Vector3 Position = FindNewPosition();
+                Vector3 Position = FindNewPosition(false);
                 if (Position != dead)
                 {
                     GameObject asteroid = Instantiate(_asteroidPrefabs[rand], Position, transform.rotation);

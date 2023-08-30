@@ -23,6 +23,7 @@ public class AIStateMachine
     public AIState GetState(AIStateID stateID)
     {
         int index = (int)stateID;
+        //Debug.Log(states[index]);
         return states[index];
     }
 
