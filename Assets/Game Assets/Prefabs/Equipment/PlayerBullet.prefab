@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitbox: {fileID: 1426414373534071058}
-  _speed: 50
+  _speed: 70
   _lifetime: 5
 --- !u!136 &682256030034500969
 CapsuleCollider:

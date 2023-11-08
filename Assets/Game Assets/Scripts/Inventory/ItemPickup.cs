@@ -13,7 +13,7 @@ public class ItemPickup : MonoBehaviour
         Inventory inventory = other.GetComponent<Inventory>();
         if(inventory != null)
         {
-            other.gameObject.GetComponent<Inventory>().AddItem(_item);
+            other.gameObject.GetComponent<Inventory>().AddItem(_item, _amount);
             
             Destroy(gameObject);
         }

@@ -12,15 +12,22 @@ public class HealthStation : MonoBehaviour
     private void Awake()
     {
         _currentHealInterval = _healInterval;
+
+        if (_healingEffect != null)
+            _healingEffect.Stop();
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<Health>())
         {
-            if (!_healingEffect.isPlaying)
+            if(_healingEffect != null)
             {
-                _healingEffect.Play();
+                if (!_healingEffect.isPlaying)
+                {
+                    _healingEffect.Play();
+                }
             }
+            
             Health health = other.GetComponent<Health>();
             if(_currentHealInterval < 0)
             {
@@ -37,7 +44,8 @@ public class HealthStation : MonoBehaviour
     {
         if(other.GetComponent<Health>())
         {
-            _healingEffect.Stop();
+            if(_healingEffect != null)
+                _healingEffect.Stop();
         }
     }
 }

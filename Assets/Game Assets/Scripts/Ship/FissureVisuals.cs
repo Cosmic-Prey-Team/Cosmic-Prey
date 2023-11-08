@@ -48,7 +48,10 @@ public class FissureVisuals : MonoBehaviour
         //enable fissure visual
         _fissure.gameObject.SetActive(true);
         //start smoke effect
-        _smoke = Instantiate(_smoke, transform.position, Quaternion.identity);
+        if (_smoke != null)
+            _smoke = Instantiate(_smoke, transform.position, Quaternion.identity);
+        else
+            Debug.LogWarning("_smoke is not assigned");
         //disable panel
         _panel.gameObject.SetActive(false);
 
