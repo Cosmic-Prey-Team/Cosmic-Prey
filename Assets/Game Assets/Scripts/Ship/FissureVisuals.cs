@@ -24,7 +24,8 @@ public class FissureVisuals : MonoBehaviour
         if(_panel != null) _panel.gameObject.SetActive(false);
 
         //disable collider visual
-        transform.GetChild(0).gameObject.SetActive(false);
+        //transform.GetChild(0).gameObject.SetActive(false);
+        //replaced with gizmo cube
     }
 
     public bool GetIsActive()
@@ -67,5 +68,11 @@ public class FissureVisuals : MonoBehaviour
 
         _isActive = false;
         Debug.Log("Deactivate Fissure");
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position + new Vector3(-0.005f, 0, 0), Vector3.one);
     }
 }

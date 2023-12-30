@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class HealthStation : MonoBehaviour
 {
@@ -17,10 +18,18 @@ public class HealthStation : MonoBehaviour
     {
         if (other.GetComponent<Health>())
         {
-            if (!_healingEffect.isPlaying)
+            if(_healingEffect != null)
             {
-                _healingEffect.Play();
+                if (!_healingEffect.isPlaying)
+                {
+                    _healingEffect.Play();
+                }
             }
+            else
+            {
+                Debug.LogWarning("Missing healing effect.");
+            }
+            
             Health health = other.GetComponent<Health>();
             if(_currentHealInterval < 0)
             {
@@ -35,6 +44,8 @@ public class HealthStation : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        if (_healingEffect == null) return;
+
         if(other.GetComponent<Health>())
         {
             _healingEffect.Stop();

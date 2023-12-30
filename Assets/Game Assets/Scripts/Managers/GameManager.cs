@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         if(Instance == null)
         {
             DontDestroyOnLoad(gameObject);
+            transform.SetParent(null);
             Instance = this;
         }
         else if(Instance != null)
@@ -48,10 +49,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         _gameState = GameState.GameIsUnpaused;
+
         //defaulting game to fullscreen
         Screen.fullScreen = true;
         _isFullscreen = true;
         _currentFullscreenText.text = "Fullscreen";
+
         //checking for correct default resolution
         foundRes = false;
         for (int i = 0; i < _resolutions.Count; i++)

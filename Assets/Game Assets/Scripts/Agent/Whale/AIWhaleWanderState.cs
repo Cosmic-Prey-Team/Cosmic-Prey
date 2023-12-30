@@ -41,7 +41,16 @@ public class AIWhaleWanderState : AIState
        
         if (destination == null)
         {
-            destination = destinations[Random.Range(0, destinations.Length - 1)].transform;
+            if (destinations.Length > 0)
+            {
+                destination = destinations[Random.Range(0, destinations.Length - 1)].transform;
+            }
+            else
+            {
+                Debug.LogWarning("Missing destinations");
+                return;
+            }
+
             agent.config.destination = destination;
         }            
 
