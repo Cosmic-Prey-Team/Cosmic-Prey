@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         if(Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             transform.SetParent(null);
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if(Instance != null)
         {

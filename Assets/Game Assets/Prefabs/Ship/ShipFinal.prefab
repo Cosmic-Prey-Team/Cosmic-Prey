@@ -4475,8 +4475,8 @@ MonoBehaviour:
   _speed: 20
   _lifetime: 15
   _maxDistance: 40
-  _harpoonBarrel: {fileID: 0}
-  _swivel: {fileID: 0}
+  _harpoonBarrel: {fileID: 6344965028427616920}
+  _swivel: {fileID: 6344965028751835863}
   _whaleHitbox: {fileID: 0}
 --- !u!54 &6344965029272232778
 Rigidbody:
@@ -11142,9 +11142,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f63e057a3f05e40ad6d38491a8451b, type: 3}
+--- !u!1 &6344965028427616920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1524256258646184401, guid: 08f63e057a3f05e40ad6d38491a8451b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5560510601109816137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6344965028640613531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1524256258869667794, guid: 08f63e057a3f05e40ad6d38491a8451b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5560510601109816137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6344965028751835863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1524256258859090334, guid: 08f63e057a3f05e40ad6d38491a8451b,
     type: 3}
   m_PrefabInstance: {fileID: 5560510601109816137}
   m_PrefabAsset: {fileID: 0}

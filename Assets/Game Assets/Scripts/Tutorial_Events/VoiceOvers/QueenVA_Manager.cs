@@ -11,6 +11,7 @@ public class QueenVA_Manager : MonoBehaviour
     {
         if (Instance == null)
         {
+            transform.SetParent(null);
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
